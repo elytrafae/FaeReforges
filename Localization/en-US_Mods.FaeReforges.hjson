@@ -1,0 +1,5 @@
+Prefixes: {
+	SummonOccupancyReductionTooltip: "{0:+0;-#}% Summon Occupancy Reduction"
+	SummonSpeedBuffTooltip: "{0:+0;-#}% Summon Speed"
+	SummonerReforges.DisplayName: Completely BUSTED
+}
