@@ -1,1 +1,13 @@
-Modify this file with a description of your mod.
+This is a mod originally meant to just do things with reforges, but I got so caught up with Summoner, that I decided to add a bit more for them
+
+The mod comes with three new reforge stats!
+- Summon Cost, increases/decreases how many slots minions/sentries occupy
+- Summon Speed, increases/decreases the speed of minions/sentries
+- Summon Crit Chance, gives summons a base crit chance. The mod does not make crit chance from other sources (like Rage Potions) apply to minions
+
+Using these stats, as well as damage and knockback, 21 new reforges were added, exclusive to summoner staves!
+
+Right now, the mod does not follow vanilla's reforge style, and instead all positive reforges are intended to be viable and for them to not overshadow each-other.
+For balance discussions, bug reports, etc. please contact me on Discord, under the username "elytrafae". You can also find me on the tModLoader discord!
+
+This mod is inspired by, and partially follows the phylosophy of, Sorbet Cafe's video on reforges (https://youtu.be/UBfoOkhV2vY?si=Jehi5nvXmoSS_KZB). Go check it out!

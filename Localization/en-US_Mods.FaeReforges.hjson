@@ -1,5 +1,85 @@
 Prefixes: {
-	SummonOccupancyReductionTooltip: "{0:+0;-#}% Summon Occupancy Reduction"
-	SummonSpeedBuffTooltip: "{0:+0;-#}% Summon Speed"
-	SummonerReforges.DisplayName: Completely BUSTED
+	SummonOccupancyTooltip: "{0:+0;-#}% summon cost"
+	SummonSpeedBuffTooltip: "{0:+0;-#}% summon speed"
+	SummonCritChanceTooltip: "{0:+0;-#}% summon crit chance"
+	BouncySummonerPrefix.DisplayName: Bouncy
+	CrampedSummonerPrefix.DisplayName: Cramped
+	EnergeticSummonerPrefix.DisplayName: Energetic
+	ExtrovertSummonerPrefix.DisplayName: Extrovert
+	GamblerSummonerPrefix.DisplayName: Gambler
+	HeroicSummonerPrefix.DisplayName: Heroic
+	IntrovertSummonerPrefix.DisplayName: Introvert
+	JackedSummonerPrefix.DisplayName: Jacked
+	JugglerSummonerPrefix.DisplayName: Juggler
+	RighteousSummonerPrefix.DisplayName: Righteous
+	AnemicSummonerPrefix.DisplayName: Anemic
+	AntisocialSummonerPrefix.DisplayName: Antisocial
+	CowardlySummonerPrefix.DisplayName: Cowardly
+	DepressedSummonerPrefix.DisplayName: Depressed
+	EgotisticalSummonerPrefix.DisplayName: Egotistical
+	DisagreeableSummonerPrefix.DisplayName: Disagreeable
+	ElderlySummonerPrefix.DisplayName: Elderly
+	LuckySummonerPrefix.DisplayName: Lucky
+	RushedSummonerPrefix.DisplayName: Rushed
+	RebelliousSummonerPrefix.DisplayName: Rebellious
+	ShySummonerPrefix.DisplayName: Shy
+}
+
+Configs: {
+	ServerConfig: {
+		DisplayName: Server Config
+
+		Headers: {
+			Reforges: Reforges
+			QOL: Quality of Life
+			Balance: Balance Changes
+		}
+
+		EnableCustomSummonerReforges: {
+			Label: Enable Custom Summoner Reforges
+			Tooltip: Enables the mod's custom summoner reforges
+		}
+
+		SummonWandsAreReusable: {
+			Label: Summon Wands Are Reusable
+			Tooltip: Enabling this lets you hold down a summoner staff of any kind to continuously summon
+		}
+
+		BlacklistedWands: {
+			Label: Blacklisted Wands
+			Tooltip: If there is an item that gets incorrectly labeled as a summoner wand, add it here!
+		}
+
+		WhitelistedWands: {
+			Label: Whitelisted Wands
+			Tooltip: If there is an item that incorrectly doesn't get labeled as a summoner wand, add it here!
+		}
+
+		MakeAllMinionsHaveLocalIFrames: {
+			Label: Make All Summons Have Local IFrames
+			Tooltip: If this is on, the mod will attempt to make all summons have Local IFrames. If this is off, the mod changes nothing about IFrames, and the setting below does not get taken into effect.
+		}
+
+		MinionsThatShouldHaveStaticIFrames: {
+			Label: Summons That Should Have Static IFrames
+			Tooltip: The mod, by default, makes all summons have local IFrames. Add the exceptions here! Does not get taken into effect if the above setting is off!
+		}
+
+		SummonWandsManaCost: {
+			Label: Summon Wands Mana Cost
+			Tooltip: A percentage of how much of the original mana cost should summoner wands have. Setting this to 0 also removed the tooltip!
+		}
+	}
+}
+
+InfoDisplays: {
+	MinionInfoDisplay: {
+		DisplayName: Minions
+		DisplayText: "{0}/{1} {^1:Minion;Minions}"
+	}
+
+	SentryInfoDisplay: {
+		DisplayName: Sentries
+		DisplayText: "{0}/{1} {^1:Sentry;Sentries}"
+	}
 }
