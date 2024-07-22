@@ -83,3 +83,6 @@ InfoDisplays: {
 		DisplayText: "{0}/{1} {^1:Sentry;Sentries}"
 	}
 }
+
+Keybinds.WhipFrenzy.DisplayName: Whip Frenzy
+UI.WhipFrenzyResourceText: "{0:+0;-#}% Whip Frenzy"

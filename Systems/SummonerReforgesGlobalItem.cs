@@ -20,6 +20,7 @@ namespace FaeReforges.Systems {
         public float minionOccupancyMult = 1f;
         public float minionSpeedMult = 1f;
         public int minionCritBonus = 0;
+        public float whipFrenzyChargeMult = 1f;
         public override bool InstancePerEntity => true;
 
         public override bool AppliesToEntity(Item entity, bool lateInstantiation) {

@@ -22,6 +22,7 @@ namespace FaeReforges.Systems
         public float bonusSpeed = 1f;
         public float excessUpdates = 0f;
         public int reforgedCritChance = 0;
+        public float whipFrenzyChargeMult = 0f;
 
         // Do not add this back!
         /*
@@ -63,8 +64,12 @@ namespace FaeReforges.Systems
                 projectile.minionSlots = initOccupancy * globItem.minionOccupancyMult; // In case a projectile is marked both as a minion and a sentry
                 bonusSpeed = globItem.minionSpeedMult;
                 reforgedCritChance = globItem.minionCritBonus;
+                whipFrenzyChargeMult = globItem.whipFrenzyChargeMult;
             } else if (source is EntitySource_Parent parentSource && parentSource.Entity is Projectile parentProj) {
-                reforgedCritChance = parentProj.GetGlobalProjectile<SummonerReforgesGlobalProjectile>().reforgedCritChance;
+                var parentModProj = parentProj.GetGlobalProjectile<SummonerReforgesGlobalProjectile>();
+                reforgedCritChance = parentModProj.reforgedCritChance;
+                whipFrenzyChargeMult = parentModProj.whipFrenzyChargeMult;
+                bonusSpeed = parentModProj.bonusSpeed;
             }
         }
 

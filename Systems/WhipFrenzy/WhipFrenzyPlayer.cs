@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria;
@@ -13,9 +14,10 @@ using Terraria.ModLoader;
 namespace FaeReforges.Systems.WhipFrenzy {
     public class WhipFrenzyPlayer : ModPlayer {
 
-        int frenzy = 0;
+        double frenzy = 0;
         int maxFrenzy = 1000;
         bool isFrenzyOn = false;
+        int timeSinceLastMinionHit = 0;
 
         public bool IsFrenzyReady() {
             return frenzy >= maxFrenzy && !isFrenzyOn;
@@ -23,6 +25,10 @@ namespace FaeReforges.Systems.WhipFrenzy {
 
         public bool IsFrenzyActive() {
             return isFrenzyOn;
+        }
+
+        public float GetBarFill() { 
+            return Utils.Clamp((float)frenzy / maxFrenzy, 0f, 1f);
         }
 
         public void ActivateFrenzy() { 
@@ -50,12 +56,13 @@ namespace FaeReforges.Systems.WhipFrenzy {
             return true;
         }
 
-
+        /*
         public override void PostUpdateEquips() {
             if (IsFrenzyActive()) {
                 Player.GetAttackSpeed(DamageClass.SummonMeleeSpeed) += 0.2f;
             }
         }
+        */
 
         public override void PostUpdate() {
             if (IsFrenzyActive()) {
@@ -64,11 +71,25 @@ namespace FaeReforges.Systems.WhipFrenzy {
                     StopFrenzy();
                 }
             } else {
-                // Passive Whip Frenzy Gain for DEBUG!
-                frenzy += 2;
-
+                timeSinceLastMinionHit++;
+                if (timeSinceLastMinionHit >= 120) {
+                    frenzy = Math.Max(frenzy - 2, 0);
+                }
             }
-            ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("Frenzy: " + frenzy + "/" + maxFrenzy), Color.Azure);
+            if (KeybindSystem.WhipFrenzyKeybind.JustPressed && Main.myPlayer == Player.whoAmI) {
+                ActivateFrenzy();
+            }
+        }
+
+        public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone) {
+            if (IsFrenzyActive()) { 
+                return; 
+            }
+            var modProj = proj.GetGlobalProjectile<SummonerReforgesGlobalProjectile>();
+            double frenzyDelta = modProj.whipFrenzyChargeMult * Math.Max((double)proj.minionSlots, 0.1) * Math.Max(proj.usesIDStaticNPCImmunity ? proj.idStaticNPCHitCooldown : proj.localNPCHitCooldown, 1) / (Math.Max(proj.extraUpdates + 1, 1) * modProj.bonusSpeed);
+            frenzy += frenzyDelta;
+            if (frenzyDelta > 0) 
+                timeSinceLastMinionHit = 0;
         }
 
     }
