@@ -73,7 +73,7 @@ namespace FaeReforges.Systems.WhipFrenzy {
             } else {
                 timeSinceLastMinionHit++;
                 if (timeSinceLastMinionHit >= 120) {
-                    frenzy = Math.Max(frenzy - 2, 0);
+                    frenzy = Math.Max(frenzy - (timeSinceLastMinionHit-120)/60f, 0);
                 }
             }
             if (KeybindSystem.WhipFrenzyKeybind.JustPressed && Main.myPlayer == Player.whoAmI) {
@@ -87,7 +87,7 @@ namespace FaeReforges.Systems.WhipFrenzy {
             }
             var modProj = proj.GetGlobalProjectile<SummonerReforgesGlobalProjectile>();
             double frenzyDelta = modProj.whipFrenzyChargeMult * Math.Max((double)proj.minionSlots, 0.1) * Math.Max(proj.usesIDStaticNPCImmunity ? proj.idStaticNPCHitCooldown : proj.localNPCHitCooldown, 1) / (Math.Max(proj.extraUpdates + 1, 1) * modProj.bonusSpeed);
-            frenzy += frenzyDelta;
+            frenzy = Math.Min(frenzyDelta, maxFrenzy);
             if (frenzyDelta > 0) 
                 timeSinceLastMinionHit = 0;
         }

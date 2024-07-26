@@ -1,0 +1,140 @@
+{
+  "Summons": [
+    {
+      "Modifier Name": "Heroic",
+      "Damage": 0.1,
+      "Knockback": 0.15,
+      "Whip Frenzy Charge": 0.15,
+      "Speed": 0.08,
+      "Positive": true
+    },
+    {
+      "Modifier Name": "Introvert",
+      "Damage": 0.3,
+      "Knockback": 0.1,
+      "Whip Frenzy Charge": 0.15,
+      "Speed": 0.2,
+      "Occupancy Reduction": -0.5,
+      "Positive": true
+    },
+    {
+      "Modifier Name": "Cramped",
+      "Damage": -0.2,
+      "Whip Frenzy Charge": 0.05,
+      "Speed": -0.2,
+      "Occupancy Reduction": 0.5,
+      "Positive": true
+    },
+    {
+      "Modifier Name": "Energetic",
+      "Whip Frenzy Charge": 0.1,
+      "Speed": 0.4,
+      "Positive": true
+    },
+    {
+      "Modifier Name": "Sadistic",
+      "Damage": -0.1,
+      "Whip Frenzy Charge": 0.5,
+      "Speed": -0.05,
+      "Positive": true
+    },
+    {
+      "Modifier Name": "Extrovert",
+      "Occupancy Reduction": 0.25,
+      "Positive": true
+    },
+    {
+      "Modifier Name": "Juggler",
+      "Knockback": 0.5,
+      "Whip Frenzy Charge": 0.1,
+      "Positive": true
+    },
+    {
+      "Modifier Name": "Jacked",
+      "Damage": 0.15,
+      "Knockback": 0.15,
+      "Whip Frenzy Charge": 0.1,
+      "Speed": -0.12,
+      "Positive": true
+    },
+    {
+      "Modifier Name": "Righteous",
+      "Damage": 0.25,
+      "Positive": true
+    },
+    {
+      "Modifier Name": "Bouncy",
+      "Knockback": 0.65,
+      "Positive": true
+    },
+    {
+      "Modifier Name": "Rushed",
+      "Damage": -0.1,
+      "Knockback": -0.1,
+      "Speed": 0.6,
+      "Positive": true
+    },
+    {
+      "Modifier Name": "Dominant",
+      "Whip Frenzy Charge": 0.3,
+      "Positive": true
+    },
+    {
+      "Modifier Name": "Disagreeable",
+      "Damage": 0.2,
+      "Knockback": 0.1,
+      "Whip Frenzy Charge": 0.25,
+      "Speed": -0.1,
+      "Occupancy Reduction": -0.25,
+      "Positive": true
+    },
+    {
+      "Modifier Name": "Elderly",
+      "Damage": 0.6,
+      "Speed": -0.4,
+      "Positive": true
+    },
+    {
+      "Modifier Name": "Rebellious",
+      "Damage": -0.1,
+      "Whip Frenzy Charge": -0.2,
+      "Positive": false
+    },
+    {
+      "Modifier Name": "Cowardly",
+      "Speed": -0.3,
+      "Positive": false
+    },
+    {
+      "Modifier Name": "Egotistical",
+      "Whip Frenzy Charge": -0.1,
+      "Occupancy Reduction": -0.5,
+      "Positive": false
+    },
+    {
+      "Modifier Name": "Anemic",
+      "Knockback": -0.4,
+      "Positive": false
+    },
+    {
+      "Modifier Name": "Depressed",
+      "Damage": -0.1,
+      "Knockback": -0.1,
+      "Speed": -0.1,
+      "Positive": false
+    },
+    {
+      "Modifier Name": "Antisocial",
+      "Damage": -0.05,
+      "Whip Frenzy Charge": -0.05,
+      "Occupancy Reduction": -0.25,
+      "Positive": false
+    },
+    {
+      "Modifier Name": "Shy",
+      "Knockback": -0.15,
+      "Occupancy Reduction": -0.25,
+      "Positive": false
+    }
+  ]
+}

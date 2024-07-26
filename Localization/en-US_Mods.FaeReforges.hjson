@@ -23,6 +23,9 @@ Prefixes: {
 	RushedSummonerPrefix.DisplayName: Rushed
 	RebelliousSummonerPrefix.DisplayName: Rebellious
 	ShySummonerPrefix.DisplayName: Shy
+	SummonFrenzyChargeTooltip: "{0:+0;-#}% whip frenzy charge"
+	SadisticSummonerPrefix.DisplayName: Sadistic
+	DominantSummonerPrefix.DisplayName: Dominant
 }
 
 Configs: {
@@ -68,6 +71,26 @@ Configs: {
 		SummonWandsManaCost: {
 			Label: Summon Wands Mana Cost
 			Tooltip: A percentage of how much of the original mana cost should summoner wands have. Setting this to 0 also removed the tooltip!
+		}
+	}
+
+	ClientConfig: {
+		DisplayName: Client Config
+		Headers.WhipFrenzy: Whip Frenzy
+
+		UIOffsetHorizontal: {
+			Label: Horizontal UI Position
+			Tooltip: ""
+		}
+
+		UIOffsetVertical: {
+			Label: Vertical UI Position
+			Tooltip: ""
+		}
+
+		displayWhipFrenzyAlways: {
+			Label: display Whip Frenzy Always
+			Tooltip: ""
 		}
 	}
 }

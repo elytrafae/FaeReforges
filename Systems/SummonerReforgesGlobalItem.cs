@@ -42,7 +42,7 @@ namespace FaeReforges.Systems {
             if (!ModContent.GetInstance<ServerConfig>().EnableCustomSummonerReforges) {
                 return -1;
             }
-            return rand.NextFromCollection<AbstractSummonerPrefix>(ModContent.GetContent<AbstractSummonerPrefix>().ToList<AbstractSummonerPrefix>()).Type;
+            return rand.NextFromCollection<SummonerPrefixTemplate>(ModContent.GetContent<SummonerPrefixTemplate>().ToList<SummonerPrefixTemplate>()).Type;
         }
 
         public override bool CanUseItem(Item item, Player player) {

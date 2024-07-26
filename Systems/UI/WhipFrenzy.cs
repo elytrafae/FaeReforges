@@ -13,6 +13,7 @@ using Terraria.UI;
 using Terraria;
 using FaeReforges.Systems.WhipFrenzy;
 using SteelSeries.GameSense;
+using FaeReforges.Systems.Config;
 
 namespace FaeReforges.Systems.UI {
     public class WhipFrenzyResourceBar : UIState {
@@ -24,14 +25,18 @@ namespace FaeReforges.Systems.UI {
         private Color emptyColor;
         private Color fullColor;
 
+        const int WIDTH = 182;
+        const int HEIGHT = 60;
+
         public override void OnInitialize() {
             // Create a UIElement for all the elements to sit on top of, this simplifies the numbers as nested elements can be positioned relative to the top left corner of this element. 
             // UIElement is invisible and has no padding.
+            ClientConfig config = ModContent.GetInstance<ClientConfig>();
             area = new UIElement();
-            area.Left.Set(-area.Width.Pixels - 800, 1f); // Place the resource bar to the left of the hearts.
+            area.Left.Set(0, 0f); // Place the resource bar to the left of the hearts.
             area.Top.Set(30, 0f); // Placing it just a bit below the top of the screen.
-            area.Width.Set(182, 0f); // We will be placing the following 2 UIElements within this 182x60 area.
-            area.Height.Set(60, 0f);
+            area.Width.Set(WIDTH, 0f); // We will be placing the following 2 UIElements within this 182x60 area.
+            area.Height.Set(HEIGHT, 0f);
 
             barFrame = new UIImage(MiscSpritesSystem.WhipFrenzyBar); // Frame of our resource bar
             barFrame.Left.Set(22, 0f);
@@ -92,9 +97,13 @@ namespace FaeReforges.Systems.UI {
         }
 
         public override void Update(GameTime gameTime) {
-            if (Main.LocalPlayer.numMinions <= 0)
+            ClientConfig config = ModContent.GetInstance<ClientConfig>();
+            if (Main.LocalPlayer.numMinions <= 0 && !config.displayWhipFrenzyAlways)
                 return;
 
+            
+            area.Left.Set(-area.Width.Pixels/2f, config.UIOffsetHorizontal / 100f);
+            area.Top.Set(-area.Height.Pixels/2f, config.UIOffsetVertical / 100f);
             var modPlayer = Main.LocalPlayer.WhipFrenzyPlayer();
             // Setting the text per tick to update and show our resource values.
             text.SetText(WhipFrenzyUISystem.WhipFrenzyResourceText.Format(modPlayer.GetBarFill()*100));
