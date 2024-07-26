@@ -13,9 +13,26 @@ namespace FaeReforges.Systems.VanillaReforges {
 
         public override void Load() {
             IL_Item.TryGetPrefixStatMultipliersForItem += IL_Item_TryGetPrefixStatMultipliersForItem;
+            On_Item.TryGetPrefixStatMultipliersForItem += On_Item_TryGetPrefixStatMultipliersForItem;
+        }
+
+        private bool On_Item_TryGetPrefixStatMultipliersForItem(On_Item.orig_TryGetPrefixStatMultipliersForItem orig, Item self, int rolledPrefix, out float dmg, out float kb, out float spd, out float size, out float shtspd, out float mcst, out int crt) {
+            dmg = 10f;
+            kb = 1f;
+            spd = 1f;
+            size = 1f;
+            shtspd = 1f;
+            mcst = 1f;
+            crt = 0;
+            
+            return  (dmg == 1f || Math.Round((double)((float)self.damage * dmg)) != (double)self.damage) && 
+                    (spd == 1f || Math.Round((double)((float)self.useAnimation * spd)) != (double)self.useAnimation) && 
+                    (mcst == 1f || Math.Round((double)((float)self.mana * mcst)) != (double)self.mana) && 
+                    (kb == 1f || self.knockBack != 0f);
         }
 
         private void IL_Item_TryGetPrefixStatMultipliersForItem(MonoMod.Cil.ILContext il) {
+            /*
             try {
                 // Start the Cursor at the start
                 var c = new ILCursor(il);
@@ -44,7 +61,7 @@ namespace FaeReforges.Systems.VanillaReforges {
                 c2.GotoNext(i => i.MatchCallvirt<ModPrefix>("SetStats"));
                 c2.Index++;
                 ILLabel label = c2.MarkLabel();
-                c.Emit(Mono.Cecil.Cil.OpCodes.Brtrue, /* Insert label to jump to here */ label);
+                c.Emit(Mono.Cecil.Cil.OpCodes.Brtrue, label);
 
                 // After the delegate, the stack will once again have a float and the ret instruction will return from this method
             } catch (Exception e) {
@@ -54,6 +71,7 @@ namespace FaeReforges.Systems.VanillaReforges {
                 // If the mod cannot run without the IL hook, throw an exception instead. The exception will call DumpIL internally
                 // throw new ILPatchFailureException(ModContent.GetInstance<ExampleMod>(), il, e);
             }
+            */
         }
 
         public static bool ApplyCustomStats(int rolledPrefix, out float dmg, out float kb, out float spd, out float size, out float shtspd, out float mcst, out int crt) {

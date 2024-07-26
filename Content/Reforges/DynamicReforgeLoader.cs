@@ -28,7 +28,7 @@ namespace FaeReforges.Content.Reforges {
             for (int i = 0; i < reforges.Count; i++) {
                 dynamic reforge = reforges[i];
                 string name = reforge["Modifier Name"];
-                float damage = GetOrDefault<float>(reforge, "Damage", 0f); // TODO: Continue this
+                float damage = GetOrDefault<float>(reforge, "Damage", 0f);
                 float knockback = GetOrDefault<float>(reforge, "Knockback", 0f);
                 float speed = GetOrDefault<float>(reforge, "Speed", 0);
                 float size = GetOrDefault<float>(reforge, "Size", 0);
