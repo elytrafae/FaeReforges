@@ -28,7 +28,7 @@ namespace FaeReforges.Content.Reforges {
             this.speed = 1f - speed; // This is intentionally a -
             this.size = 1f + size;
             this.velocity = 1f + velocity;
-            this.mana = 1f + mana;
+            this.mana = 1f - mana; // This is intentionally a -
             this.crit = crit;
         }
 

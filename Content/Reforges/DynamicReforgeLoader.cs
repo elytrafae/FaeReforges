@@ -43,6 +43,16 @@ namespace FaeReforges.Content.Reforges {
                     RegisterSimple(mod, name, PrefixCategory.AnyWeapon, positive, values[0], values[1], values[3], values[4], 0, 0, (int)(values[2] * 100));
                 }
 
+                // Fourth section is Ranged. Damage, Knockback, Crit, Speed and Velocity
+                while (ReadDataLine(reader, out name, out positive, out values)) {
+                    RegisterSimple(mod, name, PrefixCategory.AnyWeapon, positive, values[0], values[1], values[3], 0, values[4], 0, (int)(values[2] * 100));
+                }
+
+                // Fifth section is Mage. Damage, Knockback, Crit, Speed and Mana Cost Reduction
+                while (ReadDataLine(reader, out name, out positive, out values)) {
+                    RegisterSimple(mod, name, PrefixCategory.AnyWeapon, positive, values[0], values[1], values[3], 0, 0, values[4], (int)(values[2] * 100));
+                }
+
                 // Final, optional section is Summoner. Damage, Knockback, Frenzy, Speed, Cost
                 if (ModContent.GetInstance<ServerConfig>().EnableCustomSummonerReforges) {
                     while (ReadDataLine(reader, out name, out positive, out values)) {
@@ -62,8 +72,7 @@ namespace FaeReforges.Content.Reforges {
             */
             FieldInfo? field = typeof(PrefixID).GetField(name);
             if (field != null) {
-                // The speed is with a - because it's actually use time that is being applied
-                vanillaOverrides[(int)field.GetValue(null)] = new VanillaReforgeOverrideData(1f + damage, 1f + knockback, 1f - speed, 1f + size, 1f + velocity, 1f + mana, crit);
+                vanillaOverrides[(int)field.GetValue(null)] = new VanillaReforgeOverrideData(damage, knockback, speed, size, velocity, mana, crit);
             } else {
                 mod.AddContent(new SimpleCustomReforgeTemplate(name, category, positive, damage, knockback, speed, size, velocity, mana, crit));
             }

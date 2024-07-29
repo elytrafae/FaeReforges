@@ -11,16 +11,16 @@ Shoddy n 0 0 -0.2
 Broken n -0.1 -0.1 -0.1
 Legendary2 p 0.15 -0.05 0.15
 #
-Deadly p 0.1 0.1 0.05 0.05
-Murderous p 0.12 0.15 -0.1 0.12
-Agile p 0 0.2 0.0 0.0
-Quick p -0.1 0.3 -0.1 0.0
-Nasty p 0.2 -0.1 0.1 0.05
-Nimble p 0 0.1 0 0.25
-Lazy n -0.1 -0.1 0.0 0.0
-Slow n 0 -0.2 -0.05 0.0
-Sluggish n 0 -0.5 0 0.1
-Annoying n -0.2 0.1 -0.2 -0.2
+Deadly p 0.1 0.05 0.05 0.1
+Murderous p 0.12 -0.1 0.12 0.15
+Agile p 0 0 0 0.2
+Quick p -0.1 -0.1 0 0.3
+Nasty p 0.2 0.1 0.05 -0.1
+Nimble p 0 0 0.25 0.1
+Lazy n -0.1 0 0 -0.1
+Slow n 0 -0.05 0 -0.2
+Sluggish n 0 0 0.1 -0.5
+Annoying n -0.2 -0.2 -0.2 0.1
 #
 Legendary p 0.08 0.08 0.05 0.05 0.1
 Savage p 0.1 0 0.05 0.15 -0.05
@@ -35,6 +35,32 @@ Dull n -0.2 0 -0.05 0 0.05
 Tiny n 0 0 0 0 -0.3
 Shameful n 0 -0.1 0 0 -0.2
 Terrible n -0.05 -0.1 -0.05 -0.08 -0.15
+#
+Unreal p 0.08 0.08 0.05 0.05 0.2
+Deadly p 0.12 0 0.1 0 0.1
+Rapid p 0 0 0 0 0.5
+Hasty p -0.1 0 0 0.3 0.15
+Staunch p 0.1 0.25 0.1 0 -0.2
+Intimidating p 0.4 0 0 -0.1 -0.15
+Sighted p 0 0 0.3 0.0 0.0
+Powerful p 0 0.4 0.2 -0.3 0.3
+Frenzying n -0.6 -0.6 -0.1 0.6 0.3
+Lethargic n 0 0 0 -0.2 -0.4
+Awkward n 0 0 -0.2 0 -0.1
+Awful n -0.1 -0.1 -0.05 -0.1 -0.15
+#
+Mythical p 0.08 0.08 0.05 0.05 0.08
+Masterful p 0.12 0 0.06 0 0.12
+Mystic p -0.08 0 -0.05 -0.1 0.4
+Celestial p 0 0 0.3 0 -0.2
+Adept p 0 0.2 0 0 0.1
+Taboo p 0.2 0 0 0.15 -0.15
+Manic p -0.1 0 0 0 0.3
+Furious p 0 -0.1 -0.05 0.4 -0.1
+Intense n 0 0 0 0 -0.3
+Inept n -0.2 0 -0.05 0 0.1
+Deranged n 0 -0.2 0 0.2 -0.3
+Ignorant n -0.1 -0.1 -0.05 -0.1 -0.05
 #
 Heroic p 0.1 0.15 0.15 0.08 0.0
 Introverted p 0.3 0.1 0.15 0.2 -0.5
