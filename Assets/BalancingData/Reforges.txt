@@ -1,0 +1,38 @@
+Godly p 0.1 0.15 0.1
+Superior p 0.25 0.1 0.0
+Demonic p 0 0.1 0.3
+Unpleasant p -0.1 0.5 0.0
+Forceful p 0.15 0 0.12
+Strong p 0.4 -0.2 -0.05
+Hurtful p 0 -0.2 0.4
+Damaged n -0.2 0.0 0.0
+Weak n 0 -0.3 0.0
+Shoddy n 0 0 -0.2
+Broken n -0.1 -0.1 -0.1
+Legendary2 p 0.15 -0.05 0.15
+#
+Deadly p 0.1 0.1 0.05 0.05
+Murderous p 0.12 0.15 -0.1 0.12
+Agile p 0 0.2 0.0 0.0
+Quick p -0.1 0.3 -0.1 0.0
+Nasty p 0.2 -0.1 0.1 0.05
+Nimble p 0 0.1 0 0.25
+Lazy n -0.1 -0.1 0.0 0.0
+Slow n 0 -0.2 -0.05 0.0
+Sluggish n 0 -0.5 0 0.1
+Annoying n -0.2 0.1 -0.2 -0.2
+#
+Legendary p 0.08 0.08 0.05 0.05 0.1
+Savage p 0.1 0 0.05 0.15 -0.05
+Massive p 0 0.2 0 -0.1 0.5
+Dangerous p 0.12 0 -0.05 0 0.2
+Large p 0 0 0 0 0.25
+Bulky p 0 0 0.1 -0.1 0.5
+Heavy p 0 0.5 0 -0.1 0.3
+Light p 0 0 0 0.3 -0.1
+Small n -0.1 0 0 0 -0.2
+Dull n -0.2 0 -0.05 0 0.05
+Tiny n 0 0 0 0 -0.3
+Shameful n 0 -0.1 0 0 -0.2
+Terrible n -0.05 -0.1 -0.05 -0.08 -0.15
+#

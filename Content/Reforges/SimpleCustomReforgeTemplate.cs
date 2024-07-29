@@ -23,12 +23,12 @@ namespace FaeReforges.Content.Reforges {
             this.name = name;
             this.category = category;
             this.positive = positive;
-            this.damage = damage;
-            this.knockback = knockback;
-            this.speed = speed;
-            this.size = size;
-            this.velocity = velocity;
-            this.mana = mana;
+            this.damage = 1f + damage;
+            this.knockback = 1f + knockback;
+            this.speed = 1f - speed; // This is intentionally a -
+            this.size = 1f + size;
+            this.velocity = 1f + velocity;
+            this.mana = 1f + mana;
             this.crit = crit;
         }
 
@@ -36,12 +36,12 @@ namespace FaeReforges.Content.Reforges {
         public override PrefixCategory Category => category;
 
         public override void SetStats(ref float damageMult, ref float knockbackMult, ref float useTimeMult, ref float scaleMult, ref float shootSpeedMult, ref float manaMult, ref int critBonus) {
-            damageMult = 1f + damage;
-            knockbackMult = 1f + knockback;
-            useTimeMult = 1f + speed;
-            scaleMult = 1f + size;
-            shootSpeedMult = 1f + velocity;
-            manaMult = 1f + mana;
+            damageMult = damage;
+            knockbackMult = knockback;
+            useTimeMult = speed;
+            scaleMult = size;
+            shootSpeedMult = velocity;
+            manaMult = mana;
             critBonus = crit;
         }
 

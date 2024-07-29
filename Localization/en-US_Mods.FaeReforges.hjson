@@ -26,6 +26,13 @@ Prefixes: {
 	SummonFrenzyChargeTooltip: "{0:+0;-#}% whip frenzy charge"
 	SadisticSummonerPrefix.DisplayName: Sadistic
 	DominantSummonerPrefix.DisplayName: Dominant
+	IntrovertedSummonerPrefix.DisplayName: Introverted Summoner Prefix
+	RegenTooltip: "{0:+0;-#}% max mana regenerated per second"
+	Charmed.DisplayName: Charmed
+	Hexxed.DisplayName: Hexxed
+	Jinxed.DisplayName: Jinxed
+	Fortunate.DisplayName: Fortunate
+	Accurate.DisplayName: Accurate
 }
 
 Configs: {
