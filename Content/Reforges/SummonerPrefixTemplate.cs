@@ -150,7 +150,7 @@ namespace FaeReforges.Content.Reforges {
         }
 
         public override void ModifyValue(ref float valueMult) {
-            valueMult = positive ? 1.5f : 0.5f;
+            valueMult *= positive ? 1.5f : 0.5f;
         }
 
         public static LocalizedText SummonOccupancyTooltip { get; private set; }

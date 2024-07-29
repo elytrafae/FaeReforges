@@ -8,7 +8,8 @@ using Terraria.ModLoader;
 namespace FaeReforges.Systems.VanillaReforges {
     public class VanillaReforgePlayer : ModPlayer {
 
-        public static readonly float[] ACCESSORY_VALUES_PER_POWER = [0, 10.25f, 21, 32.25f, 44];
+        //public static readonly float[] ACCESSORY_VALUES_PER_POWER = [1f, 1.1025f, 1.21f, 1.3225f, 1.44f];
+        public static readonly float[] ACCESSORY_VALUES_PER_POWER = [1f, 1.05f, 1.1f, 1.15f, 1.2f];
 
         public int manaPercentageRegenPerSecond = 0;
         public float remainingManaRegen = 0;

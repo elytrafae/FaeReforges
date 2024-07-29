@@ -42,11 +42,11 @@ namespace FaeReforges.Content.Reforges.Accessory
         {
             player.GetModPlayer<VanillaReforgePlayer>().manaPercentageRegenPerSecond += power;
         }
-
         public override void ModifyValue(ref float valueMult)
         {
-            valueMult = 1f + VanillaReforgePlayer.ACCESSORY_VALUES_PER_POWER[power] / 100f;
+            valueMult *= VanillaReforgePlayer.ACCESSORY_VALUES_PER_POWER[power];
         }
+        
 
         public override IEnumerable<TooltipLine> GetTooltipLines(Item item)
         {
