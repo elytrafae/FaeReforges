@@ -36,3 +36,25 @@ Tiny n 0 0 0 0 -0.3
 Shameful n 0 -0.1 0 0 -0.2
 Terrible n -0.05 -0.1 -0.05 -0.08 -0.15
 #
+Heroic p 0.1 0.15 0.15 0.08 0.0
+Introverted p 0.3 0.1 0.15 0.2 -0.5
+Cramped p -0.2 0 0.05 -0.2 0.5
+Energetic p 0 0 0.1 0.4 0.0
+Sadistic p -0.1 0 0.5 -0.05 0.0
+Extrovert p 0 0 0 0 0.25
+Juggler p 0 0.5 0.1 0.0 0.0
+Jacked p 0.15 0.15 0.1 -0.12 0.0
+Righteous p 0.25 0.0 0.0 0.0 0.0
+Bouncy p 0 0.65 0.0 0.0 0.0
+Rushed p -0.1 -0.1 0 0.6 0.0
+Dominant p 0 0 0.3 0.0 0.0
+Disagreeable p 0.2 0.1 0.25 -0.1 -0.25
+Elderly p 0.6 0 0 -0.4 0.0
+Rebellious n -0.1 0 -0.2 0.0 0.0
+Cowardly n 0 0 0 -0.3 0.0
+Egotistical n 0 0 -0.1 0 -0.5
+Anemic n 0 -0.4 0.0 0.0 0.0
+Depressed n -0.1 -0.1 0 -0.1 0.0
+Antisocial n -0.05 0 -0.05 0 -0.25
+Shy n 0 -0.15 0 0 -0.25
+#
