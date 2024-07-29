@@ -41,16 +41,16 @@ namespace FaeReforges.Content.Reforges.Accessory {
         }
 
         public override IEnumerable<TooltipLine> GetTooltipLines(Item item) {
-            yield return new TooltipLine(Mod, "PrefixMaxManaRegen", Tooltip.Format(power)) {
+            yield return new TooltipLine(Mod, "PrefixMaxManaRegen", CritChanceTooltip.Format(power)) {
                 IsModifier = true,
                 IsModifierBad = power < 0
             };
         }
 
-        public static LocalizedText Tooltip { get; private set; }
+        public static LocalizedText CritChanceTooltip { get; private set; }
 
         public override void SetStaticDefaults() {
-            Tooltip = Language.GetText("CommonItemTooltip.PercentIncreasedCritChance");
+            CritChanceTooltip = Mod.GetLocalization($"{LocalizationCategory}.{nameof(CritChanceTooltip)}");
         }
 
     }

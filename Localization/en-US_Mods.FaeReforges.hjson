@@ -28,11 +28,18 @@ Prefixes: {
 	DominantSummonerPrefix.DisplayName: Dominant
 	IntrovertedSummonerPrefix.DisplayName: Introverted Summoner Prefix
 	RegenTooltip: "{0:+0;-#}% max mana regenerated per second"
+	CritChanceTooltip: "{0:+0;-#}% critical strike chance"
 	Charmed.DisplayName: Charmed
 	Hexxed.DisplayName: Hexxed
 	Jinxed.DisplayName: Jinxed
 	Fortunate.DisplayName: Fortunate
 	Accurate.DisplayName: Accurate
+	ShootVelocityTooltip: "{0:+0;-#}% shoot velocity"
+	AmmoSaveTooltip: "{0:+0;-#}% ammo save chance"
+	Economic.DisplayName: Economic
+	CostEffective.DisplayName: Cost Effective
+	Solvent.DisplayName: Solvent
+	Fruitful.DisplayName: Fruitful
 }
 
 Configs: {

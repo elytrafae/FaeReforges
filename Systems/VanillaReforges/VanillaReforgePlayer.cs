@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Terraria;
+using Terraria.DataStructures;
 using Terraria.ModLoader;
 
 namespace FaeReforges.Systems.VanillaReforges {
@@ -12,12 +15,16 @@ namespace FaeReforges.Systems.VanillaReforges {
         public static readonly float[] ACCESSORY_VALUES_PER_POWER = [1f, 1.05f, 1.1f, 1.15f, 1.2f];
 
         public int manaPercentageRegenPerSecond = 0;
-        public float remainingManaRegen = 0;
+        public float remainingManaRegen = 0; // NOT A STAT! DO NOT RESET EVERY FRAME!
         public int accessoryMovement = 0;
+        public int shootVelocityPoints = 0;
+        public int ammoSavePoints = 0;
 
         public override void ResetEffects() {
             manaPercentageRegenPerSecond = 0;
             accessoryMovement = 0;
+            shootVelocityPoints = 0;
+            ammoSavePoints = 0;
         }
 
         public override void PostUpdate() {
@@ -31,6 +38,14 @@ namespace FaeReforges.Systems.VanillaReforges {
                 Player.statMana = Math.Min(Player.statManaMax2-1, Player.statMana + actualManaRegeneratedThisTick + bonusManaRegeneratedThisTick);
             }
             
+        }
+
+        public override void ModifyShootStats(Item item, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback) {
+            velocity *= 1f + (shootVelocityPoints / 100f);
+        }
+
+        public override bool CanConsumeAmmo(Item weapon, Item ammo) {
+            return Main.rand.Next(100) < ammoSavePoints;
         }
 
         public override void PostUpdateMiscEffects() {
