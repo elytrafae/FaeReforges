@@ -31,17 +31,25 @@ Orichalcum Hammer: 45% Negative Reforge Chance, 115% Reforge Cost, Accessories r
 Adamantite Hammer: 45% Negative Reforge Chance, 110% Reforge Cost, Accessories reforged with this give +1% Damage
 Titanium Hammer: 45% Negative Reforge Chance, 110% Reforge Cost, Accessories reforged with this give +1% Crit Chance
 
-Hallowed Hammer: 40% Negative Reforge Chance, 105% Reforge Cost, Dodging an attack while holding a weapon reforged by this gives you 10% Speed and 10% Crit Chance for 5 seconds.
+Hallowed Hammer: 40% Negative Reforge Chance, 105% Reforge Cost, Dodging an attack while holding a weapon reforged by this gives you 10% Movement Speed and 10% Crit Chance for 5 seconds.
 
-Chlorophyte Hammer:
-Spectre Hammer:
-Shroomite Hammer:
+Chlorophyte Hammer: 40% Negative Reforge Chance, 100% Reforge Cost, Dealing damage with this weapon gives you +1 HP per second regeneration for 2 seconds.
+Venomite Hammer (yes, new material. Cry about it): 40% Negative Reforge Chance, 100% Reforge Cost, Dealing damage with this weapon applies 2 seconds of Venom, but getting hit inflicts you with 5 seconds of Venom.
+Spectre Hammer: 40% Negative Reforge Chance, 100% Reforge Cost, Accessories reforged with this give +1.5% Chance to Dodge.
+Shroomite Hammer: 40% Negative Reforge Chance, 100% Reforge Cost, Accessories reforged with this give +3% Damage and -1% (Summon) Attack Speed.
 
-Solar Hammer: You take 7% less damage while a weapon reforged with this is held. This effect is disabled for 5 seconds after taking damage.
+Solar Hammer: You take 8% less damage while a weapon reforged with this is held. This effect is disabled for 5 seconds after taking damage.
 Vortex Hammer: Holding a weapon reforged with this reduces your movement speed by 10%, but your damage is increased by 30%
 Nebula Hammer: Striking an enemy while holding an item reforged by this has a chance to drop a Heart.
-Stardust Hammer: Items reforged with this summon a Stardust Eye while held, dealing the weapons's base damage as damage at a 10x slower rate than the weapon itself. It also deals the damage type of the held weapon. Does not apply to Summon Wands.
+Stardust Hammer: Items reforged with this summon a Stardust Eye while held, dealing the weapons's base damage as damage at a 10x slower rate than the weapon itself. It also deals the damage type of the held weapon. If the weapon is a summon wand, summons created by this item deal a guaranteed crit every 10 seconds.
 
 
 ## Calamity ##
-Cosmilite Hammer: ??% Negative Reforge Chance, ??% Reforge Cost, The effects of reforges applied by this hammer are doubled!
+Cosmilite Hammer: ??% Negative Reforge Chance, ??% Reforge Cost, The of accessory reforges applied by this hammer are doubled!
+
+
+## Other Modded Hammer Effect Ideas ##
+100% Negative Reforge Chance, but all weapons reforged by this get a 30% increase to all possible stats.
+Every accessory reforged with this hammer makes you able to hold 1 more ice shard, circling you. Each shard deals damage to enemies coming in contact with it.
+Every accessory reforged with this hammer makes you able to hold 1 more rock shard, circling you. Reduces an incoming hit's damage by 10%
+*Insert stuff with speed and other mechanics, like flight? IDK*

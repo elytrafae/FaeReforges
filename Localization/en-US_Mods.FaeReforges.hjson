@@ -123,3 +123,10 @@ InfoDisplays: {
 
 Keybinds.WhipFrenzy.DisplayName: Whip Frenzy
 UI.WhipFrenzyResourceText: "{0:+0;-#}% Whip Frenzy"
+
+Items: {
+	TinkererAnvil: {
+		DisplayName: Tinkerer's Anvil
+		Tooltip: "Gives you the ability to create and use Tinkerer Anvils"
+	}
+}

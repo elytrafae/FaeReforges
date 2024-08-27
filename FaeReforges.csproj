@@ -9,10 +9,13 @@
 	</PropertyGroup>
 	<ItemGroup>
 	  <None Remove="assets\balancingdata\Reforges.txt" />
+	  <None Remove="Content\Items\Placeable\TinkererAnvil.png" />
+	  <None Remove="Content\Tiles\TinkererAnvil.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Assets\BalancingData\" />
 	  <Folder Include="Assets\Sprites\" />
+	  <Folder Include="Content\Items\TinkererHammers\" />
 	</ItemGroup>
 
 	<!-- References -->

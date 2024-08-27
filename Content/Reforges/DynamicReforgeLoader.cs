@@ -70,7 +70,7 @@ namespace FaeReforges.Content.Reforges {
                 return;
             }
             */
-            FieldInfo? field = typeof(PrefixID).GetField(name);
+            FieldInfo field = typeof(PrefixID).GetField(name);
             if (field != null) {
                 vanillaOverrides[(int)field.GetValue(null)] = new VanillaReforgeOverrideData(damage, knockback, speed, size, velocity, mana, crit);
             } else {

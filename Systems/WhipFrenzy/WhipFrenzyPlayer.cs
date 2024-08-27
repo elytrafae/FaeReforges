@@ -40,7 +40,7 @@ namespace FaeReforges.Systems.WhipFrenzy {
 
         public static bool IsEligibleWhip(Item item) {
             return item.shoot != ProjectileID.None && ProjectileID.Sets.IsAWhip[item.shoot];
-            return (item.DamageType == DamageClass.SummonMeleeSpeed || item.DamageType.GetEffectInheritance(DamageClass.SummonMeleeSpeed)) && item.shoot != ProjectileID.None;
+            //return (item.DamageType == DamageClass.SummonMeleeSpeed || item.DamageType.GetEffectInheritance(DamageClass.SummonMeleeSpeed)) && item.shoot != ProjectileID.None;
         }
 
         public void StopFrenzy() {
