@@ -127,6 +127,25 @@ UI.WhipFrenzyResourceText: "{0:+0;-#}% Whip Frenzy"
 Items: {
 	TinkererAnvil: {
 		DisplayName: Tinkerer's Anvil
-		Tooltip: "Gives you the ability to create and use Tinkerer Anvils"
+		Tooltip: Gives you the ability to create and use Tinkerer Anvils
 	}
+
+	FaeReforges/StoneHammer.Tooltip: ""
+}
+
+TinkererHammerType: {
+	CostTooltip: "{0}% Reforge Cost"
+	NegativeReforgeChanceTooltip: "{0}% Negative Reforge Chance"
+	WeaponEffectPrefix: "[c/9400FF:Weapon Effect:] {0}"
+	AccessoryEffectPrefix: "[c/FF00A5:Accessory Effect:] {0}"
+	TutorialTooltip: Consume to permanently unlock this hammer for the world
+
+	StoneHammer: {
+		DisplayName: Stone Hammer
+		WeaponEffect: ""
+		AccessoryEffect: ""
+	}
+
+	ReforgedWithTooltip: Reforged with {0}
+	ReforgeUnlockMessage: "{0} is now unlocked in this world! Check the Tinkerer Anvil to select it!"
 }

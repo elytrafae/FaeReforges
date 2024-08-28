@@ -1,5 +1,6 @@
 ﻿using FaeReforges.Content;
 using FaeReforges.Content.HammerTypes;
+using FaeReforges.Content.Items;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,12 +29,7 @@ namespace FaeReforges.Systems.ReforgeHammers
 
         public override void LoadData(Item item, TagCompound tag) {
             if (tag.TryGet(HAMMER_SAVE_NAME, out string hammerName)) {
-                foreach (var type in ModContent.GetContent<AbstractHammerType>()) {
-                    if (type.FullName == hammerName) {
-                        hammerType = type;
-                        break;
-                    }
-                }
+                hammerType = ReforgeHammerSaveSystem.GetHammerTypeFromName(hammerName);
             }
         }
 
@@ -45,9 +41,19 @@ namespace FaeReforges.Systems.ReforgeHammers
             hammerType = hammer;
         }
 
+        public override void OnConsumeMana(Item item, Player player, int manaConsumed) {
+            item.GetGlobalItem<ReforgeHammerGlobalItem>().SetHammer(ModContent.GetContent<StoneHammer>().First());
+        }
+
         public override void OnConsumeAmmo(Item weapon, Item ammo, Player player) {
             weapon.GetGlobalItem<ReforgeHammerGlobalItem>().SetHammer(ModContent.GetContent<StoneHammer>().First());
-        }   
+        }
+
+        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips) {
+            if (hammerType != null) {
+                tooltips.Add(new TooltipLine(Mod, "ReforgeHammerType", AbstractHammerType.ReforgedWithTooltip.Format(hammerType.DisplayName)));
+            }
+        }
 
     }
 }

@@ -9,6 +9,8 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Microsoft.Xna.Framework;
+using Terraria.Chat;
+using FaeReforges.Systems.ReforgeHammers;
 
 namespace FaeReforges.Content.Tiles {
     public class TinkererAnvil : ModTile {
@@ -39,6 +41,16 @@ namespace FaeReforges.Content.Tiles {
 
         public override void NumDust(int x, int y, bool fail, ref int num) {
             num = fail ? 1 : 3;
+        }
+
+        public override bool RightClick(int i, int j) {
+            string stuff = "";
+            foreach (AbstractHammerType hammer in ReforgeHammerSaveSystem.GetAllUnlockedHammers()) {
+                stuff += hammer.Name + " , ";
+            }
+            ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral(stuff), Color.DeepPink);
+            ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("Selected Hammer: " + ReforgeHammerSaveSystem.GetSelectedHammer().Name), Color.DeepPink);
+            return true;
         }
 
     }
