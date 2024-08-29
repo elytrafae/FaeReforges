@@ -122,7 +122,11 @@ InfoDisplays: {
 }
 
 Keybinds.WhipFrenzy.DisplayName: Whip Frenzy
-UI.WhipFrenzyResourceText: "{0:+0;-#}% Whip Frenzy"
+
+UI: {
+	WhipFrenzyResourceText: "{0:+0;-#}% Whip Frenzy"
+	GoblinTinkererHammerText: Mods.FaeReforges.UI.GoblinTinkererHammerText
+}
 
 Items: {
 	TinkererAnvil: {
@@ -131,6 +135,7 @@ Items: {
 	}
 
 	FaeReforges/StoneHammer.Tooltip: ""
+	FaeReforges/MythrilHammer.Tooltip: ""
 }
 
 TinkererHammerType: {
@@ -148,4 +153,10 @@ TinkererHammerType: {
 
 	ReforgedWithTooltip: Reforged with {0}
 	ReforgeUnlockMessage: "{0} is now unlocked in this world! Check the Tinkerer Anvil to select it!"
+
+	MythrilHammer: {
+		DisplayName: Mythril Hammer
+		WeaponEffect: ""
+		AccessoryEffect: +1 Defense
+	}
 }

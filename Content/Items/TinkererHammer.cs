@@ -56,19 +56,20 @@ namespace FaeReforges.Content.Items {
 
         public override void OnConsumeItem(Player player) {
             ReforgeHammerSaveSystem.UnlockHammer(hammerType);
-            ChatHelper.BroadcastChatMessage(NetworkText.FromKey(AbstractHammerType.ReforgeUnlockMessage.Key, hammerType.Name), Color.LightGray);
+            ChatHelper.BroadcastChatMessage(NetworkText.FromKey(AbstractHammerType.ReforgeUnlockMessage.Key, hammerType.DisplayName), Color.LightGray);
         }
 
         public override void ModifyTooltips(List<TooltipLine> tooltips) {
+            tooltips.Find(line => line.Name == "ItemName").OverrideColor = hammerType.color;
             int consumableIndex = tooltips.FindIndex(tooltip => tooltip.Name == "Consumable");
             int materialIndex = tooltips.FindIndex(tooltip => tooltip.Name == "Material");
             int tooltipIndex = tooltips.FindIndex(tooltip => tooltip.Name == "Tooltip0");
-            int insertIndex = Math.Max(consumableIndex, materialIndex);
-            if (insertIndex == -1) {
+            int insertIndex = Math.Max(consumableIndex, materialIndex) + 1;
+            if (insertIndex == 0) {
                 if (tooltipIndex != -1) {
                     insertIndex = tooltipIndex - 1;
                 } else { 
-                    insertIndex = tooltips.Count - 1;
+                    insertIndex = tooltips.Count;
                 }
             }
 
@@ -86,6 +87,10 @@ namespace FaeReforges.Content.Items {
         private void TooltipLineHelper(string name, string text, ref List<TooltipLine> tooltips, ref int index) {
             tooltips.Insert(index, new TooltipLine(Mod, name, text));
             index++;
+        }
+
+        public override void AddRecipes() {
+            hammerType.AddRecipesForHammer(this.Item);
         }
 
         /*

@@ -1,5 +1,6 @@
 ﻿using FaeReforges.Content;
 using FaeReforges.Content.HammerTypes;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -7,6 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
+using Terraria;
+using Terraria.Chat;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
@@ -38,6 +42,12 @@ namespace FaeReforges.Systems.ReforgeHammers {
             if (selectedHammer == null) {
                 selectedHammer = stoneHammer;
             }
+        }
+
+
+        // TODO: Remove later
+        public override void PostUpdateNPCs() {
+            ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("Is Reforge UI On: " + Main.InReforgeMenu), Color.DeepPink);
         }
 
         public static bool IsHammerUnlocked(AbstractHammerType hammer) { 

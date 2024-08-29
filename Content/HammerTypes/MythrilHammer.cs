@@ -9,17 +9,21 @@ using Terraria;
 using Terraria.ID;
 
 namespace FaeReforges.Content.HammerTypes {
-    public class StoneHammer : AbstractHammerType {
+    public class MythrilHammer : AbstractHammerType {
         public override void SetDefaults() {
-            this.negativeReforgeChance = 70;
-            this.reforgeCost = 150;
-            this.color = Color.DarkGray;
+            this.negativeReforgeChance = 45;
+            this.reforgeCost = 115;
+            this.color = Color.Turquoise;
+        }
+
+        public override void OnUpdateAccessory(Item item, Player player) {
+            player.statDefense += 1;
         }
 
         public override void AddRecipesForHammer(Item item) {
             Recipe.Create(item.type, 1)
-                .AddIngredient(ItemID.StoneBlock, 50)
-                .AddIngredient(ItemID.Wood, 10)
+                .AddIngredient(ItemID.MythrilBar, 25)
+                .AddIngredient(ItemID.Pearlwood, 10)
                 .AddIngredient(ItemID.Rope, 5)
                 .AddTile<TinkererAnvil>()
                 .Register();

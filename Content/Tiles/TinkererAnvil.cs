@@ -36,7 +36,7 @@ namespace FaeReforges.Content.Tiles {
             AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
 
             // Etc
-            AddMapEntry(new Color(200, 200, 200), Language.GetText("ItemName.WorkBench"));
+            AddMapEntry(new Color(200, 200, 200), ModContent.GetInstance<Items.Placeable.TinkererAnvil>().DisplayName);
         }
 
         public override void NumDust(int x, int y, bool fail, ref int num) {

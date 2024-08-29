@@ -1,17 +1,12 @@
 ﻿using FaeReforges.Content.Items;
+using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace FaeReforges.Content
-{
+namespace FaeReforges.Content {
     public abstract class AbstractHammerType : ModTexturedType, ILocalizedModType, ICloneable {
 
         public string LocalizationCategory => "TinkererHammerType";
@@ -20,12 +15,8 @@ namespace FaeReforges.Content
         public LocalizedText AccessoryEffect => this.GetLocalization(nameof(AccessoryEffect), () => "");
 
 
-        // TODO: Add functionality to these
+        // TODO: Add functionality to the color
         public Color color;
-        public Action<Item> onApplyWeapon;
-        public Action<Item> onApplyAccessory;
-        public Action<Item> onUpdateWeapon;
-        public Action<Item> onUpdateAccessory;
         public int negativeReforgeChance = 0;
         public int reforgeCost = 0;
 
@@ -70,6 +61,13 @@ namespace FaeReforges.Content
 
 
         public abstract void SetDefaults();
+
+        // TODO: Add functionality to these
+        public virtual void OnApplyWeapon(Item item) { }
+        public virtual void OnApplyAccessory(Item item) { }
+        public virtual void OnUpdateWeapon(Item item, Player player) { }
+        public virtual void OnUpdateAccessory(Item item, Player player) { }
+        public virtual void AddRecipesForHammer(Item item) { }
 
     }
 }

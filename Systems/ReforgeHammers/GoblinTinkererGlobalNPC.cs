@@ -14,7 +14,12 @@ namespace FaeReforges.Systems.GoblinTinkerer {
             return entity.type == NPCID.GoblinTinkerer;
         }
 
-         
+        public override void OnChatButtonClicked(NPC npc, bool firstButton) {
+            if (!firstButton) {
+                //npc.StrikeInstantKill();
+                //Main.InReforgeMenu;
+            }
+        }
 
     }
 }
