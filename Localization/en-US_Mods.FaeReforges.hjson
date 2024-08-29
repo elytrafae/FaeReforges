@@ -134,8 +134,15 @@ Items: {
 		Tooltip: Gives you the ability to create and use Tinkerer Anvils
 	}
 
-	FaeReforges/StoneHammer.Tooltip: ""
-	FaeReforges/MythrilHammer.Tooltip: ""
+	MythrilTinkererHammer: {
+		DisplayName: Mythril Tinkerer Hammer
+		Tooltip: ""
+	}
+
+	StoneTinkererHammer: {
+		DisplayName: Stone Tinkerer Hammer
+		Tooltip: ""
+	}
 }
 
 TinkererHammerType: {

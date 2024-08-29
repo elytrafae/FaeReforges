@@ -15,14 +15,15 @@ using Microsoft.Xna.Framework;
 using FaeReforges.Systems.ReforgeHammers;
 
 namespace FaeReforges.Content.Items {
-
+    
+    /*
     [Autoload(false)]
     public class TinkererHammer : ModItem {
 
         private Mod mod;
-        private AbstractHammerType hammerType;
+        private ReforgeHammerType hammerType;
 
-        public TinkererHammer(Mod mod, AbstractHammerType hammerType) {
+        public TinkererHammer(Mod mod, ReforgeHammerType hammerType) {
             this.mod = mod;
             this.hammerType = hammerType;
         }
@@ -56,7 +57,7 @@ namespace FaeReforges.Content.Items {
 
         public override void OnConsumeItem(Player player) {
             ReforgeHammerSaveSystem.UnlockHammer(hammerType);
-            ChatHelper.BroadcastChatMessage(NetworkText.FromKey(AbstractHammerType.ReforgeUnlockMessage.Key, hammerType.DisplayName), Color.LightGray);
+            ChatHelper.BroadcastChatMessage(NetworkText.FromKey(ReforgeHammerType.ReforgeUnlockMessage.Key, hammerType.DisplayName), Color.LightGray);
         }
 
         public override void ModifyTooltips(List<TooltipLine> tooltips) {
@@ -73,15 +74,15 @@ namespace FaeReforges.Content.Items {
                 }
             }
 
-            TooltipLineHelper("TinkererHammerCost", AbstractHammerType.CostTooltip.Format(hammerType.reforgeCost), ref tooltips, ref insertIndex);
-            TooltipLineHelper("TinkererHammerNegativeChance", AbstractHammerType.NegativeReforgeChanceTooltip.Format(hammerType.negativeReforgeChance), ref tooltips, ref insertIndex);
+            TooltipLineHelper("TinkererHammerCost", ReforgeHammerType.CostTooltip.Format(hammerType.reforgeCost), ref tooltips, ref insertIndex);
+            TooltipLineHelper("TinkererHammerNegativeChance", ReforgeHammerType.NegativeReforgeChanceTooltip.Format(hammerType.negativeReforgeChance), ref tooltips, ref insertIndex);
             if (hammerType.WeaponEffect.Value.Length > 0) {
-                TooltipLineHelper("TinkererHammerWeaponEffect", AbstractHammerType.WeaponEffectPrefix.Format(hammerType.WeaponEffect), ref tooltips, ref insertIndex);
+                TooltipLineHelper("TinkererHammerWeaponEffect", ReforgeHammerType.WeaponEffectPrefix.Format(hammerType.WeaponEffect), ref tooltips, ref insertIndex);
             }
             if (hammerType.AccessoryEffect.Value.Length > 0) {
-                TooltipLineHelper("TinkererHammerAccessoryEffect", AbstractHammerType.AccessoryEffectPrefix.Format(hammerType.AccessoryEffect), ref tooltips, ref insertIndex);
+                TooltipLineHelper("TinkererHammerAccessoryEffect", ReforgeHammerType.AccessoryEffectPrefix.Format(hammerType.AccessoryEffect), ref tooltips, ref insertIndex);
             }
-            TooltipLineHelper("TinkererHammerTutorial", AbstractHammerType.TutorialTooltip.Value, ref tooltips, ref insertIndex);
+            TooltipLineHelper("TinkererHammerTutorial", ReforgeHammerType.TutorialTooltip.Value, ref tooltips, ref insertIndex);
         }
 
         private void TooltipLineHelper(string name, string text, ref List<TooltipLine> tooltips, ref int index) {
@@ -93,16 +94,7 @@ namespace FaeReforges.Content.Items {
             hammerType.AddRecipesForHammer(this.Item);
         }
 
-        /*
-        // I don't want you to load on your own, Tinkerer Hammer! I will load you when I want to!
-        public class DynamicLoader : ILoadable {
-            public void Load(Mod mod) {
-            }
-
-            public void Unload() {
-            }
-        }
-        */
-
     }
+    */
+    
 }

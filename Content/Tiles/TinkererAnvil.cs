@@ -43,15 +43,17 @@ namespace FaeReforges.Content.Tiles {
             num = fail ? 1 : 3;
         }
 
+        /*
         public override bool RightClick(int i, int j) {
             string stuff = "";
-            foreach (AbstractHammerType hammer in ReforgeHammerSaveSystem.GetAllUnlockedHammers()) {
+            foreach (ReforgeHammerType hammer in ReforgeHammerSaveSystem.GetAllUnlockedHammers()) {
                 stuff += hammer.Name + " , ";
             }
             ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral(stuff), Color.DeepPink);
             ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("Selected Hammer: " + ReforgeHammerSaveSystem.GetSelectedHammer().Name), Color.DeepPink);
             return true;
         }
+        */
 
     }
 }
