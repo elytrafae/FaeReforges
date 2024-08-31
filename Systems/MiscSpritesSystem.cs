@@ -12,10 +12,14 @@ namespace FaeReforges.Systems {
 
         public static Asset<Texture2D> PX;
         public static Asset<Texture2D> WhipFrenzyBar;
+        public static Asset<Texture2D> TinkererHammerHandle;
+        public static Asset<Texture2D> TinkererHammerHead;
 
         public override void Load() {
             PX = GetModSprite("px");
             WhipFrenzyBar = GetModSprite("WhipFrenzyBar");
+            TinkererHammerHandle = GetModSprite("TinkererHammerHandle");
+            TinkererHammerHead = GetModSprite("TinkererHammerHead");
         }
 
         public override void Unload() {

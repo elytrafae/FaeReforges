@@ -20,8 +20,9 @@ namespace FaeReforges.Systems.ReforgeHammers {
 
             int consumableIndex = tooltips.FindIndex(tooltip => tooltip.Name == "Consumable");
             int materialIndex = tooltips.FindIndex(tooltip => tooltip.Name == "Material");
+            int nameIndex = tooltips.FindIndex(tooltip => tooltip.Name == "ItemName");
             int tooltipIndex = tooltips.FindIndex(tooltip => tooltip.Name == "Tooltip0");
-            int insertIndex = Math.Max(consumableIndex, materialIndex) + 1;
+            int insertIndex = Math.Max(consumableIndex, Math.Max(materialIndex, nameIndex)) + 1;
             if (insertIndex == 0) {
                 if (tooltipIndex != -1) {
                     insertIndex = tooltipIndex - 1;

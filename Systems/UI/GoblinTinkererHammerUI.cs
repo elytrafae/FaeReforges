@@ -18,6 +18,9 @@ using FaeReforges.Content;
 using System.Collections;
 using Terraria.ID;
 using FaeReforges.Systems.ReforgeHammers;
+using static Terraria.UI.ItemSlot;
+using FaeReforges.Systems.UI.UIElements;
+using Terraria.GameContent.UI;
 
 namespace FaeReforges.Systems.UI {
 
@@ -25,7 +28,8 @@ namespace FaeReforges.Systems.UI {
         // For this bar we'll be using a frame texture and then a gradient inside bar, as it's one of the more simpler approaches while still looking decent.
         // Once this is all set up make sure to go and do the required stuff for most UI's in the ModSystem class.
         private UIElement area;
-        private UIItemSlot slot;
+        private GoblinTinkererHammerUIItemSlot slot;
+        private UIText textElement;
 
         const int WIDTH = 200;
         const int HEIGHT = 200;
@@ -34,17 +38,21 @@ namespace FaeReforges.Systems.UI {
             // Create a UIElement for all the elements to sit on top of, this simplifies the numbers as nested elements can be positioned relative to the top left corner of this element. 
             // UIElement is invisible and has no padding.
             area = new UIElement();
-            area.Left.Set(0,0.05f); 
-            area.Top.Set(30, 0.3f); 
+            area.Left.Set(50, 0f); 
+            area.Top.Set(100, 0.2f); 
             area.Width.Set(WIDTH, 0f); 
             area.Height.Set(HEIGHT, 0f);
 
-            slot = new UIItemSlot(ReforgeHammerSaveSystem.reforgeHammerStorage, 0, 1);
+            slot = new GoblinTinkererHammerUIItemSlot();
             slot.Top.Set(0, 0f);
             slot.Left.Set(0, 0f);
-            //slot.Width.Set(slot.Width.Pixels + slot.Width.Pixels/2, 0f);
-            //slot.Height.Set(slot.Height.Pixels + slot.Height.Pixels / 2, 0f);
             area.Append(slot);
+
+            textElement = new UIText("");
+            textElement.TextColor = Color.White;
+            textElement.Top.Set(10, 0f);
+            textElement.Left.Set(55, 0f);
+            area.Append(textElement);
 
             Append(area);
         }
@@ -63,10 +71,28 @@ namespace FaeReforges.Systems.UI {
         }
 
         public override void Update(GameTime gameTime) {
-            ClientConfig config = ModContent.GetInstance<ClientConfig>();
             if (!Main.InReforgeMenu)
                 return;
-            
+
+            string text;
+            Color color = Color.White;
+            Item item = ReforgeHammerSaveSystem.GetSelectedHammer();
+            if (item == null || item.type == ItemID.None) {
+                text = ReforgeHammerLocalization.UIInsertHammer.Value;
+            } else {
+                ReforgeHammerType hammerType = ReforgeHammerRegistry.GetHammerTypeForItemType(item.type);
+                if (hammerType == null) {
+                    color = Color.Red;
+                    text = ReforgeHammerLocalization.UIThatIsNotAHammer.Value;
+                } else {
+                    text = item.AffixName();
+                    color = ItemRarity.GetColor(item.rare);
+                }
+            }
+
+            textElement.SetText(text);
+            textElement.TextColor = color;
+
             base.Update(gameTime);
         }
     }
@@ -94,9 +120,11 @@ namespace FaeReforges.Systems.UI {
         }
 
         public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers) {
-            int resourceBarIndex = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Mouse Text"));
+            // Vanilla: Inventory +1
+            //layers.FindIndex(layer => { Console.WriteLine("Layer Name? " + layer.Name); return false; });
+            int resourceBarIndex = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Inventory"));
             if (resourceBarIndex != -1) {
-                layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
+                layers.Insert(resourceBarIndex+1, new LegacyGameInterfaceLayer(
                     "FaeReforges: Goblin Tinkerer Hammer UI",
                     delegate {
                         GoblinTinkererHammerUserInterface.Draw(Main.spriteBatch, new GameTime());

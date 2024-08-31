@@ -1,4 +1,5 @@
 ﻿using FaeReforges.Content;
+using FaeReforges.Content.Reforges;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace FaeReforges.Systems.ReforgeHammers {
         private static Dictionary<int, ReforgeHammerType> hammerMap = new();
 
         public override void Load() {
-            // Add loading for hammers!
+            
         }
 
         public override void Unload() {
@@ -31,6 +32,8 @@ namespace FaeReforges.Systems.ReforgeHammers {
             hammer.SetupLocalization(item);
             hammerMap[item.type] = hammer;
         }
+
+
 
     }
 }

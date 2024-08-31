@@ -19,7 +19,10 @@ namespace FaeReforges.Systems.ReforgeHammers {
         public static LocalizedText AccessoryEffectPrefix { get; private set; }
         public static LocalizedText TutorialTooltip { get; private set; }
         public static LocalizedText ReforgedWithTooltip { get; private set; }
-        public static LocalizedText ReforgeUnlockMessage { get; private set; }
+        public static LocalizedText UIInsertHammer { get; private set; }
+        public static LocalizedText UIThatIsNotAHammer { get; private set; }
+
+        public static LocalizedText NeverCondition { get; private set; }
 
         public override void SetStaticDefaults() {
             CostTooltip = Mod.GetLocalization($"{LocalizationCategory}.{nameof(CostTooltip)}");
@@ -28,7 +31,10 @@ namespace FaeReforges.Systems.ReforgeHammers {
             AccessoryEffectPrefix = Mod.GetLocalization($"{LocalizationCategory}.{nameof(AccessoryEffectPrefix)}");
             TutorialTooltip = Mod.GetLocalization($"{LocalizationCategory}.{nameof(TutorialTooltip)}");
             ReforgedWithTooltip = Mod.GetLocalization($"{LocalizationCategory}.{nameof(ReforgedWithTooltip)}");
-            ReforgeUnlockMessage = Mod.GetLocalization($"{LocalizationCategory}.{nameof(ReforgeUnlockMessage)}");
+            UIInsertHammer = Mod.GetLocalization($"{LocalizationCategory}.{nameof(UIInsertHammer)}");
+            UIThatIsNotAHammer = Mod.GetLocalization($"{LocalizationCategory}.{nameof(UIThatIsNotAHammer)}");
+
+            NeverCondition = Mod.GetLocalization($"Conditions.Never");
         }
         
 

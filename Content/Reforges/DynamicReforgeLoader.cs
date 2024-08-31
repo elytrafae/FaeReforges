@@ -72,7 +72,7 @@ namespace FaeReforges.Content.Reforges {
             */
             FieldInfo field = typeof(PrefixID).GetField(name);
             if (field != null) {
-                vanillaOverrides[(int)field.GetValue(null)] = new VanillaReforgeOverrideData(damage, knockback, speed, size, velocity, mana, crit);
+                vanillaOverrides[(int)field.GetValue(null)] = new VanillaReforgeOverrideData(damage, knockback, speed, size, velocity, mana, crit, positive);
             } else {
                 mod.AddContent(new SimpleCustomReforgeTemplate(name, category, positive, damage, knockback, speed, size, velocity, mana, crit));
             }

@@ -143,6 +143,151 @@ Items: {
 		DisplayName: Stone Tinkerer Hammer
 		Tooltip: ""
 	}
+
+	AdamantiteTinkererHammer: {
+		DisplayName: Adamantite Tinkerer Hammer
+		Tooltip: ""
+	}
+
+	ChlorophyteTinkererHammer: {
+		DisplayName: Chlorophyte Tinkerer Hammer
+		Tooltip: ""
+	}
+
+	CobaltTinkererHammer: {
+		DisplayName: Cobalt Tinkerer Hammer
+		Tooltip: ""
+	}
+
+	CopperTinkererHammer: {
+		DisplayName: Copper Tinkerer Hammer
+		Tooltip: ""
+	}
+
+	CrimtaneTinkererHammer: {
+		DisplayName: Crimtane Tinkerer Hammer
+		Tooltip: ""
+	}
+
+	DemoniteTinkererHammer: {
+		DisplayName: Demonite Tinkerer Hammer
+		Tooltip: ""
+	}
+
+	GoldenTinkererHammer: {
+		DisplayName: Golden Tinkerer Hammer
+		Tooltip: ""
+	}
+
+	HallowedTinkererHammer: {
+		DisplayName: Hallowed Tinkerer Hammer
+		Tooltip: ""
+	}
+
+	HellstoneTinkererHammer: {
+		DisplayName: Hellstone Tinkerer Hammer
+		Tooltip: ""
+	}
+
+	IronTinkererHammer: {
+		DisplayName: Iron Tinkerer Hammer
+		Tooltip: ""
+	}
+
+	LeadTinkererHammer: {
+		DisplayName: Lead Tinkerer Hammer
+		Tooltip: ""
+	}
+
+	MeteoriteTinkererHammer: {
+		DisplayName: Meteorite Tinkerer Hammer
+		Tooltip: ""
+	}
+
+	NebulaTinkererHammer: {
+		DisplayName: Nebula Tinkerer Hammer
+		Tooltip: ""
+	}
+
+	OrichalcumTinkererHammer: {
+		DisplayName: Orichalcum Tinkerer Hammer
+		Tooltip: ""
+	}
+
+	PalladiumTinkererHammer: {
+		DisplayName: Palladium Tinkerer Hammer
+		Tooltip: ""
+	}
+
+	PlatinumTinkererHammer: {
+		DisplayName: Platinum Tinkerer Hammer
+		Tooltip: ""
+	}
+
+	ShroomiteTinkererHammer: {
+		DisplayName: Shroomite Tinkerer Hammer
+		Tooltip: ""
+	}
+
+	SilverTinkererHammer: {
+		DisplayName: Silver Tinkerer Hammer
+		Tooltip: ""
+	}
+
+	SolarTinkererHammer: {
+		DisplayName: Solar Tinkerer Hammer
+		Tooltip: ""
+	}
+
+	SpectreTinkererHammer: {
+		DisplayName: Spectre Tinkerer Hammer
+		Tooltip: ""
+	}
+
+	StardustTinkererHammer: {
+		DisplayName: Stardust Tinkerer Hammer
+		Tooltip: ""
+	}
+
+	TinTinkererHammer: {
+		DisplayName: Tin Tinkerer Hammer
+		Tooltip: ""
+	}
+
+	TitaniumTinkererHammer: {
+		DisplayName: Titanium Tinkerer Hammer
+		Tooltip: ""
+	}
+
+	TungstenTinkererHammer: {
+		DisplayName: Tungsten Tinkerer Hammer
+		Tooltip: ""
+	}
+
+	VenomiteTinkererHammer: {
+		DisplayName: Venomite Tinkerer Hammer
+		Tooltip: ""
+	}
+
+	VortexTinkererHammer: {
+		DisplayName: Vortex Tinkerer Hammer
+		Tooltip: ""
+	}
+
+	ForbiddenTinkererHammer: {
+		DisplayName: Forbidden Tinkerer Hammer
+		Tooltip: ""
+	}
+
+	FrostTinkererHammer: {
+		DisplayName: Frost Tinkerer Hammer
+		Tooltip: ""
+	}
+
+	VenomiteBar: {
+		DisplayName: Venomite Bar
+		Tooltip: ""
+	}
 }
 
 TinkererHammerType: {
@@ -150,20 +295,105 @@ TinkererHammerType: {
 	NegativeReforgeChanceTooltip: "{0}% Negative Reforge Chance"
 	WeaponEffectPrefix: "[c/9400FF:Weapon Effect:] {0}"
 	AccessoryEffectPrefix: "[c/FF00A5:Accessory Effect:] {0}"
-	TutorialTooltip: Consume to permanently unlock this hammer for the world
+	TutorialTooltip: Give to the Goblin Tinkerer to use!
+	ReforgedWithTooltip: Reforged with {0}
+	UIInsertHammer: Please insert a Tinkerer Hammer!
+	UIThatIsNotAHammer: This is not a Tinkerer Hammer!
 
-	StoneHammer: {
-		DisplayName: Stone Hammer
+	StoneTinkererHammer: {
 		WeaponEffect: ""
 		AccessoryEffect: ""
 	}
 
-	ReforgedWithTooltip: Reforged with {0}
-	ReforgeUnlockMessage: "{0} is now unlocked in this world! Check the Tinkerer Anvil to select it!"
-
-	MythrilHammer: {
-		DisplayName: Mythril Hammer
+	MythrilTinkererHammer: {
 		WeaponEffect: ""
 		AccessoryEffect: +1 Defense
 	}
+
+	CopperTinkererHammer: {
+		WeaponEffect: ""
+		AccessoryEffect: ""
+	}
+
+	TinTinkererHammer: {
+		WeaponEffect: ""
+		AccessoryEffect: ""
+	}
+
+	IronTinkererHammer: {
+		WeaponEffect: ""
+		AccessoryEffect: ""
+	}
+
+	LeadTinkererHammer: {
+		WeaponEffect: ""
+		AccessoryEffect: ""
+	}
+
+	SilverTinkererHammer: {
+		WeaponEffect: ""
+		AccessoryEffect: ""
+	}
+
+	TungstenTinkererHammer: {
+		WeaponEffect: ""
+		AccessoryEffect: ""
+	}
+
+	GoldenTinkererHammer: {
+		WeaponEffect: ""
+		AccessoryEffect: ""
+	}
+
+	PlatinumTinkererHammer: {
+		WeaponEffect: ""
+		AccessoryEffect: ""
+	}
+
+	DemoniteTinkererHammer: {
+		WeaponEffect: ""
+		AccessoryEffect: ""
+	}
+
+	CrimtaneTinkererHammer: {
+		WeaponEffect: ""
+		AccessoryEffect: ""
+	}
+
+	MeteoriteTinkererHammer: {
+		WeaponEffect: +10% Crit Chance and -10% Damage
+		AccessoryEffect: +10% Crit Chance and -10% Damage
+	}
+
+	HellstoneTinkererHammer: {
+		WeaponEffect: ""
+		AccessoryEffect: ""
+	}
+
+	CobaltTinkererHammer: {
+		WeaponEffect: ""
+		AccessoryEffect: ""
+	}
+
+	PalladiumTinkererHammer: {
+		WeaponEffect: ""
+		AccessoryEffect: ""
+	}
+
+	OrichalcumTinkererHammer: {
+		WeaponEffect: ""
+		AccessoryEffect: +1% Movement Speed
+	}
+
+	AdamantiteTinkererHammer: {
+		WeaponEffect: ""
+		AccessoryEffect: +1% Damage
+	}
+
+	TitaniumTinkererHammer: {
+		WeaponEffect: ""
+		AccessoryEffect: +1% Crit Chance
+	}
 }
+
+Conditions.Never: Never. This recipe is only here to enable Shimmering. If anyone knows a better way to do this, I am all ears

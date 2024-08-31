@@ -31,7 +31,9 @@ Orichalcum Hammer: 45% Negative Reforge Chance, 115% Reforge Cost, Accessories r
 Adamantite Hammer: 45% Negative Reforge Chance, 110% Reforge Cost, Accessories reforged with this give +1% Damage
 Titanium Hammer: 45% Negative Reforge Chance, 110% Reforge Cost, Accessories reforged with this give +1% Crit Chance
 
-Hallowed Hammer: 40% Negative Reforge Chance, 105% Reforge Cost, Dodging an attack while holding a weapon reforged by this gives you 10% Movement Speed and 10% Crit Chance for 5 seconds.
+Hallowed Hammer: 40% Negative Reforge Chance, 105% Reforge Cost, Weapon Effect: Dodging while holding the weapon gives you 10% Movement Speed and 10% Crit Chance for 10 seconds.
+Frost Hammer (I know, this is no longer crafted with Hallowed Bars, blah blah blah): 40% Negative Reforge Chance, 105% Reforge Cost, Weapon Effect: +10% Damage against enemies under Frostbite
+Forbidden Hammer (Read above): 40% Negative Reforge Chance, 105% Reforge Cost, Weapon Effect: 
 
 Chlorophyte Hammer: 40% Negative Reforge Chance, 100% Reforge Cost, Dealing damage with this weapon gives you +1 HP per second regeneration for 2 seconds.
 Venomite Hammer (yes, new material. Cry about it): 40% Negative Reforge Chance, 100% Reforge Cost, Dealing damage with this weapon applies 2 seconds of Venom, but getting hit inflicts you with 5 seconds of Venom.
@@ -45,7 +47,7 @@ Stardust Hammer: Items reforged with this summon a Stardust Eye while held, deal
 
 
 ## Calamity ##
-Cosmilite Hammer: ??% Negative Reforge Chance, ??% Reforge Cost, The of accessory reforges applied by this hammer are doubled!
+Cosmilite Hammer: ??% Negative Reforge Chance, ??% Reforge Cost, Effects of accessory reforges are doubled!
 
 
 ## Other Modded Hammer Effect Ideas ##
