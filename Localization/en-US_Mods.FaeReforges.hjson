@@ -394,6 +394,16 @@ TinkererHammerType: {
 		WeaponEffect: ""
 		AccessoryEffect: +1% Crit Chance
 	}
+
+	HallowedTinkererHammer: {
+		WeaponEffect: ""
+		AccessoryEffect: ""
+	}
+
+	FrostTinkererHammer: {
+		WeaponEffect: "+10% Damage against enemies inflicted with Frostbite"
+		AccessoryEffect: ""
+	}
 }
 
 Conditions.Never: Never. This recipe is only here to enable Shimmering. If anyone knows a better way to do this, I am all ears

@@ -48,6 +48,21 @@ namespace FaeReforges.Content {
             ReforgeHammerType titaniumType = InitHammerTypeHelper<TitaniumTinkererHammer>(45, 110);
             titaniumType.onUpdateAccessory = (item, player, hideVisual) => { player.GetCritChance(DamageClass.Generic) += 1f; };
 
+            ReforgeHammerType hallowedType = InitHammerTypeHelper<HallowedTinkererHammer>(40, 105);
+            // TODO: Implement this
+
+            ReforgeHammerType frostType = InitHammerTypeHelper<FrostTinkererHammer>(40, 105); // TODO: The effect is broken. Fix it! Maybe use += 0.1f?
+            frostType.changeWeaponDealDamageNpc = (item, attacker, victim, hitModifiers) => { 
+                if (victim.HasBuff(BuffID.Frostburn2)) {
+                    hitModifiers.SourceDamage *= 1.1f;
+                }
+            };
+            frostType.changeWeaponDealDamagePvp = (item, attacker, victim, hurtModifiers) => {
+                if (victim.HasBuff(BuffID.Frostburn2)) {
+                    hurtModifiers.SourceDamage *= 1.1f;
+                }
+            };
+
             // TODO: Continue, and make the sprites you lazy bum!
 
             /*
