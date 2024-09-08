@@ -39,14 +39,11 @@ namespace FaeReforges.Systems.UI {
             // UIElement is invisible and has no padding.
             area = new UIElement();
             area.Left.Set(50, 0f); 
-            area.Top.Set(100, 0.2f); 
+            area.Top.Set(320, 0f); 
             area.Width.Set(WIDTH, 0f); 
             area.Height.Set(HEIGHT, 0f);
 
-            slot = new GoblinTinkererHammerUIItemSlot();
-            slot.Top.Set(0, 0f);
-            slot.Left.Set(0, 0f);
-            area.Append(slot);
+            /* Slot code moved! */
 
             textElement = new UIText("");
             textElement.TextColor = Color.White;
@@ -71,12 +68,18 @@ namespace FaeReforges.Systems.UI {
         }
 
         public override void Update(GameTime gameTime) {
+            if (slot == null) { // The slot init code is here because UI initializes before the player for some reason . . .
+                slot = new GoblinTinkererHammerUIItemSlot();
+                slot.Top.Set(0, 0f);
+                slot.Left.Set(0, 0f);
+                area.Append(slot);
+            }
             if (!Main.InReforgeMenu)
                 return;
 
             string text;
             Color color = Color.White;
-            Item item = ReforgeHammerSaveSystem.GetSelectedHammer();
+            Item item = ReforgeHammerSavePlayer.GetSelectedHammerOfMyPlayer();
             if (item == null || item.type == ItemID.None) {
                 text = ReforgeHammerLocalization.UIInsertHammer.Value;
             } else {

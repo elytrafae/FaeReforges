@@ -1,3 +1,3 @@
 displayName = Fae's Reforges
 author = elytrafae
-version = 0.1
+version = 0.2

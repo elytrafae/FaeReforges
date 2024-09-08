@@ -25,14 +25,13 @@ namespace FaeReforges.Content.Items.Placeable {
             itemGroup = ContentSamples.CreativeHelper.ItemGroup.CraftingObjects;
         }
 
-        /*
         public override void AddRecipes() {
             CreateRecipe()
                 .AddIngredient(ItemID.WorkBench)
-                .AddIngredient<ExampleItem>(10)
+                .AddIngredient(ItemID.TatteredCloth, 3)
+                .AddIngredient(ItemID.Chest)
                 .Register();
         }
-        */
 
     }
 }

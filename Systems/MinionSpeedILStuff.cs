@@ -1,4 +1,5 @@
-﻿using MonoMod.Cil;
+﻿using FaeReforges.Systems.ReforgeHammerContent;
+using MonoMod.Cil;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,9 @@ namespace FaeReforges.Systems.MinionOccupancy {
                 c.Emit(Mono.Cecil.Cil.OpCodes.Ldarg_0);
                 // Call a delegate using the int and Item from the stack.
                 c.EmitDelegate<Func<int, Projectile, int>>((numUpdates, projectile) => {
+                    // First, we do this:
+                    projectile.GetGlobalProjectile<MyReforgeHammerProjectile>().UpdatePreAI(projectile);
+
                     // Actual number of updates is numUpdates + 1!
                     SummonerReforgesGlobalProjectile globProj = projectile.GetGlobalProjectile<SummonerReforgesGlobalProjectile>();
                     float minionSpeed = globProj.bonusSpeed;

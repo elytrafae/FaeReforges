@@ -86,8 +86,8 @@ namespace FaeReforges.Systems.WhipFrenzy {
                 return; 
             }
             var modProj = proj.GetGlobalProjectile<SummonerReforgesGlobalProjectile>();
-            double frenzyDelta = modProj.whipFrenzyChargeMult * Math.Max((double)proj.minionSlots, 0.1) * Math.Max(proj.usesIDStaticNPCImmunity ? proj.idStaticNPCHitCooldown : proj.localNPCHitCooldown, 1) / (Math.Max(proj.extraUpdates + 1, 1) * modProj.bonusSpeed);
-            frenzy = Math.Min(frenzyDelta, maxFrenzy);
+            double frenzyDelta = modProj.whipFrenzyChargeMult * Math.Max((double)modProj.reservedCumulativeSummonOccupancyFromEitherMyselfOrParent, 0.1) * Math.Max(proj.usesIDStaticNPCImmunity ? proj.idStaticNPCHitCooldown : proj.localNPCHitCooldown, 1) / (Math.Max(proj.extraUpdates + 1, 1) * modProj.bonusSpeed);
+            frenzy = Math.Min(frenzy + frenzyDelta, maxFrenzy);
             if (frenzyDelta > 0) 
                 timeSinceLastMinionHit = 0;
         }

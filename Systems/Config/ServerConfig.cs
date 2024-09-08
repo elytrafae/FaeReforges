@@ -25,6 +25,12 @@ namespace FaeReforges.Systems.Config {
         public bool MakeAllMinionsHaveLocalIFrames = true;
         [ReloadRequired]
         public List<ProjectileDefinition> MinionsThatShouldHaveStaticIFrames = new List<ProjectileDefinition>();
+        [ReloadRequired]
+        [DefaultValue(1.25f)]
+        public float PositiveWeaponReforgeValueMultiplier = 1.25f;
+        [ReloadRequired]
+        [DefaultValue(0.75f)]
+        public float NegativeWeaponReforgeValueMultiplier = 1.25f;
 
 
         [Header("QOL")]

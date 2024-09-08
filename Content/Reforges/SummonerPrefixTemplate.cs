@@ -16,34 +16,6 @@ using Newtonsoft.Json.Linq;
 
 namespace FaeReforges.Content.Reforges {
     public class SummonerPrefixTemplate : ModPrefix {
-
-        /*
-        public class DynamicSummonerPrefixLoader : ILoadable {
-            public void Load(Mod mod) {
-                if (!ModContent.GetInstance<ServerConfig>().EnableCustomSummonerReforges) {
-                    return;
-                }
-                string json = Encoding.UTF8.GetString(mod.GetFileBytes("Assets/BalancingData/Reforges.json"));
-                dynamic jsonObj = JsonConvert.DeserializeObject(json);
-                JArray reforges = jsonObj.Summons;
-                for (int i = 0; i < reforges.Count; i++) { 
-                    dynamic reforge = reforges[i];
-                    string name = reforge["Modifier Name"];
-                    float damage = GetOrDefault<float>(reforge, "Damage", 0f); // TODO: Continue this
-                    float knockback = GetOrDefault<float>(reforge, "Knockback", 0f);
-                    float frenzy = GetOrDefault<float>(reforge, "Whip Frenzy Charge", 0f);
-                    int crit = (int)(GetOrDefault<float>(reforge, "Crit", 0)*100);
-                    float speed = GetOrDefault<float>(reforge, "Speed", 0);
-                    float cost = GetOrDefault<float>(reforge, "Occupancy Reduction", 0);
-                    bool positive = reforge.Positive;
-                    mod.AddContent(new AbstractSummonerPrefix(name, positive, damage, knockback, crit, speed, cost, frenzy));
-                }
-            }
-
-            public void Unload() {
-            }
-        }
-        */
         
 
         readonly string name;
@@ -150,7 +122,8 @@ namespace FaeReforges.Content.Reforges {
         }
 
         public override void ModifyValue(ref float valueMult) {
-            valueMult *= positive ? 1.5f : 0.5f;
+            ServerConfig config = ModContent.GetInstance<ServerConfig>();
+            valueMult = positive ? config.PositiveWeaponReforgeValueMultiplier : config.NegativeWeaponReforgeValueMultiplier;
         }
 
         public static LocalizedText SummonOccupancyTooltip { get; private set; }

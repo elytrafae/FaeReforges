@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using FaeReforges.Systems.UI;
+using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using System;
 using System.Collections.Generic;
@@ -14,17 +15,22 @@ namespace FaeReforges.Systems {
         public static Asset<Texture2D> WhipFrenzyBar;
         public static Asset<Texture2D> TinkererHammerHandle;
         public static Asset<Texture2D> TinkererHammerHead;
+        public static Asset<Texture2D> StardustDyingBar;
 
         public override void Load() {
             PX = GetModSprite("px");
             WhipFrenzyBar = GetModSprite("WhipFrenzyBar");
             TinkererHammerHandle = GetModSprite("TinkererHammerHandle");
             TinkererHammerHead = GetModSprite("TinkererHammerHead");
+            StardustDyingBar = GetModSprite("StardustDyingBar");
         }
 
         public override void Unload() {
             PX = null;
             WhipFrenzyBar = null;
+            TinkererHammerHandle = null;
+            TinkererHammerHead = null;
+            StardustDyingBar = null;
         }
 
         public Asset<Texture2D> GetModSprite(String name) {

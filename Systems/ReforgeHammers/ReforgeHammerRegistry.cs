@@ -33,7 +33,7 @@ namespace FaeReforges.Systems.ReforgeHammers {
             hammerMap[item.type] = hammer;
         }
 
-
+        
 
     }
 }

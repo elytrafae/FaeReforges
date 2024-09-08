@@ -17,6 +17,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
+using Terraria.Utilities;
 using Terraria.WorldBuilding;
 
 namespace FaeReforges.Systems.ReforgeHammers
@@ -28,6 +29,7 @@ namespace FaeReforges.Systems.ReforgeHammers
         // null means that the item was not reforged with any hammer (could be naturally generated with a prefix)
         Item hammerItem = null;
         private static bool prefixFromReforge = false;
+        private static bool isReforgePrefixPositive = false;
 
         const string HAMMER_SAVE_NAME = "elytrafae_ReforgeHammerItem";
 
@@ -62,6 +64,10 @@ namespace FaeReforges.Systems.ReforgeHammers
             return ReforgeHammerRegistry.GetHammerTypeForItemType(hammerItem.type);
         }
 
+        public int GetHammerItemTypeOrNone() {
+            return hammerItem == null ? ItemID.None : hammerItem.type;
+        }
+
         public void SetHammer(Item hammer) {
             hammerItem = hammer;
         }
@@ -88,7 +94,7 @@ namespace FaeReforges.Systems.ReforgeHammers
         }
 
         public override bool CanReforge(Item item) {
-            Item hammer = ReforgeHammerSaveSystem.GetSelectedHammer();
+            Item hammer = ReforgeHammerSavePlayer.GetSelectedHammerOfMyPlayer();
             if (hammer != null && hammer.type != ItemID.None && ReforgeHammerRegistry.GetHammerTypeForItemType(hammer.type) != null) {
                 return true;
             }
@@ -97,7 +103,7 @@ namespace FaeReforges.Systems.ReforgeHammers
         }
 
         public override bool ReforgePrice(Item item, ref int reforgePrice, ref bool canApplyDiscount) {
-            Item hammer = ReforgeHammerSaveSystem.GetSelectedHammer();
+            Item hammer = ReforgeHammerSavePlayer.GetSelectedHammerOfMyPlayer();
             if (hammer == null || hammer.type == ItemID.None) {
                 return true;
             }
@@ -110,12 +116,22 @@ namespace FaeReforges.Systems.ReforgeHammers
         }
 
         public override void PreReforge(Item item) {
+            Item hammer = ReforgeHammerSavePlayer.GetSelectedHammerOfMyPlayer();
+            if (hammer == null || hammer.type == ItemID.None) {
+                return;
+            }
+            ReforgeHammerType hammerType = ReforgeHammerRegistry.GetHammerTypeForItemType(hammer.type);
+            if (hammerType == null) {
+                return;
+            }
             prefixFromReforge = true;
+            isReforgePrefixPositive = Main.rand.Next(100) >= hammerType.negativeReforgeChance;
         }
 
         public override void PostReforge(Item item) {
             prefixFromReforge = false;
-            Item hammer = ReforgeHammerSaveSystem.GetSelectedHammer();
+            isReforgePrefixPositive = false;
+            Item hammer = ReforgeHammerSavePlayer.GetSelectedHammerOfMyPlayer();
             if (hammer == null || hammer.type == ItemID.None) {
                 return;
             }
@@ -135,46 +151,22 @@ namespace FaeReforges.Systems.ReforgeHammers
             if (!prefixFromReforge) {
                 return true;
             }
-            Item hammer = ReforgeHammerSaveSystem.GetSelectedHammer();
-            if (hammer == null || hammer.type == ItemID.None) {
-                return true;
-            }
-            ReforgeHammerType hammerType = ReforgeHammerRegistry.GetHammerTypeForItemType(hammer.type);
-            if (hammerType == null) {
-                return true;
-            }
             bool isPositive = ReforgeTierSystem.IsPrefixForAccessories(pre) ? ReforgeTierSystem.GetAccessoryPrefixTier(pre) >= 3 : ReforgeTierSystem.IsPrefixPositive(pre);
-            int negChance = hammerType.negativeReforgeChance;
-
-            //if (negChance == 50) {
-            //    return true;
-            //}
-
-            // We are gonna generalize and say that getting a positive or negative reforge is a 50/50
-            // This means that we have to halve the negative chance we will use here. We can do this by just rolling out of 200 (?)
-            // If we get a positive reforge, and the original negative chance is above 50%, we roll with the half chance to deny it
-            // If we get a negative reforge, and the original negative chance is below 50%, we roll with the half chance to deny it
-            //if ((negChance <= 50) == isPositive) {
-            //    return true;
-            //}
-
-            // If we wanna roll to toss out a negative, we have to invert the chance 
-            // Ex: If we have 45% negative chance, then we wanna deny a negative reforge 65% of the time
-            // If we have 0% negative chance, we wanna deny a negative reforge 100% of the time
-            int rerollChance = isPositive ? negChance : 100 - negChance;
-            return Main.rand.Next(100) > rerollChance;
+            return isPositive == isReforgePrefixPositive;
         }
 
         public override void UpdateAccessory(Item item, Player player, bool hideVisual) {
             item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammer()?.onUpdateAccessory(item, player, hideVisual);
         }
 
+        // These are all for melee. The projectiles are handled elsewhere
+
         public override void ModifyHitNPC(Item item, Player player, NPC target, ref NPC.HitModifiers modifiers) {
-            item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammer()?.changeWeaponDealDamageNpc(item, player, target, modifiers);
+            item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammer()?.changeWeaponDealDamageNpc(item, player, target, ref modifiers);
         }
 
         public override void ModifyHitPvp(Item item, Player player, Player target, ref Player.HurtModifiers modifiers) {
-            item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammer()?.changeWeaponDealDamagePvp(item, player, target, modifiers);
+            item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammer()?.changeWeaponDealDamagePvp(item, player, target, ref modifiers);
         }
 
         public override void OnHitNPC(Item item, Player player, NPC target, NPC.HitInfo hit, int damageDone) {
@@ -185,6 +177,13 @@ namespace FaeReforges.Systems.ReforgeHammers
             item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammer()?.onWeaponDealDamagePvp(item, player, target, hurtInfo);
         }
 
+        public override bool CanUseItem(Item item, Player player) {
+            ReforgeHammerType hammer = item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammer();
+            if (hammer == null) {
+                return true;
+            }
+            return hammer.canUseItem(item, player);
+        }
 
     }
 }

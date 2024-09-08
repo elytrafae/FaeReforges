@@ -10,7 +10,7 @@ using static Terraria.UI.ItemSlot;
 
 namespace FaeReforges.Systems.UI.UIElements {
     internal class GoblinTinkererHammerUIItemSlot : UIItemSlot {
-        public GoblinTinkererHammerUIItemSlot() : base(ReforgeHammerSaveSystem.reforgeHammerStorage, 0, Context.BankItem) {
+        public GoblinTinkererHammerUIItemSlot() : base(ReforgeHammerSavePlayer.GetReforgeHammerStorageOfMyPlayer(), 0, Context.BankItem) {
 
 
         }

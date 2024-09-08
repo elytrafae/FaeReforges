@@ -86,6 +86,16 @@ Configs: {
 			Label: Summon Wands Mana Cost
 			Tooltip: A percentage of how much of the original mana cost should summoner wands have. Setting this to 0 also removed the tooltip!
 		}
+
+		PositiveWeaponReforgeValueMultiplier: {
+			Label: Positive Weapon Reforge Value Multiplier
+			Tooltip: ""
+		}
+
+		NegativeWeaponReforgeValueMultiplier: {
+			Label: Negative Weapon Reforge Value Multiplier
+			Tooltip: ""
+		}
 	}
 
 	ClientConfig: {
@@ -126,6 +136,7 @@ Keybinds.WhipFrenzy.DisplayName: Whip Frenzy
 UI: {
 	WhipFrenzyResourceText: "{0:+0;-#}% Whip Frenzy"
 	GoblinTinkererHammerText: Mods.FaeReforges.UI.GoblinTinkererHammerText
+	StardustDyingResourceText: "{0} seconds left!"
 }
 
 Items: {
@@ -288,6 +299,11 @@ Items: {
 		DisplayName: Venomite Bar
 		Tooltip: ""
 	}
+
+	SpeedBooster: {
+		DisplayName: Speed Booster
+		Tooltip: ""
+	}
 }
 
 TinkererHammerType: {
@@ -396,14 +412,116 @@ TinkererHammerType: {
 	}
 
 	HallowedTinkererHammer: {
-		WeaponEffect: ""
+		WeaponEffect: +10% Movement Speed and Crit Chance for 10 seconds after dodging an attack
 		AccessoryEffect: ""
 	}
 
 	FrostTinkererHammer: {
-		WeaponEffect: "+10% Damage against enemies inflicted with Frostbite"
+		WeaponEffect: +10% Damage against enemies inflicted with Frostbite
 		AccessoryEffect: ""
+	}
+
+	ForbiddenTinkererHammer: {
+		WeaponEffect:
+			'''
+			Non-summon weapons consume 10 Mana per hit, but deal 20 more damage. 
+			Weapons cannot be used while under 10 Mana, and deal 50% less damage while under Mana Sickness (except Magic weapons). 
+			Summons attempt to consume 40 Max Mana per slot they occupy for 20% increased damage.
+			'''
+		AccessoryEffect: ""
+	}
+
+	ChlorophyteTinkererHammer: {
+		WeaponEffect: +1 HP per second regeneration for 2 seconds after dealing damage
+		AccessoryEffect: ""
+	}
+
+	VenomiteTinkererHammer: {
+		WeaponEffect:
+			'''
+			Dealing damage with this weapon applies 3 seconds of Venom. 
+			While holding this weapon, or having a summon active, you lose 2 HP per second
+			'''
+		AccessoryEffect: ""
+	}
+
+	SpectreTinkererHammer: {
+		WeaponEffect: ""
+		AccessoryEffect: +1.5% Dodge Chance
+	}
+
+	ShroomiteTinkererHammer: {
+		WeaponEffect: ""
+		AccessoryEffect: +2.5% Flight Time
+	}
+
+	SolarTinkererHammer: {
+		WeaponEffect: Gain Solar Flare dash while held
+		AccessoryEffect: +1.5% Damage Reduction. This effect is disabled for 5 seconds after taking more than 5 damage
+	}
+
+	VortexTinkererHammer: {
+		WeaponEffect: Gain a guaranteed crit every 10 seconds
+		AccessoryEffect: +2% Damage and -1% Movement Speed
+	}
+
+	NebulaTinkererHammer: {
+		WeaponEffect:
+			'''
+			Dealing damage drops light orbs that give you a stacking 15% Movement Speed 
+			and Flight Time buff. Stacks up to 3 times and lasts for 8 seconds.
+			'''
+		AccessoryEffect: +3% Crit Chance and -1% Endurance
+	}
+
+	StardustTinkererHammer: {
+		WeaponEffect:
+			'''
+			Increase the weapon's damage by 140%, but halve its attack speed.
+			Projectiles spawned by this weapon have their Iframes inflicted doubled.
+			'''
+		AccessoryEffect:
+			'''
+			When you die, you become your own minion for 2 seconds, immune to damage and can attack freely, after which you actually die. 
+			Your respawn time is reduced by the amount of time you were a minion. Additional accessories add to the duration. 
+			You cannot be targeted by enemies. If all players are minions, they all die instantly.
+			'''
 	}
 }
 
 Conditions.Never: Never. This recipe is only here to enable Shimmering. If anyone knows a better way to do this, I am all ears
+
+Buffs: {
+	ChlorophyteRejuvenation: {
+		DisplayName: Chlorophyte Rejuvenation
+		Description: Health Regen increased! It's almost like lifesteal!
+	}
+
+	HallowedAggression: {
+		DisplayName: Hallowed Aggression
+		Description: Movement Speed and Crit Chance increased through the power of dodging!
+	}
+
+	SolarEclipse: {
+		DisplayName: Solar Eclipse
+		Description: Damage Reduction from the Solar Hammer is inactive!
+	}
+
+	SpeedNebula1: {
+		DisplayName: Speed Nebula
+		Description: +15% Movement Speed and Flight Time
+	}
+
+	SpeedNebula2: {
+		DisplayName: Speed Nebula
+		Description: +30% Movement Speed and Flight Time
+	}
+
+	SpeedNebula3: {
+		DisplayName: Speed Nebula
+		Description: +45% Movement Speed and Flight Time
+	}
+}
+
+DeathReasons.StardustMinionTimeExpired: "{0}'s time ran out!"
+CombatTexts.GuaranteedCrit: Guaranteed Crit!
