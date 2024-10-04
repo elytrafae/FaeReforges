@@ -4,6 +4,7 @@ using FaeReforges.Systems.ReforgeHammers;
 using Steamworks;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,21 +21,54 @@ namespace FaeReforges.Systems.ReforgeHammerContent {
         public int flightTimeThousandth = 1000; // 10 = 1% Flight Time
         public bool accessoryReforgedWithSolar = false;
 
-        private const int VORTEX_CRIT_COOLDOWN = 600; // 10 seconds
-        private Dictionary<int, int> vortexCrits = new Dictionary<int, int>();
+        private const short VORTEX_CRIT_COOLDOWN = 600; // 10 seconds
+        private Dictionary<int, short> vortexCrits = new Dictionary<int, short>();
 
         private const int NEBULA_BOOSTER_COOLDOWN = 30;// 0.5 seconds
         private int timeSinceLastNebulaBooster = NEBULA_BOOSTER_COOLDOWN;
 
-        public int stardustHammerAccessoryCount = 0;
-        public int stardustTimeLeft = 0;
-        public int lastStardustTime = 0;
+        // Currently unused content-wise. Will keep implementation around for later, just in case //
+        public const ushort stardustHammerTimePerAccessory = 120; // 2 seconds
+        public ushort stardustHammerAccessoryCount = 0;
+        public ushort stardustTimeLeft = 0;
+        public ushort lastStardustTime = 0;
+        ////////////////////////////////////////////////////////////////
+
+        public int bonusSentrySlotHundreth = 0;
+
+        public override void SyncPlayer(int toWho, int fromWho, bool newPlayer) {
+            ModPacket packet = Mod.GetPacket();
+            packet.Write((byte)FaeReforges.MessageType.MyReforgeHammerPlayerSync);
+            packet.Write((byte)Player.whoAmI);
+            packet.Write(stardustTimeLeft);
+            packet.Write(lastStardustTime);
+            packet.Send(toWho, fromWho);
+        }
+
+        // Called in FaeReforges.Networking.cs
+        public void ReceivePlayerSync(BinaryReader reader) {
+            stardustTimeLeft = reader.ReadUInt16();
+            lastStardustTime = reader.ReadUInt16();
+        }
+
+        public override void CopyClientState(ModPlayer targetCopy) {
+            MyReforgeHammerPlayer clone = (MyReforgeHammerPlayer)targetCopy;
+            clone.stardustTimeLeft = stardustTimeLeft;
+            clone.lastStardustTime = lastStardustTime;
+        }
+
+        public override void SendClientChanges(ModPlayer clientPlayer) {
+            MyReforgeHammerPlayer clone = (MyReforgeHammerPlayer)clientPlayer;
+            if (stardustTimeLeft != clone.stardustTimeLeft || lastStardustTime != clone.lastStardustTime)
+                SyncPlayer(toWho: -1, fromWho: Main.myPlayer, newPlayer: false);
+        }
 
         public override void ResetEffects() {
             dodgeChanceThousandth = 0;
             flightTimeThousandth = 1000;
             accessoryReforgedWithSolar = false;
             stardustHammerAccessoryCount = 0;
+            bonusSentrySlotHundreth = 0;
         }
 
         public override bool FreeDodge(Player.HurtInfo info) {
@@ -68,6 +102,7 @@ namespace FaeReforges.Systems.ReforgeHammerContent {
 
         public override void PostUpdateEquips() {
             Player.wingTimeMax = Player.wingTimeMax * flightTimeThousandth / 1000;
+            Player.maxTurrets += (bonusSentrySlotHundreth / 100);
             if (stardustTimeLeft > 0) {
                 Player.aggro = -999999999;
             }
@@ -92,6 +127,8 @@ namespace FaeReforges.Systems.ReforgeHammerContent {
                 }
             }
         }
+
+        
 
         public bool TriggerVortexCrit(int itemType) {
             if (vortexCrits.ContainsKey(itemType)) {
@@ -125,7 +162,7 @@ namespace FaeReforges.Systems.ReforgeHammerContent {
             }
             if (stardustHammerAccessoryCount > 0 || stardustTimeLeft > 0) {
                 if (stardustTimeLeft <= 0) {
-                    stardustTimeLeft = stardustHammerAccessoryCount * 120; // 2 seconds per accessory
+                    stardustTimeLeft = (ushort)(stardustHammerAccessoryCount * stardustHammerTimePerAccessory); // 2 seconds per accessory
                     lastStardustTime = stardustTimeLeft;
                     if (!IsAnyNonStardustDyingPlayerAlive()) {
                         stardustTimeLeft = 0;

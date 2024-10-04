@@ -2,6 +2,7 @@ using FaeReforges.Content;
 using FaeReforges.Systems.ReforgeHammers;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ using Terraria.ModLoader;
 namespace FaeReforges
 {
 	// Please read https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Modding-Guide#mod-skeleton-contents for more information about the various files in a mod.
-	public class FaeReforges : Mod
+	public partial class FaeReforges : Mod
 	{
 
         public override object Call(params object[] args) {

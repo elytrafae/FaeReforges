@@ -12,6 +12,7 @@ namespace FaeReforges.Content.Items.TinkererHammers {
 
     // Prehardmode
 
+    /*
     public class StoneTinkererHammer : SimpleTinkererHammerItem {
         public override int Rarity => ItemRarityID.Gray;
         public override int Value => 5;
@@ -168,20 +169,7 @@ namespace FaeReforges.Content.Items.TinkererHammers {
         }
     }
 
-    public class MeteoriteTinkererHammer : SimpleTinkererHammerItem {
-        public override int Rarity => ItemRarityID.White;
-        public override int Value => Terraria.Item.buyPrice(silver: 30);
-
-        public override void AddRecipes() {
-            CreateRecipe()
-                .AddIngredient(ItemID.MeteoriteBar, 15)
-                .AddIngredient(ItemID.Wood, 15)
-                .AddIngredient(ItemID.Rope, 5)
-                .AddTile<Content.Tiles.TinkererAnvil>()
-                .Register();
-        }
-    }
-
+        
     public class HellstoneTinkererHammer : SimpleTinkererHammerItem {
         public override int Rarity => ItemRarityID.White;
         public override int Value => Terraria.Item.buyPrice(silver: 40);
@@ -190,6 +178,21 @@ namespace FaeReforges.Content.Items.TinkererHammers {
             CreateRecipe()
                 .AddIngredient(ItemID.HellstoneBar, 15)
                 .AddIngredient(ItemID.AshWood, 15)
+                .AddIngredient(ItemID.Rope, 5)
+                .AddTile<Content.Tiles.TinkererAnvil>()
+                .Register();
+        }
+    }
+    */
+
+    public class MeteoriteTinkererHammer : SimpleTinkererHammerItem {
+        public override int Rarity => ItemRarityID.White;
+        public override int Value => Terraria.Item.buyPrice(silver: 30);
+
+        public override void AddRecipes() {
+            CreateRecipe()
+                .AddIngredient(ItemID.MeteoriteBar, 15)
+                .AddIngredient(ItemID.Wood, 15)
                 .AddIngredient(ItemID.Rope, 5)
                 .AddTile<Content.Tiles.TinkererAnvil>()
                 .Register();
@@ -346,7 +349,9 @@ namespace FaeReforges.Content.Items.TinkererHammers {
 
         public override void AddRecipes() {
             CreateRecipe()
-                .AddIngredient<VenomiteBar>(15)
+                .AddIngredient(ItemID.ChlorophyteBar, 12)
+                .AddIngredient(ItemID.VialofVenom, 5)
+                .AddIngredient(ItemID.SpiderFang, 10)
                 .AddIngredient(ItemID.RichMahogany, 15)
                 .AddIngredient(ItemID.Rope, 5)
                 .AddTile<Content.Tiles.TinkererAnvil>()

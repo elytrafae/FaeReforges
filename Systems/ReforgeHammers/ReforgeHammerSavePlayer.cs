@@ -6,7 +6,7 @@ namespace FaeReforges.Systems.ReforgeHammers {
     public class ReforgeHammerSavePlayer : ModPlayer {
 
         public Item[] reforgeHammerStorage = new Item[1] { new Item(0) };
-        private const string HAMMER_SLOT_TAG = "elytrafae_ACTIVE_TINKERER_HAMMER";
+        private const string HAMMER_SLOT_TAG = "ACTIVE_TINKERER_HAMMER";
 
         public override void SaveData(TagCompound tag) {
             tag.Add(HAMMER_SLOT_TAG, reforgeHammerStorage[0]);

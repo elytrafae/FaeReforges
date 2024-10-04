@@ -7,12 +7,15 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace FaeReforges.Content.Items {
+namespace FaeReforges.Content.Items.Placeable
+{
 
-    // TODO: Implement this, along the placed version
-    public class VenomiteBar : ModItem {
+    // Disabled content!
+    public abstract class VenomiteBar : ModItem
+    {
 
-        public override void SetStaticDefaults() {
+        public override void SetStaticDefaults()
+        {
             Item.ResearchUnlockCount = 25;
             ItemID.Sets.SortingPriorityMaterials[Item.type] = 63; // Influences the inventory sort order. 59 is PlatinumBar, higher is more valuable.
 
@@ -20,7 +23,8 @@ namespace FaeReforges.Content.Items {
             ItemTrader.ChlorophyteExtractinator.AddOption_OneWay(Type, 1, ItemID.ChlorophyteBar, 1);
         }
 
-        public override void SetDefaults() {
+        public override void SetDefaults()
+        {
             // ModContent.TileType returns the ID of the tile that this item should place when used. ModContent.TileType<T>() method returns an integer ID of the tile provided to it through its generic type argument (the type in angle brackets)
             Item.DefaultToPlaceableTile(ModContent.TileType<Tiles.VenomiteBar>());
             Item.width = 20;
@@ -29,7 +33,8 @@ namespace FaeReforges.Content.Items {
         }
 
         // Please see Content/ExampleRecipes.cs for a detailed explanation of recipe creation.
-        public override void AddRecipes() {
+        public override void AddRecipes()
+        {
             CreateRecipe()
                 .AddIngredient(ItemID.ChlorophyteBar)
                 .AddIngredient(ItemID.VialofVenom)

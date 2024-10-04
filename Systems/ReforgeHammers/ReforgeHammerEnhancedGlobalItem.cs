@@ -4,6 +4,7 @@ using FaeReforges.Content.Items.Placeable;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,29 +27,42 @@ namespace FaeReforges.Systems.ReforgeHammers
 
         public override bool InstancePerEntity => true;
 
-        // null means that the item was not reforged with any hammer (could be naturally generated with a prefix)
-        Item hammerItem = null;
-        private static bool prefixFromReforge = false;
-        private static bool isReforgePrefixPositive = false;
+        // ItemID.None means that the item was not reforged with any hammer (could be naturally generated with a prefix)
+        int hammerItemId = ItemID.None;
+        //private static bool prefixFromReforge = false;
+        //private static bool isReforgePrefixPositive = false;
 
-        const string HAMMER_SAVE_NAME = "elytrafae_ReforgeHammerItem";
+        const string HAMMER_SAVE_NAME = "ReforgeHammerId";
 
         public override void SaveData(Item item, TagCompound tag) {
-            if (hammerItem != null) {
-                tag.Add(HAMMER_SAVE_NAME, hammerItem);
+            if (hammerItemId > ItemID.None) {
+                tag.Add(HAMMER_SAVE_NAME, hammerItemId);
             }
         }
 
         public override void LoadData(Item item, TagCompound tag) {
-            if (tag.TryGet(HAMMER_SAVE_NAME, out Item hammer)) {
-                hammerItem = hammer;
-                ReforgeHammerType hammerType = GetHammer();
-                if (hammerType != null) {
-                    if (item.accessory) {
-                        hammerType.onApplyAccessory(item);
-                    } else {
-                        hammerType.onApplyWeapon(item);
-                    }
+            if (tag.TryGet(HAMMER_SAVE_NAME, out int hammer)) {
+                SetHammer(hammer);
+                ApplyOnApplyEffects(item);
+            }
+        }
+
+        public override void NetSend(Item item, BinaryWriter writer) {
+            writer.Write(hammerItemId);
+        }
+
+        public override void NetReceive(Item item, BinaryReader reader) {
+            SetHammer(reader.ReadInt32());
+            ApplyOnApplyEffects(item);
+        }
+
+        private void ApplyOnApplyEffects(Item item) {
+            ReforgeHammerType hammerType = GetHammer();
+            if (hammerType != null) {
+                if (item.accessory) {
+                    hammerType.onApplyAccessory(item);
+                } else {
+                    hammerType.onApplyWeapon(item);
                 }
             }
         }
@@ -58,26 +72,27 @@ namespace FaeReforges.Systems.ReforgeHammers
         }
 
         public ReforgeHammerType GetHammer() {
-            if (hammerItem == null) {
+            if (hammerItemId == ItemID.None) {
                 return null;
             }
-            return ReforgeHammerRegistry.GetHammerTypeForItemType(hammerItem.type);
+            return ReforgeHammerRegistry.GetHammerTypeForItemType(hammerItemId);
         }
 
         public int GetHammerItemTypeOrNone() {
-            return hammerItem == null ? ItemID.None : hammerItem.type;
+            return hammerItemId;
         }
 
-        public void SetHammer(Item hammer) {
-            hammerItem = hammer;
+        public void SetHammer(int hammerId) {
+            hammerItemId = hammerId;
         }
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips) {
             ReforgeHammerType hammerType = GetHammer();
             if (hammerType != null) {
-                // hammerItem is 100% declared here!
-                TooltipLine line = new TooltipLine(Mod, "ReforgeHammerType", ReforgeHammerLocalization.ReforgedWithTooltip.Format(hammerItem.Name));
-                line.OverrideColor = ItemRarity.GetColor(hammerItem.rare);
+                // hammerItemId is 100% NOT None!
+                Item dummyItem = ContentSamples.ItemsByType[GetHammerItemTypeOrNone()];
+                TooltipLine line = new TooltipLine(Mod, "ReforgeHammerType", ReforgeHammerLocalization.ReforgedWithTooltip.Format(dummyItem.Name));
+                line.OverrideColor = ItemRarity.GetColor(dummyItem.rare);
                 tooltips.Add(line);
 
                 if (item.accessory) {
@@ -93,6 +108,7 @@ namespace FaeReforges.Systems.ReforgeHammers
             
         }
 
+        /*
         public override bool CanReforge(Item item) {
             Item hammer = ReforgeHammerSavePlayer.GetSelectedHammerOfMyPlayer();
             if (hammer != null && hammer.type != ItemID.None && ReforgeHammerRegistry.GetHammerTypeForItemType(hammer.type) != null) {
@@ -101,7 +117,9 @@ namespace FaeReforges.Systems.ReforgeHammers
             SoundEngine.PlaySound(SoundID.NPCHit40);
             return false;
         }
+        */
 
+        /*
         public override bool ReforgePrice(Item item, ref int reforgePrice, ref bool canApplyDiscount) {
             Item hammer = ReforgeHammerSavePlayer.GetSelectedHammerOfMyPlayer();
             if (hammer == null || hammer.type == ItemID.None) {
@@ -127,10 +145,11 @@ namespace FaeReforges.Systems.ReforgeHammers
             prefixFromReforge = true;
             isReforgePrefixPositive = Main.rand.Next(100) >= hammerType.negativeReforgeChance;
         }
+        */
 
         public override void PostReforge(Item item) {
-            prefixFromReforge = false;
-            isReforgePrefixPositive = false;
+            //prefixFromReforge = false;
+            //isReforgePrefixPositive = false;
             Item hammer = ReforgeHammerSavePlayer.GetSelectedHammerOfMyPlayer();
             if (hammer == null || hammer.type == ItemID.None) {
                 return;
@@ -139,14 +158,11 @@ namespace FaeReforges.Systems.ReforgeHammers
             if (hammerType == null) {
                 return;
             }
-            item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().SetHammer(hammer);
-            if (item.accessory) {
-                hammerType.onApplyAccessory(item);
-            } else {
-                hammerType.onApplyWeapon(item);
-            }
+            item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().SetHammer(hammer.type);
+            ApplyOnApplyEffects(item);
         }
 
+        /*
         public override bool AllowPrefix(Item item, int pre) {
             if (!prefixFromReforge) {
                 return true;
@@ -154,6 +170,7 @@ namespace FaeReforges.Systems.ReforgeHammers
             bool isPositive = ReforgeTierSystem.IsPrefixForAccessories(pre) ? ReforgeTierSystem.GetAccessoryPrefixTier(pre) >= 3 : ReforgeTierSystem.IsPrefixPositive(pre);
             return isPositive == isReforgePrefixPositive;
         }
+        */
 
         public override void UpdateAccessory(Item item, Player player, bool hideVisual) {
             item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammer()?.onUpdateAccessory(item, player, hideVisual);
@@ -162,19 +179,19 @@ namespace FaeReforges.Systems.ReforgeHammers
         // These are all for melee. The projectiles are handled elsewhere
 
         public override void ModifyHitNPC(Item item, Player player, NPC target, ref NPC.HitModifiers modifiers) {
-            item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammer()?.changeWeaponDealDamageNpc(item, player, target, ref modifiers);
+            item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammer()?.changeWeaponDealDamageNpc(item.type, player, target, ref modifiers);
         }
 
         public override void ModifyHitPvp(Item item, Player player, Player target, ref Player.HurtModifiers modifiers) {
-            item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammer()?.changeWeaponDealDamagePvp(item, player, target, ref modifiers);
+            item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammer()?.changeWeaponDealDamagePvp(item.type, player, target, ref modifiers);
         }
 
         public override void OnHitNPC(Item item, Player player, NPC target, NPC.HitInfo hit, int damageDone) {
-            item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammer()?.onWeaponDealDamageNpc(item, player, target, hit, damageDone);
+            item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammer()?.onWeaponDealDamageNpc(item.type, player, target, hit, damageDone);
         }
 
         public override void OnHitPvp(Item item, Player player, Player target, Player.HurtInfo hurtInfo) {
-            item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammer()?.onWeaponDealDamagePvp(item, player, target, hurtInfo);
+            item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammer()?.onWeaponDealDamagePvp(item.type, player, target, hurtInfo);
         }
 
         public override bool CanUseItem(Item item, Player player) {

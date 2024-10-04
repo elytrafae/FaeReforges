@@ -11,8 +11,9 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace FaeReforges.Systems.ReforgeHammerContent {
-    public class MyReforgeHammerProjectile : GlobalProjectile {
+    public abstract class MyReforgeHammerProjectile : GlobalProjectile {
 
+        
         private bool isBoostedByForbidden = false;
         private bool isBoostedByForbiddenInherited = false;
 

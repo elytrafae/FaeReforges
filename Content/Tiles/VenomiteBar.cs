@@ -10,7 +10,9 @@ using Terraria;
 using Microsoft.Xna.Framework;
 
 namespace FaeReforges.Content.Tiles {
-    public class VenomiteBar : ModTile {
+
+    // Content disabled!
+    public abstract class VenomiteBar : ModTile {
         public override void SetStaticDefaults() {
             Main.tileShine[Type] = 1100;
             Main.tileSolid[Type] = true;

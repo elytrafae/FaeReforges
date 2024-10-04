@@ -29,7 +29,13 @@ namespace FaeReforges.Content.Items.Placeable {
             CreateRecipe()
                 .AddIngredient(ItemID.WorkBench)
                 .AddIngredient(ItemID.TatteredCloth, 3)
-                .AddIngredient(ItemID.Chest)
+                .AddIngredient(ItemID.IronAnvil)
+                .Register();
+
+            CreateRecipe()
+                .AddIngredient(ItemID.WorkBench)
+                .AddIngredient(ItemID.TatteredCloth, 3)
+                .AddIngredient(ItemID.LeadAnvil)
                 .Register();
         }
 

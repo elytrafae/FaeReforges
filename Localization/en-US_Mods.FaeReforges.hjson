@@ -26,7 +26,7 @@ Prefixes: {
 	SummonFrenzyChargeTooltip: "{0:+0;-#}% whip frenzy charge"
 	SadisticSummonerPrefix.DisplayName: Sadistic
 	DominantSummonerPrefix.DisplayName: Dominant
-	IntrovertedSummonerPrefix.DisplayName: Introverted Summoner Prefix
+	IntrovertedSummonerPrefix.DisplayName: Introverted
 	RegenTooltip: "{0:+0;-#}% max mana regenerated per second"
 	CritChanceTooltip: "{0:+0;-#}% critical strike chance"
 	Charmed.DisplayName: Charmed
@@ -313,67 +313,12 @@ TinkererHammerType: {
 	AccessoryEffectPrefix: "[c/FF00A5:Accessory Effect:] {0}"
 	TutorialTooltip: Give to the Goblin Tinkerer to use!
 	ReforgedWithTooltip: Reforged with {0}
-	UIInsertHammer: Please insert a Tinkerer Hammer!
+	UIInsertHammer: Tinkerer Hammer goes here! (optional)
 	UIThatIsNotAHammer: This is not a Tinkerer Hammer!
-
-	StoneTinkererHammer: {
-		WeaponEffect: ""
-		AccessoryEffect: ""
-	}
 
 	MythrilTinkererHammer: {
 		WeaponEffect: ""
 		AccessoryEffect: +1 Defense
-	}
-
-	CopperTinkererHammer: {
-		WeaponEffect: ""
-		AccessoryEffect: ""
-	}
-
-	TinTinkererHammer: {
-		WeaponEffect: ""
-		AccessoryEffect: ""
-	}
-
-	IronTinkererHammer: {
-		WeaponEffect: ""
-		AccessoryEffect: ""
-	}
-
-	LeadTinkererHammer: {
-		WeaponEffect: ""
-		AccessoryEffect: ""
-	}
-
-	SilverTinkererHammer: {
-		WeaponEffect: ""
-		AccessoryEffect: ""
-	}
-
-	TungstenTinkererHammer: {
-		WeaponEffect: ""
-		AccessoryEffect: ""
-	}
-
-	GoldenTinkererHammer: {
-		WeaponEffect: ""
-		AccessoryEffect: ""
-	}
-
-	PlatinumTinkererHammer: {
-		WeaponEffect: ""
-		AccessoryEffect: ""
-	}
-
-	DemoniteTinkererHammer: {
-		WeaponEffect: ""
-		AccessoryEffect: ""
-	}
-
-	CrimtaneTinkererHammer: {
-		WeaponEffect: ""
-		AccessoryEffect: ""
 	}
 
 	MeteoriteTinkererHammer: {
@@ -381,19 +326,20 @@ TinkererHammerType: {
 		AccessoryEffect: +10% Crit Chance and -10% Damage
 	}
 
-	HellstoneTinkererHammer: {
-		WeaponEffect: ""
-		AccessoryEffect: ""
-	}
-
 	CobaltTinkererHammer: {
 		WeaponEffect: ""
-		AccessoryEffect: ""
+		AccessoryEffect:
+			'''
+
+			+1% Max Mana Regeneration per second
+			+1% Shoot Velocity
+			+1% Chance to save ammo
+			'''
 	}
 
 	PalladiumTinkererHammer: {
 		WeaponEffect: ""
-		AccessoryEffect: ""
+		AccessoryEffect: +1% Melee Speed
 	}
 
 	OrichalcumTinkererHammer: {
@@ -422,12 +368,7 @@ TinkererHammerType: {
 	}
 
 	ForbiddenTinkererHammer: {
-		WeaponEffect:
-			'''
-			Non-summon weapons consume 10 Mana per hit, but deal 20 more damage. 
-			Weapons cannot be used while under 10 Mana, and deal 50% less damage while under Mana Sickness (except Magic weapons). 
-			Summons attempt to consume 40 Max Mana per slot they occupy for 20% increased damage.
-			'''
+		WeaponEffect: This weapon deals up 15% bonus damage based on missing Mana percentage
 		AccessoryEffect: ""
 	}
 
@@ -461,7 +402,11 @@ TinkererHammerType: {
 	}
 
 	VortexTinkererHammer: {
-		WeaponEffect: Gain a guaranteed crit every 10 seconds
+		WeaponEffect:
+			'''
+			Gain a guaranteed Super Crit every 10 seconds, dealing triple damage!
+			Does not work in PVP
+			'''
 		AccessoryEffect: +2% Damage and -1% Movement Speed
 	}
 
@@ -475,17 +420,8 @@ TinkererHammerType: {
 	}
 
 	StardustTinkererHammer: {
-		WeaponEffect:
-			'''
-			Increase the weapon's damage by 140%, but halve its attack speed.
-			Projectiles spawned by this weapon have their Iframes inflicted doubled.
-			'''
-		AccessoryEffect:
-			'''
-			When you die, you become your own minion for 2 seconds, immune to damage and can attack freely, after which you actually die. 
-			Your respawn time is reduced by the amount of time you were a minion. Additional accessories add to the duration. 
-			You cannot be targeted by enemies. If all players are minions, they all die instantly.
-			'''
+		WeaponEffect: Deal 3% bonus damage for each empty Minion and Sentry slot
+		AccessoryEffect: Every 4th accessory reforged by this gives an additional Sentry Slot
 	}
 }
 
@@ -524,4 +460,8 @@ Buffs: {
 }
 
 DeathReasons.StardustMinionTimeExpired: "{0}'s time ran out!"
-CombatTexts.GuaranteedCrit: Guaranteed Crit!
+
+CombatTexts: {
+	GuaranteedCrit: Guaranteed Crit!
+	GuaranteedSuperCrit: Guaranteed Super Crit!
+}

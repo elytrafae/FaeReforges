@@ -3,11 +3,18 @@ This is a mod originally meant to just do things with reforges, but I got so cau
 The mod comes with three new reforge stats!
 - Summon Cost, increases/decreases how many slots minions/sentries occupy
 - Summon Speed, increases/decreases the speed of minions/sentries
-- Summon Crit Chance, gives summons a base crit chance. The mod does not make crit chance from other sources (like Rage Potions) apply to minions
+- Whip Frenzy Charge, a brand new mechanic that is explained below.
 
 Using these stats, as well as damage and knockback, 21 new reforges were added, exclusive to summoner staves!
 
 Right now, the mod does not follow vanilla's reforge style, and instead all positive reforges are intended to be viable and for them to not overshadow each-other.
+
+Aside from this, the mod also adds two new mechanics:
+- Whip Frenzy: A new bar for summoners. Filled by dealing minion and sentry damage. When activated, the user can swing three whips at once for several seconds!
+- Tinkerer Hammers: A new type of item, given to the Goblin Tinkerer. Get better hammers to get better prices on reforges,  better chances of getting positive reforges, and potentially cool new abilities for your weapons and accessories!
+
+Aside from this, the mod offers its own information accessory-like Minion and Sentry slot tracker (due to other mods displaying Sentries incorrectly if this mod is installed)
+
 For balance discussions, bug reports, etc. please contact me on Discord, under the username "elytrafae". You can also find me on the tModLoader discord!
 
 This mod is inspired by, and partially follows the phylosophy of, Sorbet Cafe's video on reforges (https://youtu.be/UBfoOkhV2vY?si=Jehi5nvXmoSS_KZB). Go check it out!

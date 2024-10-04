@@ -1,3 +1,6 @@
+
+Executive decision: Reforge Chance and Reforge Cost are no longer a thing! All Effectless hammers shall be discarded!
+
 ## Pre-Hardmode ##
 Starts With: Stone Hammer (75% Negative Reforge Chance, 150% Reforge Cost)
 
@@ -22,8 +25,8 @@ Hellstone Hammer: 50% Negative Reforge Chance, 120% Reforge Cost
 
 ## Hardmode ##
 
-Cobalt Hammer: 45% Negative Reforge Chance, 120% Reforge Cost
-Palladium Hammer: 50% Negative Reforge Chance, 115% Reforge Cost
+Cobalt Hammer: 45% Negative Reforge Chance, 120% Reforge Cost, Accessories reforged with this give +1% Max Mana Regenerated per second, +1% Shoot Velocity and +1% Chance to not consume ammo
+Palladium Hammer: 50% Negative Reforge Chance, 115% Reforge Cost, Accessories reforged with this give +1% Melee Speed
 
 Mythril Hammer: 45% Negative Reforge Chance, 115% Reforge Cost, Accessories reforged with this give +1 Defense
 Orichalcum Hammer: 45% Negative Reforge Chance, 115% Reforge Cost, Accessories reforged with this give +1% Movement Speed
@@ -34,6 +37,7 @@ Titanium Hammer: 45% Negative Reforge Chance, 110% Reforge Cost, Accessories ref
 Hallowed Hammer: 40% Negative Reforge Chance, 105% Reforge Cost, Weapon Effect: Dodging while holding the weapon gives you 10% Movement Speed and 10% Crit Chance for 10 seconds.
 Frost Hammer (I know, this is no longer crafted with Hallowed Bars, blah blah blah): 40% Negative Reforge Chance, 105% Reforge Cost, Weapon Effect: +10% Damage against enemies under Frostbite
 Forbidden Hammer (Read above): 40% Negative Reforge Chance, 105% Reforge Cost
+	Weapon Effect 2: This weapon deals up 15% bonus damage based on missing Mana percentage.
 	Weapon Effect: Non-summon weapons consume 10 Mana per hit, but deal 20 more damage. Weapons cannot be used while under 10 Mana, and deal 50% less damage while under Mana Sickness (except Magic weapons). Summons attempt to consume 40 Max Mana per slot they occupy for 20% increased damage.
 	Old Weapon Effect: Non-summon weapons cost 10 more Mana, but deal 15 more damage. Summons attempt to consume 40 Max Mana per slot they occupy for 15% increased damage.
 
@@ -46,7 +50,7 @@ Solar Hammer:
 	Weapon: Gain a ram dash while this weapon is held
 	Accessory: +1.5% Damage Reduction. This effect is disabled for 5 seconds after taking more than 5 damage
 Vortex Hammer: 
-	Weapon: Deal a guaranteed crit every 10 seconds
+	Weapon: Deal a guaranteed super crit every 10 seconds, dealing triple damage. Does not work in PVP
 	Accessory: +2% Damage and -1% Movement Speed
 Nebula Hammer: Striking an enemy while holding an item reforged by this has a chance to drop a Heart.
 	Weapon: Dealing damage drops light orbs that give you a stacking 15% Movement Speed and Flight Time buff. Stacks up to 3 times and lasts for 8 seconds.
@@ -54,11 +58,12 @@ Nebula Hammer: Striking an enemy while holding an item reforged by this has a ch
 Stardust Hammer: Items reforged with this summon a Stardust Eye while held, dealing the weapons's base damage as damage at a 10x slower rate than the weapon itself. It also deals the damage type of the held weapon. If the weapon is a summon wand, summons created by this item deal a guaranteed crit every 10 seconds.
 	Weapon: Increase the weapon's damage by 140%, but halve its attack speed. Projectiles spawned by this weapon have their Iframes inflicted doubled.
 	Accessory: When you die, you become your own minion for 2 seconds, immune to damage and can attack freely, after which you actually die. Your respawn time is reduced by the amount of time you were a minion. Additional accessories add to the duration. You cannot be targeted by enemies. If all players are minions, they all die instantly.
+Stardust Hammer (new):
+	Weapon: Deal 3% bonus damage for each empty Minion and Sentry slot
+	Accessory: Every 4th accessory reforged by this gives an additional Sentry Slot
 
-
-TODO: Fix Tinkerer UI being wack
-TODO: Fix hammer not being synced across clients
-TODO: Add enemy scaling for all of these effects to not be completely busted
+TODO: Fix the Stardust Hammer's Iframe rule not applying to yoyos
+	FIXED: Reworked Stardust Hammer entirely
 
 ## Calamity ##
 Cosmilite Hammer: ??% Negative Reforge Chance, ??% Reforge Cost, Effects of accessory reforges are doubled!
@@ -71,3 +76,13 @@ Every accessory reforged with this hammer makes you able to hold 1 more rock sha
 All projectiles have +1 Penetration :hue:
 Increase the damage dealt by accessories by x%
 Increase damage by up to x% based on the enemy's remaining/missing HP
+
+Weapon Buff based on class:
+	Melee: Dealing damage gives you a stacking +5% Melee Crit Chance buff for 2 seconds OR Free Panic Necklace while held
+	Mage: -20% Mana Cost while at or below 50% Mana
+	Ranger: Ignore 10% of enemy defense
+	Summoner: Each hit has a 20% chance to be a crit. This is separate from all other Crit Chance calculations.
+	Rogue: Hitting an enemy with a Stealth Strike heals you for 5% of your Max Health. This effect has a 0.5 second cooldown
+	Healer: 
+	Bard: 
+	Sleepwalker: 
