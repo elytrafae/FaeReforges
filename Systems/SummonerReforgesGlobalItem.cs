@@ -15,8 +15,6 @@ using Terraria.Utilities;
 namespace FaeReforges.Systems {
     internal class SummonerReforgesGlobalItem : GlobalItem {
 
-        // TODO: Add sentry summon count
-
         public float minionOccupancyMult = 1f;
         public float minionSpeedMult = 1f;
         public int minionCritBonus = 0;

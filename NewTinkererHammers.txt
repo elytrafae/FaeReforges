@@ -1,0 +1,76 @@
+
+Terminology:
+	Summoner Weapon: Anything that deals Summon Damage
+	Summon: Either a Minion or a Sentry. Not a whip.
+	Summon Weapons: Minion or Sentry summoning staves
+	Power of Five: "If 5 accessories are reforged with this hammer" (NOTE: I would underline this if I could, since it's a keyword)
+	Power of Three: "If 3 accessories are reforged with this hammer"
+	. . . You get the point
+
+Summon Stat Ideas:
+	- Summon Speed
+	- Summon Tag Effectiveness
+	- Armor Penetration
+
+Hammers now have tiers, specifying the tier of reforges they can apply
+
+Tier system:
+Tier 1: Randomly found + Early Hardmode, until Evil Boss
+Tier 2: From evil boss (craftable with tissue samples, so you can get it before if you suck) onward + Queen Bee
+Tier 3: First Mech boss onward
+Tier 4: Golem onward
+
+NOTE: Fuck Calamity, if Calamity is installed, the rest of the Hardmode ore hammers are craftable from Hardmode Fishing Crates instead (NOTE: Check shimmer after)
+
+Tier 1 Hammers:
+	Copper: +1 Defense
+	Tin: +1% Movement and Jump Speed
+	Iron: +5% Damage to Weapons
+	Lead: +5% Crit Chance to Weapons
+	Silver: +3% Ranged Velocity on accessories, Ranged weapons get +5 Armor Penetration
+	Tungsten: -2% Mana Cost on accessories, +8% casting speed on magic weapons
+	Gold: 2% Melee Speed on accessories, Melee weapons get +16% size
+	Platinum: Power of Five: +1 Minion Slot. +8% Summon Speed for Summon Weapons
+	Jungle: Weapons inflict Poison on hit
+	Ice: Power of Five: All attacks inflict Frostburn.
+	Fossil: 
+
+Tier 2 Hammers:
+	Honeycomb: Attacking with this weapon periodically summons additional bees. (NOTE: Make bees and giant bees use STATIC immunity! Global immunity should be illegal!)
+	Meteorite: This weapon deals 7% more damage and has its damage variance tripled!
+	Demonite: +2% Movement Speed and Acceleration
+	Crimtane: +0.5HP/s regeneration if you haven't been hit for 15 seconds
+	Obsidian: +1% Damage Reduction
+	Hellstone: Attacking with this weapon periodically summons an explosion, dealing the hit's damage class and applying Hellfire for a short time
+	
+	Gelatinous: Enemies you hit with this weapon receive double damage from DoT effects for 1 second.
+	Cobalt: Power of Five: Panic Necklace
+	Palladium: Hitting enemies gives you +1.5 HP/s regeneration for 2 seconds.
+	Mythril:
+	Orichalcum:
+	Adamantite:
+	Titanium:
+
+Tier 3:
+	Frost: This weapon deals 15% bonus damage to enemies affected by Frustburn or Frostbite
+	Forbidden: This weapon deals up to 20% bonus damage based on missing Mana
+	Hammer of Sight: You are afflicted with Blackout while you hold this weapon, but the effects of the reforge are applied twice! If applied to a Summon, you are permanently afflicted with Blackout!
+	Hammer of Blight: +4% Crit Chance, but all enemies around you regenerate 2 HP/s and bosses regenerate 3 HP/s.
+	Hammer of Might: +4% Damage, but getting hit turns it into -2% Damage for 10 seconds.
+	Hallowed: +10% Movement Speed and Crit Chance for 10 seconds after dodging an attack while holding this weapon
+	
+	Chlorophyte: 
+	Spectre: Killing an enemy with this weapon summons a friendly Skeleton who trades contact damage with enemies. It does not deal damage on your behalf.
+	Shroomite: 
+	Nanite: 
+	Broken Hero: Power of Five: You take 10% less damage from enemies who have a lower health percentage than you. You deal 10% more damage to enemies who have a higher health percentage than you.
+
+Tier 4:
+	Tiki: Power of Three: +1 Minion Slot OR Power of Five: +1 Minion and Sentry slot
+	Party: All attacks spawn confetti. Dying or dodging attacks spawns confetti. No additional effects. Nope. None. (All attacks inflict Party Fever. Dying or dodging with accessories reforged with this hammer results in an explosion that inflicts Party Fever. The explosion has a bigger radius the more accessories contribute)
+	Beetle: 
+	Betsy's: Critical Strikes with this weapon inflict Betsy's Curse
+	Solar
+	Vortex
+	Nebula
+	Stardust

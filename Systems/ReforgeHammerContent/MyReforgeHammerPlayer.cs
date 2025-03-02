@@ -79,8 +79,6 @@ namespace FaeReforges.Systems.ReforgeHammerContent {
             return dodge;
         }
 
-        // TODO: Make the hook for this.
-        // IL edit Hurt(PlayerDeathReason damageSource, int Damage, int hitDirection, out Player.HurtInfo info, bool pvp = false, bool quiet = false, int cooldownCounter = -1, bool dodgeable = true, float armorPenetration = 0f, float scalingArmorPenetration = 0f, float knockback = 4.5f)
         public void OnDodge() {
             if (ReforgeHammerUtility.GetHammerItemType(Player.HeldItem) == ModContent.ItemType<HallowedTinkererHammer>()) {
                 Player.AddBuff(ModContent.BuffType<HallowedAggression>(), 600, false);

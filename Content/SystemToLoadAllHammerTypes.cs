@@ -72,7 +72,7 @@ namespace FaeReforges.Content {
 
             ReforgeHammerType hallowedType = InitHammerTypeHelper<HallowedTinkererHammer>(); // Implemented elsewhere due to hooks
 
-            ReforgeHammerType frostType = InitHammerTypeHelper<FrostTinkererHammer>(); // TODO: Test again
+            ReforgeHammerType frostType = InitHammerTypeHelper<FrostTinkererHammer>();
             frostType.changeWeaponDealDamageNpc = (int item, Player attacker, NPC victim, ref NPC.HitModifiers hitModifiers) => { 
                 if (victim.HasBuff(BuffID.Frostburn) || victim.HasBuff(BuffID.Frostburn2)) {
                     hitModifiers.SourceDamage += 0.1f;
@@ -84,36 +84,33 @@ namespace FaeReforges.Content {
                 }
             };
 
-            ReforgeHammerType forbiddenType = InitHammerTypeHelper<ForbiddenTinkererHammer>(); // TODO: Test
+            ReforgeHammerType forbiddenType = InitHammerTypeHelper<ForbiddenTinkererHammer>(); 
             forbiddenType.changeWeaponDealDamagePvp = (int item, Player attacker, Player victim, ref Player.HurtModifiers hurtInfo) => {
                 hurtInfo.SourceDamage *= ForbiddenHammerDamageMultiplier(attacker);
             };
             forbiddenType.changeWeaponDealDamageNpc = (int item, Player attacker, NPC victim, ref NPC.HitModifiers hitInfo) => {
                 hitInfo.SourceDamage *= ForbiddenHammerDamageMultiplier(attacker);
             };
-            // The summoner part is somewhere else
-            //forbiddenType.onApplyWeapon = (item) => { if (!item.TryGetGlobalItem(out SummonerReforgesGlobalItem globItem)) { item.mana += 10; item.damage += 15; } }; // TODO: Make Mana Sickness and Yoyos somehow not an issue!
 
-
-            ReforgeHammerType chlorophyteType = InitHammerTypeHelper<ChlorophyteTinkererHammer>(); // TODO: Test
+            ReforgeHammerType chlorophyteType = InitHammerTypeHelper<ChlorophyteTinkererHammer>();
             chlorophyteType.onWeaponDealDamageNpc = (int item, Player attacker, NPC victim, NPC.HitInfo hitInfo, int damageDone) => { attacker.AddBuff(ModContent.BuffType<ChlorophyteRejuvenation>(), 120); };
             chlorophyteType.onWeaponDealDamagePvp = (int item, Player attacker, Player victim, Player.HurtInfo hurtInfo) => { attacker.AddBuff(ModContent.BuffType<ChlorophyteRejuvenation>(), 120); };
 
-            ReforgeHammerType venomiteType = InitHammerTypeHelper<VenomiteTinkererHammer>(); // TODO: Test
+            ReforgeHammerType venomiteType = InitHammerTypeHelper<VenomiteTinkererHammer>();
             venomiteType.onWeaponDealDamageNpc = (int item, Player attacker, NPC victim, NPC.HitInfo hitInfo, int damageDone) => { victim.AddBuff(BuffID.Venom, 180); };
             venomiteType.onWeaponDealDamagePvp = (int item, Player attacker, Player victim, Player.HurtInfo hurtInfo) => { victim.AddBuff(BuffID.Venom, 180); };
 
-            ReforgeHammerType spectreType = InitHammerTypeHelper<SpectreTinkererHammer>(); // TODO: Test
+            ReforgeHammerType spectreType = InitHammerTypeHelper<SpectreTinkererHammer>();
             spectreType.onUpdateAccessory = (Item item, Player player, bool visual) => { player.GetModPlayer<MyReforgeHammerPlayer>().dodgeChanceThousandth += 15; }; // +1.5% Dodge Chance
 
-            ReforgeHammerType shroomiteType = InitHammerTypeHelper<ShroomiteTinkererHammer>(); // TODO: Test
+            ReforgeHammerType shroomiteType = InitHammerTypeHelper<ShroomiteTinkererHammer>();
             shroomiteType.onUpdateAccessory = (Item item, Player player, bool visual) => { player.GetModPlayer<MyReforgeHammerPlayer>().flightTimeThousandth += 25; };
 
-            ReforgeHammerType solarType = InitHammerTypeHelper<SolarTinkererHammer>(); // TODO: Test
+            ReforgeHammerType solarType = InitHammerTypeHelper<SolarTinkererHammer>();
             solarType.onUpdateWeaponHeld = (Item item, Player player) => { player.dashType = 3; }; // We are using the solar flare dash, yes.
             solarType.onUpdateAccessory = (Item item, Player player, bool visual) => { player.GetModPlayer<MyReforgeHammerPlayer>().accessoryReforgedWithSolar = true; if (!player.HasBuff<SolarEclipse>()) { player.endurance += 0.015f; } }; // 1.5%
 
-            ReforgeHammerType vortexType = InitHammerTypeHelper<VortexTinkererHammer>(); // TODO: Test
+            ReforgeHammerType vortexType = InitHammerTypeHelper<VortexTinkererHammer>();
             vortexType.changeWeaponDealDamageNpc = (int item, Player attacker, NPC victim, ref NPC.HitModifiers hitModifiers) => {
                 if (attacker.GetModPlayer<MyReforgeHammerPlayer>().TriggerVortexCrit(item)) {
                     hitModifiers.SetCrit();
@@ -131,7 +128,7 @@ namespace FaeReforges.Content {
             */
             vortexType.onUpdateAccessory = (Item item, Player player, bool visual) => { player.GetModPlayer<VanillaReforgePlayer>().accessoryMovement -= 1; player.GetDamage(DamageClass.Generic) += 0.02f; };
 
-            ReforgeHammerType nebulaType = InitHammerTypeHelper<NebulaTinkererHammer>(); // TODO: Test
+            ReforgeHammerType nebulaType = InitHammerTypeHelper<NebulaTinkererHammer>();
             nebulaType.onWeaponDealDamageNpc = (int item, Player attacker, NPC victim, NPC.HitInfo hitInfo, int damage) => {
                 if (attacker.GetModPlayer<MyReforgeHammerPlayer>().TriggerNebulaBooster()) {
                     int boosterItem = Item.NewItem(new EntitySource_OnHit(attacker, victim), victim.Hitbox, ModContent.ItemType<SpeedBooster>(), 1);

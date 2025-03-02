@@ -62,9 +62,6 @@ Stardust Hammer (new):
 	Weapon: Deal 3% bonus damage for each empty Minion and Sentry slot
 	Accessory: Every 4th accessory reforged by this gives an additional Sentry Slot
 
-TODO: Fix the Stardust Hammer's Iframe rule not applying to yoyos
-	FIXED: Reworked Stardust Hammer entirely
-
 ## Calamity ##
 Cosmilite Hammer: ??% Negative Reforge Chance, ??% Reforge Cost, Effects of accessory reforges are doubled!
 
@@ -85,4 +82,4 @@ Weapon Buff based on class:
 	Rogue: Hitting an enemy with a Stealth Strike heals you for 5% of your Max Health. This effect has a 0.5 second cooldown
 	Healer: 
 	Bard: 
-	Sleepwalker: 
+	Sleepwalker: 5% of damage you deal with this weapon is added as Tiredness

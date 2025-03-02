@@ -11,7 +11,7 @@ Right now, the mod does not follow vanilla's reforge style, and instead all posi
 
 Aside from this, the mod also adds two new mechanics:
 - Whip Frenzy: A new bar for summoners. Filled by dealing minion and sentry damage. When activated, the user can swing three whips at once for several seconds!
-- Tinkerer Hammers: A new type of item, given to the Goblin Tinkerer. Get better hammers to get better prices on reforges,  better chances of getting positive reforges, and potentially cool new abilities for your weapons and accessories!
+- Tinkerer Hammers: A new type of item, starting from Hardmode, adding cool new abilities for your weapons and accessories that you reforge!
 
 Aside from this, the mod offers its own information accessory-like Minion and Sentry slot tracker (due to other mods displaying Sentries incorrectly if this mod is installed)
 

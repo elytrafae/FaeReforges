@@ -15,8 +15,6 @@ using Terraria.ModLoader;
 
 namespace FaeReforges {
     public partial class FaeReforges {
-
-        // TODO: Finish this!
         internal enum MessageType : byte {
             MyReforgeHammerPlayerSync,
             SummonCombatText

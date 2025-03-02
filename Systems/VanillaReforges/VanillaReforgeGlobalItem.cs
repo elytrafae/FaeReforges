@@ -12,7 +12,6 @@ using Terraria.ModLoader;
 namespace FaeReforges.Systems.VanillaReforges {
     internal class VanillaReforgeGlobalItem : GlobalItem {
 
-        // TODO: Make item value modifiers the same across all reforges
         public override bool AllowPrefix(Item item, int pre) {
             return item.accessory || pre >= PrefixID.Count || DynamicReforgeLoader.vanillaOverrides[pre] != null;
         }

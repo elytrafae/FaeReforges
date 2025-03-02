@@ -368,7 +368,7 @@ TinkererHammerType: {
 	}
 
 	ForbiddenTinkererHammer: {
-		WeaponEffect: This weapon deals up 15% bonus damage based on missing Mana percentage
+		WeaponEffect: This weapon deals up to 15% bonus damage based on missing Mana percentage
 		AccessoryEffect: ""
 	}
 
