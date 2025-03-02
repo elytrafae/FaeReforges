@@ -7,14 +7,21 @@ using System.Threading.Tasks;
 using Terraria.Localization;
 using Terraria;
 using Terraria.ModLoader;
+using FaeReforges.Systems;
 
 namespace FaeReforges.Content.Reforges.Accessory {
     public class ExtraCritChanceAccessoryReforge : ModPrefix {
 
         public class ReforgeLoader : ILoadable {
             public void Load(Mod mod) {
-                mod.AddContent(new ExtraCritChanceAccessoryReforge("Fortunate", 3));
-                mod.AddContent(new ExtraCritChanceAccessoryReforge("Accurate", 1));
+                Add(mod, "Fortunate", 3);
+                Add(mod, "Accurate", 1);
+            }
+
+            private void Add(Mod mod, string name, int tier) {
+                ExtraCritChanceAccessoryReforge reforge = new(name, tier);
+                mod.AddContent(reforge);
+                ReforgeTierSystem.SetPrefixTier(reforge.Type, tier);
             }
 
             public void Unload() {
@@ -37,7 +44,7 @@ namespace FaeReforges.Content.Reforges.Accessory {
         }
 
         public override void ModifyValue(ref float valueMult) {
-            valueMult *= VanillaReforgePlayer.ACCESSORY_VALUES_PER_POWER[power];
+            valueMult *= ReforgeTierSystem.GetValueMult(power);
         }
 
         public override IEnumerable<TooltipLine> GetTooltipLines(Item item) {

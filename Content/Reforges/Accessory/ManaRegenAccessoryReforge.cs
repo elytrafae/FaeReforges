@@ -1,4 +1,5 @@
-﻿using FaeReforges.Systems.VanillaReforges;
+﻿using FaeReforges.Systems;
+using FaeReforges.Systems.VanillaReforges;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,10 +17,16 @@ namespace FaeReforges.Content.Reforges.Accessory
         public class ReforgeLoader : ILoadable
         {
             public void Load(Mod mod) {
-                mod.AddContent(new ManaRegenAccessoryReforge("Charmed", 4));
+                Add(mod, "Charmed", 4);
                 // Arcane would go here
-                mod.AddContent(new ManaRegenAccessoryReforge("Hexxed", 2));
-                mod.AddContent(new ManaRegenAccessoryReforge("Jinxed", 1));
+                Add(mod, "Hexxed", 2);
+                Add(mod, "Jinxed", 1);
+            }
+
+            private void Add(Mod mod, string name, int tier) {
+                ManaRegenAccessoryReforge reforge = new(name, tier);
+                mod.AddContent(reforge);
+                ReforgeTierSystem.SetPrefixTier(reforge.Type, tier);
             }
 
             public void Unload() {
@@ -44,7 +51,7 @@ namespace FaeReforges.Content.Reforges.Accessory
         }
         public override void ModifyValue(ref float valueMult)
         {
-            valueMult *= VanillaReforgePlayer.ACCESSORY_VALUES_PER_POWER[power];
+            valueMult *= ReforgeTierSystem.GetValueMult(power);
         }
         
 

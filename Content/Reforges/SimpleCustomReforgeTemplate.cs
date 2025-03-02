@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FaeReforges.Systems;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,6 @@ namespace FaeReforges.Content.Reforges {
 
         readonly string name;
         readonly PrefixCategory category;
-        readonly bool positive;
         readonly float damage;
         readonly float knockback;
         readonly float speed;
@@ -19,10 +19,9 @@ namespace FaeReforges.Content.Reforges {
         readonly float mana;
         readonly int crit;
 
-        public SimpleCustomReforgeTemplate(string name, PrefixCategory category, bool positive, float damage, float knockback, float speed, float size, float velocity, float mana, int crit) {
+        public SimpleCustomReforgeTemplate(string name, PrefixCategory category, float damage, float knockback, float speed, float size, float velocity, float mana, int crit) {
             this.name = name;
             this.category = category;
-            this.positive = positive;
             this.damage = 1f + damage;
             this.knockback = 1f + knockback;
             this.speed = 1f - speed; // This is intentionally a -
@@ -46,7 +45,7 @@ namespace FaeReforges.Content.Reforges {
         }
 
         public override void ModifyValue(ref float valueMult) {
-            valueMult = positive ? 1.5f : 0.5f;
+            valueMult = ReforgeTierSystem.GetPriceMultForType(Type);
         }
 
     }

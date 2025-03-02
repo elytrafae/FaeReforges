@@ -12,10 +12,10 @@ using Terraria.ModLoader;
 namespace FaeReforges.Systems {
     internal class ReforgeTierSystem : ModSystem {
 
-        private static int[] vanillaAccessoryPrefixTiers = new int[PrefixID.Count];
-
+        private static readonly int[] prefixTiers = PrefixID.Sets.Factory.CreateIntSet(0);
         private const int FIRST_ACCESSORY_PREFIX = 62;
         private const int LAST_ACCESSORY_PREFIX = 80;
+        private static readonly Dictionary<int, List<int>> PrefixTierCache = new(); 
 
         public override void Load() {
             Item dummyItem = new Item(ItemID.CelestialShell);
@@ -25,32 +25,16 @@ namespace FaeReforges.Systems {
                 dummyItem.Prefix(i);
                 int newPrice = dummyItem.value;
                 double priceDiff = ((double)newPrice) / initPrice;
-                vanillaAccessoryPrefixTiers[i] = GetTierFromPriceDiff(priceDiff);
+                prefixTiers[i] = GetTierFromPriceDiff(priceDiff);
             }
         }
 
-        public static bool IsPrefixPositive(int pre) {
-            ModPrefix modPrefix = PrefixLoader.GetPrefix(pre);
-            if (modPrefix == null) {
-                VanillaReforgeOverrideData data = DynamicReforgeLoader.vanillaOverrides[pre];
-                if (data == null) {
-                    return false; // IDK what to do here. This shouldn't even be called in this case!
-                }
-                return data.positive;
-            }
-            float priceMult = 1f;
-            modPrefix.ModifyValue(ref priceMult);
-            return priceMult >= 1f;
+        public static int GetPrefixTier(int pre) {
+            return prefixTiers[pre];
         }
 
-        public static int GetAccessoryPrefixTier(int pre) {
-            ModPrefix modPrefix = PrefixLoader.GetPrefix(pre);
-            if (modPrefix == null) {
-                return vanillaAccessoryPrefixTiers[pre];
-            }
-            float priceMult = 1f;
-            modPrefix.ModifyValue(ref priceMult);
-            return GetTierFromPriceMult(priceMult);
+        public static void SetPrefixTier(int pre, int tier) {
+            prefixTiers[pre] = tier;
         }
 
         // Only use on vanilla items!
@@ -67,21 +51,27 @@ namespace FaeReforges.Systems {
             return 4;
         }
 
-
-        // Only use on modded items!
-        private static int GetTierFromPriceMult(double priceMult) {
-            return (int)Math.Round((priceMult - 1) / 0.05);
+        public static float GetValueMult(int tier) {
+            return 1f + tier * 0.05f;
         }
 
-        public static bool IsPrefixForAccessories(int pre) {
-            if (pre >= FIRST_ACCESSORY_PREFIX && pre <= LAST_ACCESSORY_PREFIX) {
-                return true;
+        public static float GetPriceMultForType(int type) { 
+            return GetValueMult(GetPrefixTier(type));
+        }
+
+        public static IEnumerable<int> GetAllReforgesOfTier(int tier) {
+            List<int> list;
+            if (PrefixTierCache.TryGetValue(tier, out list)) {
+                return list;
             }
-            ModPrefix modPre = PrefixLoader.GetPrefix(pre);
-            if (modPre == null) {
-                return false;
+            list = new List<int>();
+            for (int i = 0; i < prefixTiers.Length; i++) {
+                if (prefixTiers[i] == tier) {
+                    list.Add(i);
+                }
             }
-            return modPre.Category == PrefixCategory.Accessory;
+            PrefixTierCache.Add(tier, list);
+            return list;
         }
 
     }

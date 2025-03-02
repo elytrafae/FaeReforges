@@ -27,7 +27,7 @@ namespace FaeReforges.Systems {
 
         public void ScaleStats(NPC npc) {
             double scale = 1f;
-            // Add post moon lord bosses, like DOG here
+            // TODO: Add post moon lord bosses, like DOG here?
             if (NPC.downedMoonlord) {
                 scale = 1.15f;
             } else if (NPC.downedPlantBoss) {

@@ -15,10 +15,9 @@ namespace FaeReforges.Content.Reforges {
         readonly public float velocity;
         readonly public float mana;
         readonly public int crit;
-        readonly public bool positive;
 
         // The speed and mana cost are with a - because it's actually use time/mana cost increase that is being applied
-        public VanillaReforgeOverrideData(float damage, float knockback, float speed, float size, float velocity, float mana, int crit, bool positive) {
+        public VanillaReforgeOverrideData(float damage, float knockback, float speed, float size, float velocity, float mana, int crit) {
             this.damage = 1f + damage;
             this.knockback = 1f + knockback;
             this.speed = 1f - speed;
@@ -26,7 +25,6 @@ namespace FaeReforges.Content.Reforges {
             this.velocity = 1f + velocity;
             this.mana = 1f - mana;
             this.crit = crit;
-            this.positive = positive;
         }
 
         public void ApplyTo(out float dmg, out float kb, out float spd, out float size, out float shtspd, out float mcst, out int crt) {

@@ -22,6 +22,8 @@ namespace FaeReforges.Content {
     public class SystemToLoadAllHammerTypes : ModSystem {
 
         public override void OnModLoad() {
+            // TODO: Remake all of the hammers
+
             /*
             // Prehardmode
             InitHammerTypeHelper<StoneTinkererHammer>(75, 150);
@@ -42,6 +44,7 @@ namespace FaeReforges.Content {
             InitHammerTypeHelper<HellstoneTinkererHammer>(50, 120);
             */
 
+            /*
             ReforgeHammerType meteoriteType = InitHammerTypeHelper<MeteoriteTinkererHammer>();
             meteoriteType.onApplyWeapon = (Item item) => { item.crit += 10; item.damage = (int)Math.Ceiling(item.damage * 0.9); };
             meteoriteType.onUpdateAccessory = (Item item, Player player, bool visible) => { player.GetDamage(DamageClass.Generic) -= 0.1f; player.GetCritChance(DamageClass.Generic) += 10; };
@@ -119,13 +122,6 @@ namespace FaeReforges.Content {
                     ((FaeReforges)Mod).SendDisplayCombatText(victim, "CombatTexts.GuaranteedSuperCrit", Color.Red);
                 }
             };
-            /*
-            vortexType.changeWeaponDealDamagePvp = (item, attacker, victim, hurtInfo) => {
-                if (attacker.GetModPlayer<MyReforgeHammerPlayer>().TriggerVortexCrit(item.type)) {
-                    hurtInfo.
-                }
-            };
-            */
             vortexType.onUpdateAccessory = (Item item, Player player, bool visual) => { player.GetModPlayer<VanillaReforgePlayer>().accessoryMovement -= 1; player.GetDamage(DamageClass.Generic) += 0.02f; };
 
             ReforgeHammerType nebulaType = InitHammerTypeHelper<NebulaTinkererHammer>();
@@ -158,6 +154,9 @@ namespace FaeReforges.Content {
                 hurtModifiers.SourceDamage *= 1f + (attacker.maxMinions + attacker.maxTurrets - (int)Math.Ceiling(CountMinionsAndSentries(attacker))) * 3 / 100f;
             };
             stardustType.onUpdateAccessory = (Item item, Player player, bool hideVisual) => { player.GetModPlayer<MyReforgeHammerPlayer>().bonusSentrySlotHundreth += 25; };
+            */
+            
+            
             /* // Old effects!
             stardustType.onApplyWeapon = (Item item) => { item.damage = (int)Math.Ceiling(item.damage * 2.4); item.useAnimation *= 2; item.useTime *= 2; };
             stardustType.onCreateProjectile = (int item, Projectile projectile, IEntitySource context) => { 
@@ -183,10 +182,8 @@ namespace FaeReforges.Content {
             */
         }
 
-        private ReforgeHammerType InitHammerTypeHelper<T>() where T : ModItem {
-            ReforgeHammerType hammerType = new ReforgeHammerType();
-            //hammerType.negativeReforgeChance = negChance;
-            //hammerType.reforgeCost = refCost;
+        private ReforgeHammerType InitHammerTypeHelper<T>(int tier) where T : ModItem {
+            ReforgeHammerType hammerType = new ReforgeHammerType(tier);
             ReforgeHammerRegistry.RegisterHammerType(ModContent.GetInstance<T>().Item, hammerType);
             return hammerType;
         }

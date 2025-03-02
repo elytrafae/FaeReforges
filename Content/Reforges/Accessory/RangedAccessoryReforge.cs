@@ -7,16 +7,23 @@ using System.Threading.Tasks;
 using Terraria.Localization;
 using Terraria;
 using Terraria.ModLoader;
+using FaeReforges.Systems;
 
 namespace FaeReforges.Content.Reforges.Accessory {
     public class RangedAccessoryReforge : ModPrefix {
 
         public class ReforgeLoader : ILoadable {
             public void Load(Mod mod) {
-                mod.AddContent(new RangedAccessoryReforge("Economic", 4));
-                mod.AddContent(new RangedAccessoryReforge("CostEffective", 3));
-                mod.AddContent(new RangedAccessoryReforge("Solvent", 2));
-                mod.AddContent(new RangedAccessoryReforge("Fruitful", 1));
+                Add(mod, "Economic", 4);
+                Add(mod, "CostEffective", 3);
+                Add(mod, "Solvent", 2);
+                Add(mod, "Fruitful", 1);
+            }
+
+            private void Add(Mod mod, string name, int tier) {
+                RangedAccessoryReforge reforge = new(name, tier);
+                mod.AddContent(reforge);
+                ReforgeTierSystem.SetPrefixTier(reforge.Type, tier);
             }
 
             public void Unload() {
@@ -40,7 +47,7 @@ namespace FaeReforges.Content.Reforges.Accessory {
             modPlayer.ammoSavePoints += power;
         }
         public override void ModifyValue(ref float valueMult) {
-            valueMult *= VanillaReforgePlayer.ACCESSORY_VALUES_PER_POWER[power];
+            valueMult *= ReforgeTierSystem.GetValueMult(power);
         }
 
 

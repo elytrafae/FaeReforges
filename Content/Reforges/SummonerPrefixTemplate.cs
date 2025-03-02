@@ -19,24 +19,21 @@ namespace FaeReforges.Content.Reforges {
         
 
         readonly string name;
-        readonly bool positive;
+        readonly int tier;
         readonly float damage;
         readonly float knockback;
-        readonly int crit;
         readonly float speed;
-        readonly float cost;
-        readonly float frenzy;
-        
+        readonly float effectiveness;
+        readonly float armorpen;
 
-        public SummonerPrefixTemplate(string name, bool positive, float damage, float knockback, int crit, float speed, float cost, float frenzy) { 
+        public SummonerPrefixTemplate(string name, int tier, float damage, float knockback, float speed, float effectiveness, float armorpen) { 
             this.name = name + "SummonerPrefix";
-            this.positive = positive;
+            this.tier = tier;
             this.damage = damage;
             this.knockback = knockback;
-            this.crit = crit;
             this.speed = speed;
-            this.cost = cost;
-            this.frenzy = frenzy;
+            this.effectiveness = effectiveness;
+            this.armorpen = armorpen;
         }
 
         public override string Name => name;
@@ -59,11 +56,9 @@ namespace FaeReforges.Content.Reforges {
         }
 
         public override void Apply(Item item) {
-            if (item.TryGetGlobalItem<SummonerReforgesGlobalItem>(out SummonerReforgesGlobalItem globItem)) {
-                globItem.minionOccupancyMult = 1f - cost;
+            if (item.TryGetGlobalItem(out SummonerReforgesGlobalItem globItem)) {
                 globItem.minionSpeedMult = 1f + speed;
-                globItem.minionCritBonus = crit;
-                globItem.whipFrenzyChargeMult = 1f + frenzy;
+
             }
         }
 
@@ -72,27 +67,6 @@ namespace FaeReforges.Content.Reforges {
         }
 
         public override IEnumerable<TooltipLine> GetTooltipLines(Item item) {
-            /*
-            if (MinionOccupancyReduction > 0) {
-                yield return new TooltipLine(Mod, "PrefixSummonerOccupancy", SummonOccupancyReductionTooltip.Format(MinionOccupancyReduction * 100)) {
-                    IsModifier = true, // Sets the color to the positive modifier color.
-                    IsModifierBad = false
-                };
-            } else if (MinionOccupancyReduction < 0) {
-                yield return new TooltipLine(Mod, "PrefixSummonerOccupancy", SummonOccupancyIncreaseTooltip.Format(-MinionOccupancyReduction * 100)) {
-                    IsModifier = true, // Sets the color to the positive modifier color.
-                    IsModifierBad = true
-                };
-            }
-            */
-
-            if (cost != 0) {
-                yield return new TooltipLine(Mod, "PrefixSummonerOccupancy", SummonOccupancyTooltip.Format(-cost * 100)) {
-                    IsModifier = true,
-                    IsModifierBad = cost < 0
-                };
-            }
-
 
             if (speed != 0) {
                 yield return new TooltipLine(Mod, "PrefixSummonerSpeed", SummonSpeedBuffTooltip.Format(speed * 100)) {
@@ -100,44 +74,32 @@ namespace FaeReforges.Content.Reforges {
                     IsModifierBad = speed < 0
                 };
             }
-
-            if (crit != 0) {
-                yield return new TooltipLine(Mod, "PrefixSummonerCrit", SummonCritChanceTooltip.Format(crit)) {
+            if (effectiveness != 0) {
+                yield return new TooltipLine(Mod, "PrefixSummonerTagEffectiveness", SummonTagEffectivenessTooltip.Format(effectiveness * 100)) {
                     IsModifier = true,
-                    IsModifierBad = crit < 0
+                    IsModifierBad = effectiveness < 0
                 };
             }
-
-            if (frenzy != 0) {
-                yield return new TooltipLine(Mod, "PrefixSummonerFrenzy", SummonFrenzyChargeTooltip.Format(frenzy * 100)) {
+            if (effectiveness != 0) {
+                yield return new TooltipLine(Mod, "PrefixSummonerArmorPenetration", SummonArmorPenetrationTooltip.Format(armorpen * 100)) {
                     IsModifier = true,
-                    IsModifierBad = frenzy < 0
+                    IsModifierBad = armorpen < 0
                 };
             }
-            // If possible and suitable, try to reuse the name identifier and translation value of Terraria prefixes. For example, this code uses the vanilla translation for the word defense, resulting in "-5 defense". Note that IsModifierBad is used for this bad modifier.
-            /*yield return new TooltipLine(Mod, "PrefixAccDefense", "-5" + Lang.tip[25].Value) {
-				IsModifier = true,
-				IsModifierBad = true,
-			};*/
         }
 
         public override void ModifyValue(ref float valueMult) {
-            ServerConfig config = ModContent.GetInstance<ServerConfig>();
-            valueMult = positive ? config.PositiveWeaponReforgeValueMultiplier : config.NegativeWeaponReforgeValueMultiplier;
+            valueMult = ReforgeTierSystem.GetValueMult(tier);
         }
 
-        public static LocalizedText SummonOccupancyTooltip { get; private set; }
-        //public static LocalizedText SummonOccupancyIncreaseTooltip { get; private set; }
         public static LocalizedText SummonSpeedBuffTooltip { get; private set; }
-        public static LocalizedText SummonCritChanceTooltip { get; private set; }
-        public static LocalizedText SummonFrenzyChargeTooltip { get; private set; }
+        public static LocalizedText SummonTagEffectivenessTooltip { get; private set; }
+        public static LocalizedText SummonArmorPenetrationTooltip { get; private set; }
 
         public override void SetStaticDefaults() {
-            SummonOccupancyTooltip = Mod.GetLocalization($"{LocalizationCategory}.{nameof(SummonOccupancyTooltip)}");
-            //SummonOccupancyIncreaseTooltip = Mod.GetLocalization($"{LocalizationCategory}.{nameof(SummonOccupancyIncreaseTooltip)}");
             SummonSpeedBuffTooltip = Mod.GetLocalization($"{LocalizationCategory}.{nameof(SummonSpeedBuffTooltip)}");
-            SummonCritChanceTooltip = Mod.GetLocalization($"{LocalizationCategory}.{nameof(SummonCritChanceTooltip)}");
-            SummonFrenzyChargeTooltip = Mod.GetLocalization($"{LocalizationCategory}.{nameof(SummonFrenzyChargeTooltip)}");
+            SummonTagEffectivenessTooltip = Mod.GetLocalization($"{LocalizationCategory}.{nameof(SummonTagEffectivenessTooltip)}");
+            SummonArmorPenetrationTooltip = Mod.GetLocalization($"{LocalizationCategory}.{nameof(SummonArmorPenetrationTooltip)}");
         }
     }
 }

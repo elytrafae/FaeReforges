@@ -26,8 +26,11 @@ namespace FaeReforges.Content {
             AccessoryEffect = Language.GetOrRegister($"{modName}.{typeName}.{nameof(AccessoryEffect)}", () => "");
         }
 
-        //public int negativeReforgeChance = 0;
-        //public int reforgeCost = 0;
+        public ReforgeHammerType(int tier) {
+            hammerTier = tier;
+        }
+
+        public int hammerTier;
         public Action<Item> onApplyWeapon = (item) => { };
         public Action<Item> onApplyAccessory = (item) => { };
         public Action<Item, Player> onUpdateWeaponHeld = (item, player) => { };
