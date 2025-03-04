@@ -24,25 +24,26 @@ namespace FaeReforges.Content {
         public override void OnModLoad() {
             // TODO: Remake all of the hammers
 
-            /*
             // Prehardmode
-            InitHammerTypeHelper<StoneTinkererHammer>(75, 150);
-            InitHammerTypeHelper<CopperTinkererHammer>(70, 150);
-            InitHammerTypeHelper<TinTinkererHammer>(75, 145);
-            InitHammerTypeHelper<IronTinkererHammer>(65, 145);
-            InitHammerTypeHelper<LeadTinkererHammer>(70, 140);
-            InitHammerTypeHelper<SilverTinkererHammer>(60, 140);
-            InitHammerTypeHelper<TungstenTinkererHammer>(65, 135);
-            InitHammerTypeHelper<GoldenTinkererHammer>(55, 135);
-            InitHammerTypeHelper<PlatinumTinkererHammer>(60, 130);
+            ReforgeHammerType copperHammer = InitHammerTypeHelper<CopperTinkererHammer>(1);
+            copperHammer.onUpdateAccessory = (Item item, Player player, bool visible) => { player.statDefense++; };
+            ReforgeHammerType tinHammer = InitHammerTypeHelper<TinTinkererHammer>(1);
+            tinHammer.onUpdateAccessory = (Item item, Player player, bool visible) => { player.GetModPlayer<VanillaReforgePlayer>().accessoryMovement++; player.jumpSpeedBoost *= 0.01f; };
+            ReforgeHammerType ironHammer = InitHammerTypeHelper<IronTinkererHammer>(1);
+            ironHammer.onApplyWeapon = (Item item) => { item.damage = (item.damage * 105) / 100; };
+            ReforgeHammerType leadHammer = InitHammerTypeHelper<LeadTinkererHammer>(1);
+            leadHammer.onApplyWeapon = (Item item) => { item.crit += 5; };
+            InitHammerTypeHelper<SilverTinkererHammer>(1);
+            InitHammerTypeHelper<TungstenTinkererHammer>(1);
+            InitHammerTypeHelper<GoldenTinkererHammer>(1);
+            InitHammerTypeHelper<PlatinumTinkererHammer>(1);
 
-            InitHammerTypeHelper<DemoniteTinkererHammer>(50, 130);
-            InitHammerTypeHelper<CrimtaneTinkererHammer>(55, 125);
-            ReforgeHammerType meteoriteType = InitHammerTypeHelper<MeteoriteTinkererHammer>(53, 127);
+            InitHammerTypeHelper<DemoniteTinkererHammer>(2);
+            InitHammerTypeHelper<CrimtaneTinkererHammer>(2);
+            ReforgeHammerType meteoriteType = InitHammerTypeHelper<MeteoriteTinkererHammer>(2);
             meteoriteType.onApplyWeapon = (Item item) => { item.crit += 10; item.damage = (int)Math.Ceiling(item.damage * 0.9); };
             meteoriteType.onUpdateAccessory = (Item item, Player player, bool visible) => { player.GetDamage(DamageClass.Generic) -= 0.1f; player.GetCritChance(DamageClass.Generic) += 10; };
-            InitHammerTypeHelper<HellstoneTinkererHammer>(50, 120);
-            */
+            InitHammerTypeHelper<HellstoneTinkererHammer>(2);
 
             /*
             ReforgeHammerType meteoriteType = InitHammerTypeHelper<MeteoriteTinkererHammer>();
@@ -211,7 +212,7 @@ namespace FaeReforges.Content {
                     count += proj.minionSlots;
                 }
                 if (proj.WipableTurret) {
-                    count += proj.GetGlobalProjectile<SummonerReforgesGlobalProjectile>().sentryOccupancy;
+                    count++;
                 }
             }
             return count;

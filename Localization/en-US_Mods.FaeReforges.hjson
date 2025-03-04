@@ -1,7 +1,5 @@
 Prefixes: {
-	SummonOccupancyTooltip: "{0:+0;-#}% summon cost"
 	SummonSpeedBuffTooltip: "{0:+0;-#}% summon speed"
-	SummonCritChanceTooltip: "{0:+0;-#}% summon crit chance"
 	BouncySummonerPrefix.DisplayName: Bouncy
 	CrampedSummonerPrefix.DisplayName: Cramped
 	EnergeticSummonerPrefix.DisplayName: Energetic
@@ -40,6 +38,11 @@ Prefixes: {
 	CostEffective.DisplayName: Cost Effective
 	Solvent.DisplayName: Solvent
 	Fruitful.DisplayName: Fruitful
+	SummonTagEffectivenessTooltip: "{0:+0;-#}% tag effectiveness"
+	SummonArmorPenetrationTooltip: "{0:+0;-#}% armor penetration"
+	Uneven.DisplayName: Uneven
+	Puissant.DisplayName: Puissant
+	Disenchanted.DisplayName: Disenchanted
 }
 
 Configs: {
@@ -423,6 +426,63 @@ TinkererHammerType: {
 		WeaponEffect: Deal 3% bonus damage for each empty Minion and Sentry slot
 		AccessoryEffect: Every 4th accessory reforged by this gives an additional Sentry Slot
 	}
+
+	CopperTinkererHammer: {
+		WeaponEffect: ""
+		AccessoryEffect: +1 Defense
+	}
+
+	TinTinkererHammer: {
+		WeaponEffect: ""
+		AccessoryEffect: +1% Movement and Jump Speed
+	}
+
+	IronTinkererHammer: {
+		WeaponEffect: +5% Damage
+		AccessoryEffect: ""
+	}
+
+	LeadTinkererHammer: {
+		WeaponEffect: +5% Crit Chance
+		AccessoryEffect: ""
+	}
+
+	SilverTinkererHammer: {
+		WeaponEffect: ""
+		AccessoryEffect: ""
+	}
+
+	TungstenTinkererHammer: {
+		WeaponEffect: ""
+		AccessoryEffect: ""
+	}
+
+	GoldenTinkererHammer: {
+		WeaponEffect: ""
+		AccessoryEffect: ""
+	}
+
+	PlatinumTinkererHammer: {
+		WeaponEffect: ""
+		AccessoryEffect: ""
+	}
+
+	DemoniteTinkererHammer: {
+		WeaponEffect: ""
+		AccessoryEffect: ""
+	}
+
+	CrimtaneTinkererHammer: {
+		WeaponEffect: ""
+		AccessoryEffect: ""
+	}
+
+	HellstoneTinkererHammer: {
+		WeaponEffect: ""
+		AccessoryEffect: ""
+	}
+
+	HammerTier: "[c/345929:Tier {0} Reforge Hammer]"
 }
 
 Conditions.Never: Never. This recipe is only here to enable Shimmering. If anyone knows a better way to do this, I am all ears

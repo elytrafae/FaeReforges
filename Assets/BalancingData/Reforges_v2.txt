@@ -1,0 +1,70 @@
+Damaged 1 -0.07 0 0.1
+Weak 1 0.1 -0.15 0.0
+Broken 1 0 -0.2 0.13
+Shoddy 2 -0.1 0.12 0.15
+Ruthless 2 0.07 0 0.07
+Keen 2 0.08 0.08 0.0
+Forceful 3 0 0.12 0.15
+Strong 3 0.2 0.05 0.0
+Hurtful 3 0.1 0 0.1
+Zealous 3 -0.05 0.3 -0.05
+Godly 4 0.15 0 0.05
+Superior 4 0 0 0.2
+Demonic 4 0.2 0.2 -0.05
+Unpleasant 4 0 0.4 0.0
+Legendary2 4 0.17 -0.05 0.17
+#
+Annoying 1 -0.3 0 0.2 0.15
+Sluggish 1 0.3 0.2 0 -0.3
+Slow 2 0.15 0.1 0.15 -0.2
+Nimble 2 0 -0.05 0 0.3
+Keen 2 0 0.3 0 0.08
+Lazy 3 0.25 0 0.15 -0.2
+Nasty 3 0.05 0.1 0.05 0.1
+Quick 3 -0.1 0 -0.05 0.4
+Agile 4 0 0 0 0.3
+Murderous 4 0.1 0.05 0.1 0.1
+Deadly 4 0.22 0 0.05 0.05
+#
+Tiny 1 0.1 -0.1 0.03 0.2 -0.3
+Terrible 1 -0.1 0.3 -0.1 0 0.1
+Unhappy 1 0.12 -0.15 0.1 -0.15 0.1
+Shameful 2 0.1 0 0 0.2 -0.2
+Dull 2 -0.05 0.3 0 0 0.2
+Small 2 0 0 0.15 0 -0.1
+Heavy 3 0 0.3 0 -0.1 0.2
+Light 3 0 -0.1 0 0.2 0.1
+Bulky 3 0.1 0 0.05 0 0.15
+Pointy 3 0.15 0 0.1 0.05 -0.1
+Large 4 0 0 0.05 0 0.3
+Dangerous 4 0.05 0 0.2 0 0.05
+Sharp 4 0.25 0 0 0 -0.05
+Legendary 4 0.05 0.1 0.05 0.1 0.1
+Massive 5 0 0.1 0 -0.1 0.7
+#
+Awful 1 -0.1 0.2 -0.1 0.05 0.3
+Awkward 1 0.1 -0.1 0.05 0.1 -0.3
+Uneven 1 -0.1 0 0.1 0 0.05
+Frenzying 2 -0.2 -0.1 -0.05 0.3 0.2
+Powerful 2 0.2 0 0.05 -0.15 -0.05
+Lethargic 2 0 0.2 0.1 0 -0.2
+Intimidating 3 0.2 0 -0.05 0 -0.1
+Rapid 3 0 -0.05 0 0.1 0.15
+Sighted 3 0 0 0.15 -0.05 0.1
+Puissant 3 0 0.3 0 0.05 -0.05
+Hasty 4 0 0 0 0.2 0.1
+Staunch 4 0 0.2 0 0 0.25
+Deadly 4 0.1 0 0.1 0 0.05
+Unreal 4 0.05 0.1 0.05 0.1 0.15
+#
+Ignorant 1 0.1 0.1 0 0 -0.15
+Deranged 1 -0.1 0 0 0.1 0.1
+Disenchanted 1 0 0 0.2 0 -0.2
+Inept 2 0 0 0 0 0.15
+Intense 2 0.2 0 0 0 -0.15
+Furious 2 -0.15 0 -0.05 0.3 0.05
+#
+Rebellious 1 0 0 0.1 -0.15 0.1
+Cowardly 1 0.1 0 -0.05 0.1 -0.15
+Egotistical 1 0.08 0.2 0 -0.1 0.0
+#

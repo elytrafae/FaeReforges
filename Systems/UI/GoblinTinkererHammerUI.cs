@@ -1,24 +1,14 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.GameContent.UI.Elements;
-using Terraria.GameContent;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.UI;
 using Terraria;
-using FaeReforges.Systems.WhipFrenzy;
-using SteelSeries.GameSense;
-using FaeReforges.Systems.Config;
 using FaeReforges.Content;
-using System.Collections;
 using Terraria.ID;
 using FaeReforges.Systems.ReforgeHammers;
-using static Terraria.UI.ItemSlot;
 using FaeReforges.Systems.UI.UIElements;
 using Terraria.GameContent.UI;
 

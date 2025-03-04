@@ -17,12 +17,10 @@ namespace FaeReforges.Systems
     {
 
         public override bool InstancePerEntity => true;
-        public float sentryOccupancy = 0f;
-        public float initOccupancy = 0f;
         public float bonusSpeed = 1f;
         public float excessUpdates = 0f;
-        public int reforgedCritChance = 0;
-        public float whipFrenzyChargeMult = 0f;
+        public float bonusTagEffectiveness = 1f;
+        public float bonusArmorPen = 0f;
         public float reservedCumulativeSummonOccupancyFromEitherMyselfOrParent = 0f;
 
         // Do not add this back!
@@ -55,31 +53,25 @@ namespace FaeReforges.Systems
             }
         }
 
-        public override void OnSpawn(Projectile projectile, IEntitySource source)
-        {
-            initOccupancy = projectile.minionSlots;
+        public override void OnSpawn(Projectile projectile, IEntitySource source) {
             if (source is IEntitySource_WithStatsFromItem itemSource && itemSource.Item != null && itemSource.Item.TryGetGlobalItem(out SummonerReforgesGlobalItem globItem)) {
-                if (projectile.sentry) {
-                    sentryOccupancy = globItem.minionOccupancyMult;
-                }
-                projectile.minionSlots = initOccupancy * globItem.minionOccupancyMult; // In case a projectile is marked both as a minion and a sentry
-                bonusSpeed = globItem.minionSpeedMult;
-                reforgedCritChance = globItem.minionCritBonus;
-                whipFrenzyChargeMult = globItem.whipFrenzyChargeMult;
-                reservedCumulativeSummonOccupancyFromEitherMyselfOrParent = sentryOccupancy + projectile.minionSlots;
+                bonusSpeed = globItem.summonSpeedMult;
+                bonusTagEffectiveness = globItem.summonTagEffectiveness;
+                bonusArmorPen = globItem.summonArmorPen;
             } else if (source is EntitySource_Parent parentSource && parentSource.Entity is Projectile parentProj) {
                 var parentModProj = parentProj.GetGlobalProjectile<SummonerReforgesGlobalProjectile>();
-                reforgedCritChance = parentModProj.reforgedCritChance;
-                whipFrenzyChargeMult = parentModProj.whipFrenzyChargeMult;
+                bonusTagEffectiveness = parentModProj.bonusTagEffectiveness;
+                bonusArmorPen = parentModProj.bonusArmorPen;
                 bonusSpeed = parentModProj.bonusSpeed;
-                reservedCumulativeSummonOccupancyFromEitherMyselfOrParent = parentModProj.reservedCumulativeSummonOccupancyFromEitherMyselfOrParent;
             }
         }
 
         public override void ModifyHitNPC(Projectile projectile, NPC target, ref NPC.HitModifiers modifiers) {
-            if (Main.rand.Next(100) < reforgedCritChance) {
-                modifiers.SetCrit();
-            }
+            modifiers.ScalingArmorPenetration += bonusArmorPen;
+        }
+
+        public override void ModifyHitPlayer(Projectile projectile, Player target, ref Player.HurtModifiers modifiers) {
+            modifiers.ScalingArmorPenetration += bonusArmorPen;
         }
 
     }

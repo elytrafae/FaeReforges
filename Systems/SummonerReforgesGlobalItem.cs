@@ -15,10 +15,9 @@ using Terraria.Utilities;
 namespace FaeReforges.Systems {
     internal class SummonerReforgesGlobalItem : GlobalItem {
 
-        public float minionOccupancyMult = 1f;
-        public float minionSpeedMult = 1f;
-        public int minionCritBonus = 0;
-        public float whipFrenzyChargeMult = 1f;
+        public float summonSpeedMult = 1f;
+        public float summonTagEffectiveness = 1f;
+        public float summonArmorPen = 0f;
         public override bool InstancePerEntity => true;
 
         public override bool AppliesToEntity(Item entity, bool lateInstantiation) {
@@ -40,14 +39,7 @@ namespace FaeReforges.Systems {
             if (!ModContent.GetInstance<ServerConfig>().EnableCustomSummonerReforges) {
                 return -1;
             }
-            return rand.NextFromCollection<SummonerPrefixTemplate>(ModContent.GetContent<SummonerPrefixTemplate>().ToList<SummonerPrefixTemplate>()).Type;
-        }
-
-        public override bool CanUseItem(Item item, Player player) {
-            if (item.sentry) {
-                return minionOccupancyMult <= player.maxTurrets;
-            }
-            return minionOccupancyMult * ItemID.Sets.StaffMinionSlotsRequired[item.type] <= player.maxMinions;
+            return rand.NextFromCollection(ModContent.GetContent<SummonerPrefixTemplate>().ToList()).Type;
         }
 
         public override bool AllowPrefix(Item item, int pre) {

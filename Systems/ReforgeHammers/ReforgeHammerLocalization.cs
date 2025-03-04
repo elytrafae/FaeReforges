@@ -13,8 +13,7 @@ namespace FaeReforges.Systems.ReforgeHammers {
 
         public static string LocalizationCategory => "TinkererHammerType";
 
-        public static LocalizedText CostTooltip { get; private set; }
-        public static LocalizedText NegativeReforgeChanceTooltip { get; private set; }
+        public static LocalizedText HammerTier { get; private set; }
         public static LocalizedText WeaponEffectPrefix { get; private set; }
         public static LocalizedText AccessoryEffectPrefix { get; private set; }
         public static LocalizedText TutorialTooltip { get; private set; }
@@ -25,8 +24,7 @@ namespace FaeReforges.Systems.ReforgeHammers {
         public static LocalizedText NeverCondition { get; private set; }
 
         public override void SetStaticDefaults() {
-            CostTooltip = Mod.GetLocalization($"{LocalizationCategory}.{nameof(CostTooltip)}");
-            NegativeReforgeChanceTooltip = Mod.GetLocalization($"{LocalizationCategory}.{nameof(NegativeReforgeChanceTooltip)}");
+            HammerTier = Mod.GetLocalization($"{LocalizationCategory}.{nameof(HammerTier)}");
             WeaponEffectPrefix = Mod.GetLocalization($"{LocalizationCategory}.{nameof(WeaponEffectPrefix)}");
             AccessoryEffectPrefix = Mod.GetLocalization($"{LocalizationCategory}.{nameof(AccessoryEffectPrefix)}");
             TutorialTooltip = Mod.GetLocalization($"{LocalizationCategory}.{nameof(TutorialTooltip)}");

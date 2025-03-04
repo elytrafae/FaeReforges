@@ -12,10 +12,10 @@ using Terraria.ModLoader;
 namespace FaeReforges.Systems {
     internal class ReforgeTierSystem : ModSystem {
 
-        private static readonly int[] prefixTiers = PrefixID.Sets.Factory.CreateIntSet(0);
+        private static Dictionary<int, int> prefixTiers = new();
         private const int FIRST_ACCESSORY_PREFIX = 62;
         private const int LAST_ACCESSORY_PREFIX = 80;
-        private static readonly Dictionary<int, List<int>> PrefixTierCache = new(); 
+        private static readonly Dictionary<int, List<int>> PrefixTierCache = new();
 
         public override void Load() {
             Item dummyItem = new Item(ItemID.CelestialShell);
@@ -29,11 +29,19 @@ namespace FaeReforges.Systems {
             }
         }
 
+        public override void Unload() {
+            prefixTiers.Clear();
+        }
+
         public static int GetPrefixTier(int pre) {
-            return prefixTiers[pre];
+            if (prefixTiers.TryGetValue(pre, out int tier)) {
+                return tier;
+            }
+            return 0;
         }
 
         public static void SetPrefixTier(int pre, int tier) {
+            //PrefixID.Sets.ReducedNaturalChance[pre] = false;
             prefixTiers[pre] = tier;
         }
 
@@ -65,9 +73,9 @@ namespace FaeReforges.Systems {
                 return list;
             }
             list = new List<int>();
-            for (int i = 0; i < prefixTiers.Length; i++) {
-                if (prefixTiers[i] == tier) {
-                    list.Add(i);
+            foreach (var pair in prefixTiers) {
+                if (pair.Value == tier) {
+                    list.Add(pair.Key);
                 }
             }
             PrefixTierCache.Add(tier, list);

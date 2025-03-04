@@ -57,7 +57,9 @@ namespace FaeReforges.Content.Reforges {
 
         public override void Apply(Item item) {
             if (item.TryGetGlobalItem(out SummonerReforgesGlobalItem globItem)) {
-                globItem.minionSpeedMult = 1f + speed;
+                globItem.summonSpeedMult = 1f + speed;
+                globItem.summonTagEffectiveness = 1f + effectiveness;
+                globItem.summonArmorPen = armorpen;
 
             }
         }

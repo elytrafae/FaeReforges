@@ -23,7 +23,8 @@ namespace FaeReforges
             switch (command) {
                 case "RegisterTinkererHammer":
                     Item item1 = AssertType<Item>(args, 1);
-                    ReforgeHammerType type = new ReforgeHammerType();
+                    int tier = AssertType<int>(args, 2);
+                    ReforgeHammerType type = new ReforgeHammerType(tier);
                     ReforgeHammerRegistry.RegisterHammerType(item1, type);
                     return type;
 

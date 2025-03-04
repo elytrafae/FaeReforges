@@ -45,8 +45,8 @@ Tier 2 Hammers:
 	
 	Gelatinous: Enemies you hit with this weapon receive double damage from DoT effects for 1 second.
 	Cobalt: Power of Five: Panic Necklace
-	Palladium: Hitting enemies gives you +1.5 HP/s regeneration for 2 seconds.
-	Mythril:
+	Palladium: Hitting enemies with this weapon gives you +1.5 HP/s regeneration for 2 seconds.
+	Mythril: Increase damage by up to 20% based on the enemy's remaining health
 	Orichalcum:
 	Adamantite:
 	Titanium:
@@ -67,7 +67,7 @@ Tier 3:
 
 Tier 4:
 	Tiki: Power of Three: +1 Minion Slot OR Power of Five: +1 Minion and Sentry slot
-	Party: All attacks spawn confetti. Dying or dodging attacks spawns confetti. No additional effects. Nope. None. (All attacks inflict Party Fever. Dying or dodging with accessories reforged with this hammer results in an explosion that inflicts Party Fever. The explosion has a bigger radius the more accessories contribute)
+	Party: All attacks spawn confetti. Dying or dodging attacks spawns confetti. No additional effects. Nope. None. (All attacks inflict Party Fever. Dying or dodging with accessories reforged with this hammer results in an explosion that inflicts Party Fever. The explosion has a bigger radius the more accessories contribute. Party Fever reduces the damage dealt by enemies affected)
 	Beetle: 
 	Betsy's: Critical Strikes with this weapon inflict Betsy's Curse
 	Solar

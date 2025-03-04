@@ -17,6 +17,7 @@ using Terraria.GameContent.UI;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using Terraria.ModLoader.Config;
 using Terraria.ModLoader.IO;
 using Terraria.Utilities;
 using Terraria.WorldBuilding;
@@ -29,14 +30,19 @@ namespace FaeReforges.Systems.ReforgeHammers
 
         // ItemID.None means that the item was not reforged with any hammer (could be naturally generated with a prefix)
         int hammerItemId = ItemID.None;
-        //private static bool prefixFromReforge = false;
-        //private static bool isReforgePrefixPositive = false;
+        private static bool prefixFromReforge = false;
+        readonly PrefixDefinition[] previousPrefixes = [default, default];
+        private static int previousPrefixWorkaround = 0;
 
         const string HAMMER_SAVE_NAME = "ReforgeHammerId";
+        const string PREVIOUS_PREFIXES_NAME = "PreviousPrefix";
 
         public override void SaveData(Item item, TagCompound tag) {
             if (hammerItemId > ItemID.None) {
                 tag.Add(HAMMER_SAVE_NAME, hammerItemId);
+            }
+            for (int i = 0; i < previousPrefixes.Length; i++) {
+                tag.Add(PREVIOUS_PREFIXES_NAME + i, previousPrefixes[i]);
             }
         }
 
@@ -45,15 +51,29 @@ namespace FaeReforges.Systems.ReforgeHammers
                 SetHammer(hammer);
                 ApplyOnApplyEffects(item);
             }
+            for (int i = 0; i < previousPrefixes.Length; i++) {
+                if (tag.TryGet(PREVIOUS_PREFIXES_NAME + i, out PrefixDefinition definition)) {
+                    previousPrefixes[i] = definition;
+                }
+            }
         }
 
         public override void NetSend(Item item, BinaryWriter writer) {
             writer.Write(hammerItemId);
+            for (int i = 0; i < previousPrefixes.Length; i++) {
+                if (previousPrefixes[i] == null) {
+                    previousPrefixes[i] = new PrefixDefinition();
+                }
+                writer.Write(previousPrefixes[i].ToString());
+            }
         }
 
         public override void NetReceive(Item item, BinaryReader reader) {
             SetHammer(reader.ReadInt32());
             ApplyOnApplyEffects(item);
+            for (int i = 0; i < previousPrefixes.Length; i++) {
+                previousPrefixes[i] = PrefixDefinition.FromString(reader.ReadString());
+            }
         }
 
         private void ApplyOnApplyEffects(Item item) {
@@ -105,10 +125,17 @@ namespace FaeReforges.Systems.ReforgeHammers
                     }
                 }
             }
+
+            for (int i = 0; i < previousPrefixes.Length; i++) {
+                string valStr = "NULL";
+                if (previousPrefixes[i] != null) { 
+                    valStr = previousPrefixes[i].ToString();
+                }
+                tooltips.Add(new TooltipLine(Mod, "PreviousPrefixDebug" + i, "PrevPref #" + i + ": " + valStr));
+            }
             
         }
 
-        /*
         public override bool CanReforge(Item item) {
             Item hammer = ReforgeHammerSavePlayer.GetSelectedHammerOfMyPlayer();
             if (hammer != null && hammer.type != ItemID.None && ReforgeHammerRegistry.GetHammerTypeForItemType(hammer.type) != null) {
@@ -117,7 +144,6 @@ namespace FaeReforges.Systems.ReforgeHammers
             SoundEngine.PlaySound(SoundID.NPCHit40);
             return false;
         }
-        */
 
         /*
         public override bool ReforgePrice(Item item, ref int reforgePrice, ref bool canApplyDiscount) {
@@ -147,9 +173,67 @@ namespace FaeReforges.Systems.ReforgeHammers
         }
         */
 
+        public override void PreReforge(Item item) {
+            prefixFromReforge = true;
+            previousPrefixWorkaround = item.prefix;
+        }
+
+        public override int ChoosePrefix(Item item, UnifiedRandom rand) {
+            int tier = rand.NextBool(2) ? 1 : 0;
+            if (prefixFromReforge) {
+                Item hammer = ReforgeHammerSavePlayer.GetSelectedHammerOfMyPlayer();
+                if (hammer != null && hammer.type != ItemID.None) {
+                    ReforgeHammerType hammerType = ReforgeHammerRegistry.GetHammerTypeForItemType(hammer.type);
+                    if (hammerType != null) {
+                        tier = hammerType.hammerTier;
+                    }
+                }
+            }
+            if (tier == 0) {
+                return 0; // Prefix is now none!
+            }
+            List<int> prefixes = new();
+            foreach (int pre in ReforgeTierSystem.GetAllReforgesOfTier(tier)) {
+                if (item.CanApplyPrefix(pre)) {
+                    prefixes.Add(pre);
+                }
+            }
+            if (prefixes.Count <= 0) {
+                return 0;
+            }
+
+            if (prefixFromReforge) {
+                // Take previous prefixes out of the equation!
+                // Is there is only one prefix at any point, don't do it!
+                if (prefixes.Count > 1) {
+                    prefixes.Remove(previousPrefixWorkaround);
+                    for (int i = 0; i < previousPrefixes.Length; i++) {
+                        if (prefixes.Count <= 1) {
+                            break;
+                        }
+                        if (previousPrefixes[i] != null) {
+                            prefixes.Remove(previousPrefixes[i].Type);
+                        }
+                    }
+                }
+
+                // Add the "current" prefix to the list of previous prefixes, if it had any
+                for (int i = previousPrefixes.Length - 2; i >= 0; i--) {
+                    previousPrefixes[i + 1] = previousPrefixes[i];
+                }
+                if (previousPrefixWorkaround != 0) { // Fun . . .
+                    previousPrefixes[0] = new PrefixDefinition(previousPrefixWorkaround);
+                } else {
+                    previousPrefixes[0] = new PrefixDefinition();
+                }
+            }
+
+            // Roll a new prefix
+            return rand.NextFromList(prefixes.ToArray());
+        }
+
         public override void PostReforge(Item item) {
-            //prefixFromReforge = false;
-            //isReforgePrefixPositive = false;
+            prefixFromReforge = false;
             Item hammer = ReforgeHammerSavePlayer.GetSelectedHammerOfMyPlayer();
             if (hammer == null || hammer.type == ItemID.None) {
                 return;

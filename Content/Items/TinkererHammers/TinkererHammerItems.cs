@@ -10,23 +10,7 @@ using Terraria.ModLoader;
 
 namespace FaeReforges.Content.Items.TinkererHammers {
 
-    // Prehardmode
-
-    /*
-    public class StoneTinkererHammer : SimpleTinkererHammerItem {
-        public override int Rarity => ItemRarityID.Gray;
-        public override int Value => 5;
-
-        public override void AddRecipes() {
-            CreateRecipe()
-                .AddIngredient(ItemID.StoneBlock, 30)
-                .AddIngredient(ItemID.Wood, 15)
-                .AddIngredient(ItemID.Rope, 5)
-                .AddTile<Content.Tiles.TinkererAnvil>()
-                .Register();
-        }
-    }
-
+    // Tier 1
     public class CopperTinkererHammer : SimpleTinkererHammerItem {
         public override int Rarity => ItemRarityID.White;
         public override int Value => Terraria.Item.buyPrice(silver: 1, copper: 50);
@@ -139,6 +123,8 @@ namespace FaeReforges.Content.Items.TinkererHammers {
         }
     }
 
+    // Tier 2
+
     public class DemoniteTinkererHammer : SimpleTinkererHammerItem {
         public override int Rarity => ItemRarityID.White;
         public override int Value => Terraria.Item.buyPrice(silver: 30);
@@ -183,7 +169,6 @@ namespace FaeReforges.Content.Items.TinkererHammers {
                 .Register();
         }
     }
-    */
 
     public class MeteoriteTinkererHammer : SimpleTinkererHammerItem {
         public override int Rarity => ItemRarityID.White;
@@ -198,8 +183,6 @@ namespace FaeReforges.Content.Items.TinkererHammers {
                 .Register();
         }
     }
-
-    // Hardmode
 
     public class CobaltTinkererHammer : SimpleTinkererHammerItem {
         public override int Rarity => ItemRarityID.Orange;
@@ -284,6 +267,8 @@ namespace FaeReforges.Content.Items.TinkererHammers {
                 .Register();
         }
     }
+
+    // Tier 3
 
     public class HallowedTinkererHammer : SimpleTinkererHammerItem {
         public override int Rarity => ItemRarityID.LightRed;
@@ -386,6 +371,8 @@ namespace FaeReforges.Content.Items.TinkererHammers {
                 .Register();
         }
     }
+
+    // Tier 4
 
     public class SolarTinkererHammer : SimpleTinkererHammerItem {
         public override int Rarity => ItemRarityID.Red;

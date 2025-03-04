@@ -32,9 +32,9 @@ namespace FaeReforges.Systems.VanillaReforges {
         }
 
         public float SetValue(int prefix, float valueMult) {
-            if (prefix < DynamicReforgeLoader.vanillaOverrides.Length && prefix >= 0 && DynamicReforgeLoader.vanillaOverrides[prefix] != null) {
-                ServerConfig config = ModContent.GetInstance<ServerConfig>();
-                return DynamicReforgeLoader.vanillaOverrides[prefix].positive ? config.PositiveWeaponReforgeValueMultiplier : config.NegativeWeaponReforgeValueMultiplier;
+            int tier = ReforgeTierSystem.GetPrefixTier(prefix);
+            if (tier != 0) {
+                return ReforgeTierSystem.GetValueMult(tier);
             }
             return valueMult;
         }
