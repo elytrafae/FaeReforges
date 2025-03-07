@@ -22,6 +22,8 @@ Tier 4: Golem onward
 
 NOTE: Fuck Calamity, if Calamity is installed, the rest of the Hardmode ore hammers are craftable from Hardmode Fishing Crates instead (NOTE: Check shimmer after)
 
+TODO: Add system for hammers only able to reforge certain types of items
+
 Tier 1 Hammers:
 	Copper: +1 Defense
 	Tin: +1% Movement and Jump Speed
@@ -33,7 +35,7 @@ Tier 1 Hammers:
 	Platinum: Power of Five: +1 Minion Slot. +8% Summon Speed for Summon Weapons
 	Jungle: Weapons inflict Poison on hit
 	Ice: Power of Five: All attacks inflict Frostburn.
-	Fossil: 
+	Fossil: Power of Five: A fairy spawns at least every 3 minutes while in the Cavern layer
 
 Tier 2 Hammers:
 	Honeycomb: Attacking with this weapon periodically summons additional bees. (NOTE: Make bees and giant bees use STATIC immunity! Global immunity should be illegal!)
@@ -44,10 +46,10 @@ Tier 2 Hammers:
 	Hellstone: Attacking with this weapon periodically summons an explosion, dealing the hit's damage class and applying Hellfire for a short time
 	
 	Gelatinous: Enemies you hit with this weapon receive double damage from DoT effects for 1 second.
-	Cobalt: Power of Five: Panic Necklace
+	Cobalt: Power of Five: Cobalt Shield, but -2 Defense
 	Palladium: Hitting enemies with this weapon gives you +1.5 HP/s regeneration for 2 seconds.
 	Mythril: Increase damage by up to 20% based on the enemy's remaining health
-	Orichalcum:
+	Orichalcum: Power of Five: Panic Necklace
 	Adamantite:
 	Titanium:
 
@@ -66,11 +68,25 @@ Tier 3:
 	Broken Hero: Power of Five: You take 10% less damage from enemies who have a lower health percentage than you. You deal 10% more damage to enemies who have a higher health percentage than you.
 
 Tier 4:
-	Tiki: Power of Three: +1 Minion Slot OR Power of Five: +1 Minion and Sentry slot
-	Party: All attacks spawn confetti. Dying or dodging attacks spawns confetti. No additional effects. Nope. None. (All attacks inflict Party Fever. Dying or dodging with accessories reforged with this hammer results in an explosion that inflicts Party Fever. The explosion has a bigger radius the more accessories contribute. Party Fever reduces the damage dealt by enemies affected)
-	Beetle: 
-	Betsy's: Critical Strikes with this weapon inflict Betsy's Curse
-	Solar
-	Vortex
-	Nebula
-	Stardust
+	Valhalla Knight: Power of Two: +4 Armor and 0.5HP/s life regen
+	Red Riding: +2% Ranged and Summoner damage. Power of Three: Summons have a chance to shoot a bullet you have in your inventory at the enemy they are attacking.
+	Dark Artist: +2% Mage and Summoner damage. Magic attacks deal 15 more damage against enemies you whipped in the last 4 seconds. Dealing magic damage increases whip speed by 2% for 4 seconds.
+	Shinobi Infiltrator: +2% Melee and Summoner damage. Power of Three: Hits with Melee Weapons summons a Shadow Ninja summon to fight with you
+	[]: +2% Melee and Ranged damage. Power of Three: Ranged attacks benefit from Flasks. Melee attacks periodically shoot bullets from the user's ammo slots.
+	[]: +2% Melee and Magic damage. (IDK what else)
+	[]: +2% Ranged and Magic damage. Power of Five: Mana Regeneration is reduced by 50%, but Ranged damage replenishes mana.
+
+	Valhalla Knight: Power of Two: +3 Armor and 0.5HP/s life regen
+	Red Riding: Hitting an enemy gives you Red Riding Rush for 1 second. Being in Red Riding Rush for 10 seconds or more gives you 2% Crit Chance.
+	Dark Artist: +3% Damage and -1.5% Attack Speed
+	Shinobi Infiltrator: Power of Five: Summon a Shadow Ninja to fight with you
+
+	Tiki: While holding this weapon, a magical Tiki mask follows your cursor, dealing damage to enemies it touches
+	Betsy's: Critical strikes with this weapon inflict Betsy's Curse for 1 second
+	Party: Dying or dodging attacks spawns confetti. All attacks with this weapon spawn confetti. No additional effects. Nope. None. (All attacks inflict Party Fever. Dying or dodging with accessories reforged with this hammer results in an explosion that inflicts Party Fever. The explosion has a bigger radius the more accessories contribute. Party Fever reduces the damage dealt by enemies affected by 10%)
+	Beetle: Attacking with this weapon periodically spawns a Beetle that attacks enemies. This Beetle does not interact with other effects and acts like a giant bee.
+
+	Solar: +1% Damage Reduction and +3% Melee Speed. Melee weapons get +60% size
+	Vortex: +5% Ranged Velocity. Ranged Weapons get [IDFK]
+	Nebula: -2% Mana Cost on accessories, 1% of damage dealt with this magic weapon is returned as mana
+	Stardust: Power of Five: +1 Minion and Sentry slots. Summon Weapons get +15% Summon Speed and Tag Effectiveness.
