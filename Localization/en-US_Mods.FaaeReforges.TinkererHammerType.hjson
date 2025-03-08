@@ -1,0 +1,8 @@
+﻿WeaponEffectPrefix: "[c/9400FF:Weapon Effect:] {0}"
+AccessoryEffectPrefix: "[c/FF00A5:Accessory Effect:] {0}"
+TutorialTooltip: Give to the Goblin Tinkerer to use!
+ReforgedWithTooltip: Reforged with {0}
+UIInsertHammer: Tinkerer Hammer goes here! (optional)
+UIThatIsNotAHammer: This is not a Tinkerer Hammer!
+HammerTier: "[c/345929:Tier {0} Reforge Hammer]"
+HammerFilter: Can Reforge: {0}

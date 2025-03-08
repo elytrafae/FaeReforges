@@ -20,8 +20,7 @@ namespace FaeReforges.Systems.ReforgeHammers {
         public static LocalizedText ReforgedWithTooltip { get; private set; }
         public static LocalizedText UIInsertHammer { get; private set; }
         public static LocalizedText UIThatIsNotAHammer { get; private set; }
-
-        public static LocalizedText NeverCondition { get; private set; }
+        public static LocalizedText HammerFilter { get; private set; }
 
         public override void SetStaticDefaults() {
             HammerTier = Mod.GetLocalization($"{LocalizationCategory}.{nameof(HammerTier)}");
@@ -32,7 +31,7 @@ namespace FaeReforges.Systems.ReforgeHammers {
             UIInsertHammer = Mod.GetLocalization($"{LocalizationCategory}.{nameof(UIInsertHammer)}");
             UIThatIsNotAHammer = Mod.GetLocalization($"{LocalizationCategory}.{nameof(UIThatIsNotAHammer)}");
 
-            NeverCondition = Mod.GetLocalization($"Conditions.Never");
+            HammerFilter = Mod.GetLocalization($"{LocalizationCategory}.{nameof(HammerFilter)}");
         }
         
 

@@ -1,4 +1,5 @@
 ﻿using FaeReforges.Content.Buffs;
+using FaeReforges.Content.ItemConditions;
 using FaeReforges.Content.Items.PowerUps;
 using FaeReforges.Content.Items.TinkererHammers;
 using FaeReforges.Systems;
@@ -26,17 +27,40 @@ namespace FaeReforges.Content {
 
             // Prehardmode
             ReforgeHammerType copperHammer = InitHammerTypeHelper<CopperTinkererHammer>(1);
+            copperHammer.reforgableCondition = ItemCondition.IsAccessory;
             copperHammer.onUpdateAccessory = (Item item, Player player, bool visible) => { player.statDefense++; };
+
             ReforgeHammerType tinHammer = InitHammerTypeHelper<TinTinkererHammer>(1);
+            tinHammer.reforgableCondition = ItemCondition.IsAccessory;
             tinHammer.onUpdateAccessory = (Item item, Player player, bool visible) => { player.GetModPlayer<VanillaReforgePlayer>().accessoryMovement++; player.jumpSpeedBoost *= 0.01f; };
+
             ReforgeHammerType ironHammer = InitHammerTypeHelper<IronTinkererHammer>(1);
-            ironHammer.onApplyWeapon = (Item item) => { item.damage = (item.damage * 105) / 100; };
+            ironHammer.reforgableCondition = ItemCondition.IsWeapon;
+            ironHammer.modifyWeaponDamage = (Item item, Player player, ref StatModifier damage) => { damage *= 1.05f; };
+
             ReforgeHammerType leadHammer = InitHammerTypeHelper<LeadTinkererHammer>(1);
-            leadHammer.onApplyWeapon = (Item item) => { item.crit += 5; };
-            InitHammerTypeHelper<SilverTinkererHammer>(1);
-            InitHammerTypeHelper<TungstenTinkererHammer>(1);
-            InitHammerTypeHelper<GoldenTinkererHammer>(1);
-            InitHammerTypeHelper<PlatinumTinkererHammer>(1);
+            leadHammer.reforgableCondition = ItemCondition.IsWeapon;
+            leadHammer.modifyWeaponCrit = (Item item, Player player, ref float crit) => { crit += 5; };
+
+            ReforgeHammerType silverHammer = InitHammerTypeHelper<SilverTinkererHammer>(1);
+            silverHammer.reforgableCondition = ItemCondition.GrammaticalAnd(ItemCondition.IsRangedWeapon, ItemCondition.IsAccessory);
+            silverHammer.onUpdateAccessory = (Item item, Player player, bool visible) => { player.GetModPlayer<MyReforgeHammerPlayer>().rangerVelocity += 0.03f; };
+            silverHammer.changeWeaponDealDamageNpc = (int item, Player player, NPC victim, ref NPC.HitModifiers modifiers) => { modifiers.ArmorPenetration += 5; };
+            silverHammer.changeWeaponDealDamagePvp = (int item, Player player, Player victim, ref Player.HurtModifiers modifiers) => { modifiers.ArmorPenetration += 5; };
+
+            ReforgeHammerType tungstenHammer = InitHammerTypeHelper<TungstenTinkererHammer>(1);
+            tungstenHammer.reforgableCondition = ItemCondition.GrammaticalAnd(ItemCondition.IsMagicWeapon, ItemCondition.IsAccessory);
+            tungstenHammer.onUpdateAccessory = (Item item, Player player, bool visible) => { player.manaCost -= 0.02f; };
+            tungstenHammer.useSpeedMultiplier = (Item item, Player player) => { return 0.92f; }; // 8% faster
+
+            ReforgeHammerType goldenHammer = InitHammerTypeHelper<GoldenTinkererHammer>(1);
+            goldenHammer.reforgableCondition = ItemCondition.GrammaticalAnd3(ItemCondition.IsMeleeWeapon, ItemCondition.IsWhipWeapon, ItemCondition.IsAccessory);
+            goldenHammer.modifyItemScale = (Item item, Player player, ref float scale) => { scale *= 1.16f; };
+            goldenHammer.onUpdateAccessory = (Item item, Player player, bool visible) => { player.GetAttackSpeed(DamageClass.Melee) += 0.02f; };
+
+            ReforgeHammerType platinumHammer = InitHammerTypeHelper<PlatinumTinkererHammer>(1);
+            // TODO: Implement Platinum hammer and "Power of X" system!
+            // TODO: Update localization file and sort it somehow . . .
 
             InitHammerTypeHelper<DemoniteTinkererHammer>(2);
             InitHammerTypeHelper<CrimtaneTinkererHammer>(2);

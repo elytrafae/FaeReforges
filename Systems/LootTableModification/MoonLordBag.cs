@@ -13,8 +13,6 @@ using Terraria.ModLoader;
 namespace FaeReforges.Systems.LootTableModification {
     internal class MoonLordBag : GlobalItem {
 
-        public static readonly Condition NEVER_CONDITION = new Condition(ReforgeHammerLocalization.NeverCondition.Key, () => { return false; });
-
         public override bool AppliesToEntity(Item entity, bool lateInstantiation) {
             return entity.type == ItemID.MoonLordBossBag;
         }

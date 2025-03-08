@@ -378,48 +378,24 @@ namespace FaeReforges.Content.Items.TinkererHammers {
         public override int Rarity => ItemRarityID.Red;
         public override int Value => Terraria.Item.buyPrice(gold: 1, silver: 20);
 
-        public override void AddRecipes() {
-            CreateRecipe()
-                .AddCondition(MoonLordBag.NEVER_CONDITION)
-                .AddCustomShimmerResult(ModContent.ItemType<VortexTinkererHammer>(), 1)
-                .Register();
-        }
     }
 
     public class VortexTinkererHammer : SimpleTinkererHammerItem {
         public override int Rarity => ItemRarityID.Red;
         public override int Value => Terraria.Item.buyPrice(gold: 1, silver: 20);
 
-        public override void AddRecipes() {
-            CreateRecipe()
-                .AddCondition(MoonLordBag.NEVER_CONDITION)
-                .AddCustomShimmerResult(ModContent.ItemType<NebulaTinkererHammer>(), 1)
-                .Register();
-        }
     }
 
     public class NebulaTinkererHammer : SimpleTinkererHammerItem {
         public override int Rarity => ItemRarityID.Red;
         public override int Value => Terraria.Item.buyPrice(gold: 1, silver: 20);
 
-        public override void AddRecipes() {
-            CreateRecipe()
-                .AddCondition(MoonLordBag.NEVER_CONDITION)
-                .AddCustomShimmerResult(ModContent.ItemType<StardustTinkererHammer>(), 1)
-                .Register();
-        }
     }
 
     public class StardustTinkererHammer : SimpleTinkererHammerItem {
         public override int Rarity => ItemRarityID.Red;
         public override int Value => Terraria.Item.buyPrice(gold: 1, silver: 20);
 
-        public override void AddRecipes() {
-            CreateRecipe()
-                .AddCondition(MoonLordBag.NEVER_CONDITION)
-                .AddCustomShimmerResult(ModContent.ItemType<SolarTinkererHammer>(), 1)
-                .Register();
-        }
     }
 
     // TODO: Continue with other mods after initial release

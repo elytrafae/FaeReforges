@@ -1,4 +1,5 @@
-﻿using FaeReforges.Content.Items;
+﻿using FaeReforges.Content.ItemConditions;
+using FaeReforges.Content.Items;
 using FaeReforges.Systems.ReforgeHammers;
 using Microsoft.Xna.Framework;
 using System;
@@ -31,6 +32,7 @@ namespace FaeReforges.Content {
         }
 
         public int hammerTier;
+        public ItemCondition reforgableCondition = ItemCondition.Any;
         public Action<Item> onApplyWeapon = (item) => { };
         public Action<Item> onApplyAccessory = (item) => { };
         public Action<Item, Player> onUpdateWeaponHeld = (item, player) => { };
@@ -42,8 +44,17 @@ namespace FaeReforges.Content {
         public Func<Item, Player, bool> canUseItem = (item, attacker) => { return true; };
         public Action<int, Projectile, IEntitySource> onCreateProjectile = (item, projectile, source) => { };
 
+        public PassThirdParameterAsRefAction<Item, Player, StatModifier> modifyWeaponDamage = (Item item, Player player, ref StatModifier damage) => { };
+        public PassThirdParameterAsRefAction<Item, Player, float> modifyWeaponCrit = (Item item, Player player, ref float crit) => { };
+        public PassThirdParameterAsRefAction<Item, Player, StatModifier> modifyWeaponKnockback = (Item item, Player player, ref StatModifier knockback) => { };
+        public ModifyShootStatsAction modifyShootStats = (Item item, Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback) => { };
+        public PassThirdAndFourthParameterAsRefAction<Item, Player, float, float> modifyManaCost = (Item item, Player player, ref float reduce, ref float mult) => {};
+        public PassThirdParameterAsRefAction<Item, Player, float> modifyItemScale = (Item item, Player player, ref float scale) => { };
+        public Func<Item, Player, float> useSpeedMultiplier = (Item item, Player player) => 1f;
 
         public delegate void PassFourthParameterAsRefAction<in T1, in T2, in T3, T4>(T1 arg1, T2 arg2, T3 arg3, ref T4 arg4);
-        public delegate void PassThirdParameterAsRefAction<in T1, in T2, in T3, T4>(T1 arg1, T2 arg2, ref T4 arg3);
+        public delegate void PassThirdParameterAsRefAction<in T1, in T2, T3>(T1 arg1, T2 arg2, ref T3 arg3);
+        public delegate void PassThirdAndFourthParameterAsRefAction<in T1, in T2, T3, T4>(T1 arg1, T2 arg2, ref T3 arg3, ref T4 arg4);
+        public delegate void ModifyShootStatsAction(Item item, Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback);
     }
 }

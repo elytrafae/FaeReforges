@@ -17,6 +17,8 @@ namespace FaeReforges.Content.Items {
         public abstract int Rarity { get; }
         public abstract int Value { get; }
 
+        public override string LocalizationCategory => base.LocalizationCategory + ".ReforgeHammers";
+
         public sealed override void SetDefaults() {
             Item.width = 32;
             Item.height = 32;

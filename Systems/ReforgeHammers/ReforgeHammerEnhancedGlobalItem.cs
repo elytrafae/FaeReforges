@@ -21,6 +21,7 @@ using Terraria.ModLoader.Config;
 using Terraria.ModLoader.IO;
 using Terraria.Utilities;
 using Terraria.WorldBuilding;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace FaeReforges.Systems.ReforgeHammers
 {
@@ -138,8 +139,14 @@ namespace FaeReforges.Systems.ReforgeHammers
 
         public override bool CanReforge(Item item) {
             Item hammer = ReforgeHammerSavePlayer.GetSelectedHammerOfMyPlayer();
-            if (hammer != null && hammer.type != ItemID.None && ReforgeHammerRegistry.GetHammerTypeForItemType(hammer.type) != null) {
-                return true;
+            if (hammer != null && hammer.type != ItemID.None) {
+                ReforgeHammerType hammerType = ReforgeHammerRegistry.GetHammerTypeForItemType(hammer.type);
+                if (hammerType != null) {
+                    if (hammerType.reforgableCondition.IsMet(item)) {
+                        return true;
+                    }
+                    SoundEngine.PlaySound(SoundID.AbigailCry);
+                }
             }
             SoundEngine.PlaySound(SoundID.NPCHit40);
             return false;
@@ -255,6 +262,38 @@ namespace FaeReforges.Systems.ReforgeHammers
             return isPositive == isReforgePrefixPositive;
         }
         */
+
+        public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage) {
+            item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammer()?.modifyWeaponDamage(item, player, ref damage);
+        }
+
+        public override void ModifyWeaponCrit(Item item, Player player, ref float crit) {
+            item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammer()?.modifyWeaponCrit(item, player, ref crit);
+        }
+
+        public override void ModifyWeaponKnockback(Item item, Player player, ref StatModifier knockback) {
+            item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammer()?.modifyWeaponKnockback(item, player, ref knockback);
+        }
+
+        public override void ModifyShootStats(Item item, Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback) {
+            item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammer()?.modifyShootStats(item, player, ref position, ref velocity, ref type, ref damage, ref knockback);
+        }
+
+        public override void ModifyManaCost(Item item, Player player, ref float reduce, ref float mult) {
+            item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammer()?.modifyManaCost(item, player, ref reduce, ref mult);
+        }
+
+        public override void ModifyItemScale(Item item, Player player, ref float scale) {
+            item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammer()?.modifyItemScale(item, player, ref scale);
+        }
+
+        public override float UseSpeedMultiplier(Item item, Player player) {
+            ReforgeHammerType hammerType = item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammer();
+            if (hammerType != null) {
+                return hammerType.useSpeedMultiplier(item, player);
+            }
+            return 1f;
+        }
 
         public override void UpdateAccessory(Item item, Player player, bool hideVisual) {
             item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammer()?.onUpdateAccessory(item, player, hideVisual);

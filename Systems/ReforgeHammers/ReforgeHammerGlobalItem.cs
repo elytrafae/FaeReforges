@@ -34,6 +34,7 @@ namespace FaeReforges.Systems.ReforgeHammers {
             //TooltipLineHelper("TinkererHammerCost", ReforgeHammerLocalization.CostTooltip.Format(hammerType.reforgeCost), ref tooltips, ref insertIndex);
             //TooltipLineHelper("TinkererHammerNegativeChance", ReforgeHammerLocalization.NegativeReforgeChanceTooltip.Format(hammerType.negativeReforgeChance), ref tooltips, ref insertIndex);
             TooltipLineHelper("TinkererHammerTier", ReforgeHammerLocalization.HammerTier.Format(hammerType.hammerTier), ref tooltips, ref insertIndex);
+            TooltipLineHelper("TinkererHammerFilter", ReforgeHammerLocalization.HammerFilter.Format(hammerType.reforgableCondition.Text), ref tooltips, ref insertIndex);
             if (hammerType.WeaponEffect.Value.Length > 0) {
                 TooltipLineHelper("TinkererHammerWeaponEffect", ReforgeHammerLocalization.WeaponEffectPrefix.Format(hammerType.WeaponEffect), ref tooltips, ref insertIndex);
             }

@@ -1,6 +1,7 @@
 ﻿using FaeReforges.Content.Buffs;
 using FaeReforges.Content.Items.TinkererHammers;
 using FaeReforges.Systems.ReforgeHammers;
+using Microsoft.Xna.Framework;
 using Steamworks;
 using System;
 using System.Collections.Generic;
@@ -33,6 +34,8 @@ namespace FaeReforges.Systems.ReforgeHammerContent {
         public ushort stardustTimeLeft = 0;
         public ushort lastStardustTime = 0;
         ////////////////////////////////////////////////////////////////
+
+        public StatModifier rangerVelocity = new();
 
         public int bonusSentrySlotHundreth = 0;
 
@@ -69,6 +72,7 @@ namespace FaeReforges.Systems.ReforgeHammerContent {
             accessoryReforgedWithSolar = false;
             stardustHammerAccessoryCount = 0;
             bonusSentrySlotHundreth = 0;
+            rangerVelocity = new();
         }
 
         public override bool FreeDodge(Player.HurtInfo info) {
@@ -77,6 +81,13 @@ namespace FaeReforges.Systems.ReforgeHammerContent {
                 Player.SetImmuneTimeForAllTypes(Player.longInvince ? 120 : 80);
             }
             return dodge;
+        }
+
+        public override void ModifyShootStats(Item item, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback) {
+            if (item.DamageType.CountsAsClass(DamageClass.Ranged)) {
+                velocity.X = rangerVelocity.ApplyTo(velocity.X);
+                velocity.Y = rangerVelocity.ApplyTo(velocity.Y);
+            }
         }
 
         public void OnDodge() {
