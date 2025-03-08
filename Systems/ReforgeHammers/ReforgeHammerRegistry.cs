@@ -33,7 +33,11 @@ namespace FaeReforges.Systems.ReforgeHammers {
             hammerMap[item.type] = hammer;
         }
 
-        
+        public static void RunOnAllHammerTypes(Action<ReforgeHammerType> action) {
+            foreach (var pair in hammerMap) {
+                action(pair.Value);
+            }
+        }
 
     }
 }

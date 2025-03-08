@@ -296,7 +296,11 @@ namespace FaeReforges.Systems.ReforgeHammers
         }
 
         public override void UpdateAccessory(Item item, Player player, bool hideVisual) {
-            item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammer()?.onUpdateAccessory(item, player, hideVisual);
+            ReforgeHammerType hammerType = item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammer();
+            if (hammerType != null) {
+                hammerType.statAccessoriesApplied++;
+                item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammer()?.onUpdateAccessory(item, player, hammerType.statAccessoriesApplied, hideVisual);
+            }
         }
 
         // These are all for melee. The projectiles are handled elsewhere

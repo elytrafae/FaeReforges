@@ -113,3 +113,15 @@ ItemConditions: {
 	GrammaticalAnd: "{0} and {1}"
 	GrammaticalAnd3: "{0}, {1} and {2}"
 }
+
+PowerOf: {
+	Two: "[c/FF1261:Power of Two]"
+	Three: "[c/FF1261:Power of Three]"
+	Four: "[c/FF1261:Power of Four]"
+	Five: "[c/FF1261:Power of Five]"
+	Six: "[c/FF1261:Power of Six]"
+	Seven: "[c/FF1261:Power of Seven]"
+	Eight: "[c/FF1261:Power of Eight]"
+	Nine: "[c/FF1261:Power of Nine]"
+	Ten: "[c/FF1261:Power of Ten]"
+}

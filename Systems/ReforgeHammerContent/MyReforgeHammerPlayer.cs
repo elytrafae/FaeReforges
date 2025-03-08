@@ -84,6 +84,8 @@ namespace FaeReforges.Systems.ReforgeHammerContent {
         }
 
         public override void ModifyShootStats(Item item, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback) {
+            // TODO: Make a more stable system for increasing ranged velocity!
+            // Try using extra updates instead
             if (item.DamageType.CountsAsClass(DamageClass.Ranged)) {
                 velocity.X = rangerVelocity.ApplyTo(velocity.X);
                 velocity.Y = rangerVelocity.ApplyTo(velocity.Y);

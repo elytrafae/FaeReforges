@@ -32,7 +32,7 @@ Tier 1 Hammers:
 	Silver: +3% Ranged Velocity on accessories, Ranged weapons get +5 Armor Penetration
 	Tungsten: -2% Mana Cost on accessories, +8% casting speed on magic weapons
 	Gold: 2% Melee Speed on accessories, Melee weapons and whips get +16% size
-	Platinum: Power of Five: +1 Minion Slot. +8% Summon Speed for Summon Weapons
+	Platinum: Power of Five: +1 Minion Slot. +6% Summon Speed for Summon Weapons
 	Jungle: Weapons inflict Poison on hit
 	Ice: Power of Five: All attacks inflict Frostburn.
 	Fossil: Fairies spawn more commonly.

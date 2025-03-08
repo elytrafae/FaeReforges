@@ -36,7 +36,7 @@ namespace FaeReforges.Content {
         public Action<Item> onApplyWeapon = (item) => { };
         public Action<Item> onApplyAccessory = (item) => { };
         public Action<Item, Player> onUpdateWeaponHeld = (item, player) => { };
-        public Action<Item, Player, bool> onUpdateAccessory = (item, player, hideVisual) => { };
+        public Action<Item, Player, int, bool> onUpdateAccessory = (item, player, count, hideVisual) => { };
         public PassFourthParameterAsRefAction<int, Player, Player, Player.HurtModifiers> changeWeaponDealDamagePvp = (int item, Player attacker, Player victim, ref Player.HurtModifiers hurtModifiers) => { };
         public Action<int, Player, Player, Player.HurtInfo> onWeaponDealDamagePvp = (item, attacker, victim, hurtInfo) => { };
         public PassFourthParameterAsRefAction<int, Player, NPC, NPC.HitModifiers> changeWeaponDealDamageNpc = (int item, Player attacker, NPC victim, ref NPC.HitModifiers hitModifiers) => { };
@@ -56,5 +56,11 @@ namespace FaeReforges.Content {
         public delegate void PassThirdParameterAsRefAction<in T1, in T2, T3>(T1 arg1, T2 arg2, ref T3 arg3);
         public delegate void PassThirdAndFourthParameterAsRefAction<in T1, in T2, T3, T4>(T1 arg1, T2 arg2, ref T3 arg3, ref T4 arg4);
         public delegate void ModifyShootStatsAction(Item item, Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback);
+
+
+        public int statAccessoriesApplied = 0;
+        public void ResetEffects() {
+            statAccessoriesApplied = 0;
+        }
     }
 }

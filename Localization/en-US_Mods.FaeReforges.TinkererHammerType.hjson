@@ -9,42 +9,42 @@ HammerFilter: Can Reforge: {0}
 
 CopperTinkererHammer: {
 	WeaponEffect: ""
-	AccessoryEffect: ""
+	AccessoryEffect: +1 Defense
 }
 
 TinTinkererHammer: {
 	WeaponEffect: ""
-	AccessoryEffect: ""
+	AccessoryEffect: +1% Movement and Jump Speed
 }
 
 IronTinkererHammer: {
-	WeaponEffect: ""
+	WeaponEffect: +5% Damage
 	AccessoryEffect: ""
 }
 
 LeadTinkererHammer: {
-	WeaponEffect: ""
+	WeaponEffect: +5% Crit Chance
 	AccessoryEffect: ""
 }
 
 SilverTinkererHammer: {
-	WeaponEffect: ""
-	AccessoryEffect: ""
+	WeaponEffect: +5 Armor Penetration
+	AccessoryEffect: +3% Ranged Velocity
 }
 
 TungstenTinkererHammer: {
-	WeaponEffect: ""
-	AccessoryEffect: ""
+	WeaponEffect: +8% Attack Speed
+	AccessoryEffect: -2% Mana Cost
 }
 
 GoldenTinkererHammer: {
-	WeaponEffect: ""
-	AccessoryEffect: ""
+	WeaponEffect: +16% size
+	AccessoryEffect: +2% Melee Speed
 }
 
 PlatinumTinkererHammer: {
-	WeaponEffect: ""
-	AccessoryEffect: ""
+	WeaponEffect: +6% Summon Speed
+	AccessoryEffect: "{$Mods.FaeReforges.PowerOf.Five}: +1 Minion Slot"
 }
 
 DemoniteTinkererHammer: {

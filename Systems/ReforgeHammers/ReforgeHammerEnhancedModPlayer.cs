@@ -17,5 +17,9 @@ namespace FaeReforges.Systems.ReforgeHammers {
             
         }
 
+        public override void ResetEffects() {
+            ReforgeHammerRegistry.RunOnAllHammerTypes((type) => type.ResetEffects());
+        }
+
     }
 }
