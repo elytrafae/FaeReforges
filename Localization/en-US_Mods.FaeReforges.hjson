@@ -1,4 +1,3 @@
-
 Configs: {
 	ServerConfig: {
 		DisplayName: Server Config
@@ -55,9 +54,7 @@ Configs: {
 		}
 	}
 
-	ClientConfig: {
-		DisplayName: Client Config
-	}
+	ClientConfig.DisplayName: Client Config
 }
 
 UI: {
@@ -114,4 +111,5 @@ ItemConditions: {
 	IsSummonWeapon: Summon Weapons
 	IsAccessory: Accessories
 	GrammaticalAnd: "{0} and {1}"
+	GrammaticalAnd3: "{0}, {1} and {2}"
 }

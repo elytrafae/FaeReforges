@@ -1,4 +1,4 @@
-﻿SummonSpeedBuffTooltip: "{0:+0;-#}% summon speed"
+SummonSpeedBuffTooltip: "{0:+0;-#}% summon speed"
 BouncySummonerPrefix.DisplayName: Bouncy
 CrampedSummonerPrefix.DisplayName: Cramped
 EnergeticSummonerPrefix.DisplayName: Energetic
