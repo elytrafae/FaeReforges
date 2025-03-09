@@ -20,6 +20,7 @@ namespace FaeReforges.Systems.ReforgeHammerContent {
         public override bool InstancePerEntity => true;
 
         // Called in the Minion Speed IL place
+        // NOTE: Currently disabled because the Forbidden hammer was reworked!
         public bool UpdatePreAI(Projectile projectile) {
             if ((projectile.minion || projectile.sentry) && projectile.TryGetOwner(out Player player) &&
                 projectile.GetGlobalProjectile<ReforgeHammerEnhancedGlobalProjectile>().GetHammerItemTypeOrNone() == ModContent.ItemType<ForbiddenTinkererHammer>()) {

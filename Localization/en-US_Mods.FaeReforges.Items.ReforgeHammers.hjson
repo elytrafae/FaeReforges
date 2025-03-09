@@ -142,3 +142,18 @@ VortexTinkererHammer: {
 	DisplayName: Vortex Tinkerer Hammer
 	Tooltip: ""
 }
+
+FossilTinkererHammer: {
+	DisplayName: Fossil Tinkerer Hammer
+	Tooltip: ""
+}
+
+IceTinkererHammer: {
+	DisplayName: Ice Tinkerer Hammer
+	Tooltip: ""
+}
+
+JungleTinkererHammer: {
+	DisplayName: Jungle Tinkerer Hammer
+	Tooltip: ""
+}

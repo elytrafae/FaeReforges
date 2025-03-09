@@ -47,6 +47,21 @@ PlatinumTinkererHammer: {
 	AccessoryEffect: "{$Mods.FaeReforges.PowerOf.Five}: +1 Minion Slot"
 }
 
+JungleTinkererHammer: {
+	WeaponEffect: Attacks poison enemies
+	AccessoryEffect: ""
+}
+
+IceTinkererHammer: {
+	WeaponEffect: ""
+	AccessoryEffect: "{$Mods.FaeReforges.PowerOf.Four}: All attacks inflict Frostburn"
+}
+
+FossilTinkererHammer: {
+	WeaponEffect: ""
+	AccessoryEffect: +4% Mining Speed
+}
+
 DemoniteTinkererHammer: {
 	WeaponEffect: ""
 	AccessoryEffect: ""

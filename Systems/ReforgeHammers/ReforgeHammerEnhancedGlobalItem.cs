@@ -263,66 +263,72 @@ namespace FaeReforges.Systems.ReforgeHammers
         }
         */
 
+        private static ReforgeHammerType? Hammer(Item item) => item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammer();
+
         public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage) {
-            item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammer()?.modifyWeaponDamage(item, player, ref damage);
+            Hammer(item)?.modifyWeaponDamage(item, player, ref damage);
         }
 
         public override void ModifyWeaponCrit(Item item, Player player, ref float crit) {
-            item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammer()?.modifyWeaponCrit(item, player, ref crit);
+            Hammer(item)?.modifyWeaponCrit(item, player, ref crit);
         }
 
         public override void ModifyWeaponKnockback(Item item, Player player, ref StatModifier knockback) {
-            item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammer()?.modifyWeaponKnockback(item, player, ref knockback);
+            Hammer(item)?.modifyWeaponKnockback(item, player, ref knockback);
         }
 
         public override void ModifyShootStats(Item item, Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback) {
-            item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammer()?.modifyShootStats(item, player, ref position, ref velocity, ref type, ref damage, ref knockback);
+            Hammer(item)?.modifyShootStats(item, player, ref position, ref velocity, ref type, ref damage, ref knockback);
         }
 
         public override void ModifyManaCost(Item item, Player player, ref float reduce, ref float mult) {
-            item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammer()?.modifyManaCost(item, player, ref reduce, ref mult);
+            Hammer(item)?.modifyManaCost(item, player, ref reduce, ref mult);
         }
 
         public override void ModifyItemScale(Item item, Player player, ref float scale) {
-            item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammer()?.modifyItemScale(item, player, ref scale);
+            Hammer(item)?.modifyItemScale(item, player, ref scale);
         }
 
         public override float UseSpeedMultiplier(Item item, Player player) {
-            ReforgeHammerType hammerType = item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammer();
+            ReforgeHammerType hammerType = Hammer(item);
             if (hammerType != null) {
                 return hammerType.useSpeedMultiplier(item, player);
             }
             return 1f;
         }
 
+        public override void MeleeEffects(Item item, Player player, Rectangle hitbox) {
+            Hammer(item)?.enchantmentVisuals(player, item.type, new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height);
+        }
+
         public override void UpdateAccessory(Item item, Player player, bool hideVisual) {
-            ReforgeHammerType hammerType = item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammer();
+            ReforgeHammerType hammerType = Hammer(item);
             if (hammerType != null) {
                 hammerType.statAccessoriesApplied++;
-                item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammer()?.onUpdateAccessory(item, player, hammerType.statAccessoriesApplied, hideVisual);
+                hammerType.onUpdateAccessory(item, player, hammerType.statAccessoriesApplied, hideVisual);
             }
         }
 
         // These are all for melee. The projectiles are handled elsewhere
 
         public override void ModifyHitNPC(Item item, Player player, NPC target, ref NPC.HitModifiers modifiers) {
-            item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammer()?.changeWeaponDealDamageNpc(item.type, player, target, ref modifiers);
+            Hammer(item)?.changeWeaponDealDamageNpc(item.type, player, target, ref modifiers);
         }
 
         public override void ModifyHitPvp(Item item, Player player, Player target, ref Player.HurtModifiers modifiers) {
-            item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammer()?.changeWeaponDealDamagePvp(item.type, player, target, ref modifiers);
+            Hammer(item)?.changeWeaponDealDamagePvp(item.type, player, target, ref modifiers);
         }
 
         public override void OnHitNPC(Item item, Player player, NPC target, NPC.HitInfo hit, int damageDone) {
-            item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammer()?.onWeaponDealDamageNpc(item.type, player, target, hit, damageDone);
+            Hammer(item)?.onWeaponDealDamageNpc(item.type, player, target, hit, damageDone);
         }
 
         public override void OnHitPvp(Item item, Player player, Player target, Player.HurtInfo hurtInfo) {
-            item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammer()?.onWeaponDealDamagePvp(item.type, player, target, hurtInfo);
+            Hammer(item)?.onWeaponDealDamagePvp(item.type, player, target, hurtInfo);
         }
 
         public override bool CanUseItem(Item item, Player player) {
-            ReforgeHammerType hammer = item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammer();
+            ReforgeHammerType hammer = Hammer(item);
             if (hammer == null) {
                 return true;
             }

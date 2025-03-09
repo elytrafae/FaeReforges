@@ -25,7 +25,7 @@ namespace FaeReforges.Content {
         public override void OnModLoad() {
             // TODO: Remake all of the hammers
 
-            // Prehardmode
+            // Tier 1
             ReforgeHammerType copperHammer = InitHammerTypeHelper<CopperTinkererHammer>(1);
             copperHammer.reforgableCondition = ItemCondition.IsAccessory;
             copperHammer.onUpdateAccessory = (Item item, Player player, int count, bool visible) => { player.statDefense++; };
@@ -67,6 +67,25 @@ namespace FaeReforges.Content {
             };
             platinumHammer.onApplyWeapon = (Item item) => { item.GetGlobalItem<SummonerReforgesGlobalItem>().summonSpeedMult *= 1.06f; };
 
+            ReforgeHammerType jungleHammer = InitHammerTypeHelper<JungleTinkererHammer>(1);
+            jungleHammer.reforgableCondition = ItemCondition.IsWeapon;
+            jungleHammer.onWeaponDealDamageNpc = (int item, Player attacker, NPC victim, NPC.HitInfo info, int damage) => { victim.AddBuff(BuffID.Poisoned, 300); };
+            jungleHammer.onWeaponDealDamagePvp = (int item, Player attacker, Player victim, Player.HurtInfo info) => { victim.AddBuff(BuffID.Poisoned, 300, false); };
+            jungleHammer.enchantmentVisuals = (Player player, int itemID, Vector2 position, int width, int height) => {
+                if (Main.rand.NextBool(5)) {
+                    Dust.NewDust(position, width, height, DustID.Poisoned);
+                }
+            };
+
+            ReforgeHammerType iceHammer = InitHammerTypeHelper<IceTinkererHammer>(1);
+            iceHammer.reforgableCondition = ItemCondition.IsAccessory;
+            iceHammer.onUpdateAccessory = (Item item, Player player, int count, bool visible) => { if (count == 4) { MyWeaponImbuePlayer.Get(player).frostburn = true; } };
+
+            ReforgeHammerType fossilHammer = InitHammerTypeHelper<FossilTinkererHammer>(1);
+            fossilHammer.reforgableCondition = ItemCondition.IsAccessory;
+            fossilHammer.onUpdateAccessory = (Item item, Player player, int count, bool visible) => { player.pickSpeed += 0.04f; };
+
+            // Tier 2
             InitHammerTypeHelper<DemoniteTinkererHammer>(2);
             InitHammerTypeHelper<CrimtaneTinkererHammer>(2);
             ReforgeHammerType meteoriteType = InitHammerTypeHelper<MeteoriteTinkererHammer>(2);

@@ -1,4 +1,5 @@
 ﻿using FaeReforges.Content;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -37,7 +38,7 @@ namespace FaeReforges.Systems.ReforgeHammers {
                 
             }
             if (hammerItemId > ItemID.None) {
-                ReforgeHammerRegistry.GetHammerTypeForItemType(hammerItemId).onCreateProjectile(createdByItemId, projectile, source);
+                ReforgeHammerRegistry.GetHammerTypeForItemType(hammerItemId)?.onCreateProjectile(createdByItemId, projectile, source);
             }
         }
 
@@ -62,6 +63,12 @@ namespace FaeReforges.Systems.ReforgeHammers {
 
         public override void OnHitPlayer(Projectile projectile, Player target, Player.HurtInfo info) {
             Hammer?.onWeaponDealDamagePvp(createdByItemId, Main.player[projectile.owner], target, info);
+        }
+
+        public override void EmitEnchantmentVisualsAt(Projectile projectile, Vector2 boxPosition, int boxWidth, int boxHeight) {
+            if (!projectile.noEnchantmentVisuals) {
+                Hammer?.enchantmentVisuals(Main.player[projectile.owner], createdByItemId, boxPosition, boxWidth, boxHeight);
+            }
         }
 
         public int GetHammerItemTypeOrNone() {

@@ -37,8 +37,6 @@ namespace FaeReforges.Systems.ReforgeHammerContent {
 
         public StatModifier rangerVelocity = new();
 
-        public int bonusSentrySlotHundreth = 0;
-
         public override void SyncPlayer(int toWho, int fromWho, bool newPlayer) {
             ModPacket packet = Mod.GetPacket();
             packet.Write((byte)FaeReforges.MessageType.MyReforgeHammerPlayerSync);
@@ -71,7 +69,6 @@ namespace FaeReforges.Systems.ReforgeHammerContent {
             flightTimeThousandth = 1000;
             accessoryReforgedWithSolar = false;
             stardustHammerAccessoryCount = 0;
-            bonusSentrySlotHundreth = 0;
             rangerVelocity = new();
         }
 
@@ -81,15 +78,6 @@ namespace FaeReforges.Systems.ReforgeHammerContent {
                 Player.SetImmuneTimeForAllTypes(Player.longInvince ? 120 : 80);
             }
             return dodge;
-        }
-
-        public override void ModifyShootStats(Item item, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback) {
-            // TODO: Make a more stable system for increasing ranged velocity!
-            // Try using extra updates instead
-            if (item.DamageType.CountsAsClass(DamageClass.Ranged)) {
-                velocity.X = rangerVelocity.ApplyTo(velocity.X);
-                velocity.Y = rangerVelocity.ApplyTo(velocity.Y);
-            }
         }
 
         public void OnDodge() {
@@ -113,7 +101,6 @@ namespace FaeReforges.Systems.ReforgeHammerContent {
 
         public override void PostUpdateEquips() {
             Player.wingTimeMax = Player.wingTimeMax * flightTimeThousandth / 1000;
-            Player.maxTurrets += (bonusSentrySlotHundreth / 100);
             if (stardustTimeLeft > 0) {
                 Player.aggro = -999999999;
             }

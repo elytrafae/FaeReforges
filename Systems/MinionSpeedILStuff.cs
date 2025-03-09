@@ -1,12 +1,7 @@
 ﻿using FaeReforges.Systems.ReforgeHammerContent;
 using MonoMod.Cil;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace FaeReforges.Systems.MinionOccupancy {
@@ -21,7 +16,7 @@ namespace FaeReforges.Systems.MinionOccupancy {
                 // Start the Cursor at the start
                 var c = new ILCursor(il);
                 // Try to find where the minion slot array is read
-                c.GotoNext(i => i.MatchLdfld<Terraria.Projectile>("extraUpdates"));
+                c.GotoNext(i => i.MatchLdfld<Projectile>("extraUpdates"));
 
                 // Move the cursor after it
                 c.Index++;
@@ -32,9 +27,14 @@ namespace FaeReforges.Systems.MinionOccupancy {
                     // First, we do this:
                     //projectile.GetGlobalProjectile<MyReforgeHammerProjectile>().UpdatePreAI(projectile);
 
+                    float rangedSpeed = 1f; // Putting ranged speed stuff due to technical stuff.
+                    if (projectile.DamageType.CountsAsClass(DamageClass.Ranged) && projectile.TryGetOwner(out Player player)) {
+                        rangedSpeed = player.GetModPlayer<MyReforgeHammerPlayer>().rangerVelocity.ApplyTo(1f);
+                    }
+
                     // Actual number of updates is numUpdates + 1!
                     SummonerReforgesGlobalProjectile globProj = projectile.GetGlobalProjectile<SummonerReforgesGlobalProjectile>();
-                    float minionSpeed = globProj.bonusSpeed;
+                    float minionSpeed = globProj.bonusSpeed * rangedSpeed;
                     float bonusUpdates = (numUpdates + 1) * minionSpeed;
                     int actualBonusUpdates = (int)bonusUpdates;
                     globProj.excessUpdates += (bonusUpdates - actualBonusUpdates);

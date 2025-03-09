@@ -51,6 +51,7 @@ namespace FaeReforges.Content {
         public PassThirdAndFourthParameterAsRefAction<Item, Player, float, float> modifyManaCost = (Item item, Player player, ref float reduce, ref float mult) => {};
         public PassThirdParameterAsRefAction<Item, Player, float> modifyItemScale = (Item item, Player player, ref float scale) => { };
         public Func<Item, Player, float> useSpeedMultiplier = (Item item, Player player) => 1f;
+        public Action<Player, int, Vector2, int, int> enchantmentVisuals = (Player player, int itemID, Vector2 position, int height, int width) => { };
 
         public delegate void PassFourthParameterAsRefAction<in T1, in T2, in T3, T4>(T1 arg1, T2 arg2, T3 arg3, ref T4 arg4);
         public delegate void PassThirdParameterAsRefAction<in T1, in T2, T3>(T1 arg1, T2 arg2, ref T3 arg3);

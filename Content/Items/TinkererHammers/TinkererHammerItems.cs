@@ -123,6 +123,52 @@ namespace FaeReforges.Content.Items.TinkererHammers {
         }
     }
 
+    public class JungleTinkererHammer : SimpleTinkererHammerItem {
+        public override int Rarity => ItemRarityID.Orange;
+        public override int Value => Terraria.Item.buyPrice(silver: 54);
+
+        public override void AddRecipes() {
+            CreateRecipe()
+                .AddIngredient(ItemID.Stinger, 12)
+                .AddIngredient(ItemID.JungleSpores, 8)
+                .AddIngredient(ItemID.Vine, 3)
+                .AddIngredient(ItemID.RichMahogany, 15)
+                .AddIngredient(ItemID.Rope, 5)
+                .AddTile<Content.Tiles.TinkererAnvil>()
+                .Register();
+        }
+    }
+
+    public class IceTinkererHammer : SimpleTinkererHammerItem {
+        public override int Rarity => ItemRarityID.Orange;
+        public override int Value => Terraria.Item.buyPrice(silver: 54);
+
+        public override void AddRecipes() {
+            CreateRecipe()
+                .AddIngredient(ItemID.IceTorch, 20)
+                .AddIngredient(ItemID.FlinxFur, 4)
+                .AddIngredient(ItemID.Shiverthorn, 10)
+                .AddIngredient(ItemID.BorealWood, 15)
+                .AddIngredient(ItemID.Rope, 5)
+                .AddTile<Content.Tiles.TinkererAnvil>()
+                .Register();
+        }
+    }
+
+    public class FossilTinkererHammer : SimpleTinkererHammerItem {
+        public override int Rarity => ItemRarityID.White;
+        public override int Value => Terraria.Item.buyPrice(silver: 45);
+
+        public override void AddRecipes() {
+            CreateRecipe()
+                .AddIngredient(ItemID.FossilOre, 10)
+                .AddIngredient(ItemID.PalmWood, 15)
+                .AddIngredient(ItemID.Rope, 5)
+                .AddTile<Content.Tiles.TinkererAnvil>()
+                .Register();
+        }
+    }
+
     // Tier 2
 
     public class DemoniteTinkererHammer : SimpleTinkererHammerItem {

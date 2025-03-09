@@ -34,8 +34,8 @@ Tier 1 Hammers:
 	Gold: 2% Melee Speed on accessories, Melee weapons and whips get +16% size
 	Platinum: Power of Five: +1 Minion Slot. +6% Summon Speed for Summon Weapons
 	Jungle: Weapons inflict Poison on hit
-	Ice: Power of Five: All attacks inflict Frostburn.
-	Fossil: Fairies spawn more commonly.
+	Ice: Power of Four: All attacks inflict Frostburn.
+	Fossil: +4% Mining Speed
 
 Tier 2 Hammers:
 	Honeycomb: Attacking with this weapon periodically summons additional bees. (NOTE: Make bees and giant bees use STATIC immunity! Global immunity should be illegal!)
@@ -51,8 +51,12 @@ Tier 2 Hammers:
 	Palladium: Hitting enemies with this weapon gives you +1.5 HP/s regeneration for 2 seconds.
 	Mythril: Increase damage by up to 20% based on the enemy's remaining health
 	Orichalcum: Power of Five: Panic Necklace
-	Adamantite:
-	Titanium: 
+	Adamantite: This weapon gets a buff depending on its class
+		+24% Size for Melee and Whips
+		+24% Velocity for Ranged
+		-12% Mana Cost for Mage
+		+12% Summon Tag Effectiveness for Summon weapons
+	Titanium: Power of Five: Hermes Boots
 
 Tier 3:
 	Frost: This weapon deals 15% bonus damage to enemies affected by Frustburn or Frostbite
@@ -88,3 +92,5 @@ Tier 4:
 	Vortex: +5% Ranged Velocity. Dealing damage with this Ranged Weapon has a chance to make the projectile of another ammo from your inventory rain down on the foe you hit. The additional projectile does not trigger the effect!
 	Nebula: -2% Mana Cost on accessories, 1% of damage dealt with this magic weapon is returned as mana
 	Stardust: Power of Five: +1 Minion and Sentry slots. Dodging an attack or getting hurt makes all summons you have reforged with this hammer 5x faster for a brief moment. This effect has a cooldown of 15 seconds.
+
+	Phantom: Leaves the previous hammer's effect.

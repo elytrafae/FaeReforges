@@ -14,6 +14,8 @@ using Terraria.ModLoader;
 namespace FaeReforges.Content.Items {
     public abstract class SimpleTinkererHammerItem : ModItem {
 
+        public override string Texture => Mod.FileExists(base.Texture + ".png") ? base.Texture : (GetType().Namespace + ".NoOtherTextureTinkererHammer").Replace('.', '/');
+
         public abstract int Rarity { get; }
         public abstract int Value { get; }
 
