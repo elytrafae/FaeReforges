@@ -171,6 +171,20 @@ namespace FaeReforges.Content.Items.TinkererHammers {
 
     // Tier 2
 
+    public class HoneycombTinkererHammer : SimpleTinkererHammerItem {
+        public override int Rarity => ItemRarityID.Orange;
+        public override int Value => Terraria.Item.buyPrice(gold: 1, silver: 30);
+
+        public override void AddRecipes() {
+            CreateRecipe()
+                .AddIngredient(ItemID.BeeWax, 10)
+                .AddIngredient(ItemID.RichMahogany, 15)
+                .AddIngredient(ItemID.Rope, 5)
+                .AddTile<Content.Tiles.TinkererAnvil>()
+                .Register();
+        }
+    }
+
     public class DemoniteTinkererHammer : SimpleTinkererHammerItem {
         public override int Rarity => ItemRarityID.White;
         public override int Value => Terraria.Item.buyPrice(silver: 30);

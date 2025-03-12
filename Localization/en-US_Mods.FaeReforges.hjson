@@ -112,6 +112,8 @@ ItemConditions: {
 	IsAccessory: Accessories
 	GrammaticalAnd: "{0} and {1}"
 	GrammaticalAnd3: "{0}, {1} and {2}"
+	Not: "Not {0}"
+	ThisButNotThis: "{0}, but not {1}"
 }
 
 PowerOf: {

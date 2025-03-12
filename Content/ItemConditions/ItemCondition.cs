@@ -26,6 +26,8 @@ namespace FaeReforges.Content.ItemConditions {
         // Logical
         public static ItemCondition GrammaticalAnd(ItemCondition cond1, ItemCondition cond2) => new(QuickName(nameof(GrammaticalAnd)).WithFormatArgs(cond1.Text, cond2.Text), (item) => cond1.IsMet(item) || cond2.IsMet(item));
         public static ItemCondition GrammaticalAnd3(ItemCondition cond1, ItemCondition cond2, ItemCondition cond3) => new(QuickName(nameof(GrammaticalAnd3)).WithFormatArgs(cond1.Text, cond2.Text, cond3.Text), (item) => cond1.IsMet(item) || cond2.IsMet(item) || cond3.IsMet(item));
+        public static ItemCondition Not(ItemCondition cond) => new(QuickName(nameof(Not)).WithFormatArgs(cond.Text), (item) => !cond.IsMet(item));
+        public static ItemCondition ThisButNotThis(ItemCondition trueCond, ItemCondition falseCond) => new(QuickName(nameof(ThisButNotThis)).WithFormatArgs(trueCond.Text, falseCond.Text), (item) => trueCond.IsMet(item) && !falseCond.IsMet(item));
 
     }
 }
