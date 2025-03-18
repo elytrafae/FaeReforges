@@ -63,8 +63,23 @@ Disenchanted 1 0 0 0.2 0 -0.2
 Inept 2 0 0 0 0 0.15
 Intense 2 0.2 0 0 0 -0.15
 Furious 2 -0.15 0 -0.05 0.3 0.05
+Taboo 3 0.05 -0.05 0.05 0.05 -0.1
+Manic 3 0.1 0 0 0.15 -0.1
+Adept 3 -0.05 0 0.1 0 0.1
+Calm 3 0 0 0 -0.1 0.3
+Celestial 4 0 0 0.1 0.2 0.05
+Mystic 4 0 0.1 0 0 0.15
+Masterful 4 0.15 0 0.05 0 -0.2
+Mythical 4 0.05 0.1 0.05 0.1 0.1
 #
 Rebellious 1 0 0 0.1 -0.15 0.1
 Cowardly 1 0.1 0 -0.05 0.1 -0.15
 Egotistical 1 0.08 0.2 0 -0.1 0.0
+Colorless 1 -0.1 0 0.2 0.0 0.0
+Depressed 1 0.05 -0.05 -0.2 0 0.3
+Antisocial 1 0.1 0 0.1 -0.2 0.0
+Shy 1 0 0.35 -0.1 0.0 0.0
+Cramped 1 0.1 0 -0.05 0.2 -0.1
+Rushed 2 -0.1 0 0.3 -0.05 0.1
+Dominant 2 0 0 -0.1 0.3 0.0
 #
