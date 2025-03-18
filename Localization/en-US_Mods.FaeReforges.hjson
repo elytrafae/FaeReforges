@@ -92,6 +92,11 @@ Buffs: {
 		DisplayName: Speed Nebula
 		Description: +45% Movement Speed and Flight Time
 	}
+
+	PalladiumRejuvenation: {
+		DisplayName: Palladium Rejuvenation
+		Description: Health Regen increased! It's almost like lifesteal!
+	}
 }
 
 DeathReasons.StardustMinionTimeExpired: "{0}'s time ran out!"
@@ -99,21 +104,6 @@ DeathReasons.StardustMinionTimeExpired: "{0}'s time ran out!"
 CombatTexts: {
 	GuaranteedCrit: Guaranteed Crit!
 	GuaranteedSuperCrit: Guaranteed Super Crit!
-}
-
-ItemConditions: {
-	Any: Any
-	IsWeapon: Weapons
-	IsMeleeWeapon: Melee Weapons
-	IsWhipWeapon: Whips
-	IsRangedWeapon: Ranged Weapons
-	IsMagicWeapon: Magic Weapons
-	IsSummonWeapon: Summon Weapons
-	IsAccessory: Accessories
-	GrammaticalAnd: "{0} and {1}"
-	GrammaticalAnd3: "{0}, {1} and {2}"
-	Not: "Not {0}"
-	ThisButNotThis: "{0}, but not {1}"
 }
 
 PowerOf: {

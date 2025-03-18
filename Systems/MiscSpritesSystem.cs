@@ -16,6 +16,9 @@ namespace FaeReforges.Systems {
         public static Asset<Texture2D> TinkererHammerHandle;
         public static Asset<Texture2D> TinkererHammerHead;
         public static Asset<Texture2D> StardustDyingBar;
+        public static Asset<Texture2D> TooltipLineTop;
+        public static Asset<Texture2D> TooltipLineMiddle;
+        public static Asset<Texture2D> TooltipLineBottom;
 
         public override void Load() {
             PX = GetModSprite("px");
@@ -23,6 +26,9 @@ namespace FaeReforges.Systems {
             TinkererHammerHandle = GetModSprite("TinkererHammerHandle");
             TinkererHammerHead = GetModSprite("TinkererHammerHead");
             StardustDyingBar = GetModSprite("StardustDyingBar");
+            TooltipLineTop = GetModSprite("TooltipLineTop");
+            TooltipLineMiddle = GetModSprite("TooltipLineMiddle");
+            TooltipLineBottom = GetModSprite("TooltipLineBottom");
         }
 
         public override void Unload() {
@@ -31,6 +37,9 @@ namespace FaeReforges.Systems {
             TinkererHammerHandle = null;
             TinkererHammerHead = null;
             StardustDyingBar = null;
+            TooltipLineTop = null;
+            TooltipLineMiddle = null;
+            TooltipLineBottom = null;
         }
 
         public Asset<Texture2D> GetModSprite(String name) {

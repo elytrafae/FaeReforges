@@ -1,34 +1,20 @@
 ﻿using FaeReforges.Systems.Config;
-using Steamworks;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.Config;
+using FaeLibrary.API;
 
 namespace FaeReforges.Systems
 {
-    public class SummonerReforgesGlobalProjectile : GlobalProjectile
+    public class SummonerReforgesGlobalProjectile : GlobalProjectile, IFaeGlobalProjectile
     {
 
         public override bool InstancePerEntity => true;
         public float bonusSpeed = 1f;
-        public float excessUpdates = 0f;
         public float bonusTagEffectiveness = 1f;
         public float bonusArmorPen = 0f;
-        public float reservedCumulativeSummonOccupancyFromEitherMyselfOrParent = 0f;
-
-        // Do not add this back!
-        /*
-        public override bool AppliesToEntity(Projectile entity, bool lateInstantiation) {
-            return initOccupancy > 0;
-        }
-        */
 
         public override void SetDefaults(Projectile entity) {
             if (entity.type <= 0 || entity.type >= ProjectileID.Count) {
@@ -72,6 +58,14 @@ namespace FaeReforges.Systems
 
         public override void ModifyHitPlayer(Projectile projectile, Player target, ref Player.HurtModifiers modifiers) {
             modifiers.ScalingArmorPenetration += bonusArmorPen;
+        }
+
+        void IFaeGlobalProjectile.ModifySummonTagEffectveness(Projectile projectile, ref StatModifier effectiveness) { 
+            effectiveness *= bonusTagEffectiveness;
+        }
+
+        void IFaeGlobalProjectile.ModifyUpdateRate(Projectile projectile, ref StatModifier speed) {
+            speed *= bonusSpeed;
         }
 
     }

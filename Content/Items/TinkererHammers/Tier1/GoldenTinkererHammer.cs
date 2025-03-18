@@ -1,0 +1,30 @@
+﻿using FaeLibrary.API.ItemConditions;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace FaeReforges.Content.Items.TinkererHammers.Tier1 {
+    public class GoldenTinkererHammer : SimpleTinkererHammerItem {
+        public override int Rarity => ItemRarityID.White;
+        public override int Value => Terraria.Item.buyPrice(silver: 12);
+        public override int HammerTier => 1;
+        public override ItemCondition ReforgeableCondition => ItemCondition.GrammaticalAnd3(ItemCondition.IsMeleeWeapon, ItemCondition.IsWhipWeapon, ItemCondition.IsAccessory);
+
+        public override void HammerOnUpdateAccessory(Item item, Player player, int count, bool hideVisual) {
+            player.GetAttackSpeed(DamageClass.Melee) += 0.02f;
+        }
+
+        public override void HammerModifyItemScale(Item item, Player player, ref float scale) {
+            scale *= 1.16f;
+        }
+
+        public override void AddRecipes() {
+            CreateRecipe()
+                .AddIngredient(ItemID.GoldBar, 15)
+                .AddIngredient(ItemID.Wood, 15)
+                .AddIngredient(ItemID.Rope, 5)
+                .AddTile<Content.Tiles.TinkererAnvil>()
+                .Register();
+        }
+    }
+}

@@ -1,0 +1,74 @@
+HoneycombTinkererHammer: {
+	WeaponEffectText:
+		'''
+		Spawn a swarm of bees as you attack
+		Has a cooldown of {0} {^0:second;seconds}
+		'''
+	AccessoryEffectText: ""
+	DisplayName: Honeycomb Tinkerer Hammer
+	Tooltip: ""
+}
+
+EternianTinkererHammer: {
+	WeaponEffectText: ""
+	AccessoryEffectText: +5% Classless Damage
+	DisplayName: Eternian Tinkerer Hammer
+	Tooltip: ""
+}
+
+CrimtaneTinkererHammer: {
+	WeaponEffectText: ""
+	AccessoryEffectText:
+		'''
+		+0.5 HP per second Health Regeneration
+		Taking damage puts this effect on a {0} second cooldown
+		'''
+	DisplayName: Crimtane Tinkerer Hammer
+	Tooltip: ""
+}
+
+DemoniteTinkererHammer: {
+	WeaponEffectText: ""
+	AccessoryEffectText: +2% Movement Speed and Acceleration
+	DisplayName: Demonite Tinkerer Hammer
+	Tooltip: ""
+}
+
+CobaltTinkererHammer: {
+	WeaponEffectText: ""
+	AccessoryEffectText: "{$Mods.FaeReforges.PowerOf.Five}: Cobalt Shield, but -2 Defense"
+	DisplayName: Cobalt Tinkerer Hammer
+	Tooltip: ""
+}
+
+MeteoriteTinkererHammer: {
+	WeaponEffectText: +7% Damage, but Damage Variance is tripled
+	AccessoryEffectText: ""
+	DisplayName: Meteorite Tinkerer Hammer
+	Tooltip: ""
+}
+
+ObsidianTinkererHammer: {
+	WeaponEffectText: ""
+	AccessoryEffectText: +1% Damage Reduction
+	DisplayName: Obsidian Tinkerer Hammer
+	Tooltip: ""
+}
+
+HellstoneTinkererHammer: {
+	WeaponEffectText:
+		'''
+		Dealing damage causes a molten explosion
+		Has a cooldown of {0} {^0:second;seconds}
+		'''
+	AccessoryEffectText: ""
+	DisplayName: Hellstone Tinkerer Hammer
+	Tooltip: ""
+}
+
+PalladiumTinkererHammer: {
+	WeaponEffectText: Dealing damage gives you +1.5 HP/s Health Regen for 2 seconds
+	AccessoryEffectText: ""
+	DisplayName: Palladium Tinkerer Hammer
+	Tooltip: ""
+}

@@ -11,6 +11,7 @@ using Terraria.ID;
 using FaeReforges.Systems.ReforgeHammers;
 using FaeReforges.Systems.UI.UIElements;
 using Terraria.GameContent.UI;
+using FaeReforges.Content.Items;
 
 namespace FaeReforges.Systems.UI {
 
@@ -73,13 +74,12 @@ namespace FaeReforges.Systems.UI {
             if (item == null || item.type == ItemID.None) {
                 text = ReforgeHammerLocalization.UIInsertHammer.Value;
             } else {
-                ReforgeHammerType hammerType = ReforgeHammerRegistry.GetHammerTypeForItemType(item.type);
-                if (hammerType == null) {
-                    color = Color.Red;
-                    text = ReforgeHammerLocalization.UIThatIsNotAHammer.Value;
-                } else {
+                if (item.ModItem != null && item.ModItem is AbstractTinkererHammer hammer) {
                     text = item.AffixName();
                     color = ItemRarity.GetColor(item.rare);
+                } else {
+                    color = Color.Red;
+                    text = ReforgeHammerLocalization.UIThatIsNotAHammer.Value;
                 }
             }
 

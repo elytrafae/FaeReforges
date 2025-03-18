@@ -24,7 +24,7 @@ namespace FaeReforges.Content.Buffs {
         public override bool PreDraw(SpriteBatch spriteBatch, int buffIndex, ref BuffDrawParams drawParams) {
             Player p = Main.player[Main.myPlayer];
             return p.GetModPlayer<MyReforgeHammerPlayer>().accessoryReforgedWithSolar;
-            return ReforgeHammerUtility.GetHammerItemType(p.HeldItem) == ModContent.ItemType<SolarTinkererHammer>();
+            //return ReforgeHammerUtility.GetHammerItemType(p.HeldItem) == ModContent.ItemType<SolarTinkererHammer>();
         }
     }
 }

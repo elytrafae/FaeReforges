@@ -1,0 +1,76 @@
+CopperTinkererHammer: {
+	WeaponEffectText: ""
+	AccessoryEffectText: +1 Defense
+	DisplayName: Copper Tinkerer Hammer
+	Tooltip: ""
+}
+
+FossilTinkererHammer: {
+	WeaponEffectText: ""
+	AccessoryEffectText: +4% Mining Speed
+	DisplayName: Fossil Tinkerer Hammer
+	Tooltip: ""
+}
+
+GoldenTinkererHammer: {
+	WeaponEffectText: +16% size
+	AccessoryEffectText: +2% Melee Speed
+	DisplayName: Golden Tinkerer Hammer
+	Tooltip: ""
+}
+
+IceTinkererHammer: {
+	WeaponEffectText: ""
+	AccessoryEffectText: "{$Mods.FaeReforges.PowerOf.Four}: All attacks inflict Frostburn"
+	DisplayName: Ice Tinkerer Hammer
+	Tooltip: ""
+}
+
+IronTinkererHammer: {
+	WeaponEffectText: +5% Damage
+	AccessoryEffectText: ""
+	DisplayName: Iron Tinkerer Hammer
+	Tooltip: ""
+}
+
+JungleTinkererHammer: {
+	WeaponEffectText: Attacks poison enemies
+	AccessoryEffectText: ""
+	DisplayName: Jungle Tinkerer Hammer
+	Tooltip: ""
+}
+
+LeadTinkererHammer: {
+	WeaponEffectText: +5% Crit Chance
+	AccessoryEffectText: ""
+	DisplayName: Lead Tinkerer Hammer
+	Tooltip: ""
+}
+
+PlatinumTinkererHammer: {
+	WeaponEffectText: +6% Summon Speed
+	AccessoryEffectText: "{$Mods.FaeReforges.PowerOf.Five}: +1 Minion Slot"
+	DisplayName: Platinum Tinkerer Hammer
+	Tooltip: ""
+}
+
+SilverTinkererHammer: {
+	WeaponEffectText: +5 Armor Penetration
+	AccessoryEffectText: +3% Ranged Velocity
+	DisplayName: Silver Tinkerer Hammer
+	Tooltip: ""
+}
+
+TinTinkererHammer: {
+	WeaponEffectText: ""
+	AccessoryEffectText: +1% Movement and Jump Speed
+	DisplayName: Tin Tinkerer Hammer
+	Tooltip: ""
+}
+
+TungstenTinkererHammer: {
+	WeaponEffectText: +8% Attack Speed
+	AccessoryEffectText: -2% Mana Cost
+	DisplayName: Tungsten Tinkerer Hammer
+	Tooltip: ""
+}

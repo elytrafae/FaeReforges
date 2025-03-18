@@ -1,83 +1,8 @@
 WeaponEffectPrefix: "[c/9400FF:Weapon Effect:] {0}"
 AccessoryEffectPrefix: "[c/FF00A5:Accessory Effect:] {0}"
-TutorialTooltip: Give to the Goblin Tinkerer to use!
+TutorialTooltip: "[c/AAAAAA:Give to the Goblin Tinkerer to use!]"
 ReforgedWithTooltip: Reforged with {0}
-UIInsertHammer: Tinkerer Hammer goes here! (optional)
+UIInsertHammer: Tinkerer Hammer goes here!
 UIThatIsNotAHammer: This is not a Tinkerer Hammer!
 HammerTier: "[c/345929:Tier {0} Reforge Hammer]"
 HammerFilter: Can Reforge: {0}
-
-CopperTinkererHammer: {
-	WeaponEffect: ""
-	AccessoryEffect: +1 Defense
-}
-
-TinTinkererHammer: {
-	WeaponEffect: ""
-	AccessoryEffect: +1% Movement and Jump Speed
-}
-
-IronTinkererHammer: {
-	WeaponEffect: +5% Damage
-	AccessoryEffect: ""
-}
-
-LeadTinkererHammer: {
-	WeaponEffect: +5% Crit Chance
-	AccessoryEffect: ""
-}
-
-SilverTinkererHammer: {
-	WeaponEffect: +5 Armor Penetration
-	AccessoryEffect: +3% Ranged Velocity
-}
-
-TungstenTinkererHammer: {
-	WeaponEffect: +8% Attack Speed
-	AccessoryEffect: -2% Mana Cost
-}
-
-GoldenTinkererHammer: {
-	WeaponEffect: +16% size
-	AccessoryEffect: +2% Melee Speed
-}
-
-PlatinumTinkererHammer: {
-	WeaponEffect: +6% Summon Speed
-	AccessoryEffect: "{$Mods.FaeReforges.PowerOf.Five}: +1 Minion Slot"
-}
-
-JungleTinkererHammer: {
-	WeaponEffect: Attacks poison enemies
-	AccessoryEffect: ""
-}
-
-IceTinkererHammer: {
-	WeaponEffect: ""
-	AccessoryEffect: "{$Mods.FaeReforges.PowerOf.Four}: All attacks inflict Frostburn"
-}
-
-FossilTinkererHammer: {
-	WeaponEffect: ""
-	AccessoryEffect: +4% Mining Speed
-}
-
-DemoniteTinkererHammer: {
-	WeaponEffect: ""
-	AccessoryEffect: ""
-}
-
-CrimtaneTinkererHammer: {
-	WeaponEffect: ""
-	AccessoryEffect: ""
-}
-
-MeteoriteTinkererHammer: {
-	WeaponEffect: ""
-	AccessoryEffect: ""
-}
-
-HellstoneTinkererHammer: {
-	WeaponEffect: ""
-	AccessoryEffect: ""
-}

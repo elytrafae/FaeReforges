@@ -12,14 +12,13 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace FaeReforges.Content.Items {
-    public abstract class SimpleTinkererHammerItem : ModItem {
-
-        public override string Texture => Mod.FileExists(base.Texture + ".png") ? base.Texture : (GetType().Namespace + ".NoOtherTextureTinkererHammer").Replace('.', '/');
+    public abstract class SimpleTinkererHammerItem : AbstractTinkererHammer {
 
         public abstract int Rarity { get; }
         public abstract int Value { get; }
-
-        public override string LocalizationCategory => base.LocalizationCategory + ".ReforgeHammers";
+        public virtual int? CustomPrice => null;
+        public virtual int CustomCurrency => CustomCurrencyID.None;
+        public override string LocalizationCategory => base.LocalizationCategory + ".ReforgeHammers.Tier" + HammerTier;
 
         public sealed override void SetDefaults() {
             Item.width = 32;
@@ -27,6 +26,8 @@ namespace FaeReforges.Content.Items {
             Item.rare = Rarity;
             Item.maxStack = 1;
             Item.value = Value;
+            Item.shopCustomPrice = CustomPrice;
+            Item.shopSpecialCurrency = CustomCurrency;
         }
 
     }

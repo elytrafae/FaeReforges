@@ -1,4 +1,5 @@
 ﻿using FaeReforges.Content.Buffs;
+using FaeReforges.Content.Cooldowns;
 using FaeReforges.Content.Items.TinkererHammers;
 using FaeReforges.Systems.ReforgeHammers;
 using Microsoft.Xna.Framework;
@@ -21,6 +22,7 @@ namespace FaeReforges.Systems.ReforgeHammerContent {
         public int dodgeChanceThousandth = 0; // 10 = 1% Dodge Chance
         public int flightTimeThousandth = 1000; // 10 = 1% Flight Time
         public bool accessoryReforgedWithSolar = false;
+        public int crimtaneAccessoryCount = 0;
 
         private const short VORTEX_CRIT_COOLDOWN = 600; // 10 seconds
         private Dictionary<int, short> vortexCrits = new Dictionary<int, short>();
@@ -34,8 +36,6 @@ namespace FaeReforges.Systems.ReforgeHammerContent {
         public ushort stardustTimeLeft = 0;
         public ushort lastStardustTime = 0;
         ////////////////////////////////////////////////////////////////
-
-        public StatModifier rangerVelocity = new();
 
         public override void SyncPlayer(int toWho, int fromWho, bool newPlayer) {
             ModPacket packet = Mod.GetPacket();
@@ -68,8 +68,8 @@ namespace FaeReforges.Systems.ReforgeHammerContent {
             dodgeChanceThousandth = 0;
             flightTimeThousandth = 1000;
             accessoryReforgedWithSolar = false;
+            crimtaneAccessoryCount = 0;
             stardustHammerAccessoryCount = 0;
-            rangerVelocity = new();
         }
 
         public override bool FreeDodge(Player.HurtInfo info) {
@@ -81,21 +81,19 @@ namespace FaeReforges.Systems.ReforgeHammerContent {
         }
 
         public void OnDodge() {
+            /*
             if (ReforgeHammerUtility.GetHammerItemType(Player.HeldItem) == ModContent.ItemType<HallowedTinkererHammer>()) {
                 Player.AddBuff(ModContent.BuffType<HallowedAggression>(), 600, false);
             }
+            */
         }
 
         public override void UpdateLifeRegen() {
-            if (Player.HasBuff<ChlorophyteRejuvenation>()) {
-                Player.lifeRegen += 2; // 1 HP per second
+            if (!ModContent.GetInstance<CrimsonHammerCooldown>().IsCoolingDown()) { // If it has been 15 seconds of not taking damage . . .
+                Player.lifeRegen += crimtaneAccessoryCount;
             }
-        }
-
-        public override void UpdateBadLifeRegen() {
-            int venomHammerType = ModContent.ItemType<VenomiteTinkererHammer>();
-            if (ReforgeHammerUtility.GetHammerItemType(Player.HeldItem) == venomHammerType || ReforgeHammerUtility.HasAnySummonHammer(Player, venomHammerType)) {
-                Player.lifeRegen -= 4;
+            if (Player.HasBuff<PalladiumRejuvenation>()) {
+                Player.lifeRegen += 3; // 1.5 HP per second
             }
         }
 
@@ -145,6 +143,7 @@ namespace FaeReforges.Systems.ReforgeHammerContent {
         }
 
         public override void OnHurt(Player.HurtInfo info) {
+            ModContent.GetInstance<CrimsonHammerCooldown>().CompletelyResetCooldown();
             if (info.Damage > 5) {
                 Player.AddBuff(ModContent.BuffType<SolarEclipse>(), 300, false);
             }

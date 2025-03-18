@@ -51,16 +51,15 @@ Tier 2 Hammers:
 	Palladium: Hitting enemies with this weapon gives you +1.5 HP/s regeneration for 2 seconds.
 	Mythril: Increase damage by up to 20% based on the enemy's remaining health
 	Orichalcum: Power of Five: Panic Necklace
-	Adamantite: This weapon gets a buff depending on its class
-		+24% Size for Melee and Whips
-		+24% Velocity for Ranged
-		-12% Mana Cost for Mage
-		+12% Summon Tag Effectiveness for Summon weapons
+	Adamantite: This weapon's projectiles can penetrate 50% more targets (rounded down), and lose less damage from penetrating enemies.
 	Titanium: Power of Five: Hermes Boots
 
 Tier 3:
 	Frost: This weapon deals 15% bonus damage to enemies affected by Frustburn or Frostbite
 	Forbidden: This weapon deals up to 20% bonus damage based on missing Mana
+
+	[TODO: Rework hammer of sight]
+
 	Hammer of Sight: You are afflicted with Blackout while you hold this weapon, but the effects of the reforge are applied twice! If applied to a Summon, you are permanently afflicted with Blackout!
 	Hammer of Blight: +4% Crit Chance, but all enemies around you regenerate 2 HP/s and bosses regenerate 3 HP/s.
 	Hammer of Might: +4% Damage, but getting hit turns it into -2% Damage for 10 seconds.
@@ -94,3 +93,7 @@ Tier 4:
 	Stardust: Power of Five: +1 Minion and Sentry slots. Dodging an attack or getting hurt makes all summons you have reforged with this hammer 5x faster for a brief moment. This effect has a cooldown of 15 seconds.
 
 	Phantom: Leaves the previous hammer's effect.
+
+
+Leftover ideas:
+	Weapon gets buffs depending on class (?)

@@ -8,6 +8,7 @@ using Terraria.Localization;
 using Terraria;
 using Terraria.ModLoader;
 using FaeReforges.Systems;
+using FaeLibrary.Implementation;
 
 namespace FaeReforges.Content.Reforges.Accessory {
     public class RangedAccessoryReforge : ModPrefix {
@@ -43,8 +44,8 @@ namespace FaeReforges.Content.Reforges.Accessory {
 
         public override void ApplyAccessoryEffects(Player player) {
             VanillaReforgePlayer modPlayer = player.GetModPlayer<VanillaReforgePlayer>();
-            modPlayer.shootVelocityPoints += power;
             modPlayer.ammoSavePoints += power;
+            player.GetRangedVelocity() += power / 100f;
         }
         public override void ModifyValue(ref float valueMult) {
             valueMult *= ReforgeTierSystem.GetValueMult(power);

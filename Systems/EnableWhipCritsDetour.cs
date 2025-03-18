@@ -54,7 +54,6 @@ namespace FaeReforges.Systems {
     internal class ShowStatTooltipLineClass {
         public bool ShowStatTooltipLine(Player player, string lineName) {
             return true;
-            // Original code . . . ? How TF does this work?!
         }
     }
 

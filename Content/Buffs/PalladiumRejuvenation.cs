@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Terraria.ModLoader;
 
 namespace FaeReforges.Content.Buffs {
-    public class ChlorophyteRejuvenation : ModBuff {
+    public class PalladiumRejuvenation : ModBuff {
 
         // All the code is somewhere else due to how regen works
 

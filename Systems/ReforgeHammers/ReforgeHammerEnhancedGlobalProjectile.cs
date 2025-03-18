@@ -1,4 +1,5 @@
 ﻿using FaeReforges.Content;
+using FaeReforges.Content.Items;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -35,39 +36,41 @@ namespace FaeReforges.Systems.ReforgeHammers {
             if (createdBy != null) {
                 createdByItemId = createdBy.type;
                 hammerItemId = createdBy.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammerItemTypeOrNone();
-                
             }
-            if (hammerItemId > ItemID.None) {
-                ReforgeHammerRegistry.GetHammerTypeForItemType(hammerItemId)?.onCreateProjectile(createdByItemId, projectile, source);
-            }
+
+            Hammer?.HammerOnCreateProjectile(createdByItemId, projectile, source);
         }
 
-        private ReforgeHammerType? Hammer {
+        private AbstractTinkererHammer? Hammer {
             get {
-                return ReforgeHammerRegistry.GetHammerTypeForItemType(hammerItemId);
+                Item hammerItem = ContentSamples.ItemsByType[hammerItemId];
+                if (hammerItem.ModItem != null && hammerItem.ModItem is AbstractTinkererHammer hammer) {
+                    return hammer;
+                }
+                return null;
             }
         }
 
         // The following is for melee hits only. For projectiles, see ReforgeHammerEnhancedGlobalProjectile
         public override void ModifyHitNPC(Projectile projectile, NPC target, ref NPC.HitModifiers modifiers) {
-            Hammer?.changeWeaponDealDamageNpc(createdByItemId, Main.player[projectile.owner], target, ref modifiers);
+            Hammer?.HammerChangeWeaponDealDamageNpc(createdByItemId, Main.player[projectile.owner], target, ref modifiers);
         }
 
         public override void ModifyHitPlayer(Projectile projectile, Player target, ref Player.HurtModifiers modifiers) {
-            Hammer?.changeWeaponDealDamagePvp(createdByItemId, Main.player[projectile.owner], target, ref modifiers);
+            Hammer?.HammerChangeWeaponDealDamagePvp(createdByItemId, Main.player[projectile.owner], target, ref modifiers);
         }
 
         public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone) {
-            Hammer?.onWeaponDealDamageNpc(createdByItemId, Main.player[projectile.owner], target, hit, damageDone);
+            Hammer?.HammerOnWeaponDealDamageNpc(createdByItemId, Main.player[projectile.owner], target, hit, damageDone);
         }
 
         public override void OnHitPlayer(Projectile projectile, Player target, Player.HurtInfo info) {
-            Hammer?.onWeaponDealDamagePvp(createdByItemId, Main.player[projectile.owner], target, info);
+            Hammer?.HammerOnWeaponDealDamagePvp(createdByItemId, Main.player[projectile.owner], target, info);
         }
 
         public override void EmitEnchantmentVisualsAt(Projectile projectile, Vector2 boxPosition, int boxWidth, int boxHeight) {
             if (!projectile.noEnchantmentVisuals) {
-                Hammer?.enchantmentVisuals(Main.player[projectile.owner], createdByItemId, boxPosition, boxWidth, boxHeight);
+                Hammer?.HammerEnchantmentVisuals(Main.player[projectile.owner], createdByItemId, boxPosition, boxWidth, boxHeight);
             }
         }
 

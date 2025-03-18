@@ -1,6 +1,6 @@
 TinkererAnvil: {
 	DisplayName: Tinkerer's Anvil
-	Tooltip: Gives you the ability to create and use Tinkerer Anvils
+	Tooltip: Allows you to create Tinkerer Anvils
 }
 
 SpeedBooster: {

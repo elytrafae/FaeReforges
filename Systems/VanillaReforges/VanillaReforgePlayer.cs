@@ -14,13 +14,11 @@ namespace FaeReforges.Systems.VanillaReforges {
         public int manaPercentageRegenPerSecond = 0;
         public float remainingManaRegen = 0; // NOT A STAT! DO NOT RESET EVERY FRAME!
         public int accessoryMovement = 0;
-        public int shootVelocityPoints = 0;
         public int ammoSavePoints = 0;
 
         public override void ResetEffects() {
             manaPercentageRegenPerSecond = 0;
             accessoryMovement = 0;
-            shootVelocityPoints = 0;
             ammoSavePoints = 0;
         }
 
@@ -35,10 +33,6 @@ namespace FaeReforges.Systems.VanillaReforges {
                 Player.statMana = Math.Min(Player.statManaMax2-1, Player.statMana + actualManaRegeneratedThisTick + bonusManaRegeneratedThisTick);
             }
             
-        }
-
-        public override void ModifyShootStats(Item item, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback) {
-            velocity *= 1f + (shootVelocityPoints / 100f);
         }
 
         public override bool CanConsumeAmmo(Item weapon, Item ammo) {
