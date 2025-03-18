@@ -10,6 +10,8 @@ using Terraria.Localization;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.ObjectModel;
 using Microsoft.Xna.Framework;
+using FaeReforges.Content.Items;
+using FaeReforges.Content.Items.TinkererHammers.Tier2;
 
 namespace FaeReforges.Systems.ReforgeHammers {
     public static class ReforgeHammerUtility {
@@ -30,10 +32,16 @@ namespace FaeReforges.Systems.ReforgeHammers {
             return false;
         }
 
+        public static bool ShouldCooldownBarDisplay<T>() where T : AbstractTinkererHammer {
+            int type = ModContent.ItemType<T>();
+            return HasAnySummonHammer(Main.LocalPlayer, type) || GetHammerItemType(Main.LocalPlayer.HeldItem) == type;
+        }
+
         public static void ProcessAbilityLines(string text, List<TooltipLine> tooltips, string baseKey, Mod mod, LocalizedText prefix) {
             if (text.Length > 0) {
                 string[] textLines = text.Split("\n");
-                if (textLines.Length == 1) {
+                if (false) { // Temporary disable
+                //if (textLines.Length == 1) {
                     tooltips.Add(new TooltipLine(mod, baseKey, prefix.Format(text)));
                 } else {
                     tooltips.Add(new TooltipLine(mod, baseKey + "0", prefix.Format("")));
@@ -60,7 +68,7 @@ namespace FaeReforges.Systems.ReforgeHammers {
                 i++;
             }
 
-            if (firstIndex >= lastIndex) {
+            if (firstIndex > lastIndex) {
                 return;
             }
 

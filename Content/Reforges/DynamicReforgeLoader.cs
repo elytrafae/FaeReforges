@@ -57,7 +57,9 @@ namespace FaeReforges.Content.Reforges {
                 // Final, optional section is Summoner. Damage, Knockback, Frenzy, Speed, Cost
                 if (ModContent.GetInstance<ServerConfig>().EnableCustomSummonerReforges) {
                     while (ReadDataLine(reader, out name, out tier, out values)) {
-                        mod.AddContent(new SummonerPrefixTemplate(name, tier, values[0], values[1], values[2], values[3], values[4]));
+                        SummonerPrefixTemplate reforge = new SummonerPrefixTemplate(name, tier, values[0], values[1], values[2], values[3], values[4]);
+                        mod.AddContent(reforge);
+                        ReforgeTierSystem.SetPrefixTier(reforge.Type, tier);
                     }
                 }
             }

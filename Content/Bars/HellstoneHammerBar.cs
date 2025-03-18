@@ -18,7 +18,7 @@ namespace FaeReforges.Content.Bars {
 
         public override IFaeCooldown Cooldown => ModContent.GetInstance<HellstoneHammerCooldown>();
 
-        public override bool Visible => ReforgeHammerUtility.GetHammerItemType(Main.LocalPlayer.HeldItem) == ModContent.ItemType<HellstoneTinkererHammer>();
+        public override bool Visible => ReforgeHammerUtility.ShouldCooldownBarDisplay<HellstoneTinkererHammer>();
 
         public override Color BackgroundColor => new(0.7f, 0.4f, 0f);
         public override Color BarColor => new(1f, 0.7f, 0f);

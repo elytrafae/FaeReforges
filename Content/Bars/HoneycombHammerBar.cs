@@ -17,7 +17,7 @@ namespace FaeReforges.Content.Bars {
 
         public override IFaeCooldown Cooldown => ModContent.GetInstance<HoneycombHammerCooldown>();
 
-        public override bool Visible => ReforgeHammerUtility.GetHammerItemType(Main.LocalPlayer.HeldItem) == ModContent.ItemType<HoneycombTinkererHammer>();
+        public override bool Visible => ReforgeHammerUtility.ShouldCooldownBarDisplay<HoneycombTinkererHammer>();
         public override Color BackgroundColor => new(0.4f, 0.2f, 0f);
         public override Color BarColor => new(1f, 0.9f, 0f);
 

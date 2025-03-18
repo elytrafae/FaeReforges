@@ -35,18 +35,25 @@ namespace FaeReforges.Systems {
             return (entity.CountsAsClass(DamageClass.Summon) && !entity.CountsAsClass(DamageClass.SummonMeleeSpeed)) || entity.sentry; // Hopefully this is sufficient
         }
 
+        /*
         public override int ChoosePrefix(Item item, UnifiedRandom rand) {
             if (!ModContent.GetInstance<ServerConfig>().EnableCustomSummonerReforges) {
                 return -1;
             }
             return rand.NextFromCollection(ModContent.GetContent<SummonerPrefixTemplate>().ToList()).Type;
         }
+        */
 
         public override bool AllowPrefix(Item item, int pre) {
             if (!ModContent.GetInstance<ServerConfig>().EnableCustomSummonerReforges) {
                 return true;
             }
-            return pre >= PrefixID.Count;
+            foreach (SummonerPrefixTemplate prefix in ModContent.GetContent<SummonerPrefixTemplate>()) {
+                if (prefix.Type == pre) {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public override bool? CanAutoReuseItem(Item item, Player player) {

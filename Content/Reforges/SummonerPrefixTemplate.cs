@@ -82,7 +82,7 @@ namespace FaeReforges.Content.Reforges {
                     IsModifierBad = effectiveness < 0
                 };
             }
-            if (effectiveness != 0) {
+            if (armorpen != 0) {
                 yield return new TooltipLine(Mod, "PrefixSummonerArmorPenetration", SummonArmorPenetrationTooltip.Format(armorpen * 100)) {
                     IsModifier = true,
                     IsModifierBad = armorpen < 0

@@ -46,7 +46,7 @@ Tier 2 Hammers:
 	Hellstone: Attacking with this weapon periodically summons an explosion, dealing the hit's damage class and applying Hellfire for a short time
 	Eternian: +5% classless damage
 
-	Gelatinous: Enemies you hit with this weapon receive double damage from DoT effects for 1 second.
+	Gelatinous: Power of Five: Crystal Assassin dash. Enemies you hit with this weapon receive double damage from DoT effects for 1 second.
 	Cobalt: Power of Five: Cobalt Shield, but -2 Defense
 	Palladium: Hitting enemies with this weapon gives you +1.5 HP/s regeneration for 2 seconds.
 	Mythril: Increase damage by up to 20% based on the enemy's remaining health

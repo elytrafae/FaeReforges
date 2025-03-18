@@ -42,3 +42,5 @@ SummonArmorPenetrationTooltip: "{0:+0;-#}% armor penetration"
 Uneven.DisplayName: Uneven
 Puissant.DisplayName: Puissant
 Disenchanted.DisplayName: Disenchanted
+Calm.DisplayName: Calm
+ColorlessSummonerPrefix.DisplayName: Colorless Summoner Prefix
