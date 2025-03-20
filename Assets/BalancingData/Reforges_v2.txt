@@ -82,4 +82,16 @@ Shy 1 0 0.35 -0.1 0.0 0.0
 Cramped 1 0.1 0 -0.05 0.2 -0.1
 Rushed 2 -0.1 0 0.3 -0.05 0.1
 Dominant 2 0 0 -0.1 0.3 0.0
+Disagreeable 2 0.05 0 0 -0.2 0.3
+Elderly 2 0.15 0 -0.2 0.1 0.0
+Bouncy 2 0 0.3 0.0 0.0 0.0
+Defiant 2 0 0 0.2 -0.2 0.0
+Barbaric 2 0.1 0 0.1 0.0 0.0
+Hateful 2 0.15 0.1 0.0 0.0 0.0
+Disassociating 2 0 -0.1 -0.1 0 0.35
+Sadistic 3 0.15 0 0 0.1 0.0
+Introverted 3 0 0.1 0.2 -0.2 0.0
+Juggler 3 0 0.2 0.1 0.0 0.0
+Paralyzed 3 0.5 0.2 -0.4 0.5 0.3
+Righteous 3 0 0 0 0 0.35
 #

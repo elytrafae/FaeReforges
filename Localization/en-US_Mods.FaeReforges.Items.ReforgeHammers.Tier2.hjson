@@ -72,3 +72,47 @@ PalladiumTinkererHammer: {
 	DisplayName: Palladium Tinkerer Hammer
 	Tooltip: ""
 }
+
+GelatinousTinkererHammer: {
+	WeaponEffectText: +30% Knockback
+	AccessoryEffectText:
+		'''
+		{$Mods.FaeReforges.PowerOf.Three}: You gain the Crystal Assassin dash
+		Has a {0} second cooldown and {1} simultanious charges.
+		'''
+	DisplayName: Gelatinous Tinkerer Hammer
+	Tooltip: ""
+}
+
+AdamantiteTinkererHammer: {
+	WeaponEffectText:
+		'''
+		This weapon's projectiles can penetrate 
+		50% more targets (rounded down), and lose 
+		less damage from penetrating enemies.
+		'''
+	AccessoryEffectText: ""
+	DisplayName: Adamantite Tinkerer Hammer
+	Tooltip: ""
+}
+
+MythrilTinkererHammer: {
+	WeaponEffectText: Increase damage by up to 20% based on the enemy's remaining health
+	AccessoryEffectText: ""
+	DisplayName: Mythril Tinkerer Hammer
+	Tooltip: ""
+}
+
+OrichalcumTinkererHammer: {
+	WeaponEffectText: ""
+	AccessoryEffectText: "{$Mods.FaeReforges.PowerOf.Five}: Panic Necklace"
+	DisplayName: Orichalcum Tinkerer Hammer
+	Tooltip: ""
+}
+
+TitaniumTinkererHammer: {
+	WeaponEffectText: ""
+	AccessoryEffectText: "{$Mods.FaeReforges.PowerOf.Five}: Hermes Boots and +3% Movement Speed"
+	DisplayName: Titanium Tinkerer Hammer
+	Tooltip: ""
+}

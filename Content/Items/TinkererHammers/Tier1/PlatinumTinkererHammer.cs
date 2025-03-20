@@ -9,7 +9,7 @@ namespace FaeReforges.Content.Items.TinkererHammers.Tier1 {
         public override int Value => Terraria.Item.buyPrice(silver: 12);
         public override int HammerTier => 1;
 
-        public override ItemCondition ReforgeableCondition => ItemCondition.GrammaticalAnd(ItemCondition.IsSummonWeapon, ItemCondition.IsAccessory);
+        public override ItemCondition ReforgeableCondition => ItemCondition.GrammaticalAnd3(ItemCondition.IsMinionWeapon, ItemCondition.IsSentryWeapon, ItemCondition.IsAccessory);
 
         public override void HammerOnUpdateAccessory(Item item, Player player, int count, bool hideVisual) {
             if (count % 5 == 0) {

@@ -13,7 +13,7 @@ namespace FaeReforges.Content.Items.TinkererHammers.Tier2 {
         public override int Rarity => ItemRarityID.Orange;
         public override int Value => Terraria.Item.buyPrice(gold: 1, silver: 30);
         public override int HammerTier => 2;
-        public override ItemCondition ReforgeableCondition => ItemCondition.ThisButNotThis(ItemCondition.IsWeapon, ItemCondition.IsSummonWeapon);
+        public override ItemCondition ReforgeableCondition => ItemCondition.ThisButNotThis(ItemCondition.IsWeapon, ItemCondition.GrammaticalAnd(ItemCondition.IsMinionWeapon, ItemCondition.IsSentryWeapon));
         public override LocalizedText WeaponEffectText => base.WeaponEffectText.WithFormatArgs(ModContent.GetInstance<HoneycombHammerCooldown>().DisplayCooldownTicks/60f);
 
         public override void HammerWhileUsingWeapon(Item item, Player player) {
