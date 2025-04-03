@@ -20,6 +20,9 @@ namespace FaeReforges.Systems {
         public static Asset<Texture2D> TooltipLineMiddle;
         public static Asset<Texture2D> TooltipLineBottom;
 
+        public static Asset<Texture2D> ShadowflamePickup;
+        public static Asset<Texture2D> ManaStarPickup;
+
         public override void Load() {
             PX = GetModSprite("px");
             WhipFrenzyBar = GetModSprite("WhipFrenzyBar");
@@ -29,6 +32,9 @@ namespace FaeReforges.Systems {
             TooltipLineTop = GetModSprite("TooltipLineTop");
             TooltipLineMiddle = GetModSprite("TooltipLineMiddle");
             TooltipLineBottom = GetModSprite("TooltipLineBottom");
+
+            ShadowflamePickup = GetModSprite("Pickups/Shadowflame");
+            ManaStarPickup = GetModSprite("Pickups/ManaStar");
         }
 
         public override void Unload() {
@@ -40,9 +46,12 @@ namespace FaeReforges.Systems {
             TooltipLineTop = null;
             TooltipLineMiddle = null;
             TooltipLineBottom = null;
+
+            ShadowflamePickup = null;
+            ManaStarPickup = null;
         }
 
-        public Asset<Texture2D> GetModSprite(String name) {
+        public Asset<Texture2D> GetModSprite(string name) {
             return ModContent.Request<Texture2D>(Mod.Name + "/Assets/Sprites/" + name);
         }
 

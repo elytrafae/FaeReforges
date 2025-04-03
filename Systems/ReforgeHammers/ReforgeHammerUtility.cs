@@ -23,6 +23,13 @@ namespace FaeReforges.Systems.ReforgeHammers {
             return item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammerItemTypeOrNone();
         }
 
+        public static int GetHammerItemType(Projectile proj) {
+            if (proj == null || proj.type == ProjectileID.None || !proj.active) {
+                return ProjectileID.None;
+            }
+            return proj.GetGlobalProjectile<ReforgeHammerEnhancedGlobalProjectile>().GetHammerItemTypeOrNone();
+        }
+
         public static bool HasAnySummonHammer(Player player, int hammerType) {
             foreach (Projectile proj in Main.ActiveProjectiles) {
                 if (proj.owner == player.whoAmI && (proj.sentry || proj.minion) && proj.GetGlobalProjectile<ReforgeHammerEnhancedGlobalProjectile>().GetHammerItemTypeOrNone() == hammerType) {
@@ -30,6 +37,14 @@ namespace FaeReforges.Systems.ReforgeHammers {
                 }
             }
             return false;
+        }
+
+        public static bool IsReforgedWith<T>(Item item) where T : AbstractTinkererHammer {
+            return GetHammerItemType(item) == ModContent.ItemType<T>();
+        }
+
+        public static bool IsReforgedWith<T>(Projectile proj) where T : AbstractTinkererHammer {
+            return GetHammerItemType(proj) == ModContent.ItemType<T>();
         }
 
         public static bool ShouldCooldownBarDisplay<T>() where T : AbstractTinkererHammer {

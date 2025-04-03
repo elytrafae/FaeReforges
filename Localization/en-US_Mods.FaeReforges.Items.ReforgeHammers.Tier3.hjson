@@ -1,1 +1,23 @@
+SquireTinkererHammer: {
+	WeaponEffectText:
+		'''
+		While holding this weapon, Shadowflame 
+		   will appear periodically around you. 
+		If you touch it, weapons reforged with this hammer
+		   become imbued with Shadowflame for 10 seconds.
+		The imbue's duration can stack up to 20 seconds.
+		This imbue does not conflict with flasks.
+		All shadowflame will immediately disappear 
+		   when you don't hold a weapon reforged with this.
+		'''
+	AccessoryEffectText: ""
+	DisplayName: Squire Tinkerer Hammer
+	Tooltip: ""
+}
 
+ApprenticeTinkererHammer: {
+	WeaponEffectText: ""
+	AccessoryEffectText: ""
+	DisplayName: Apprentice Tinkerer Hammer
+	Tooltip: ""
+}
