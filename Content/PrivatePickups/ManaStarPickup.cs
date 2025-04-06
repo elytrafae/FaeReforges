@@ -11,36 +11,21 @@ using Microsoft.Xna.Framework;
 using System;
 
 namespace FaeReforges.Content.PrivatePickups {
-    internal class ManaStarPickup : PrivatePickup {
+    internal class ManaStarPickup : SimpleTinkererHammerPrivatePickup {
 
-        int timer = 0;
-
-        public override void SetDefaults() {
-            width = 64;
-            height = 64;
+        public override void SimpleSetDefaults() {
             texture = MiscSpritesSystem.ManaStarPickup;
             reactToPlayer = true;
-            timer = 0;
+            dustType = DustID.YellowStarDust;
+            dustColor = Color.Blue;
+            killSound = SoundID.Item29.WithPitchOffset(-2f).WithVolumeScale(0.6f);
+            hammerType = ModContent.ItemType<ApprenticeTinkererHammer>();
         }
 
-        public override void Update() {
-            timer++;
-            if (timer % 3 == 0) {
-                Dust.NewDust(position, width, height, DustID.YellowStarDust, 0, 0, 0, Color.AliceBlue);
-            }
-            if (timer > 400) {
-                Kill();
-            }
-            if (ReforgeHammerUtility.GetHammerItemType(Main.LocalPlayer.HeldItem) != ModContent.ItemType<ApprenticeTinkererHammer>()) {
-                Kill();
-            }
-        }
-
-        public override bool OnCollidePlayer(Player player) {
+        public override bool SimpleOnCollide(Player player) {
             int manaToGive = Math.Min(player.statManaMax2 / 5, player.statManaMax2 - player.statMana);
             player.statMana += manaToGive;
             player.ManaEffect(manaToGive);
-            SoundEngine.PlaySound(SoundID.Shatter);
             return true;
         }
 

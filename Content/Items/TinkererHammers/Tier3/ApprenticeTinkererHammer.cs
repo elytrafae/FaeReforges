@@ -10,6 +10,7 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria;
 using Microsoft.Xna.Framework;
+using FaeReforges.Systems.ReforgeHammers;
 
 namespace FaeReforges.Content.Items.TinkererHammers.Tier3 {
     internal class ApprenticeTinkererHammer : SimpleTinkererHammerItem {
@@ -25,24 +26,11 @@ namespace FaeReforges.Content.Items.TinkererHammers.Tier3 {
                 return;
             }
             timer++;
-            if (timer >= 150) {
+            if (timer >= 120) {
                 timer = 0;
-                bool properDir;
-                int tries = 10;
-                double dir;
-                int x;
-                int y;
-                do {
-                    dir = Main.rand.NextFloat() * Math.PI * 2;
-                    x = (int)(player.Center.X + Math.Cos(dir) * 400);
-                    y = (int)(player.Center.Y + Math.Sin(dir) * 400);
-                    Point tileLocation = new Vector2(x, y).ToTileCoordinates();
-                    properDir = !(Main.tile[tileLocation].HasTile && Main.tile[tileLocation].HasUnactuatedTile);
-                    tries--;
-                } while (tries > 0 && !properDir);
-
+                ReforgeHammerUtility.BasicPrivatePickupSpawnPositionCode(player, out int x, out int y);
                 PrivatePickupManager.Spawn<ManaStarPickup>(x, y);
-                SoundEngine.PlaySound(SoundID.Item29);
+                SoundEngine.PlaySound(SoundID.Item29.WithVolumeScale(0.6f));
             }
         }
 

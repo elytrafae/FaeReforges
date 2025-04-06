@@ -15,23 +15,23 @@ using FaeReforges.Content.Items.TinkererHammers.Tier3;
 using FaeReforges.Content.Buffs;
 
 namespace FaeReforges.Content.PrivatePickups {
-    internal class ShadowflamePickup : PrivatePickup {
+    internal class ShadowflamePickup : SimpleTinkererHammerPrivatePickup {
 
-        int timer = 0;
-
-        public override void SetDefaults() {
-            width = 64;
-            height = 64;
+        public override void SimpleSetDefaults() {
             texture = MiscSpritesSystem.ShadowflamePickup;
             reactToPlayer = true;
             frame = new Rectangle(0, 0, 64, 64);
-            timer = 0;
+            dustType = DustID.Shadowflame;
+            killSound = SoundID.DD2_FlameburstTowerShot.WithPitchOffset(-2f).WithVolumeScale(0.7f);
+            hammerType = ModContent.ItemType<SquireTinkererHammer>();
         }
 
-        public override void Update() {
-            timer++;
-            // Animate the flame!
+        public override bool SimpleOnCollide(Player player) {
+            player.AddBuff(ModContent.BuffType<TempShadowflameFlask>(), 10 * 60, false);
+            return true;
+        }
 
+        public override void SimpleUpdate() {
             if (timer % 10 == 0) {
                 Rectangle f = frame.Value;
                 f.X += 64;
@@ -40,21 +40,6 @@ namespace FaeReforges.Content.PrivatePickups {
                 }
                 frame = f;
             }
-            if (timer % 3 == 0) {
-                Dust.NewDust(position, width, height, DustID.Shadowflame);
-            }
-            if (timer > 400) {
-                Kill();
-            }
-            if (ReforgeHammerUtility.GetHammerItemType(Main.LocalPlayer.HeldItem) != ModContent.ItemType<SquireTinkererHammer>()) {
-                Kill();
-            }
-        }
-
-        public override bool OnCollidePlayer(Player player) {
-            player.AddBuff(ModContent.BuffType<TempShadowflameFlask>(), 10 * 60, false);
-            SoundEngine.PlaySound(SoundID.Shatter);
-            return true;
         }
 
     }

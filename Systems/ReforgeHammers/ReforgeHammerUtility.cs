@@ -95,5 +95,19 @@ namespace FaeReforges.Systems.ReforgeHammers {
             Main.spriteBatch.Draw(MiscSpritesSystem.TooltipLineBottom.Value, new Vector2(lastLine.X + 0, lastLine.Y + 16), null, lineColor, 0, Vector2.Zero, new Vector2(1, 1), SpriteEffects.None, 0);
         }
 
+        public static void BasicPrivatePickupSpawnPositionCode(Player player, out int x, out int y) {
+            bool properDir;
+            int tries = 10;
+            double dir;
+            do {
+                dir = Main.rand.NextFloat() * Math.PI * 2;
+                x = (int)(player.Center.X + Math.Cos(dir) * 400);
+                y = (int)(player.Center.Y + Math.Sin(dir) * 400);
+                Point tileLocation = new Vector2(x, y).ToTileCoordinates();
+                properDir = !(Main.tile[tileLocation].HasTile && Main.tile[tileLocation].HasUnactuatedTile);
+                tries--;
+            } while (tries > 0 && !properDir);
+        }
+
     }
 }
