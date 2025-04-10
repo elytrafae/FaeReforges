@@ -1,7 +1,9 @@
-﻿using FaeReforges.Systems;
+﻿using FaeLibrary.API.ItemConditions;
+using FaeReforges.Systems;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
+using Steamworks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +20,7 @@ namespace FaeReforges.Content.Items {
         public abstract int Value { get; }
         public virtual int? CustomPrice => null;
         public virtual int CustomCurrency => CustomCurrencyID.None;
+        public override abstract ItemCondition ReforgeableCondition { get; }
         public override string LocalizationCategory => base.LocalizationCategory + ".ReforgeHammers.Tier" + HammerTier;
 
         public sealed override void SetDefaults() {

@@ -57,12 +57,10 @@ Tier 2 Hammers:
 Tier 3:
 	Frost: This weapon deals 15% bonus damage to enemies affected by Frustburn or Frostbite
 	Forbidden: This weapon deals up to 20% bonus damage based on missing Mana
-
-	[TODO: Rework hammer of sight]
-
-	Hammer of Sight: You are afflicted with Blackout while you hold this weapon, but the effects of the reforge are applied twice! If applied to a Summon, you are permanently afflicted with Blackout!
-	Hammer of Blight: +4% Crit Chance, but all enemies around you regenerate 2 HP/s and bosses regenerate 3 HP/s.
-	Hammer of Might: +4% Damage, but getting hit turns it into -2% Damage for 10 seconds.
+	
+	Hammer of Sight: Critical Strikes deal 4% of enemy defense as bonus damage
+	Hammer of Fright: Getting hit gives you 3% non-Summoner Attack Speed and 3% Summon Speed for 5 seconds
+	Hammer of Might: -1% Damage, but ignore 3% of enemy defense
 	Hallowed: +10% Movement Speed and Crit Chance for 10 seconds after dodging an attack while holding this weapon
 
 	Squire: While holding this Melee Weapon, Shadowflame will appear randomly on your screen. If you hit it with this weapon, your weapon will become imbued with Shadowflame for 10 seconds.
@@ -71,22 +69,20 @@ Tier 3:
 	Monk: While holding this Whip or Summon Weapon, Eternian Crystals will appear randomly on your screen. If you collide with one, you gain a temporary Minion and Sentry slot for 10 seconds.
 	
 	Chlorophyte: +2% Chance to Dodge an attack. Dodging an attack via this effect spawns thorns at your position, damaging enemies.
-	Spectre: Killing an enemy with this weapon summons a friendly Skeleton who trades contact damage with enemies. It does not deal damage on your behalf, and you can only have three of these at a time.
-		OR
-	Spectre: Killing an enemy with this weapon summons a friendly Dungeon Spirit that homes in on enemies and deals damage.
-	Shroomite: Power of Five: Pressing Quick Buff while there are Glowing Mushrooms in your inventory consumes 5 Mushrooms and gives you the Mushroom Muscles buff for 15 seconds. Mushroom Muscles increases incoming damage by 10%, but increases your damage by 12% and your health regeneration by 2HP/s.
-	Nanite: You have a 15 Health Shield that regenerates at 2HP/s when you haven't taken damage for 5 seconds or more. The regeneration speed stacks!
-	Broken Hero: Power of Five: You take 10% less damage from enemies who have a lower health percentage than you. You deal 10% more damage to enemies who have a higher health percentage than you.
+	Spectre: Killing an enemy with this weapon summons a friendly Dungeon Spirit that homes in on enemies and deals damage. Can only have up to 3 Dungeon Spirits at a time.
+	Shroomite: Power of Five: Consuming Mushrooms gives you the Mushroom Mending buff for 15 seconds, which heals you for 4% of your Max Health per second, but all outgoing damage is multiplied by 0.7x.
+	Nanite: +15 Max Health. +0.5HP/s regeneration while above 75% Health.
+	Terra: You take 2% less damage from enemies who have a lower health percentage than you. You deal 2% more damage to enemies who have a higher health percentage than you.
 
 Tier 4:
 	Valhalla Knight: Power of Two: +3 Armor and 0.5HP/s life regen
-	Red Riding: Hitting an enemy gives you Red Riding Rush for 1 second. Being in Red Riding Rush for 10 seconds or more gives you 2% Crit Chance.
+	Red Riding: Hitting an enemy gives you Red Riding Rush for 1 second. Being in Red Riding Rush for 10 seconds or more gives you 3% Crit Chance.
 	Dark Artist: +3% Damage and -1.5% Attack Speed
 	Shinobi Infiltrator: Power of Five: Summon a Shadow Ninja to fight with you
 
 	Tiki: While holding this weapon, a magical Tiki mask follows your cursor, dealing damage to enemies it touches
 	Betsy's: Critical strikes with this weapon inflict Betsy's Curse for 1 second
-	Party: Dying or dodging attacks spawns confetti. All attacks with this weapon spawn confetti. No additional effects. Nope. None. (All attacks inflict Party Fever. Dying or dodging with accessories reforged with this hammer results in an explosion that inflicts Party Fever. The explosion has a bigger radius the more accessories contribute. Party Fever reduces the damage dealt by enemies affected by 10%)
+	Party: All attacks with this weapon spawn confetti. No additional effects. Nope. None. (All attacks inflict Party Fever. Party Fever reduces the damage dealt by enemies affected by 10%)
 	Beetle: Attacking with this weapon periodically spawns a Beetle that attacks enemies. This Beetle does not interact with other effects and acts like a giant bee.
 
 	Solar: +1% Damage Reduction and +3% Melee Speed. Melee weapons get [Add something interesting]
@@ -99,3 +95,8 @@ Tier 4:
 
 Leftover ideas:
 	Weapon gets buffs depending on class (?)
+	Dealing damage removes all non-Tag debuffs from the enemy and makes the hit deal 10% more damage for each debuff removed.
+	You are afflicted with Blackout while you hold this weapon, but the effects of the reforge are applied twice! If applied to a Summon, you are permanently afflicted with Blackout!
+	This weapon's Damage Variance is halved, and Critical Strikes ignore 35% of enemy defense.
+	+4% Crit Chance, but all enemies around you regenerate 2 HP/s and bosses regenerate 3 HP/s.
+	+4% Damage, but getting hit turns it into -2% Damage for 10 seconds.

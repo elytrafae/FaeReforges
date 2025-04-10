@@ -1,0 +1,11 @@
+
+- Finish Tier 3 Hammers with Spectre
+- Do Tier 4 Hammers
+- Update Tinkerer UI
+	- Add Tier text
+	- Add Text for what it can reforge
+	- Add Error text
+	- Make it so non-Hammers can't be put into the slot somehow
+
+- Gameplay test
+- Update sprites

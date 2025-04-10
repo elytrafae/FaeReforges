@@ -1,4 +1,5 @@
-﻿using FaeReforges.Content.Cooldowns;
+﻿using FaeLibrary.API.ItemConditions;
+using FaeReforges.Content.Cooldowns;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,8 @@ namespace FaeReforges.Content.Items.TinkererHammers.Tier2 {
         public override int HammerTier => 2;
 
         public override LocalizedText AccessoryEffectText => base.AccessoryEffectText.WithFormatArgs(ModContent.GetInstance<GelatinousHammerCooldown>().DisplayCooldownTicks/60f, ModContent.GetInstance<GelatinousHammerCooldown>().Charges);
+
+        public override ItemCondition ReforgeableCondition => ItemCondition.Any;
 
         public override void HammerModifyWeaponKnockback(Item item, Player player, ref StatModifier knockback) {
             knockback += 0.3f;

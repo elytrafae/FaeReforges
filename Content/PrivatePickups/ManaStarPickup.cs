@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework;
 using System;
 
 namespace FaeReforges.Content.PrivatePickups {
-    internal class ManaStarPickup : SimpleTinkererHammerPrivatePickup {
+    public class ManaStarPickup : SimpleTinkererHammerPrivatePickup {
 
         public override void SimpleSetDefaults() {
             texture = MiscSpritesSystem.ManaStarPickup;

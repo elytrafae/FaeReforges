@@ -1,4 +1,5 @@
 ﻿using FaeReforges.Content.Items.TinkererHammers.Tier2;
+using FaeReforges.Content.Items.TinkererHammers.Tier3;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +14,12 @@ namespace FaeReforges.Systems.ShopsAndLoot {
 
         public override void ModifyShop(NPCShop shop) {
             if (shop.NpcType == NPCID.DD2Bartender) {
-                NPCShop.Entry eternianHammer = new(ModContent.ItemType<EternianTinkererHammer>(), Condition.DownedOldOnesArmyT1);
-                shop.Add(eternianHammer);
+                shop.Add(new NPCShop.Entry(ModContent.ItemType<EternianTinkererHammer>(), Condition.DownedOldOnesArmyT1));
+
+                shop.Add(new NPCShop.Entry(ModContent.ItemType<SquireTinkererHammer>(), Condition.DownedOldOnesArmyT2));
+                shop.Add(new NPCShop.Entry(ModContent.ItemType<HuntressTinkererHammer>(), Condition.DownedOldOnesArmyT2));
+                shop.Add(new NPCShop.Entry(ModContent.ItemType<ApprenticeTinkererHammer>(), Condition.DownedOldOnesArmyT2));
+                shop.Add(new NPCShop.Entry(ModContent.ItemType<MonkTinkererHammer>(), Condition.DownedOldOnesArmyT2));
             }
         }
 

@@ -21,6 +21,7 @@ namespace FaeReforges.Content.PrivatePickups {
         public int dustFrequency = 6;
         public int lifetime = 400;
         public int hammerType = ItemID.None;
+        public bool enableShatterSoundOnTouch = true;
 
         public virtual void SimpleSetDefaults() { }
 
@@ -50,12 +51,16 @@ namespace FaeReforges.Content.PrivatePickups {
         }
 
         public sealed override bool OnCollidePlayer(Player player) {
-            SoundEngine.PlaySound(SoundID.Shatter.WithVolumeScale(0.7f));
+            if (enableShatterSoundOnTouch) {
+                SoundEngine.PlaySound(SoundID.Shatter.WithVolumeScale(0.7f));
+            }
             return SimpleOnCollide(player);
         }
 
         public sealed override bool OnCollideProjectile(Projectile projectile) {
-            SoundEngine.PlaySound(SoundID.Shatter.WithVolumeScale(0.7f));
+            if (enableShatterSoundOnTouch) {
+                SoundEngine.PlaySound(SoundID.Shatter.WithVolumeScale(0.7f));
+            }
             return SimpleOnCollide(projectile);
         }
 

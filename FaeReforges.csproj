@@ -22,7 +22,6 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Assets\BalancingData\" />
-	  <Folder Include="Content\Projectiles\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Reference Include="FaeLibrary">

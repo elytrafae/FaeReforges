@@ -36,7 +36,6 @@ namespace FaeReforges.Systems {
             showStatTooltipLineHook = null;
         }
 
-        // This is refrenced in string form
         private bool UseStandardCritCalcs_Detour(Func<SummonMeleeSpeedDamageClass, bool> orig, SummonMeleeSpeedDamageClass self) {
             return true;
         }

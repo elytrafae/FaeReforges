@@ -22,6 +22,8 @@ namespace FaeReforges.Systems {
 
         public static Asset<Texture2D> ShadowflamePickup;
         public static Asset<Texture2D> ManaStarPickup;
+        public static Asset<Texture2D> TargetPickup;
+        public static Asset<Texture2D> EtherniaCrystalPickup;
 
         public override void Load() {
             PX = GetModSprite("px");
@@ -35,6 +37,8 @@ namespace FaeReforges.Systems {
 
             ShadowflamePickup = GetModSprite("Pickups/Shadowflame");
             ManaStarPickup = GetModSprite("Pickups/ManaStar");
+            TargetPickup = GetModSprite("Pickups/Target");
+            EtherniaCrystalPickup = GetModSprite("Pickups/EtherniaCrystal");
         }
 
         public override void Unload() {
@@ -49,6 +53,8 @@ namespace FaeReforges.Systems {
 
             ShadowflamePickup = null;
             ManaStarPickup = null;
+            TargetPickup = null;
+            EtherniaCrystalPickup = null;
         }
 
         public Asset<Texture2D> GetModSprite(string name) {

@@ -99,8 +99,18 @@ Buffs: {
 	}
 
 	TempShadowflameFlask: {
-		DisplayName: Temp Shadowflame Flask
-		Description: Mods.FaeReforges.Buffs.TempShadowflameFlask.Description
+		DisplayName: Shadowflame Imbue
+		Description: Your attacks inflict Shadowflame!
+	}
+
+	General: {
+		DisplayName: General
+		Description: Control an army!
+	}
+
+	MushroomMending: {
+		DisplayName: Mushroom Mending
+		Description: Life regen drastically increased, outgoing damage drastically reduced!
 	}
 }
 
@@ -122,3 +132,5 @@ PowerOf: {
 	Nine: "[c/FF1261:Power of Nine]"
 	Ten: "[c/FF1261:Power of Ten]"
 }
+
+Projectiles.FriendlyStinger.DisplayName: Friendly Stinger

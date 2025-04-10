@@ -15,7 +15,7 @@ using FaeReforges.Content.Items.TinkererHammers.Tier3;
 using FaeReforges.Content.Buffs;
 
 namespace FaeReforges.Content.PrivatePickups {
-    internal class ShadowflamePickup : SimpleTinkererHammerPrivatePickup {
+    public class ShadowflamePickup : SimpleTinkererHammerPrivatePickup {
 
         public override void SimpleSetDefaults() {
             texture = MiscSpritesSystem.ShadowflamePickup;

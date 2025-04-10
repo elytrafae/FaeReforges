@@ -7,7 +7,7 @@ SquireTinkererHammer: {
 		   become imbued with Shadowflame for 10 seconds.
 		The imbue's duration can stack up to 20 seconds.
 		This imbue does not conflict with flasks.
-		All shadowflame will immediately disappear 
+		All Shadowflame will immediately disappear 
 		   when you don't hold a weapon reforged with this.
 		'''
 	AccessoryEffectText: ""
@@ -16,8 +16,135 @@ SquireTinkererHammer: {
 }
 
 ApprenticeTinkererHammer: {
-	WeaponEffectText: ""
+	WeaponEffectText:
+		'''
+		While holding this weapon, Mana Stars
+		   will appear periodically around you. 
+		If you touch it, you instantly recover 
+		   20% of your Maximum Mana.
+		All Mana Stars will immediately disappear 
+		   when you don't hold a weapon reforged with this.
+		'''
 	AccessoryEffectText: ""
 	DisplayName: Apprentice Tinkerer Hammer
+	Tooltip: ""
+}
+
+MonkTinkererHammer: {
+	WeaponEffectText:
+		'''
+		While holding this weapon, Ethernia Crystals 
+		   will appear periodically around you. 
+		If you touch it, you gain +1 Minion and 
+		   Sentry slots for 10 seconds.
+		The effect's duration can stack up to 20 seconds.
+		All Ethernia Crystals will immediately disappear 
+		   when you don't hold a weapon reforged with this.
+		'''
+	AccessoryEffectText: ""
+	DisplayName: Monk Tinkerer Hammer
+	Tooltip: ""
+}
+
+HuntressTinkererHammer: {
+	WeaponEffectText:
+		'''
+		While holding this weapon, Targets
+		   will appear periodically around you. 
+		Shooting the target will make the
+		   projectile deal double damage (stacks).
+		Upon the first shot, the Target will
+		   always stay for 1 second.
+		All Targets will immediately disappear 
+		   when you don't hold a weapon reforged with this.
+		'''
+	AccessoryEffectText: ""
+	DisplayName: Huntress Tinkerer Hammer
+	Tooltip: ""
+}
+
+ForbiddenTinkererHammer: {
+	WeaponEffectText: Deal up to 20% bonus damage based on missing Mana
+	AccessoryEffectText: ""
+	DisplayName: Forbidden Tinkerer Hammer
+	Tooltip: ""
+}
+
+FrostTinkererHammer: {
+	WeaponEffectText: Deal 15% bonus damage to enemies affected by Frustburn or Frostbite
+	AccessoryEffectText: ""
+	DisplayName: Frost Tinkerer Hammer
+	Tooltip: ""
+}
+
+ShroomiteTinkererHammer: {
+	WeaponEffectText: ""
+	AccessoryEffectText:
+		'''
+		{$Mods.FaeReforges.PowerOf.Five}: Consuming Mushrooms gives you 
+		the Mushroom Mending buff for 15 seconds, which 
+		heals you for 4% of your Max Health per second, 
+		but all outgoing damage is multiplied by 0.7x.
+		Losing this effect clears Mushroom Mending.
+		'''
+	DisplayName: Shroomite Tinkerer Hammer
+	Tooltip: ""
+}
+
+NaniteTinkererHammer: {
+	WeaponEffectText: ""
+	AccessoryEffectText:
+		'''
+		+15 Max Health
+		+0.5 HP/s while above 75% Health
+		'''
+	DisplayName: Nanite Tinkerer Hammer
+	Tooltip: ""
+}
+
+TinkererHammerOfSight: {
+	WeaponEffectText: ""
+	AccessoryEffectText: Critical Strikes deal 4% of enemy defense as bonus damage
+	DisplayName: Tinkerer Hammer Of Sight
+	Tooltip: ""
+}
+
+TinkererHammerOfFright: {
+	WeaponEffectText: ""
+	AccessoryEffectText:
+		'''
+		Getting hit gives you 3% non-Summoner Attack Speed,
+		Summon Speed and Movement Speed for 6 seconds
+		'''
+	DisplayName: Tinkerer Hammer Of Fright
+	Tooltip: ""
+}
+
+TinkererHammerOfMight: {
+	WeaponEffectText: ""
+	AccessoryEffectText: 3% Armor Penetration, but -1% Damage
+	DisplayName: Tinkerer Hammer Of Might
+	Tooltip: ""
+}
+
+ChlorophyteTinkererHammer: {
+	WeaponEffectText: ""
+	AccessoryEffectText:
+		'''
+		2% Chance to Dodge an attack
+		A friendly stinger is shot out from your body when you do so
+		'''
+	DisplayName: Chlorophyte Tinkerer Hammer
+	Tooltip: ""
+}
+
+TerraTinkererHammer: {
+	WeaponEffectText: ""
+	AccessoryEffectText: 
+		'''
+		You take 2% less damage from enemies who have a lower health percentage than you. 
+		You deal 2% more damage to enemies who have a higher health percentage than you.
+		'''
+	DisplayName: Terra Tinkerer Hammer
 	Tooltip: ""
 }

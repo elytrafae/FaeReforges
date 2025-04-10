@@ -23,6 +23,8 @@ namespace FaeReforges.Systems.ReforgeHammerContent {
         public int flightTimeThousandth = 1000; // 10 = 1% Flight Time
         public bool accessoryReforgedWithSolar = false;
         public int crimtaneAccessoryCount = 0;
+        public int naniteRegenCount = 0;
+        public int commonPositiveRegen = 0;
 
         private const short VORTEX_CRIT_COOLDOWN = 600; // 10 seconds
         private Dictionary<int, short> vortexCrits = new Dictionary<int, short>();
@@ -70,6 +72,8 @@ namespace FaeReforges.Systems.ReforgeHammerContent {
             accessoryReforgedWithSolar = false;
             crimtaneAccessoryCount = 0;
             stardustHammerAccessoryCount = 0;
+            naniteRegenCount = 0;
+            commonPositiveRegen = 0;
         }
 
         public override bool FreeDodge(Player.HurtInfo info) {
@@ -80,21 +84,14 @@ namespace FaeReforges.Systems.ReforgeHammerContent {
             return dodge;
         }
 
-        public void OnDodge() {
-            /*
-            if (ReforgeHammerUtility.GetHammerItemType(Player.HeldItem) == ModContent.ItemType<HallowedTinkererHammer>()) {
-                Player.AddBuff(ModContent.BuffType<HallowedAggression>(), 600, false);
-            }
-            */
-        }
-
         public override void UpdateLifeRegen() {
             if (!ModContent.GetInstance<CrimsonHammerCooldown>().IsCoolingDown()) { // If it has been 15 seconds of not taking damage . . .
                 Player.lifeRegen += crimtaneAccessoryCount;
             }
-            if (Player.HasBuff<PalladiumRejuvenation>()) {
-                Player.lifeRegen += 3; // 1.5 HP per second
+            if (Player.statLife * 4 >= Player.statLifeMax2 * 3) { // If the player is at or above 75% HP
+                Player.lifeRegen += naniteRegenCount;
             }
+            Player.lifeRegen += commonPositiveRegen;
         }
 
         public override void PostUpdateEquips() {
@@ -144,9 +141,6 @@ namespace FaeReforges.Systems.ReforgeHammerContent {
 
         public override void OnHurt(Player.HurtInfo info) {
             ModContent.GetInstance<CrimsonHammerCooldown>().CompletelyResetCooldown();
-            if (info.Damage > 5) {
-                Player.AddBuff(ModContent.BuffType<SolarEclipse>(), 300, false);
-            }
         }
 
         public override bool ImmuneTo(PlayerDeathReason damageSource, int cooldownCounter, bool dodgeable) {
