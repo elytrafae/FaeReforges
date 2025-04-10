@@ -22,8 +22,6 @@ Tier 4: Golem onward
 
 NOTE: Fuck Calamity, if Calamity is installed, the rest of the Hardmode ore hammers are craftable from Hardmode Fishing Crates instead (NOTE: Check shimmer after)
 
-TODO: Add system for hammers only able to reforge certain types of items
-
 Tier 1 Hammers:
 	Copper: +1 Defense
 	Tin: +1% Movement and Jump Speed

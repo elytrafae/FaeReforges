@@ -11,7 +11,3 @@ namespace FaeReforges.Content.Cooldowns {
         public override int Charges => 1;
     }
 }
-
-// TODO: Test accessory for summon speed
-// TODO: See what's wrong with longswords!
-// TODO: Remake the Summon Weapon VS Whip distinction

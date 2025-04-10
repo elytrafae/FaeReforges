@@ -11,9 +11,5 @@ namespace FaeReforges.Systems.ReforgeHammerContent {
 
         public override bool InstancePerEntity => true;
 
-        int doubleDotTime = 0;
-
-        // TODO: Make DOT effectiveness stat
-
     }
 }
