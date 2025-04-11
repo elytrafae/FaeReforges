@@ -19,6 +19,7 @@
 	  <None Remove="localization\en-US_Mods.FaeReforges.Items.ReforgeHammers.Tier4.hjson" />
 	  <None Remove="Localization\en-US_Mods.FaeReforges.Prefixes.hjson" />
 	  <None Remove="Localization\en-US_Mods.FaeReforges.TinkererHammerType.hjson" />
+	  <None Remove="todo.txt" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Assets\BalancingData\" />

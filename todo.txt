@@ -1,10 +1,8 @@
 
-- Finish Tier 3 Hammers with Spectre
 - Finish Tier 4 reforges
 - Do Tier 4 Hammers
 - Do Tier 5 Reforges
 - Do Tier 5 Hammers
-- Balance
 - Update Tinkerer UI
 	- Add Tier text
 	- Add Text for what it can reforge
@@ -12,7 +10,9 @@
 	- Make it so non-Hammers can't be put into the slot somehow
 
 - Gameplay test
+- Balance
 - Update sprites
 - Release
 
 - Continue with other mods after initial release?
+

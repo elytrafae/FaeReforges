@@ -140,11 +140,34 @@ ChlorophyteTinkererHammer: {
 
 TerraTinkererHammer: {
 	WeaponEffectText: ""
-	AccessoryEffectText: 
+	AccessoryEffectText:
 		'''
 		You take 2% less damage from enemies who have a lower health percentage than you. 
 		You deal 2% more damage to enemies who have a higher health percentage than you.
 		'''
 	DisplayName: Terra Tinkerer Hammer
+	Tooltip: ""
+}
+
+HallowedTinkererHammer: {
+	WeaponEffectText: 
+		'''
+		+10% Movement Speed and Crit Chance for 10 seconds
+		after dodging an attack while holding this weapon
+		'''
+	AccessoryEffectText: ""
+	DisplayName: Hallowed Tinkerer Hammer
+	Tooltip: ""
+}
+
+SpectreTinkererHammer: {
+	WeaponEffectText: 
+		'''
+		Killing an enemy summons a friendly Dungeon Spirit
+		that homes in on enemies and deals damage. Can only 
+		have up to 3 Dungeon Spirits at a time.
+		'''
+	AccessoryEffectText: ""
+	DisplayName: Spectre Tinkerer Hammer
 	Tooltip: ""
 }

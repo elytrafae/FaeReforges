@@ -133,4 +133,7 @@ PowerOf: {
 	Ten: "[c/FF1261:Power of Ten]"
 }
 
-Projectiles.FriendlyStinger.DisplayName: Friendly Stinger
+Projectiles: {
+	FriendlyStinger.DisplayName: Friendly Stinger
+	FriendlyDungeonSpirit.DisplayName: Friendly Dungeon Spirit
+}
