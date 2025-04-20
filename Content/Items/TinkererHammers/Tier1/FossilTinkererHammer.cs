@@ -10,7 +10,7 @@ using Terraria.ID;
 namespace FaeReforges.Content.Items.TinkererHammers.Tier1 {
     public class FossilTinkererHammer : SimpleTinkererHammerItem {
         public override int Rarity => ItemRarityID.White;
-        public override int Value => Terraria.Item.buyPrice(silver: 45);
+
         public override int HammerTier => 1;
 
         public override ItemCondition ReforgeableCondition => ItemCondition.IsAccessory;

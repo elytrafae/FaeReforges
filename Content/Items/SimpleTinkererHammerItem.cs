@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -17,7 +18,7 @@ namespace FaeReforges.Content.Items {
     public abstract class SimpleTinkererHammerItem : AbstractTinkererHammer {
 
         public abstract int Rarity { get; }
-        public abstract int Value { get; }
+        public virtual int Value => SimpleValues.ElementAtOrDefault(HammerTier);
         public virtual int? CustomPrice => null;
         public virtual int CustomCurrency => CustomCurrencyID.None;
         public override abstract ItemCondition ReforgeableCondition { get; }
@@ -32,6 +33,8 @@ namespace FaeReforges.Content.Items {
             Item.shopCustomPrice = CustomPrice;
             Item.shopSpecialCurrency = CustomCurrency;
         }
+
+        public static readonly int[] SimpleValues = [0, 5000, 10000, 30000, 50000, 100000];
 
     }
 }

@@ -113,8 +113,8 @@ TinkererHammerOfFright: {
 	WeaponEffectText: ""
 	AccessoryEffectText:
 		'''
-		Getting hit gives you 3% non-Summoner Attack Speed,
-		Summon Speed and Movement Speed for 6 seconds
+		Getting hit gives you 3% Attack Speed, Summon
+		Speed and Movement Speed for 6 seconds
 		'''
 	DisplayName: Tinkerer Hammer Of Fright
 	Tooltip: ""

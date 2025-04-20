@@ -13,7 +13,6 @@ using Terraria.ModLoader;
 namespace FaeReforges.Content.Items.TinkererHammers.Tier2 {
     internal class GelatinousTinkererHammer : SimpleTinkererHammerItem {
         public override int Rarity => ItemRarityID.Orange;
-        public override int Value => Terraria.Item.buyPrice(gold: 1, silver: 45);
         public override int HammerTier => 2;
 
         public override LocalizedText AccessoryEffectText => base.AccessoryEffectText.WithFormatArgs(ModContent.GetInstance<GelatinousHammerCooldown>().DisplayCooldownTicks/60f, ModContent.GetInstance<GelatinousHammerCooldown>().Charges);

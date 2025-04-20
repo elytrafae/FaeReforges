@@ -12,7 +12,6 @@ using FaeLibrary.API.ItemConditions;
 namespace FaeReforges.Content.Items.TinkererHammers.Tier3 {
     public class TinkererHammerOfMight : SimpleTinkererHammerItem {
         public override int Rarity => ItemRarityID.LightRed;
-        public override int Value => Terraria.Item.buyPrice(gold: 1, silver: 30);
         public override int HammerTier => 3;
         public override ItemCondition ReforgeableCondition => ItemCondition.IsAccessory;
 

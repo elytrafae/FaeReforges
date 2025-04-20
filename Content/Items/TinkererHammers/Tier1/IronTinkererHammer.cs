@@ -6,7 +6,6 @@ using Terraria.ModLoader;
 namespace FaeReforges.Content.Items.TinkererHammers.Tier1 {
     public class IronTinkererHammer : SimpleTinkererHammerItem {
         public override int Rarity => ItemRarityID.White;
-        public override int Value => Terraria.Item.buyPrice(silver: 3);
         public override int HammerTier => 1;
 
         public override ItemCondition ReforgeableCondition => ItemCondition.IsWeapon;

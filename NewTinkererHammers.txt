@@ -57,7 +57,7 @@ Tier 3:
 	Forbidden: This weapon deals up to 20% bonus damage based on missing Mana
 	
 	Hammer of Sight: Critical Strikes deal 4% of enemy defense as bonus damage
-	Hammer of Fright: Getting hit gives you 3% non-Summoner Attack Speed and 3% Summon Speed for 5 seconds
+	Hammer of Fright: Getting hit gives you 3% Attack Speed, Summon Speed and Movement Speed for 5 seconds
 	Hammer of Might: -1% Damage, but ignore 3% of enemy defense
 	Hallowed: +10% Movement Speed and Crit Chance for 10 seconds after dodging an attack while holding this weapon
 
@@ -75,13 +75,18 @@ Tier 3:
 Tier 4:
 	Valhalla Knight: Power of Two: +3 Armor and 0.5HP/s life regen
 	Red Riding: Hitting an enemy gives you Red Riding Rush for 1 second. Being in Red Riding Rush for 10 seconds or more gives you 3% Crit Chance.
-	Dark Artist: +3% Damage and -1.5% Attack Speed
+	Dark Artist: +3% Damage, but -1.5% Attack Speed and Summon Speed
 	Shinobi Infiltrator: Power of Five: Summon a Shadow Ninja to fight with you
 
 	Tiki: While holding this weapon, a magical Tiki mask follows your cursor, dealing damage to enemies it touches
 	Betsy's: Critical strikes with this weapon inflict Betsy's Curse for 1 second
 	Party: All attacks with this weapon spawn confetti. No additional effects. Nope. None. (All attacks inflict Party Fever. Party Fever reduces the damage dealt by enemies affected by 10%)
-	Beetle: Attacking with this weapon periodically spawns a Beetle that attacks enemies. This Beetle does not interact with other effects and acts like a giant bee.
+	Beetle: Dealing damage with this weapon has a 30% chance to spawn a Beetle, dealing 60% of the hit's damage. This Beetle does not interact with other Beetle effects.
+
+	Rider (from Zookeeper @ 60% Bestiary, when Golem is down): +2% Movement Speed and +3% Acceleration on mounts
+	Steampunk: +0.7 seconds flight time
+	Cultist: +3% Horizontal and Vertical flight speed
+
 
 	Solar: +1% Damage Reduction and +3% Melee Speed. Melee weapons get [Add something interesting]
 	Vortex: +5% Ranged Velocity. Dealing damage with this Ranged Weapon has a chance to make the projectile of another ammo from your inventory rain down on the foe you hit. The additional projectile does not trigger the effect!

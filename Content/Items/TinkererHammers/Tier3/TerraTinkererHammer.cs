@@ -11,7 +11,6 @@ using Terraria.ID;
 namespace FaeReforges.Content.Items.TinkererHammers.Tier3 {
     public class TerraTinkererHammer : SimpleTinkererHammerItem {
         public override int Rarity => ItemRarityID.Yellow;
-        public override int Value => Terraria.Item.buyPrice(gold: 10);
         public override ItemCondition ReforgeableCondition => ItemCondition.IsAccessory;
         public override int HammerTier => 3;
 

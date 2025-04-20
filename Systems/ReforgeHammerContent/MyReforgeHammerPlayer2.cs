@@ -42,7 +42,6 @@ namespace FaeReforges.Systems.ReforgeHammerContent {
             }
             if (ModContent.GetInstance<FrightHammerCooldown>().IsCoolingDown()) {
                 Player.GetAttackSpeed(DamageClass.Generic) += hammerOfFrightCount * 0.03f;
-                Player.GetAttackSpeed(DamageClass.Summon) -= hammerOfFrightCount * 0.03f;
                 Player.GetSummonSpeed() += 0.03f;
                 Player.moveSpeed += hammerOfFrightCount * 0.03f;
             }
