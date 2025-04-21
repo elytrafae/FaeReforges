@@ -6,19 +6,20 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace FaeReforges.Content.Items.TinkererHammers.Tier2 {
     public class MythrilTinkererHammer : SimpleTinkererHammerItem {
         public override int Rarity => ItemRarityID.Orange;
         public override int HammerTier => 2;
         public override ItemCondition ReforgeableCondition => ItemCondition.IsWeapon;
-        public override void HammerChangeWeaponDealDamageNpc(int item, Player attacker, NPC victim, ref NPC.HitModifiers hitModifiers) {
+        public override void HammerChangeWeaponDealDamageNpc(int item, Player attacker, NPC victim, ref NPC.HitModifiers hitModifiers, DamageClass dmgClass) {
             victim.GetLifeStats(out int HP, out int maxHP);
             float healthRatio = ((float)HP)/maxHP;
             hitModifiers.FinalDamage *= 1f + healthRatio * 0.2f; // 20% more damage based on missing health 
         }
 
-        public override void HammerChangeWeaponDealDamagePvp(int item, Player attacker, Player victim, ref Player.HurtModifiers hurtModifiers) {
+        public override void HammerChangeWeaponDealDamagePvp(int item, Player attacker, Player victim, ref Player.HurtModifiers hurtModifiers, DamageClass dmgClass) {
             float healthRatio = ((float)victim.statLife)/victim.statLifeMax2;
             hurtModifiers.FinalDamage *= 1f + healthRatio * 0.2f; // 20% more damage based on missing health 
         }

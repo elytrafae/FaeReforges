@@ -20,18 +20,17 @@ namespace FaeReforges.Content.Items.TinkererHammers.Tier2 {
 
         public override LocalizedText WeaponEffectText => base.WeaponEffectText.WithFormatArgs(ModContent.GetInstance<HellstoneHammerCooldown>().DisplayCooldownTicks / 60f);
 
-        public override void HammerOnWeaponDealDamageNpc(int item, Player attacker, NPC victim, NPC.HitInfo hitInfo, int damageDone) {
-            Explosion(item, attacker, victim);
+        public override void HammerOnWeaponDealDamageNpc(int item, Player attacker, NPC victim, NPC.HitInfo hitInfo, int damageDone, DamageClass dmgClass) {
+            Explosion(item, attacker, victim, dmgClass);
         }
 
-        public override void HammerOnWeaponDealDamagePvp(int item, Player attacker, Player victim, Player.HurtInfo hurtInfo) {
-            Explosion(item, attacker, victim);
+        public override void HammerOnWeaponDealDamagePvp(int item, Player attacker, Player victim, Player.HurtInfo hurtInfo, DamageClass dmgClass) {
+            Explosion(item, attacker, victim, dmgClass);
         }
 
-        private void Explosion(int item, Player attacker, Entity victim) {
+        private void Explosion(int item, Player attacker, Entity victim, DamageClass dmgClass) {
             if (attacker.whoAmI == Main.myPlayer) {
                 if (ModContent.GetInstance<HellstoneHammerCooldown>().ConsumeCharge()) {
-                    DamageClass dmgClass = ContentSamples.ItemsByType[item].DamageType;
                     Projectile proj = Projectile.NewProjectileDirect(attacker.GetSource_FromThis(), victim.Center, Vector2.Zero, ProjectileID.Volcano, (int)attacker.GetDamage(dmgClass).ApplyTo(50), attacker.GetKnockback(dmgClass).ApplyTo(0), attacker.whoAmI);
                     if (proj != null) {
                         proj.DamageType = dmgClass;

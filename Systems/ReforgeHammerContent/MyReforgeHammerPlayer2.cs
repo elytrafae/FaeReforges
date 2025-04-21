@@ -4,6 +4,7 @@ using FaeLibrary.Implementation;
 using FaeReforges.Content.Buffs;
 using FaeReforges.Content.Cooldowns;
 using FaeReforges.Content.Items.TinkererHammers.Tier3;
+using FaeReforges.Content.Items.TinkererHammers.Tier4;
 using FaeReforges.Content.Projectiles;
 using FaeReforges.Systems.ReforgeHammers;
 using Microsoft.Xna.Framework;
@@ -26,6 +27,10 @@ namespace FaeReforges.Systems.ReforgeHammerContent {
         public int chlorophyteHammerCount = 0;
         public int terraHammerCount = 0;
         public bool shroomiteReforgeActive = false;
+
+        // NOT STATS
+        public int nebulaDamageStored = 0;
+        public int nebulaTicksWithoutIndicator = 0;
 
         public override void ResetEffects() {
             hammerOfSightCount = 0;
@@ -75,6 +80,30 @@ namespace FaeReforges.Systems.ReforgeHammerContent {
                 return true;
             }
             return false;
+        }
+
+        public override void PostUpdate() {
+            NebulaHammerCooldown nebulaCooldown = ModContent.GetInstance<NebulaHammerCooldown>();
+            if (nebulaDamageStored >= NebulaTinkererHammer.DAMAGE_PER_MANA && nebulaCooldown.ConsumeCharge()) {
+                if (Player.statMana < Player.statManaMax2) {
+                    Player.statMana++;
+                    if (nebulaDamageStored >= NebulaTinkererHammer.DAMAGE_PER_MANA * 2 && nebulaTicksWithoutIndicator < 4) {
+                        nebulaTicksWithoutIndicator++;
+                    } else {
+                        Player.ManaEffect(nebulaTicksWithoutIndicator + 1);
+                        nebulaTicksWithoutIndicator = 0;
+                    }
+                } else if (nebulaTicksWithoutIndicator > 0) {
+                    Player.ManaEffect(nebulaTicksWithoutIndicator);
+                    nebulaTicksWithoutIndicator = 0;
+                }
+                // The built up damage goes to waste if you are at max mana!
+                nebulaDamageStored -= NebulaTinkererHammer.DAMAGE_PER_MANA;
+            }
+        }
+
+        public void StoreNebulaDamage(int dmg) {
+            nebulaDamageStored = Math.Min(nebulaDamageStored + dmg, 4000);
         }
 
         public static MyReforgeHammerPlayer2 Get(Player player) {

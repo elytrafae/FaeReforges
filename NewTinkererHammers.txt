@@ -85,8 +85,7 @@ Tier 4:
 
 	Rider (from Zookeeper @ 60% Bestiary, when Golem is down): +2% Movement Speed and +3% Acceleration on mounts
 	Steampunk: +0.7 seconds flight time
-	Cultist: +3% Horizontal and Vertical flight speed
-
+	Celestial: +3% Horizontal and Vertical flight speed
 
 	Solar: +1% Damage Reduction and +3% Melee Speed. Melee weapons get [Add something interesting]
 	Vortex: +5% Ranged Velocity. Dealing damage with this Ranged Weapon has a chance to make the projectile of another ammo from your inventory rain down on the foe you hit. The additional projectile does not trigger the effect!

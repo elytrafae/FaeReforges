@@ -19,7 +19,7 @@ namespace FaeReforges.Content.Items.TinkererHammers.Tier2 {
             damage += 0.07f;
         }
 
-        public override void HammerChangeWeaponDealDamageNpc(int item, Player attacker, NPC victim, ref NPC.HitModifiers hitModifiers) {
+        public override void HammerChangeWeaponDealDamageNpc(int item, Player attacker, NPC victim, ref NPC.HitModifiers hitModifiers, DamageClass dmgClass) {
             hitModifiers.DamageVariationScale *= 3;
         }
 

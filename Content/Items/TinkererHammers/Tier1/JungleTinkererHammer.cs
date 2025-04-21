@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace FaeReforges.Content.Items.TinkererHammers.Tier1 {
     public class JungleTinkererHammer : SimpleTinkererHammerItem {
@@ -9,10 +10,10 @@ namespace FaeReforges.Content.Items.TinkererHammers.Tier1 {
         public override int HammerTier => 1;
 
         public override ItemCondition ReforgeableCondition => ItemCondition.IsWeapon;
-        public override void HammerOnWeaponDealDamageNpc(int item, Player attacker, NPC victim, NPC.HitInfo hitInfo, int damageDone) {
+        public override void HammerOnWeaponDealDamageNpc(int item, Player attacker, NPC victim, NPC.HitInfo hitInfo, int damageDone, DamageClass dmgClass) {
             victim.AddBuff(BuffID.Poisoned, 300);
         }
-        public override void HammerOnWeaponDealDamagePvp(int item, Player attacker, Player victim, Player.HurtInfo hurtInfo) {
+        public override void HammerOnWeaponDealDamagePvp(int item, Player attacker, Player victim, Player.HurtInfo hurtInfo, DamageClass dmgClass) {
             victim.AddBuff(BuffID.Poisoned, 300, false);
         }
         public override void HammerEnchantmentVisuals(Player player, int itemID, Vector2 position, int height, int width) {

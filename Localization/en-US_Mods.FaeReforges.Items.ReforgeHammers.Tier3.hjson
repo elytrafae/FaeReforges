@@ -150,7 +150,7 @@ TerraTinkererHammer: {
 }
 
 HallowedTinkererHammer: {
-	WeaponEffectText: 
+	WeaponEffectText:
 		'''
 		+10% Movement Speed and Crit Chance for 10 seconds
 		after dodging an attack while holding this weapon
@@ -161,7 +161,7 @@ HallowedTinkererHammer: {
 }
 
 SpectreTinkererHammer: {
-	WeaponEffectText: 
+	WeaponEffectText:
 		'''
 		Killing an enemy summons a friendly Dungeon Spirit
 		that homes in on enemies and deals damage. Can only 

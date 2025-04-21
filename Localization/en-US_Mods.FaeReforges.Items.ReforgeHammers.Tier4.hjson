@@ -1,1 +1,47 @@
+BeetleTinkererHammer: {
+	WeaponEffectText:
+		'''
+		Dealing damage has a {0}% chance to spawn a Beetle, 
+		dealing {1}% of the hit's damage. This Beetle
+		does not interact with other Beetle effects.
+		'''
+	AccessoryEffectText: ""
+	DisplayName: Beetle Tinkerer Hammer
+	Tooltip: ""
+}
 
+BetsyTinkererHammer: {
+	WeaponEffectText:
+		'''
+		Critical strikes with this weapon 
+		inflict Betsy's Curse for 1 second
+		'''
+	AccessoryEffectText: ""
+	DisplayName: Betsy Tinkerer Hammer
+	Tooltip: ""
+}
+
+DarkArtistTinkererHammer: {
+	WeaponEffectText: ""
+	AccessoryEffectText: +3% Damage, but -1.5% Attack and Summon Speed
+	DisplayName: Dark Artist Tinkerer Hammer
+	Tooltip: ""
+}
+
+ValhallaTinkererHammer: {
+	WeaponEffectText: ""
+	AccessoryEffectText: "{$Mods.FaeReforges.PowerOf.Two}: +3 Armor and 0.5HP/s life regen"
+	DisplayName: Valhalla Tinkerer Hammer
+	Tooltip: ""
+}
+
+NebulaTinkererHammer: {
+	WeaponEffectText:
+		'''
+		{0}% of damage dealt is returned 
+		as Mana (max {1} Mana per second)
+		'''
+	AccessoryEffectText: -{0}% Mana Cost
+	DisplayName: Nebula Tinkerer Hammer
+	Tooltip: ""
+}

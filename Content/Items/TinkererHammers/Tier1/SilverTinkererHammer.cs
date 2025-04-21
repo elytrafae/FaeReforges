@@ -2,6 +2,7 @@
 using FaeLibrary.Implementation;
 using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace FaeReforges.Content.Items.TinkererHammers.Tier1 {
     public class SilverTinkererHammer : SimpleTinkererHammerItem {
@@ -14,11 +15,11 @@ namespace FaeReforges.Content.Items.TinkererHammers.Tier1 {
             player.GetRangedVelocity() += 0.03f;
         }
 
-        public override void HammerChangeWeaponDealDamageNpc(int item, Player attacker, NPC victim, ref NPC.HitModifiers hitModifiers) {
+        public override void HammerChangeWeaponDealDamageNpc(int item, Player attacker, NPC victim, ref NPC.HitModifiers hitModifiers, DamageClass dmgClass) {
             hitModifiers.ArmorPenetration += 5;
         }
 
-        public override void HammerChangeWeaponDealDamagePvp(int item, Player attacker, Player victim, ref Player.HurtModifiers hurtModifiers) {
+        public override void HammerChangeWeaponDealDamagePvp(int item, Player attacker, Player victim, ref Player.HurtModifiers hurtModifiers, DamageClass dmgClass) {
             hurtModifiers.ArmorPenetration += 5;
         }
 

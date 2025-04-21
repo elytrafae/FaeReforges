@@ -11,21 +11,21 @@ namespace FaeReforges.Content.Items.TinkererHammers.Tier3 {
         public override int HammerTier => 3;
         public override ItemCondition ReforgeableCondition => ItemCondition.IsWeapon;
 
-        public override void HammerOnWeaponDealDamageNpc(int item, Player attacker, NPC victim, NPC.HitInfo hitInfo, int damageDone) {
+        public override void HammerOnWeaponDealDamageNpc(int item, Player attacker, NPC victim, NPC.HitInfo hitInfo, int damageDone, DamageClass dmgClass) {
             // Enemy is dead!
             if (victim.life <= 0) {
-                SpawnProjectile(victim.Center, item, attacker);
+                SpawnProjectile(victim.Center, item, attacker, dmgClass);
             }
         }
 
-        public override void HammerOnWeaponDealDamagePvp(int item, Player attacker, Player victim, Player.HurtInfo hurtInfo) {
+        public override void HammerOnWeaponDealDamagePvp(int item, Player attacker, Player victim, Player.HurtInfo hurtInfo, DamageClass dmgClass) {
             // Enemy is dead!
             if (victim.statLife <= 0) {
-                SpawnProjectile(victim.Center, item, attacker);
+                SpawnProjectile(victim.Center, item, attacker, dmgClass);
             }
         }
 
-        private void SpawnProjectile(Vector2 position, int itemID, Player attacker) {
+        private void SpawnProjectile(Vector2 position, int itemID, Player attacker, DamageClass damageType) {
             if (attacker.whoAmI != Main.myPlayer) {
                 return;
             }
@@ -35,7 +35,6 @@ namespace FaeReforges.Content.Items.TinkererHammers.Tier3 {
             }
             int baseDamage = 50;
             float baseKB = 2.5f;
-            DamageClass damageType = ContentSamples.ItemsByType[itemID].DamageType;
             Projectile proj = Projectile.NewProjectileDirect(attacker.GetSource_FromThis(), position, Vector2.Zero, projType, (int)attacker.GetDamage(damageType).ApplyTo(baseDamage), attacker.GetKnockback(damageType).ApplyTo(baseKB), attacker.whoAmI);
             if (proj != null && proj.active) {
                 proj.originalDamage = baseDamage;

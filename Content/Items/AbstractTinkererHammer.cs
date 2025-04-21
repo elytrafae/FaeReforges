@@ -30,10 +30,10 @@ namespace FaeReforges.Content.Items {
         public virtual void HammerOnApplyAccessory(Item item) { }
         public virtual void HammerOnUpdateWeaponHeld(Item item, Player player) { }
         public virtual void HammerOnUpdateAccessory(Item item, Player player, int count, bool hideVisual) { }
-        public virtual void HammerChangeWeaponDealDamagePvp(int item, Player attacker, Player victim, ref Player.HurtModifiers hurtModifiers) { }
-        public virtual void HammerOnWeaponDealDamagePvp(int item, Player attacker, Player victim, Player.HurtInfo hurtInfo) { }
-        public virtual void HammerChangeWeaponDealDamageNpc(int item, Player attacker, NPC victim, ref NPC.HitModifiers hitModifiers) { }
-        public virtual void HammerOnWeaponDealDamageNpc(int item, Player attacker, NPC victim, NPC.HitInfo hitInfo, int damageDone) { }
+        public virtual void HammerChangeWeaponDealDamagePvp(int item, Player attacker, Player victim, ref Player.HurtModifiers hurtModifiers, DamageClass dmgClass) { }
+        public virtual void HammerOnWeaponDealDamagePvp(int item, Player attacker, Player victim, Player.HurtInfo hurtInfo, DamageClass dmgClass) { }
+        public virtual void HammerChangeWeaponDealDamageNpc(int item, Player attacker, NPC victim, ref NPC.HitModifiers hitModifiers, DamageClass dmgClass) { }
+        public virtual void HammerOnWeaponDealDamageNpc(int item, Player attacker, NPC victim, NPC.HitInfo hitInfo, int damageDone, DamageClass dmgClass) { }
         public virtual bool HammerCanUseItem(Item item, Player attacker) { return true; }
         public virtual void HammerOnCreateProjectile(int item, Projectile projectile, IEntitySource source) { }
 

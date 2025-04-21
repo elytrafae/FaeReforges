@@ -288,19 +288,19 @@ namespace FaeReforges.Systems.ReforgeHammers {
         // These are all for melee. The projectiles are handled elsewhere
 
         public override void ModifyHitNPC(Item item, Player player, NPC target, ref NPC.HitModifiers modifiers) {
-            Hammer(item)?.HammerChangeWeaponDealDamageNpc(item.type, player, target, ref modifiers);
+            Hammer(item)?.HammerChangeWeaponDealDamageNpc(item.type, player, target, ref modifiers, item.DamageType);
         }
 
         public override void ModifyHitPvp(Item item, Player player, Player target, ref Player.HurtModifiers modifiers) {
-            Hammer(item)?.HammerChangeWeaponDealDamagePvp(item.type, player, target, ref modifiers);
+            Hammer(item)?.HammerChangeWeaponDealDamagePvp(item.type, player, target, ref modifiers, item.DamageType);
         }
 
         public override void OnHitNPC(Item item, Player player, NPC target, NPC.HitInfo hit, int damageDone) {
-            Hammer(item)?.HammerOnWeaponDealDamageNpc(item.type, player, target, hit, damageDone);
+            Hammer(item)?.HammerOnWeaponDealDamageNpc(item.type, player, target, hit, damageDone, item.DamageType);
         }
 
         public override void OnHitPvp(Item item, Player player, Player target, Player.HurtInfo hurtInfo) {
-            Hammer(item)?.HammerOnWeaponDealDamagePvp(item.type, player, target, hurtInfo);
+            Hammer(item)?.HammerOnWeaponDealDamagePvp(item.type, player, target, hurtInfo, item.DamageType);
         }
 
         public override bool CanUseItem(Item item, Player player) {

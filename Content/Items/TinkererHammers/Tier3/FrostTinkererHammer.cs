@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace FaeReforges.Content.Items.TinkererHammers.Tier3 {
     public class FrostTinkererHammer : SimpleTinkererHammerItem {
@@ -13,13 +14,13 @@ namespace FaeReforges.Content.Items.TinkererHammers.Tier3 {
         public override int HammerTier => 3;
         public override ItemCondition ReforgeableCondition => ItemCondition.IsWeapon;
 
-        public override void HammerChangeWeaponDealDamageNpc(int item, Player attacker, NPC victim, ref NPC.HitModifiers hitModifiers) {
+        public override void HammerChangeWeaponDealDamageNpc(int item, Player attacker, NPC victim, ref NPC.HitModifiers hitModifiers, DamageClass dmgClass) {
             if (victim.HasBuff(BuffID.Frostburn) || victim.HasBuff(BuffID.Frostburn2)) {
                 hitModifiers.SourceDamage += 0.1f;
             }
         }
 
-        public override void HammerChangeWeaponDealDamagePvp(int item, Player attacker, Player victim, ref Player.HurtModifiers hurtModifiers) {
+        public override void HammerChangeWeaponDealDamagePvp(int item, Player attacker, Player victim, ref Player.HurtModifiers hurtModifiers, DamageClass dmgClass) {
             if (victim.HasBuff(BuffID.Frostburn) || victim.HasBuff(BuffID.Frostburn2)) {
                 hurtModifiers.SourceDamage += 0.1f;
             }

@@ -15,7 +15,7 @@ namespace FaeReforges.Content.Items.TinkererHammers.Tier4 {
 
         public override ItemCondition ReforgeableCondition => ItemCondition.IsWeapon;
 
-        public override void HammerOnWeaponDealDamageNpc(int item, Player attacker, NPC victim, NPC.HitInfo hitInfo, int damageDone) {
+        public override void HammerOnWeaponDealDamageNpc(int item, Player attacker, NPC victim, NPC.HitInfo hitInfo, int damageDone, DamageClass dmgClass) {
             if (hitInfo.Crit) {
                 victim.AddBuff(BuffID.BetsysCurse, 60);
             }

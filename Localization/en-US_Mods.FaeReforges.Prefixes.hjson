@@ -43,9 +43,25 @@ Uneven.DisplayName: Uneven
 Puissant.DisplayName: Puissant
 Disenchanted.DisplayName: Disenchanted
 Calm.DisplayName: Calm
-ColorlessSummonerPrefix.DisplayName: Colorless Summoner Prefix
-DefiantSummonerPrefix.DisplayName: Defiant Summoner Prefix
-BarbaricSummonerPrefix.DisplayName: Barbaric Summoner Prefix
-HatefulSummonerPrefix.DisplayName: Hateful Summoner Prefix
-DisassociatingSummonerPrefix.DisplayName: Disassociating Summoner Prefix
-ParalyzedSummonerPrefix.DisplayName: Paralyzed Summoner Prefix
+ColorlessSummonerPrefix.DisplayName: Colorless
+DefiantSummonerPrefix.DisplayName: Defiant
+BarbaricSummonerPrefix.DisplayName: Barbaric
+HatefulSummonerPrefix.DisplayName: Hateful
+DisassociatingSummonerPrefix.DisplayName: Disassociating
+ParalyzedSummonerPrefix.DisplayName: Paralyzed
+TurbulentSummonerPrefix.DisplayName: Turbulent
+CruelSummonerPrefix.DisplayName: Cruel
+BitterSummonerPrefix.DisplayName: Bitter
+SharpenedSummonerPrefix.DisplayName: Sharpened
+HeavySummonerPrefix.DisplayName: Heavy
+CoordinatedSummonerPrefix.DisplayName: Coordinated
+AssistingSummonerPrefix.DisplayName: Assisting
+RubberySummonerPrefix.DisplayName: Rubbery
+ConfidentSummonerPrefix.DisplayName: Confident
+HallowedSummonerPrefix.DisplayName: Hallowed
+BoldSummonerPrefix.DisplayName: Bold
+ResentfulSummonerPrefix.DisplayName: Resentful
+FerociousSummonerPrefix.DisplayName: Ferocious
+UngovernableSummonerPrefix.DisplayName: Ungovernable
+ExtrovertedSummonerPrefix.DisplayName: Extroverted
+DroneifiedSummonerPrefix.DisplayName: Droneified

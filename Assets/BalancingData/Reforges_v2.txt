@@ -92,6 +92,25 @@ Disassociating 2 0 -0.1 -0.1 0 0.35
 Sadistic 3 0.15 0 0 0.1 0.0
 Introverted 3 0 0.1 0.2 -0.2 0.0
 Juggler 3 0 0.2 0.1 0.0 0.0
+Turbulent 3 -0.15 -0.3 0.3 -0.15 0.05
+Cruel 3 -0.05 0 0 0.3 0.0
+Bitter 3 0.1 -0.1 0 0 0.2
 Paralyzed 3 0.5 0.2 -0.4 0.5 0.3
+Sharpened 3 0.2 -0.1 0 -0.1 0.1
+Heavy 3 0.4 0 -0.2 0 0.1
+Coordinated 3 0.05 0.05 0 0.2 0.05
 Righteous 3 0 0 0 0 0.35
+Assisting 4 -0.05 0.1 0 0.15 0.2
+Rubbery 4 0 0.4 0.0 0.0 0.0
+Confident 4 0.5 0.3 -0.3 0.5 0.3
+Hallowed 4 0 0 0 0 0.45
+Bold 4 0 0.3 0 -0.1 0.1
+Resentful 4 0.2 0 -0.1 0.1 0.0
+Ferocious 4 0.15 0.1 0.1 -0.05 -0.05
+Ungovernable 4 -0.05 0 0.1 -0.25 0.15
+Jacked 4 0.3 0.15 0 0 0.05
+Energetic 4 0 0 0.15 0.0 0.0
+Extroverted 4 0 0 -0.05 0.3 0.0
+Heroic 4 0.05 0.1 0.05 0.1 0.1
+Droneified 5 0.1 0 -0.25 0.6 0.2
 #

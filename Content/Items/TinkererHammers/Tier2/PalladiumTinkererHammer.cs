@@ -15,11 +15,11 @@ namespace FaeReforges.Content.Items.TinkererHammers.Tier2 {
         public override int HammerTier => 2;
         public override ItemCondition ReforgeableCondition => ItemCondition.IsWeapon;
 
-        public override void HammerOnWeaponDealDamageNpc(int item, Player attacker, NPC victim, NPC.HitInfo hitInfo, int damageDone) {
+        public override void HammerOnWeaponDealDamageNpc(int item, Player attacker, NPC victim, NPC.HitInfo hitInfo, int damageDone, DamageClass dmgClass) {
             attacker.AddBuff(ModContent.BuffType<PalladiumRejuvenation>(), 120);
         }
 
-        public override void HammerOnWeaponDealDamagePvp(int item, Player attacker, Player victim, Player.HurtInfo hurtInfo) {
+        public override void HammerOnWeaponDealDamagePvp(int item, Player attacker, Player victim, Player.HurtInfo hurtInfo, DamageClass dmgClass) {
             attacker.AddBuff(ModContent.BuffType<PalladiumRejuvenation>(), 120);
         }
 

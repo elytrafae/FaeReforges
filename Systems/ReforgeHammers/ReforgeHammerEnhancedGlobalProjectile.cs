@@ -53,19 +53,19 @@ namespace FaeReforges.Systems.ReforgeHammers {
 
         // The following is for melee hits only. For projectiles, see ReforgeHammerEnhancedGlobalProjectile
         public override void ModifyHitNPC(Projectile projectile, NPC target, ref NPC.HitModifiers modifiers) {
-            Hammer?.HammerChangeWeaponDealDamageNpc(createdByItemId, Main.player[projectile.owner], target, ref modifiers);
+            Hammer?.HammerChangeWeaponDealDamageNpc(createdByItemId, Main.player[projectile.owner], target, ref modifiers, projectile.DamageType);
         }
 
         public override void ModifyHitPlayer(Projectile projectile, Player target, ref Player.HurtModifiers modifiers) {
-            Hammer?.HammerChangeWeaponDealDamagePvp(createdByItemId, Main.player[projectile.owner], target, ref modifiers);
+            Hammer?.HammerChangeWeaponDealDamagePvp(createdByItemId, Main.player[projectile.owner], target, ref modifiers, projectile.DamageType);
         }
 
         public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone) {
-            Hammer?.HammerOnWeaponDealDamageNpc(createdByItemId, Main.player[projectile.owner], target, hit, damageDone);
+            Hammer?.HammerOnWeaponDealDamageNpc(createdByItemId, Main.player[projectile.owner], target, hit, damageDone, projectile.DamageType);
         }
 
         public override void OnHitPlayer(Projectile projectile, Player target, Player.HurtInfo info) {
-            Hammer?.HammerOnWeaponDealDamagePvp(createdByItemId, Main.player[projectile.owner], target, info);
+            Hammer?.HammerOnWeaponDealDamagePvp(createdByItemId, Main.player[projectile.owner], target, info, projectile.DamageType);
         }
 
         public override void EmitEnchantmentVisualsAt(Projectile projectile, Vector2 boxPosition, int boxWidth, int boxHeight) {

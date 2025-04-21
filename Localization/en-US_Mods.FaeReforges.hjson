@@ -136,4 +136,5 @@ PowerOf: {
 Projectiles: {
 	FriendlyStinger.DisplayName: Friendly Stinger
 	FriendlyDungeonSpirit.DisplayName: Friendly Dungeon Spirit
+	ShotBeetle.DisplayName: Shot Beetle
 }
