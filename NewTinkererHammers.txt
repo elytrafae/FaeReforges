@@ -90,7 +90,7 @@ Tier 4:
 	Solar: +1% Damage Reduction and +3% Melee Speed. Melee weapons get [Add something interesting]
 	Vortex: +5% Ranged Velocity. Dealing damage with this Ranged Weapon has a chance to make the projectile of another ammo from your inventory rain down on the foe you hit. The additional projectile does not trigger the effect!
 	Nebula: -2% Mana Cost on accessories, 1% of damage dealt with this magic weapon is returned as mana (max 20 Mana per second)
-	Stardust: Power of Five: +1 Minion and Sentry slots. Dodging an attack or getting hurt makes all summons you have reforged with this hammer 5x faster for a brief moment. This effect has a cooldown of 15 seconds.
+	Stardust: Power of Five: +1 Minion and Sentry slots. Dodging an attack or getting hurt makes all summons you have reforged with this hammer 5x faster for a brief moment. This effect has a 15 second cooldown and 2 charges.
 
 	Phantom: Leaves the previous hammer's effect.
 

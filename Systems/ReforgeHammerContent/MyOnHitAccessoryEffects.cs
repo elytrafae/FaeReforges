@@ -15,7 +15,7 @@ namespace FaeReforges.Systems.ReforgeHammerContent {
         public static void JointModifyHitNPC(Player player, NPC target, ref NPC.HitModifiers modifiers, Entity itemOrProjectile) {
             MyReforgeHammerPlayer2 myPlayer = MyReforgeHammerPlayer2.Get(player);
             modifiers.ScalingArmorPenetration += (myPlayer.hammerOfMightCount * 0.03f);
-            modifiers.ModifyHitInfo += HammerOfSight_ModifyHurtInfo(target, myPlayer);
+            modifiers.ModifyHitInfo += HammerOfSight_ModifyHurtInfo(target, myPlayer, modifiers.SuperArmor);
             if (DoIHaveAHigherHealthPercentage(player, target)) {
                 modifiers.SourceDamage += 0.02f * myPlayer.terraHammerCount;
             }
@@ -61,9 +61,9 @@ namespace FaeReforges.Systems.ReforgeHammerContent {
         }
 
 
-        public static NPC.HitModifiers.HitInfoModifier HammerOfSight_ModifyHurtInfo(NPC target, MyReforgeHammerPlayer2 myPlayer) {
+        public static NPC.HitModifiers.HitInfoModifier HammerOfSight_ModifyHurtInfo(NPC target, MyReforgeHammerPlayer2 myPlayer, bool superArmor) {
             void modDelegate(ref NPC.HitInfo info) {
-                if (info.Crit) {
+                if (info.Crit && !superArmor) {
                     info.Damage += (int)(target.defense * myPlayer.hammerOfSightCount * 0.04f);
                 }
             }

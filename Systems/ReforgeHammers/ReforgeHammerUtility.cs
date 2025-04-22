@@ -47,6 +47,10 @@ namespace FaeReforges.Systems.ReforgeHammers {
             return GetHammerItemType(proj) == ModContent.ItemType<T>();
         }
 
+        public static bool HasAnySummonHammer<T>(Player player) where T : AbstractTinkererHammer {
+            return HasAnySummonHammer(player, ModContent.ItemType<T>());
+        }
+
         public static bool ShouldCooldownBarDisplay<T>() where T : AbstractTinkererHammer {
             int type = ModContent.ItemType<T>();
             return HasAnySummonHammer(Main.LocalPlayer, type) || GetHammerItemType(Main.LocalPlayer.HeldItem) == type;

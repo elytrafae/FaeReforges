@@ -112,6 +112,11 @@ Buffs: {
 		DisplayName: Mushroom Mending
 		Description: Life regen drastically increased, outgoing damage drastically reduced!
 	}
+
+	PartyFever: {
+		DisplayName: Party Fever
+		Description: Spawns confetti. Nothing more, I promise >:3
+	}
 }
 
 DeathReasons.StardustMinionTimeExpired: "{0}'s time ran out!"
@@ -137,4 +142,5 @@ Projectiles: {
 	FriendlyStinger.DisplayName: Friendly Stinger
 	FriendlyDungeonSpirit.DisplayName: Friendly Dungeon Spirit
 	ShotBeetle.DisplayName: Shot Beetle
+	TikiMask.DisplayName: Tiki Mask
 }

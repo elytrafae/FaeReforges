@@ -31,6 +31,7 @@ namespace FaeReforges.Systems.ReforgeHammerContent {
         // NOT STATS
         public int nebulaDamageStored = 0;
         public int nebulaTicksWithoutIndicator = 0;
+        public int stardustDuration = 0;
 
         public override void ResetEffects() {
             hammerOfSightCount = 0;
@@ -56,10 +57,18 @@ namespace FaeReforges.Systems.ReforgeHammerContent {
             if (ReforgeHammerUtility.IsReforgedWith<HallowedTinkererHammer>(Player.HeldItem)) {
                 Player.AddBuff(ModContent.BuffType<HallowedAggression>(), 10 * 60);
             }
+            OnHurtOrDodge(info);
         }
 
         public override void OnHurt(Player.HurtInfo info) {
             ModContent.GetInstance<FrightHammerCooldown>().CompletelyResetCooldown();
+            OnHurtOrDodge(info);
+        }
+
+        public void OnHurtOrDodge(Player.HurtInfo info) {
+            if (ModContent.GetInstance<StardustHammerCooldown>().ConsumeCharge()) {
+                stardustDuration += StardustTinkererHammer.BRIEF_MOMENT_DURATION;
+            }
         }
 
         public override bool FreeDodge(Player.HurtInfo info) {
@@ -99,6 +108,10 @@ namespace FaeReforges.Systems.ReforgeHammerContent {
                 }
                 // The built up damage goes to waste if you are at max mana!
                 nebulaDamageStored -= NebulaTinkererHammer.DAMAGE_PER_MANA;
+            }
+
+            if (stardustDuration > 0) {
+                stardustDuration--;
             }
         }
 

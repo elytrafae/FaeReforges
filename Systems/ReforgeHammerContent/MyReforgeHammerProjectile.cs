@@ -1,4 +1,7 @@
-﻿using FaeReforges.Content.PrivatePickups;
+﻿using FaeLibrary.API;
+using FaeReforges.Content.Items.TinkererHammers.Tier4;
+using FaeReforges.Content.PrivatePickups;
+using FaeReforges.Systems.ReforgeHammers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,7 +13,7 @@ using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
 namespace FaeReforges.Systems.ReforgeHammerContent {
-    public class MyReforgeHammerProjectile : GlobalProjectile {
+    public class MyReforgeHammerProjectile : GlobalProjectile, IFaeGlobalProjectile {
 
         public override bool InstancePerEntity => true;
 
@@ -42,7 +45,16 @@ namespace FaeReforges.Systems.ReforgeHammerContent {
             targetCountAlreadyHit = binaryReader.ReadInt32();
         }
 
-        
+        public void ModifyUpdateRate(Projectile projectile, ref StatModifier speed) {
+            if (projectile.TryGetOwner(out Player owner)) {
+                if (MyReforgeHammerPlayer2.Get(owner).stardustDuration > 0 && ReforgeHammerUtility.IsReforgedWith<StardustTinkererHammer>(projectile)) {
+                    speed *= StardustTinkererHammer.SUMMON_RUSH_SPEED;
+                }
+            }
+            
+        }
+
+
 
     }
 }

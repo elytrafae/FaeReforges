@@ -1,4 +1,5 @@
-﻿using FaeReforges.Content.Buffs;
+﻿using FaeLibrary.Implementation;
+using FaeReforges.Content.Buffs;
 using FaeReforges.Content.Cooldowns;
 using FaeReforges.Content.Items.TinkererHammers;
 using FaeReforges.Systems.ReforgeHammers;
@@ -137,6 +138,20 @@ namespace FaeReforges.Systems.ReforgeHammerContent {
                 return true;
             }
             return false;
+        }
+
+        public override void ModifyHitByNPC(NPC npc, ref Player.HurtModifiers modifiers) {
+            if (npc.HasBuff<PartyFever>()) {
+                modifiers.SourceDamage *= PartyFever.OUTGOING_DAMAGE_MULTIPLIER;
+            }
+        }
+
+        public override void ModifyHitByProjectile(Projectile proj, ref Player.HurtModifiers modifiers) {
+            if (proj.TryGetSourceNPC(out NPC npc)) {
+                if (npc.HasBuff<PartyFever>()) {
+                    modifiers.SourceDamage *= PartyFever.OUTGOING_DAMAGE_MULTIPLIER;
+                }
+            }
         }
 
         public override void OnHurt(Player.HurtInfo info) {

@@ -14,7 +14,7 @@ using Terraria.ModLoader;
 namespace FaeReforges.Content.Items.TinkererHammers.Tier4 {
     public class NebulaTinkererHammer : SimpleTinkererHammerItem {
 
-        public const int DAMAGE_PER_MANA = 100; // 100 Damage per 1 Mana = 1% of damage turned into mana
+        public const int DAMAGE_PER_MANA = 200; // 100 Damage per 1 Mana = 1% of damage turned into mana
         public const int MANA_COST_REDUCTION_PERCENT = 2;
 
         public override int Rarity => ItemRarityID.Red;

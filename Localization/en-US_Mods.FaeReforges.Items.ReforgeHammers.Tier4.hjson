@@ -4,6 +4,7 @@ BeetleTinkererHammer: {
 		Dealing damage has a {0}% chance to spawn a Beetle, 
 		dealing {1}% of the hit's damage. This Beetle
 		does not interact with other Beetle effects.
+		Can only have {2} Beetles at once.
 		'''
 	AccessoryEffectText: ""
 	DisplayName: Beetle Tinkerer Hammer
@@ -30,7 +31,7 @@ DarkArtistTinkererHammer: {
 
 ValhallaTinkererHammer: {
 	WeaponEffectText: ""
-	AccessoryEffectText: "{$Mods.FaeReforges.PowerOf.Two}: +3 Armor and 0.5HP/s life regen"
+	AccessoryEffectText: "{$Mods.FaeReforges.PowerOf.Two}: +3 Defense and 0.5HP/s life regen"
 	DisplayName: Valhalla Tinkerer Hammer
 	Tooltip: ""
 }
@@ -43,5 +44,39 @@ NebulaTinkererHammer: {
 		'''
 	AccessoryEffectText: -{0}% Mana Cost
 	DisplayName: Nebula Tinkerer Hammer
+	Tooltip: ""
+}
+
+StardustTinkererHammer: {
+	WeaponEffectText:
+		'''
+		Dodging an attack or getting hurt makes all summons you have
+		reforged with this hammer {0}x faster for a brief moment. 
+		This effect has a {1} second cooldown and {2} charges.
+		'''
+	AccessoryEffectText: "{$Mods.FaeReforges.PowerOf.Five}: +1 Summon and Sentry Slots"
+	DisplayName: Stardust Tinkerer Hammer
+	Tooltip: ""
+}
+
+PartyTinkererHammer: {
+	WeaponEffectText:
+		'''
+		Enemies you hit will spawn confetti.
+		Nothing else.
+		'''
+	AccessoryEffectText: ""
+	DisplayName: Party Tinkerer Hammer
+	Tooltip: ""
+}
+
+TikiTinkererHammer: {
+	WeaponEffectText:
+		'''
+		While holding this weapon, a magical Tiki Mask follows
+		your cursor, dealing damage to enemies it touches
+		'''
+	AccessoryEffectText: ""
+	DisplayName: Tiki Tinkerer Hammer
 	Tooltip: ""
 }

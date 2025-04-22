@@ -104,7 +104,11 @@ NaniteTinkererHammer: {
 
 TinkererHammerOfSight: {
 	WeaponEffectText: ""
-	AccessoryEffectText: Critical Strikes deal 4% of enemy defense as bonus damage
+	AccessoryEffectText:
+		'''
+		Critical Strikes deal 4% of enemy defense as bonus damage
+		Does not apply to enemies with Super Armor
+		'''
 	DisplayName: Tinkerer Hammer Of Sight
 	Tooltip: ""
 }
