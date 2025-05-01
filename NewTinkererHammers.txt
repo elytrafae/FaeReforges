@@ -83,14 +83,22 @@ Tier 4:
 	Party: All attacks with this weapon spawn confetti. No additional effects. Nope. None. (All attacks inflict Party Fever. Party Fever reduces the damage dealt by enemies affected by 10%)
 	Beetle: Dealing damage with this weapon has a 30% chance to spawn a Beetle, dealing 60% of the hit's damage. This Beetle does not interact with other Beetle effects.
 
-	Rider (from Zookeeper @ 60% Bestiary, when Golem is down): +2% Movement Speed and +3% Acceleration on mounts
+	Rider (from Zookeeper @ 60% Bestiary, when Golem is down): +3% Movement Speed and Acceleration on mounts
 	Steampunk: +0.7 seconds flight time
 	Celestial: +3% Horizontal and Vertical flight speed
 
 	Solar: +1% Damage Reduction and +3% Melee Speed. Melee weapons get [Add something interesting]
+		- If the weapon can receive melee prefixes, every third attack will have its speed halved, but size is doubled, damage is increased by 50% and it always crits!
+		- Otherwise, your Melee Speed stat is multiplied by 1.25x while this weapon is held, letting the weapon's special interaction with the stat happen.
+
+		-	Build Solar Energy over time while attacking with this weapon, which is rapidly lost while you're not. 
+			When you are hit, lose all Solar Energy and reduce the incoming hit's damage by up to 20% 
+			and create an explosion around you that inflicts Solar Flames. 
+			At max Solar Energy, attacks with this weapon inflict Solar Flames.
 	Vortex: +5% Ranged Velocity. Dealing damage with this Ranged Weapon has a chance to make the projectile of another ammo from your inventory rain down on the foe you hit. The additional projectile does not trigger the effect!
 	Nebula: -2% Mana Cost on accessories, 1% of damage dealt with this magic weapon is returned as mana (max 20 Mana per second)
-	Stardust: Power of Five: +1 Minion and Sentry slots. Dodging an attack or getting hurt makes all summons you have reforged with this hammer 5x faster for a brief moment. This effect has a 15 second cooldown and 2 charges.
+	Stardust: Power of Five: +1 Minion and Sentry slots. 
+			Dodging an attack or getting hurt makes all summons you have reforged with this hammer 5x faster for a brief moment. This effect has a 15 second cooldown and 2 charges.
 
 	Phantom: Leaves the previous hammer's effect.
 
@@ -102,3 +110,17 @@ Leftover ideas:
 	This weapon's Damage Variance is halved, and Critical Strikes ignore 35% of enemy defense.
 	+4% Crit Chance, but all enemies around you regenerate 2 HP/s and bosses regenerate 3 HP/s.
 	+4% Damage, but getting hit turns it into -2% Damage for 10 seconds.
+
+	Subclass hammers:
+		- Shortswords:
+		- Longswords:
+		- Yoyos:
+		- Boomerangs:
+
+		- Wands:
+		- Spellbooks:
+		- Magic Guns: This weapon now shoots bullets alongside its regular projectile, and benefit from both Ranged and Magic bonuses, but its damage is reduced by 20%
+		- Yoyos:
+		- Minions:
+		- Sentries:
+		- Whips:

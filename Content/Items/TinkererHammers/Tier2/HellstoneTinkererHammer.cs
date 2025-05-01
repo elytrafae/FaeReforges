@@ -18,7 +18,9 @@ namespace FaeReforges.Content.Items.TinkererHammers.Tier2 {
         public override int HammerTier => 2;
         public override ItemCondition ReforgeableCondition => ItemCondition.IsWeapon;
 
-        public override LocalizedText WeaponEffectText => base.WeaponEffectText.WithFormatArgs(ModContent.GetInstance<HellstoneHammerCooldown>().DisplayCooldownTicks / 60f);
+        public override string GetWeaponEffectText(Item item) {
+            return WeaponEffectText.Format(ModContent.GetInstance<HellstoneHammerCooldown>().DisplayCooldownTicks / 60f);
+        }
 
         public override void HammerOnWeaponDealDamageNpc(int item, Player attacker, NPC victim, NPC.HitInfo hitInfo, int damageDone, DamageClass dmgClass) {
             Explosion(item, attacker, victim, dmgClass);

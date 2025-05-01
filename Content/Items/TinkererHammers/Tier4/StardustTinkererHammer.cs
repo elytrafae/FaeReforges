@@ -13,13 +13,27 @@ using FaeReforges.Content.Cooldowns;
 
 namespace FaeReforges.Content.Items.TinkererHammers.Tier4 {
     public class StardustTinkererHammer : SimpleTinkererHammerItem {
+        public const int BONUS_TAG_DAMAGE = 12;
+        public const int BONUS_TAG_CRIT = 6;
         public const float SUMMON_RUSH_SPEED = 5;
         public const int BRIEF_MOMENT_DURATION = 30;
         public override int Rarity => ItemRarityID.Red;
-        public override ItemCondition ReforgeableCondition => ItemCondition.GrammaticalAnd3(ItemCondition.IsMinionWeapon, ItemCondition.IsSentryWeapon, ItemCondition.IsAccessory);
+        public override ItemCondition ReforgeableCondition => ItemCondition.GrammaticalAnd(ItemCondition.IsSummonerWeapon, ItemCondition.IsAccessory);
         public override int HammerTier => 4;
 
-        public override LocalizedText WeaponEffectText => base.WeaponEffectText.WithFormatArgs(SUMMON_RUSH_SPEED, ModContent.GetInstance<StardustHammerCooldown>().DisplayCooldownTicks/60f, ModContent.GetInstance<StardustHammerCooldown>().Charges);
+        protected virtual LocalizedText WhipWeaponEffect => this.GetLocalization(nameof(WhipWeaponEffect));
+        protected virtual LocalizedText SummonWeaponEffect => this.GetLocalization(nameof(SummonWeaponEffect));
+
+        public override string GetWeaponEffectText(Item item) {
+            if (item == null) {
+                return WeaponEffectText.Format(BONUS_TAG_DAMAGE, BONUS_TAG_CRIT, SUMMON_RUSH_SPEED, ModContent.GetInstance<StardustHammerCooldown>().DisplayCooldownTicks / 60f, ModContent.GetInstance<StardustHammerCooldown>().Charges);
+            }
+            if (ItemCondition.IsWhipWeapon.IsMet(item)) { 
+                return WhipWeaponEffect.Format(BONUS_TAG_DAMAGE, BONUS_TAG_CRIT);
+            }
+            return SummonWeaponEffect.Format(SUMMON_RUSH_SPEED, ModContent.GetInstance<StardustHammerCooldown>().DisplayCooldownTicks / 60f, ModContent.GetInstance<StardustHammerCooldown>().Charges);
+        }
+
         public override void HammerOnUpdateAccessory(Item item, Player player, int count, bool hideVisual) {
             if (count % 5 == 0) {
                 player.maxMinions++;

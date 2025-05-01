@@ -27,7 +27,7 @@ namespace FaeReforges.Content.Projectiles {
             Projectile.timeLeft = 4;
             Projectile.penetrate = -1;
             Projectile.usesIDStaticNPCImmunity = true;
-            Projectile.idStaticNPCHitCooldown = 30;
+            Projectile.idStaticNPCHitCooldown = 20;
         }
 
         public override bool? CanCutTiles() {
@@ -38,13 +38,18 @@ namespace FaeReforges.Content.Projectiles {
             Projectile.timeLeft = 4;
             if (Projectile.owner == Main.myPlayer) {
                 if (Projectile.TryGetOwner(out Player player)) {
-                    //if (!ReforgeHammerUtility.IsReforgedWith<TikiTinkererHammer>(player.HeldItem)) { 
                     if (summonedByItem == null || summonedByItem != player.HeldItem) { 
                         Projectile.Kill();
                         return;
                     }
                     Projectile.ai[0] = Main.MouseWorld.X;
                     Projectile.ai[1] = Main.MouseWorld.Y;
+
+                    if (Math.Abs(Projectile.ai[0] - Projectile.localAI[0]) >= 16 || Math.Abs(Projectile.ai[1] - Projectile.localAI[1]) >= 16) {
+                        Projectile.localAI[0] = Projectile.ai[0];
+                        Projectile.localAI[1] = Projectile.ai[1];
+                        Projectile.netUpdate = true;
+                    }
                 }
             }
             Projectile.velocity.X = (Projectile.ai[0] - Projectile.Center.X) / 10;

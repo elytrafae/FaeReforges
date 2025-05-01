@@ -22,7 +22,7 @@ namespace FaeReforges.Content.Items.TinkererHammers.Tier4 {
             int projType = ModContent.ProjectileType<TikiMask>();
             if (player.whoAmI == Main.myPlayer && player.ownedProjectileCounts[projType] <= 0) {
                 DamageClass dmgType = item.DamageType;
-                int baseDmg = 60;
+                int baseDmg = 50;
                 float baseKB = 0;
                 Projectile proj = Projectile.NewProjectileDirect(player.GetSource_Misc("Tiki Hammer On Hold Effect"), player.Center, Vector2.Zero, projType, (int)player.GetDamage(dmgType).ApplyTo(baseDmg), player.GetKnockback(dmgType).ApplyTo(baseKB), player.whoAmI, Main.MouseWorld.X, Main.MouseWorld.Y);
                 if (proj != null && proj.active) { 

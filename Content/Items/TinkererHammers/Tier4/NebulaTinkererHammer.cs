@@ -21,8 +21,13 @@ namespace FaeReforges.Content.Items.TinkererHammers.Tier4 {
         public override ItemCondition ReforgeableCondition => ItemCondition.GrammaticalAnd(ItemCondition.IsMagicWeapon, ItemCondition.IsAccessory);
         public override int HammerTier => 4;
 
-        public override LocalizedText AccessoryEffectText => base.AccessoryEffectText.WithFormatArgs(MANA_COST_REDUCTION_PERCENT);
-        public override LocalizedText WeaponEffectText => base.WeaponEffectText.WithFormatArgs(100f/DAMAGE_PER_MANA, 60f / ModContent.GetInstance<NebulaHammerCooldown>().DisplayCooldownTicks);
+        public override string GetAccessoryEffectText(Item item) {
+            return AccessoryEffectText.Format(MANA_COST_REDUCTION_PERCENT);
+        }
+
+        public override string GetWeaponEffectText(Item item) {
+            return WeaponEffectText.Format(100f / DAMAGE_PER_MANA, 60f / ModContent.GetInstance<NebulaHammerCooldown>().DisplayCooldownTicks);
+        }
 
         public override void HammerOnUpdateAccessory(Item item, Player player, int count, bool hideVisual) {
             player.manaCost -= (MANA_COST_REDUCTION_PERCENT / 100f);

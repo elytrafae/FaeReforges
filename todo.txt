@@ -1,5 +1,6 @@
 
 - Make Stardust Hammer's effect duration actually synced at all times
+- Make more tests on beetles
 
 
 - Do Tier 4 Hammers

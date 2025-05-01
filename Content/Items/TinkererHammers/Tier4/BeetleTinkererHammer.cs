@@ -17,7 +17,9 @@ namespace FaeReforges.Content.Items.TinkererHammers.Tier4 {
         public override ItemCondition ReforgeableCondition => ItemCondition.IsWeapon;
         public override int HammerTier => 4;
 
-        public override LocalizedText WeaponEffectText => base.WeaponEffectText.WithFormatArgs(SPAWN_CHANCE_PERCENT, BEETLE_DAMAGE_PERCENT, MAX_BEETLE);
+        public override string GetWeaponEffectText(Item item) {
+            return WeaponEffectText.Format(SPAWN_CHANCE_PERCENT, BEETLE_DAMAGE_PERCENT, MAX_BEETLE);
+        }
 
         public override void HammerOnWeaponDealDamageNpc(int item, Player attacker, NPC victim, NPC.HitInfo hitInfo, int damageDone, DamageClass dmgClass) {
             SpawnBeetle(damageDone, hitInfo.Knockback, dmgClass, attacker, victim, hitInfo.HitDirection);

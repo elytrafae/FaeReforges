@@ -17,8 +17,26 @@ namespace FaeReforges.Content.Items {
 
         public abstract int HammerTier { get; }
         public virtual ItemCondition ReforgeableCondition => ItemCondition.Any;
-        public virtual LocalizedText WeaponEffectText => this.GetLocalization(nameof(WeaponEffectText), () => "");
-        public virtual LocalizedText AccessoryEffectText => this.GetLocalization(nameof(AccessoryEffectText), () => "");
+        protected virtual LocalizedText WeaponEffectText => this.GetLocalization(nameof(WeaponEffectText), () => "");
+        protected virtual LocalizedText AccessoryEffectText => this.GetLocalization(nameof(AccessoryEffectText), () => "");
+
+        /// <summary>
+        /// Get the string for this hammer's weapon effect description. Override to modify said string.
+        /// </summary>
+        /// <param name="item">The reforged item this text will be displayed on. null if there is no item in the context or if the item is the hammer itself.</param>
+        /// <returns>The localized string</returns>
+        public virtual string GetWeaponEffectText(Item item) {
+            return WeaponEffectText.Value;
+        }
+
+        /// <summary>
+        /// Get the string for this hammer's accessory effect description. Override to modify said string.
+        /// </summary>
+        /// <param name="item">The reforged item this text will be displayed on. null if there is no item in the context or if the item is the hammer itself.</param>
+        /// <returns>The localized string</returns>
+        public virtual string GetAccessoryEffectText(Item item) {
+            return AccessoryEffectText.Value;
+        }
 
         public override void SetStaticDefaults() {
             _ = WeaponEffectText;
@@ -48,40 +66,6 @@ namespace FaeReforges.Content.Items {
         public virtual bool? HammerUseItem(Item item, Player player) { return null; }
         public virtual void HammerWhileUsingWeapon(Item item, Player player) { }
 
-        /*
-        public override void ModifyTooltips(List<TooltipLine> tooltips) {
-            int consumableIndex = tooltips.FindIndex(tooltip => tooltip.Name == "Consumable");
-            int materialIndex = tooltips.FindIndex(tooltip => tooltip.Name == "Material");
-            int nameIndex = tooltips.FindIndex(tooltip => tooltip.Name == "ItemName");
-            int tooltipIndex = tooltips.FindIndex(tooltip => tooltip.Name == "Tooltip0");
-            int insertIndex = Math.Max(consumableIndex, Math.Max(materialIndex, nameIndex)) + 1;
-            if (insertIndex == 0) {
-                if (tooltipIndex != -1) {
-                    insertIndex = tooltipIndex - 1;
-                } else {
-                    insertIndex = tooltips.Count;
-                }
-            }
-
-            //TooltipLineHelper("TinkererHammerCost", ReforgeHammerLocalization.CostTooltip.Format(hammerType.reforgeCost), ref tooltips, ref insertIndex);
-            //TooltipLineHelper("TinkererHammerNegativeChance", ReforgeHammerLocalization.NegativeReforgeChanceTooltip.Format(hammerType.negativeReforgeChance), ref tooltips, ref insertIndex);
-            TooltipLineHelper("TinkererHammerTier", ReforgeHammerLocalization.HammerTier.Format(HammerTier), ref tooltips, ref insertIndex);
-            TooltipLineHelper("TinkererHammerFilter", ReforgeHammerLocalization.HammerFilter.Format(ReforgeableCondition.Text), ref tooltips, ref insertIndex);
-            if (WeaponEffectText.Value.Length > 0) {
-                TooltipLineHelper("TinkererHammerWeaponEffect", ReforgeHammerLocalization.WeaponEffectPrefix.Format(WeaponEffectText), ref tooltips, ref insertIndex);
-            }
-            if (AccessoryEffectText.Value.Length > 0) {
-                TooltipLineHelper("TinkererHammerAccessoryEffect", ReforgeHammerLocalization.AccessoryEffectPrefix.Format(AccessoryEffectText), ref tooltips, ref insertIndex);
-            }
-            TooltipLineHelper("TinkererHammerTutorial", ReforgeHammerLocalization.TutorialTooltip.Value, ref tooltips, ref insertIndex);
-        }
-
-        private void TooltipLineHelper(string name, string text, ref List<TooltipLine> tooltips, ref int index) {
-            tooltips.Insert(index, new TooltipLine(Mod, name, text));
-            index++;
-        }
-        */
-
         public const string WEAPON_ABILITY_TOOLTIP = "TinkererHammerWeaponEffect";
         public const string ACCESSORY_ABILITY_TOOLTIP = "TinkererHammerAccessoryEffect";
 
@@ -90,10 +74,10 @@ namespace FaeReforges.Content.Items {
             tooltips.Add(new TooltipLine(Mod, "TinkererHammerFilter", ReforgeHammerLocalization.HammerFilter.Format(ReforgeableCondition.Text)));
 
             if (WeaponEffectText.Value.Length > 0) {
-                ReforgeHammerUtility.ProcessAbilityLines(WeaponEffectText.Value, tooltips, WEAPON_ABILITY_TOOLTIP, Mod, ReforgeHammerLocalization.WeaponEffectPrefix);
+                ReforgeHammerUtility.ProcessAbilityLines(GetWeaponEffectText(null), tooltips, WEAPON_ABILITY_TOOLTIP, Mod, ReforgeHammerLocalization.WeaponEffectPrefix);
             }
             if (AccessoryEffectText.Value.Length > 0) {
-                ReforgeHammerUtility.ProcessAbilityLines(AccessoryEffectText.Value, tooltips, ACCESSORY_ABILITY_TOOLTIP, Mod, ReforgeHammerLocalization.AccessoryEffectPrefix);
+                ReforgeHammerUtility.ProcessAbilityLines(GetAccessoryEffectText(null), tooltips, ACCESSORY_ABILITY_TOOLTIP, Mod, ReforgeHammerLocalization.AccessoryEffectPrefix);
             }
             tooltips.Add(new TooltipLine(Mod, "TinkererHammerTutorial", ReforgeHammerLocalization.TutorialTooltip.Value));
         }

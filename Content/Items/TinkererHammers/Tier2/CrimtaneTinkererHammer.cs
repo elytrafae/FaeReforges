@@ -14,12 +14,12 @@ using Terraria.ModLoader;
 namespace FaeReforges.Content.Items.TinkererHammers.Tier2 {
     public class CrimtaneTinkererHammer : SimpleTinkererHammerItem {
         public override int Rarity => ItemRarityID.Orange;
-
         public override int HammerTier => 2;
-
         public override ItemCondition ReforgeableCondition => ItemCondition.IsAccessory;
 
-        public override LocalizedText AccessoryEffectText => base.AccessoryEffectText.WithFormatArgs(ModContent.GetInstance<CrimsonHammerCooldown>().DisplayCooldownTicks / 60f);
+        public override string GetAccessoryEffectText(Item item) {
+            return AccessoryEffectText.Format(ModContent.GetInstance<CrimsonHammerCooldown>().DisplayCooldownTicks / 60f);
+        }
 
         public override void HammerOnUpdateAccessory(Item item, Player player, int count, bool hideVisual) {
             player.GetModPlayer<MyReforgeHammerPlayer>().crimtaneAccessoryCount++;

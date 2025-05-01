@@ -48,11 +48,24 @@ NebulaTinkererHammer: {
 }
 
 StardustTinkererHammer: {
+	SummonWeaponEffect:
+		'''
+		Dodging an attack or getting hurt makes all summons 
+		you have from this {0}x faster for a brief moment. 
+		This effect has a {1} second cooldown and {2} charges.
+		'''
+	WhipWeaponEffect:
+		'''
+		+{0} Summon Tag Damage
+		+{1}% summon tag critical strike chance
+		This bonus does not stack with itself.
+		'''
 	WeaponEffectText:
 		'''
-		Dodging an attack or getting hurt makes all summons you have
-		reforged with this hammer {0}x faster for a brief moment. 
-		This effect has a {1} second cooldown and {2} charges.
+		If used on a whip:
+		"{$Mods.FaeReforges.Items.ReforgeHammers.Tier4.StardustTinkererHammer.WhipWeaponEffect}"
+		If used on a minion or sentry:
+		"{$Mods.FaeReforges.Items.ReforgeHammers.Tier4.StardustTinkererHammer.SummonWeaponEffect@2}"
 		'''
 	AccessoryEffectText: "{$Mods.FaeReforges.PowerOf.Five}: +1 Summon and Sentry Slots"
 	DisplayName: Stardust Tinkerer Hammer
@@ -78,5 +91,12 @@ TikiTinkererHammer: {
 		'''
 	AccessoryEffectText: ""
 	DisplayName: Tiki Tinkerer Hammer
+	Tooltip: ""
+}
+
+RiderTinkererHammer: {
+	WeaponEffectText: ""
+	AccessoryEffectText: +{0}% Movement Speed and +{1}% Acceleration on mounts
+	DisplayName: Rider's Tinkerer Hammer
 	Tooltip: ""
 }

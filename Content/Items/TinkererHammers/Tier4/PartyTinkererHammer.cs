@@ -13,21 +13,17 @@ namespace FaeReforges.Content.Items.TinkererHammers.Tier4 {
         public override ItemCondition ReforgeableCondition => ItemCondition.IsWeapon;
         public override int HammerTier => 4;
 
-        public override LocalizedText WeaponEffectText => base.WeaponEffectText;
-
         public override void HammerOnWeaponDealDamageNpc(int item, Player attacker, NPC victim, NPC.HitInfo hitInfo, int damageDone, DamageClass dmgClass) {
             victim.AddBuff(ModContent.BuffType<PartyFever>(), 90);
-            for (int i = 0; i < 10; i++) {
-                Dust.NewDust(victim.position, victim.width, victim.height, DustID.Confetti + Main.rand.Next(4));
-                Gore.NewGore(attacker.GetSource_OnHit(victim), victim.Center, new Vector2(0, -0.8f), 276 + Main.rand.Next(7));
+            for (int i = 0; i < 8; i++) {
+                PartyFever.SpawnConfetti(victim, attacker.GetSource_OnHit(victim));
             }
         }
 
         public override void HammerOnWeaponDealDamagePvp(int item, Player attacker, Player victim, Player.HurtInfo hurtInfo, DamageClass dmgClass) {
             victim.AddBuff(ModContent.BuffType<PartyFever>(), 90);
-            for (int i = 0; i < 10; i++) {
-                Dust.NewDust(victim.position, victim.width, victim.height, DustID.Confetti + Main.rand.Next(4));
-                Gore.NewGore(attacker.GetSource_OnHit(victim), victim.Center, new Vector2(0, -0.8f), 276 + Main.rand.Next(7));
+            for (int i = 0; i < 8; i++) {
+                PartyFever.SpawnConfetti(victim, attacker.GetSource_OnHit(victim));
             }
         }
 

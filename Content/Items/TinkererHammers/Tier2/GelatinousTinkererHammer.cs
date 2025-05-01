@@ -14,10 +14,11 @@ namespace FaeReforges.Content.Items.TinkererHammers.Tier2 {
     internal class GelatinousTinkererHammer : SimpleTinkererHammerItem {
         public override int Rarity => ItemRarityID.Orange;
         public override int HammerTier => 2;
-
-        public override LocalizedText AccessoryEffectText => base.AccessoryEffectText.WithFormatArgs(ModContent.GetInstance<GelatinousHammerCooldown>().DisplayCooldownTicks/60f, ModContent.GetInstance<GelatinousHammerCooldown>().Charges);
-
         public override ItemCondition ReforgeableCondition => ItemCondition.Any;
+
+        public override string GetAccessoryEffectText(Item item) {
+            return AccessoryEffectText.Format(ModContent.GetInstance<GelatinousHammerCooldown>().DisplayCooldownTicks / 60f, ModContent.GetInstance<GelatinousHammerCooldown>().Charges);
+        }
 
         public override void HammerModifyWeaponKnockback(Item item, Player player, ref StatModifier knockback) {
             knockback += 0.3f;

@@ -116,10 +116,10 @@ namespace FaeReforges.Systems.ReforgeHammers {
                 tooltips.Add(line);
 
                 if (ItemCondition.IsWeapon.Predicate(item)) {
-                    ReforgeHammerUtility.ProcessAbilityLines(hammerType.WeaponEffectText.Value, tooltips, AbstractTinkererHammer.WEAPON_ABILITY_TOOLTIP, Mod, ReforgeHammerLocalization.WeaponEffectPrefix);
+                    ReforgeHammerUtility.ProcessAbilityLines(hammerType.GetWeaponEffectText(item), tooltips, AbstractTinkererHammer.WEAPON_ABILITY_TOOLTIP, Mod, ReforgeHammerLocalization.WeaponEffectPrefix);
                 }
                 if (item.accessory) {
-                    ReforgeHammerUtility.ProcessAbilityLines(hammerType.AccessoryEffectText.Value, tooltips, AbstractTinkererHammer.ACCESSORY_ABILITY_TOOLTIP, Mod, ReforgeHammerLocalization.AccessoryEffectPrefix);
+                    ReforgeHammerUtility.ProcessAbilityLines(hammerType.GetAccessoryEffectText(item), tooltips, AbstractTinkererHammer.ACCESSORY_ABILITY_TOOLTIP, Mod, ReforgeHammerLocalization.AccessoryEffectPrefix);
                 }
                 
             }
