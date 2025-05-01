@@ -10,6 +10,7 @@ using Terraria;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using FaeReforges.Content.Cooldowns;
+using FaeReforges.Content.Buffs;
 
 namespace FaeReforges.Content.Items.TinkererHammers.Tier4 {
     public class StardustTinkererHammer : SimpleTinkererHammerItem {
@@ -23,6 +24,12 @@ namespace FaeReforges.Content.Items.TinkererHammers.Tier4 {
 
         protected virtual LocalizedText WhipWeaponEffect => this.GetLocalization(nameof(WhipWeaponEffect));
         protected virtual LocalizedText SummonWeaponEffect => this.GetLocalization(nameof(SummonWeaponEffect));
+
+        public override void HammerOnWeaponDealDamageNpc(int item, Player attacker, NPC victim, NPC.HitInfo hitInfo, int damageDone, DamageClass dmgClass) {
+            if (ItemCondition.IsWhipWeapon.IsMet(ContentSamples.ItemsByType[item])) {
+                victim.AddBuff(ModContent.BuffType<StardustHammerTagEffect>(), 4 * 60);
+            }
+        }
 
         public override string GetWeaponEffectText(Item item) {
             if (item == null) {

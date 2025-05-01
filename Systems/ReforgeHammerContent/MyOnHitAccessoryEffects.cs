@@ -1,4 +1,6 @@
 ﻿using FaeLibrary.Implementation;
+using FaeReforges.Content.Buffs;
+using FaeReforges.Content.Items.TinkererHammers.Tier4;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +20,13 @@ namespace FaeReforges.Systems.ReforgeHammerContent {
             modifiers.ModifyHitInfo += HammerOfSight_ModifyHurtInfo(target, myPlayer, modifiers.SuperArmor);
             if (DoIHaveAHigherHealthPercentage(player, target)) {
                 modifiers.SourceDamage += 0.02f * myPlayer.terraHammerCount;
+            }
+
+            if (target.HasBuff<StardustHammerTagEffect>() && itemOrProjectile is Projectile proj && proj.IsMinionOrSentryRelated) {
+                modifiers.FlatBonusDamage += StardustTinkererHammer.BONUS_TAG_DAMAGE;
+                if (Main.rand.Next(100) < StardustTinkererHammer.BONUS_TAG_CRIT) {
+                    modifiers.SetCrit();
+                }
             }
         }
 
