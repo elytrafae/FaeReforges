@@ -11,6 +11,7 @@
 	- Add Text for what it can reforge
 	- Add Error text
 	- Make it so non-Hammers can't be put into the slot somehow
+- Add set for item types that should not receive Hammer Weapon/Accessory effects (use for myself: Plushies)
 
 - Gameplay test
 - Balance

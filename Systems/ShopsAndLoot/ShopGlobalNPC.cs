@@ -1,5 +1,6 @@
 ﻿using FaeReforges.Content.Items.TinkererHammers.Tier2;
 using FaeReforges.Content.Items.TinkererHammers.Tier3;
+using FaeReforges.Content.Items.TinkererHammers.Tier4;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,13 +15,19 @@ namespace FaeReforges.Systems.ShopsAndLoot {
 
         public override void ModifyShop(NPCShop shop) {
             if (shop.NpcType == NPCID.DD2Bartender) {
-                shop.Add(new NPCShop.Entry(ModContent.ItemType<EternianTinkererHammer>(), Condition.DownedOldOnesArmyT1));
+                Add<EternianTinkererHammer>(shop, Condition.DownedOldOnesArmyT1);
 
-                shop.Add(new NPCShop.Entry(ModContent.ItemType<SquireTinkererHammer>(), Condition.DownedOldOnesArmyT2));
-                shop.Add(new NPCShop.Entry(ModContent.ItemType<HuntressTinkererHammer>(), Condition.DownedOldOnesArmyT2));
-                shop.Add(new NPCShop.Entry(ModContent.ItemType<ApprenticeTinkererHammer>(), Condition.DownedOldOnesArmyT2));
-                shop.Add(new NPCShop.Entry(ModContent.ItemType<MonkTinkererHammer>(), Condition.DownedOldOnesArmyT2));
+                Add<SquireTinkererHammer>(shop, Condition.DownedOldOnesArmyT2);
+                Add<HuntressTinkererHammer>(shop, Condition.DownedOldOnesArmyT2);
+                Add<ApprenticeTinkererHammer>(shop, Condition.DownedOldOnesArmyT2);
+                Add<MonkTinkererHammer>(shop, Condition.DownedOldOnesArmyT2);
+            } else if (shop.NpcType == NPCID.WitchDoctor) {
+                Add<TikiTinkererHammer>(shop, Condition.DownedGolem);
             }
+        }
+
+        private static void Add<T>(NPCShop shop, params Condition[] condition) where T : ModItem { 
+            shop.Add(ModContent.ItemType<T>(), condition);
         }
 
     }

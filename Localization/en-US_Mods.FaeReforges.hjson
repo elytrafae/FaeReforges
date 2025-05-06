@@ -117,6 +117,11 @@ Buffs: {
 		DisplayName: Party Fever
 		Description: Spawns confetti. Nothing more, I promise >:3
 	}
+
+	StardustHammerTagEffect: {
+		DisplayName: Stardust Hammer Tag Effect
+		Description: Mods.FaeReforges.Buffs.StardustHammerTagEffect.Description
+	}
 }
 
 DeathReasons.StardustMinionTimeExpired: "{0}'s time ran out!"

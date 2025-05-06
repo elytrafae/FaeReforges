@@ -62,10 +62,10 @@ StardustTinkererHammer: {
 		'''
 	WeaponEffectText:
 		'''
-		If used on a whip:
-		"{$Mods.FaeReforges.Items.ReforgeHammers.Tier4.StardustTinkererHammer.WhipWeaponEffect}"
-		If used on a minion or sentry:
-		"{$Mods.FaeReforges.Items.ReforgeHammers.Tier4.StardustTinkererHammer.SummonWeaponEffect@2}"
+		[c/ba03b7:If used on a whip:]
+		{$Mods.FaeReforges.Items.ReforgeHammers.Tier4.StardustTinkererHammer.WhipWeaponEffect}
+		[c/ba03b7:If used on a minion or sentry:]
+		{$Mods.FaeReforges.Items.ReforgeHammers.Tier4.StardustTinkererHammer.SummonWeaponEffect@2}
 		'''
 	AccessoryEffectText: "{$Mods.FaeReforges.PowerOf.Five}: +1 Summon and Sentry Slots"
 	DisplayName: Stardust Tinkerer Hammer

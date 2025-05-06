@@ -6,3 +6,10 @@ UIInsertHammer: Tinkerer Hammer goes here!
 UIThatIsNotAHammer: This is not a Tinkerer Hammer!
 HammerTier: "[c/345929:Tier {0} Reforge Hammer]"
 HammerFilter: Can Reforge: {0}
+PhantomHammer:
+	'''
+	[c/898989:Phantom Hammer]
+	Has no effects of its own, leaves
+	the previous hammer's effects on 
+	the item when reforging.
+	'''

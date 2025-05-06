@@ -1,10 +1,4 @@
 ﻿using FaeLibrary.API.ItemConditions;
-using FaeReforges.Systems.ReforgeHammerContent;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria;
 using Terraria.Localization;
@@ -47,7 +41,5 @@ namespace FaeReforges.Content.Items.TinkererHammers.Tier4 {
                 player.maxTurrets++;
             }
         }
-
-        // Hammer effect implemented elsewhere
     }
 }
