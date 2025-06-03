@@ -41,5 +41,13 @@ namespace FaeReforges.Content.Items.TinkererHammers.Tier4 {
                 player.maxTurrets++;
             }
         }
+
+        public override void AddRecipes() {
+            CreateRecipe()
+                .AddIngredient(ItemID.FragmentStardust)
+                .AddIngredient(ItemID.Rope, 5)
+                .AddTile<Content.Tiles.TinkererAnvil>()
+                .Register();
+        }
     }
 }

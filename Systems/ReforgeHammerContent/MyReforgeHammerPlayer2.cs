@@ -14,6 +14,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria;
+using Terraria.Chat;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace FaeReforges.Systems.ReforgeHammerContent {
@@ -92,6 +94,10 @@ namespace FaeReforges.Systems.ReforgeHammerContent {
         }
 
         public override void PostUpdate() {
+            // DEBUG
+            //ChatHelper.DisplayMessage(NetworkText.FromLiteral("Wing: " + Player.wingTime + " / " + Player.wingTimeMax), Color.Aqua, byte.MaxValue);
+            //ChatHelper.DisplayMessage(NetworkText.FromLiteral("Rocket: " + Player.rocketTime + " / " + Player.rocketTimeMax), Color.BlueViolet, byte.MaxValue);
+
             NebulaHammerCooldown nebulaCooldown = ModContent.GetInstance<NebulaHammerCooldown>();
             if (nebulaDamageStored >= NebulaTinkererHammer.DAMAGE_PER_MANA && nebulaCooldown.ConsumeCharge()) {
                 if (Player.statMana < Player.statManaMax2) {

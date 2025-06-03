@@ -48,5 +48,15 @@ namespace FaeReforges.Content.Items.TinkererHammers.Tier4 {
                 proj.DamageType = dmgClass;
             }
         }
+
+        public override void AddRecipes() {
+            CreateRecipe()
+                .AddIngredient(ItemID.BeetleHusk, 20)
+                .AddIngredient(ItemID.ChlorophyteBar, 15)
+                .AddIngredient(ItemID.Wire, 5)
+                .AddIngredient(ItemID.Rope, 5)
+                .AddTile<Content.Tiles.TinkererAnvil>()
+                .Register();
+        }
     }
 }

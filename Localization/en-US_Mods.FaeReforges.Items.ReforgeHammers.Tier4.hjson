@@ -100,3 +100,53 @@ RiderTinkererHammer: {
 	DisplayName: Rider's Tinkerer Hammer
 	Tooltip: ""
 }
+
+CultistTinkererHammer: {
+	WeaponEffectText: ""
+	AccessoryEffectText: +{0} seconds wing time
+	DisplayName: Cultist Tinkerer Hammer
+	Tooltip: ""
+}
+
+PrismaticTinkererHammer: {
+	WeaponEffectText: ""
+	AccessoryEffectText:
+		'''
+		+{0}% Movement Speed and Acceleration
+		while not at full flight time
+		'''
+	DisplayName: Prismatic Tinkerer Hammer
+	Tooltip: ""
+}
+
+FishyTinkererHammer: {
+	WeaponEffectText: ""
+	AccessoryEffectText:
+		'''
+		{$Mods.FaeReforges.PowerOf.Two}: The game considers you to 
+		be under water at all times (except for drowning). 
+		Water no longer impedes your movement.
+		'''
+	DisplayName: Fishy Tinkerer Hammer
+	Tooltip: ""
+}
+
+VortexTinkererHammer: {
+	WeaponEffectText:
+		'''
+		This weapon will shoot {0} additional projectiles 
+		every {1} other projectiles shot. 
+		The projectiles are from the first ammo from your ammo 
+		slots that DOESN'T match this weapon's ammo requirement.
+		'''
+	AccessoryEffectText: +{0}% Ranged Velocity
+	DisplayName: Vortex Tinkerer Hammer
+	Tooltip: ""
+}
+
+RedRidingTinkererHammer: {
+	WeaponEffectText: ""
+	AccessoryEffectText: "+{0} Armor Penetration and +{1}% Crit Chance"
+	DisplayName: Red Riding Tinkerer Hammer
+	Tooltip: ""
+}

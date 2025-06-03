@@ -15,13 +15,13 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace FaeReforges.Systems.ReforgeHammerContent {
     public class MyReforgeHammerPlayer : ModPlayer {
 
         public int dodgeChanceThousandth = 0; // 10 = 1% Dodge Chance
-        public int flightTimeThousandth = 1000; // 10 = 1% Flight Time
         public bool accessoryReforgedWithSolar = false;
         public int crimtaneAccessoryCount = 0;
         public int naniteRegenCount = 0;
@@ -69,7 +69,6 @@ namespace FaeReforges.Systems.ReforgeHammerContent {
 
         public override void ResetEffects() {
             dodgeChanceThousandth = 0;
-            flightTimeThousandth = 1000;
             accessoryReforgedWithSolar = false;
             crimtaneAccessoryCount = 0;
             stardustHammerAccessoryCount = 0;
@@ -96,7 +95,6 @@ namespace FaeReforges.Systems.ReforgeHammerContent {
         }
 
         public override void PostUpdateEquips() {
-            Player.wingTimeMax = Player.wingTimeMax * flightTimeThousandth / 1000;
             if (stardustTimeLeft > 0) {
                 Player.aggro = -999999999;
             }
@@ -215,7 +213,7 @@ namespace FaeReforges.Systems.ReforgeHammerContent {
 
         public class StardustInstakillDeathReason : PlayerDeathReason {
             public StardustInstakillDeathReason(string playerName, Mod mod) {
-                SourceCustomReason = mod.GetLocalization("DeathReasons.StardustMinionTimeExpired").Format(playerName);
+                CustomReason = NetworkText.FromKey("DeathReasons.StardustMinionTimeExpired", playerName);
             }
         }
 

@@ -24,6 +24,8 @@ namespace FaeReforges.Content.Items {
         public override abstract ItemCondition ReforgeableCondition { get; }
         public override string LocalizationCategory => base.LocalizationCategory + ".ReforgeHammers.Tier" + HammerTier;
 
+        public virtual void SetHammerDefaults() { }
+
         public sealed override void SetDefaults() {
             Item.width = 32;
             Item.height = 32;
@@ -32,6 +34,7 @@ namespace FaeReforges.Content.Items {
             Item.value = Value;
             Item.shopCustomPrice = CustomPrice;
             Item.shopSpecialCurrency = CustomCurrency;
+            SetHammerDefaults();
         }
 
         public static readonly int[] SimpleValues = [0, 5000, 10000, 30000, 50000, 100000];

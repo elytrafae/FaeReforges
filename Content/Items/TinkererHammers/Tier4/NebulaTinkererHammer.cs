@@ -41,5 +41,13 @@ namespace FaeReforges.Content.Items.TinkererHammers.Tier4 {
             MyReforgeHammerPlayer2.Get(attacker).StoreNebulaDamage(hurtInfo.Damage);
         }
 
+        public override void AddRecipes() {
+            CreateRecipe()
+                .AddIngredient(ItemID.FragmentNebula)
+                .AddIngredient(ItemID.Rope, 5)
+                .AddTile<Content.Tiles.TinkererAnvil>()
+                .Register();
+        }
+
     }
 }

@@ -83,19 +83,19 @@ Tier 4:
 			  - Didn't even start
 
 	[L] Valhalla Knight: Power of Two: +3 Armor and 0.5HP/s life regen
-	[Q] Red Riding: Hitting an enemy gives you Red Riding Rush for 1 second. Being in Red Riding Rush for 10 seconds or more gives you 3% Crit Chance.
+	[L] Red Riding: +5 Armor Penetration and +1% Crit Chance
 	[L] Dark Artist: +3% Damage, but -1.5% Attack Speed and Summon Speed
-	[L] Shinobi Infiltrator: Power of Five: Summon a Shadow Ninja to fight with you
+	[ ] Shinobi Infiltrator: Power of Five: Summon a Shadow Ninja to fight with you
 
 	[X] Tiki: While holding this weapon, a magical Tiki mask follows your cursor, dealing damage to enemies it touches
-	[L] Betsy's: Critical strikes with this weapon inflict Betsy's Curse for 1 second
-	[L] Party: All attacks with this weapon spawn confetti. No additional effects. Nope. None. (All attacks inflict Party Fever. Party Fever reduces the damage dealt by enemies affected by 10%)
-	[L] Beetle: Dealing damage with this weapon has a 30% chance to spawn a Beetle, dealing 60% of the hit's damage. This Beetle does not interact with other Beetle effects.
+	[X] Betsy's: Critical strikes with this weapon inflict Betsy's Curse for 1 second
+	[X] Party: All attacks with this weapon spawn confetti. No additional effects. Nope. None. (All attacks inflict Party Fever. Party Fever reduces the damage dealt by enemies affected by 10%)
+	[X] Beetle: Dealing damage with this weapon has a 30% chance to spawn a Beetle, dealing 60% of the hit's damage. This Beetle does not interact with other Beetle effects.
 
-	[L] Rider (from Zookeeper @ 60% Bestiary, when Golem is down): +3% Movement Speed and Acceleration on mounts
-	[ ] Celestial: +0.7 seconds flight time
-	[ ] Prismatic: +3% Horizontal and Vertical flight speed
-	[Q] Fishy: +2 Defense and +1% Damage while wet. Power of Two: You always count as wet for effects.
+	[X] Rider (from Zookeeper @ 60% Bestiary, when Golem is down): +3% Movement Speed and Acceleration on mounts
+	[X] Cultist: +0.7 seconds wing time
+	[X] Prismatic: +3% Movement Speed and Acceleration while not at max flight time
+	[X] Fishy: Power of Two: The game considers you to be under water at all times (except for drowning). Water no longer impedes your movement.
 
 	[Q] Solar: +1% Damage Reduction and +3% Melee Speed. Melee weapons get [Add something interesting]
 		- If the weapon can receive melee prefixes, every third attack will have its speed halved, but size is doubled, damage is increased by 50% and it always crits!
@@ -105,7 +105,9 @@ Tier 4:
 			When you are hit, lose all Solar Energy and reduce the incoming hit's damage by up to 20% 
 			and create an explosion around you that inflicts Solar Flames. 
 			At max Solar Energy, attacks with this weapon inflict Solar Flames.
-	[Q] Vortex: +5% Ranged Velocity. Dealing damage with this Ranged Weapon has a chance to make the projectile of another ammo from your inventory rain down on the foe you hit. The additional projectile does not trigger the effect!
+	[X] Vortex: +5% Ranged Velocity.
+			This weapon will shoot two additional projectiles every 6 other projectiles shot. The projectiles are from the first ammo from your ammo slots that DOESN'T match this weapon's ammo requirement.
+			
 	[X] Nebula: -2% Mana Cost on accessories, 1% of damage dealt with this magic weapon is returned as mana (max 20 Mana per second)
 	[X] Stardust: Power of Five: +1 Minion and Sentry slots. 
 			Dodging an attack or getting hurt makes all summons you have reforged with this hammer 5x faster for a brief moment. This effect has a 15 second cooldown and 2 charges.
@@ -128,6 +130,8 @@ Leftover ideas:
 	This weapon's Damage Variance is halved, and Critical Strikes ignore 35% of enemy defense.
 	+4% Crit Chance, but all enemies around you regenerate 2 HP/s and bosses regenerate 3 HP/s.
 	+4% Damage, but getting hit turns it into -2% Damage for 10 seconds.
+	Dealing damage with this Ranged Weapon has a chance to make the projectile of another ammo from your inventory rain down on the foe you hit. The additional projectile does not trigger the effect!
+	Hitting an enemy gives you Red Riding Rush for 1 second. Being in Red Riding Rush for 10 seconds or more gives you 3% Crit Chance.
 
 	Subclass hammers:
 		- Shortswords:

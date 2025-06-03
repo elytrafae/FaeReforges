@@ -5,6 +5,7 @@ using Terraria;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.ModLoader.IO;
 
 namespace FaeReforges.Systems.ShopsAndLoot {
     internal class BossLootSystem : ModSystem {
@@ -21,11 +22,15 @@ namespace FaeReforges.Systems.ShopsAndLoot {
 
         public static void AddLoot() {
             AddLootToBossAndBag(NPCID.DD2Betsy, ItemID.BossBagBetsy, ItemDropRule.Common(ModContent.ItemType<BetsyTinkererHammer>()));
+            AddLootToBossAndBag(NPCID.HallowBoss, ItemID.FairyQueenBossBag, ItemDropRule.Common(ModContent.ItemType<PrismaticTinkererHammer>()));
+            AddLootToBossAndBag(NPCID.DukeFishron, ItemID.FishronBossBag, ItemDropRule.Common(ModContent.ItemType<FishyTinkererHammer>()));
+            AddLootToNPC(NPCID.CultistBoss, ItemDropRule.Common(ModContent.ItemType<CultistTinkererHammer>()));
         }
 
         public static void AddLootToItem(int itemID, IItemDropRule rule) {
             if (!ItemLootList.TryGetValue(itemID, out List<IItemDropRule> ruleList)) { 
                 ruleList = [];
+                ItemLootList.Add(itemID, ruleList);
             }
             ruleList.Add(rule);
         }
@@ -33,6 +38,7 @@ namespace FaeReforges.Systems.ShopsAndLoot {
         public static void AddLootToNPC(int npcID, IItemDropRule rule) {
             if (!NPCLootList.TryGetValue(npcID, out List<IItemDropRule> ruleList)) {
                 ruleList = [];
+                NPCLootList.Add(npcID, ruleList);
             }
             ruleList.Add(rule);
         }
@@ -51,10 +57,8 @@ namespace FaeReforges.Systems.ShopsAndLoot {
             }
             AreListsInitialized = true;
             AddLoot();
-
         }
 
-        // This code gives me school dread... And I wrote it!
         private static void IterateID(int id, ILoot loot, Dictionary<int, List<IItemDropRule>> dict) {
             if (dict.TryGetValue(id, out List<IItemDropRule> list)) {
                 foreach (IItemDropRule rule in list) { 

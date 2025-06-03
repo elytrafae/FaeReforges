@@ -1,4 +1,5 @@
-﻿using FaeReforges.Systems.ReforgeHammerContent;
+﻿using FaeLibrary.Implementation;
+using FaeReforges.Systems.ReforgeHammerContent;
 using FaeReforges.Systems.VanillaReforges;
 using System;
 using System.Collections.Generic;
@@ -23,7 +24,7 @@ namespace FaeReforges.Content.Buffs {
 
         public override void Update(Player player, ref int buffIndex) {
             player.GetModPlayer<VanillaReforgePlayer>().accessoryMovement += (15 * Power);
-            player.GetModPlayer<MyReforgeHammerPlayer>().flightTimeThousandth += (150 * Power); // 15%
+            player.GetWingTimeStat() += 0.15f * Power;
         }
 
     }
