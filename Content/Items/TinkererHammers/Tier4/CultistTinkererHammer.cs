@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FaeLibrary.API.ItemConditions;
-using FaeReforges.Content.Buffs;
+﻿using FaeLibrary.API.ItemConditions;
 using Terraria.ID;
-using Terraria.ModLoader;
 using Terraria;
-using FaeLibrary.Implementation;
+using FaeLibrary.API.ClassExtensions;
 
 namespace FaeReforges.Content.Items.TinkererHammers.Tier4 {
     public class CultistTinkererHammer : SimpleTinkererHammerItem {

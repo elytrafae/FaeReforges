@@ -120,7 +120,12 @@ Buffs: {
 
 	StardustHammerTagEffect: {
 		DisplayName: Stardust Hammer Tag Effect
-		Description: Mods.FaeReforges.Buffs.StardustHammerTagEffect.Description
+		Description: You should not be seeing this
+	}
+
+	NinjaMinionBuff: {
+		DisplayName: Ninja Apprentice
+		Description: The Ninja Apprentice will fight for you
 	}
 }
 
@@ -144,8 +149,12 @@ PowerOf: {
 }
 
 Projectiles: {
-	FriendlyStinger.DisplayName: Friendly Stinger
+	FriendlyStinger.DisplayName: Stinger
 	FriendlyDungeonSpirit.DisplayName: Friendly Dungeon Spirit
-	ShotBeetle.DisplayName: Shot Beetle
+	ShotBeetle.DisplayName: Beetle
 	TikiMask.DisplayName: Tiki Mask
+	NinjaMinion.DisplayName: Ninja Apprentice
+	NinjaMinionOld.DisplayName: Ninja Minion Old
+	NinjaMinionCritShot.DisplayName: Ninja Minion Crit Shot
+	NinjaMinionShot.DisplayName: Ninja Minion Shot
 }

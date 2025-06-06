@@ -1,6 +1,6 @@
 ﻿using FaeLibrary.API;
 using FaeLibrary.API.Enums;
-using FaeLibrary.Implementation;
+using FaeLibrary.API.ClassExtensions;
 using FaeReforges.Content.Buffs;
 using FaeReforges.Content.Cooldowns;
 using FaeReforges.Content.Items.TinkererHammers.Tier3;
@@ -9,13 +9,7 @@ using FaeReforges.Content.Projectiles;
 using FaeReforges.Systems.ReforgeHammers;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
-using Terraria.Chat;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace FaeReforges.Systems.ReforgeHammerContent {

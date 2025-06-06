@@ -85,7 +85,7 @@ Tier 4:
 	[L] Valhalla Knight: Power of Two: +3 Armor and 0.5HP/s life regen
 	[L] Red Riding: +5 Armor Penetration and +1% Crit Chance
 	[L] Dark Artist: +3% Damage, but -1.5% Attack Speed and Summon Speed
-	[ ] Shinobi Infiltrator: Power of Five: Summon a Shadow Ninja to fight with you
+	[P] Shinobi Infiltrator: Power of Five: Summon a Ninja Apprentice to fight for you
 
 	[X] Tiki: While holding this weapon, a magical Tiki mask follows your cursor, dealing damage to enemies it touches
 	[X] Betsy's: Critical strikes with this weapon inflict Betsy's Curse for 1 second
@@ -97,7 +97,7 @@ Tier 4:
 	[X] Prismatic: +3% Movement Speed and Acceleration while not at max flight time
 	[X] Fishy: Power of Two: The game considers you to be under water at all times (except for drowning). Water no longer impedes your movement.
 
-	[Q] Solar: +1% Damage Reduction and +3% Melee Speed. Melee weapons get [Add something interesting]
+	[Q] Solar: +1% Damage Reduction and +4% Melee Size. Melee weapons get [Add something interesting]
 		- If the weapon can receive melee prefixes, every third attack will have its speed halved, but size is doubled, damage is increased by 50% and it always crits!
 		- Otherwise, your Melee Speed stat is multiplied by 1.25x while this weapon is held, letting the weapon's special interaction with the stat happen.
 
@@ -105,6 +105,9 @@ Tier 4:
 			When you are hit, lose all Solar Energy and reduce the incoming hit's damage by up to 20% 
 			and create an explosion around you that inflicts Solar Flames. 
 			At max Solar Energy, attacks with this weapon inflict Solar Flames.
+
+		- While holding this weapon and at or below 45% HP, gain +2 HP/s health regen, 15% Melee Speed and 20% Melee Size
+		- While holding this weapon, gain +1 HP/s health regen, 15% Melee Speed and 20% Melee Size, but your Potion Sickness cannot go below 15 seconds.
 	[X] Vortex: +5% Ranged Velocity.
 			This weapon will shoot two additional projectiles every 6 other projectiles shot. The projectiles are from the first ammo from your ammo slots that DOESN'T match this weapon's ammo requirement.
 			

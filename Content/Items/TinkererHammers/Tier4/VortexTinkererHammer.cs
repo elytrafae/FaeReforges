@@ -1,8 +1,7 @@
 ﻿using System;
 using FaeLibrary.API.ItemConditions;
-using FaeLibrary.Implementation;
+using FaeLibrary.API.ClassExtensions;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -53,7 +52,7 @@ namespace FaeReforges.Content.Items.TinkererHammers.Tier4 {
                                 int damage = (int)(player.GetDamage(weapon.DamageType).ApplyTo(weapon.damage) + player.GetDamage(ammo.DamageType).ApplyTo(ammo.damage));
                                 float kb = player.GetKnockback(weapon.DamageType).ApplyTo(weapon.knockBack) + player.GetKnockback(ammo.DamageType).ApplyTo(ammo.knockBack);
 
-                                Projectile.NewProjectile(player.GetSource_ItemUse_WithPotentialAmmo(weapon, ammo.type, BONUS_PROJECTILE_CONTEXT), position, velocity, ammo.shoot, damage, kb);
+                                Projectile.NewProjectile(player.GetSource_ItemUse_WithPotentialAmmo(weapon, ammo.type, BONUS_PROJECTILE_CONTEXT), position, velocity, ammo.shoot, damage, kb, player.whoAmI);
                             }
                         }
                     }

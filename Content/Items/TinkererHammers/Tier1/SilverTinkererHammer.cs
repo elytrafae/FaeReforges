@@ -1,5 +1,5 @@
 ﻿using FaeLibrary.API.ItemConditions;
-using FaeLibrary.Implementation;
+using FaeLibrary.API.ClassExtensions;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;

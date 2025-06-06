@@ -1,22 +1,14 @@
-﻿using FaeLibrary.Implementation;
-using FaeReforges.Content.Buffs;
+﻿using FaeReforges.Content.Buffs;
 using FaeReforges.Content.Cooldowns;
-using FaeReforges.Content.Items.TinkererHammers;
-using FaeReforges.Systems.ReforgeHammers;
-using Microsoft.Xna.Framework;
-using Steamworks;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
-using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using FaeLibrary.API.ClassExtensions;
 
 namespace FaeReforges.Systems.ReforgeHammerContent {
     public class MyReforgeHammerPlayer : ModPlayer {

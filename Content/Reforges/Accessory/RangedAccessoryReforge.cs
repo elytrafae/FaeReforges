@@ -1,14 +1,10 @@
 ﻿using FaeReforges.Systems.VanillaReforges;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.Localization;
 using Terraria;
 using Terraria.ModLoader;
 using FaeReforges.Systems;
-using FaeLibrary.Implementation;
+using FaeLibrary.API.ClassExtensions;
 
 namespace FaeReforges.Content.Reforges.Accessory {
     public class RangedAccessoryReforge : ModPrefix {

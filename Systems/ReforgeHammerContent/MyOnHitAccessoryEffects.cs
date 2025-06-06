@@ -1,15 +1,8 @@
-﻿using FaeLibrary.Implementation;
+﻿using FaeLibrary.API.ClassExtensions;
 using FaeReforges.Content.Buffs;
 using FaeReforges.Content.Items.TinkererHammers.Tier4;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
-using Terraria.Map;
 using Terraria.ModLoader;
-using Terraria.WorldBuilding;
 
 namespace FaeReforges.Systems.ReforgeHammerContent {
 
