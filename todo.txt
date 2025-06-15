@@ -2,15 +2,16 @@
 - Make Stardust Hammer's effect duration actually synced at all times
 - Make more tests on beetles
 
+- FIX A CRITICAL BUG WITH TIERS BEING ALL OVER THE PLACE NOW...?
 
-- Do Tier 4 Hammers
+X Do Tier 4 Hammers
 - Do Tier 5 Reforges
 - Do Tier 5 Hammers
 - Update Tinkerer UI
-	- Add Tier text
-	- Add Text for what it can reforge
+	X Add Tier text
+	X Add Text for what it can reforge
 	- Add Error text
-	- Make it so non-Hammers can't be put into the slot somehow
+	X Make it so non-Hammers can't be put into the slot somehow
 - Add set for item types that should not receive Hammer Weapon/Accessory effects (use for myself: Plushies)
 
 - Gameplay test

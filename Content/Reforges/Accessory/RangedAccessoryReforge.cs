@@ -20,7 +20,6 @@ namespace FaeReforges.Content.Reforges.Accessory {
             private void Add(Mod mod, string name, int tier) {
                 RangedAccessoryReforge reforge = new(name, tier);
                 mod.AddContent(reforge);
-                ReforgeTierSystem.SetPrefixTier(reforge.Type, tier);
             }
 
             public void Unload() {
@@ -65,6 +64,7 @@ namespace FaeReforges.Content.Reforges.Accessory {
         public override void SetStaticDefaults() {
             ShootVelocityTooltip = Mod.GetLocalization($"{LocalizationCategory}.{nameof(ShootVelocityTooltip)}");
             AmmoSaveTooltip = Mod.GetLocalization($"{LocalizationCategory}.{nameof(AmmoSaveTooltip)}");
+            CustomIDSets.PrefixTiers[Type] = power;
         }
 
     }

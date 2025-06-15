@@ -17,6 +17,12 @@ namespace FaeReforges.Content.Items {
 
         public abstract int HammerTier { get; }
         public virtual ItemCondition ReforgeableCondition => ItemCondition.Any;
+
+        /// <summary>
+        /// If true, this hammer will have no effects of its own, and instead it will leave whatever hammer's effect and credit was last on.
+        /// </summary>
+        public virtual bool PhantomHammer => false;
+
         protected virtual LocalizedText WeaponEffectText => this.GetLocalization(nameof(WeaponEffectText), () => "");
         protected virtual LocalizedText AccessoryEffectText => this.GetLocalization(nameof(AccessoryEffectText), () => "");
 

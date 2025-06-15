@@ -102,6 +102,7 @@ namespace FaeReforges.Content.Reforges {
             SummonSpeedBuffTooltip = Mod.GetLocalization($"{LocalizationCategory}.{nameof(SummonSpeedBuffTooltip)}");
             SummonTagEffectivenessTooltip = Mod.GetLocalization($"{LocalizationCategory}.{nameof(SummonTagEffectivenessTooltip)}");
             SummonArmorPenetrationTooltip = Mod.GetLocalization($"{LocalizationCategory}.{nameof(SummonArmorPenetrationTooltip)}");
+            CustomIDSets.PrefixTiers[Type] = tier;
         }
     }
 }

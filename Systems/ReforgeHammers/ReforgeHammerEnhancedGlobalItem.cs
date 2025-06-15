@@ -24,13 +24,15 @@ namespace FaeReforges.Systems.ReforgeHammers {
 
         // ItemID.None means that the item was not reforged with any hammer (could be naturally generated with a prefix)
         int hammerItemId = ItemID.None;
+        // This one is updated even if a phantom hammer is used. Essentially, this is the actual last hammer used on this item, while hammerItemId is the effect's source
+        int lastHammerUsed = ItemID.None;
         private static bool prefixFromReforge = false;
         readonly PrefixDefinition[] previousPrefixes = [default, default];
         private static int previousPrefixWorkaround = 0;
 
         const string HAMMER_SAVE_NAME = "ReforgeHammerDefinition";
         const string PREVIOUS_PREFIXES_NAME = "PreviousPrefix";
-
+        const string LAST_HAMMER_SAVE_NAME = "LastHammerDefinition";
 
         public override void SaveData(Item item, TagCompound tag) {
             if (hammerItemId > ItemID.None) {
@@ -39,6 +41,10 @@ namespace FaeReforges.Systems.ReforgeHammers {
             for (int i = 0; i < previousPrefixes.Length; i++) {
                 tag.Add(PREVIOUS_PREFIXES_NAME + i, previousPrefixes[i]);
             }
+            if (lastHammerUsed > ItemID.None) {
+                tag.Add(LAST_HAMMER_SAVE_NAME, new ItemDefinition(lastHammerUsed));
+            }
+            
         }
 
         public override void LoadData(Item item, TagCompound tag) {
@@ -51,10 +57,19 @@ namespace FaeReforges.Systems.ReforgeHammers {
                     previousPrefixes[i] = definition;
                 }
             }
+            if (tag.TryGet(LAST_HAMMER_SAVE_NAME, out ItemDefinition lastHammer)) {
+                lastHammerUsed = lastHammer.Type;
+            } else {
+                int hammerType = GetHammerItemTypeOrNone();
+                if (hammerType > ItemID.None) {
+                    lastHammerUsed = hammerType;
+                }
+            }
         }
 
         public override void NetSend(Item item, BinaryWriter writer) {
             writer.Write(hammerItemId);
+            writer.Write(lastHammerUsed);
             for (int i = 0; i < previousPrefixes.Length; i++) {
                 if (previousPrefixes[i] == null) {
                     previousPrefixes[i] = new PrefixDefinition();
@@ -66,6 +81,7 @@ namespace FaeReforges.Systems.ReforgeHammers {
         public override void NetReceive(Item item, BinaryReader reader) {
             SetHammer(reader.ReadInt32());
             ApplyOnApplyEffects(item);
+            lastHammerUsed = reader.ReadInt32();
             for (int i = 0; i < previousPrefixes.Length; i++) {
                 previousPrefixes[i] = PrefixDefinition.FromString(reader.ReadString());
             }
@@ -107,13 +123,26 @@ namespace FaeReforges.Systems.ReforgeHammers {
         }
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips) {
+            // TODO: Make phantom hammers have some special visuals, somehow...
             AbstractTinkererHammer hammerType = GetHammer();
-            if (hammerType != null) {
-                // hammerItemId is 100% NOT None!
-                Item dummyItem = ContentSamples.ItemsByType[GetHammerItemTypeOrNone()];
+
+            if (lastHammerUsed > ItemID.None) {
+                Item dummyItem = ContentSamples.ItemsByType[lastHammerUsed];
                 TooltipLine line = new TooltipLine(Mod, "ReforgeHammerType", ReforgeHammerLocalization.ReforgedWithTooltip.Format(dummyItem.Name));
                 line.OverrideColor = ItemRarity.GetColor(dummyItem.rare);
                 tooltips.Add(line);
+            }
+
+            if (hammerType != null) {
+                
+                // if a phantom hammer was used...
+                if (lastHammerUsed != hammerType.Type) {
+                    Item dummyItem = ContentSamples.ItemsByType[GetHammerItemTypeOrNone()];
+                    TooltipLine line = new TooltipLine(Mod, "ReforgeHammerEffectType", ReforgeHammerLocalization.ReforgeEffectTooltip.Format(dummyItem.Name));
+                    line.OverrideColor = ItemRarity.GetColor(dummyItem.rare);
+                    tooltips.Add(line);
+                }
+                
 
                 if (ItemCondition.IsWeapon.Predicate(item)) {
                     ReforgeHammerUtility.ProcessAbilityLines(hammerType.GetWeaponEffectText(item), tooltips, AbstractTinkererHammer.WEAPON_ABILITY_TOOLTIP, Mod, ReforgeHammerLocalization.WeaponEffectPrefix);
@@ -209,7 +238,10 @@ namespace FaeReforges.Systems.ReforgeHammers {
             prefixFromReforge = false;
             Item hammerItem = ReforgeHammerSavePlayer.GetSelectedHammerOfMyPlayer();
             if (hammerItem != null && hammerItem.ModItem != null && hammerItem.ModItem is AbstractTinkererHammer hammer) {
-                item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().SetHammer(hammer.Type);
+                lastHammerUsed = hammer.Type;
+                if (!hammer.PhantomHammer) {
+                    SetHammer(hammer.Type);
+                }
                 ApplyOnApplyEffects(item);
             }
         }

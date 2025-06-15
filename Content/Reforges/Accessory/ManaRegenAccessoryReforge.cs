@@ -26,7 +26,6 @@ namespace FaeReforges.Content.Reforges.Accessory
             private void Add(Mod mod, string name, int tier) {
                 ManaRegenAccessoryReforge reforge = new(name, tier);
                 mod.AddContent(reforge);
-                ReforgeTierSystem.SetPrefixTier(reforge.Type, tier);
             }
 
             public void Unload() {
@@ -55,8 +54,7 @@ namespace FaeReforges.Content.Reforges.Accessory
         }
         
 
-        public override IEnumerable<TooltipLine> GetTooltipLines(Item item)
-        {
+        public override IEnumerable<TooltipLine> GetTooltipLines(Item item) {
             yield return new TooltipLine(Mod, "PrefixMaxManaRegen", RegenTooltip.Format(power))
             {
                 IsModifier = true,
@@ -66,9 +64,9 @@ namespace FaeReforges.Content.Reforges.Accessory
 
         public static LocalizedText RegenTooltip { get; private set; }
 
-        public override void SetStaticDefaults()
-        {
+        public override void SetStaticDefaults() {
             RegenTooltip = Mod.GetLocalization($"{LocalizationCategory}.{nameof(RegenTooltip)}");
+            CustomIDSets.PrefixTiers[Type] = power;
         }
 
     }

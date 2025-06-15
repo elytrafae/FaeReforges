@@ -33,10 +33,12 @@ namespace FaeReforges.Systems.VanillaReforges {
 
         public float SetValue(int prefix, float valueMult) {
             int tier = ReforgeTierSystem.GetPrefixTier(prefix);
-            if (tier != 0) {
+            if (tier > -1) {
                 return ReforgeTierSystem.GetValueMult(tier);
             }
             return valueMult;
         }
+
+
     }
 }

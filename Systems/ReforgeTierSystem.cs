@@ -10,14 +10,13 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace FaeReforges.Systems {
-    internal class ReforgeTierSystem : ModSystem {
+    public class ReforgeTierSystem : ModSystem {
 
-        private static Dictionary<int, int> prefixTiers = new();
         private const int FIRST_ACCESSORY_PREFIX = 62;
         private const int LAST_ACCESSORY_PREFIX = 80;
         private static readonly Dictionary<int, List<int>> PrefixTierCache = new();
 
-        public override void Load() {
+        public override void SetStaticDefaults() {
             Item dummyItem = new Item(ItemID.CelestialShell);
             int initPrice = dummyItem.value;
             for (int i = FIRST_ACCESSORY_PREFIX; i <= LAST_ACCESSORY_PREFIX; i++) {
@@ -25,24 +24,32 @@ namespace FaeReforges.Systems {
                 dummyItem.Prefix(i);
                 int newPrice = dummyItem.value;
                 double priceDiff = ((double)newPrice) / initPrice;
-                prefixTiers[i] = GetTierFromPriceDiff(priceDiff);
+                CustomIDSets.PrefixTiers[i] = GetTierFromPriceDiff(priceDiff);
             }
+
+            for (int i=0; i < DynamicReforgeLoader.vanillaOverrides.Length; i++) {
+                VanillaReforgeOverrideData data = DynamicReforgeLoader.vanillaOverrides[i];
+                if (data != null) {
+                    CustomIDSets.PrefixTiers[i] = data.tier;
+                }
+                
+            }
+        }
+
+        public override void Load() {
+            
         }
 
         public override void Unload() {
-            prefixTiers.Clear();
+            
         }
 
         public static int GetPrefixTier(int pre) {
-            if (prefixTiers.TryGetValue(pre, out int tier)) {
-                return tier;
-            }
-            return 0;
+            return CustomIDSets.PrefixTiers[pre];
         }
 
         public static void SetPrefixTier(int pre, int tier) {
-            //PrefixID.Sets.ReducedNaturalChance[pre] = false;
-            prefixTiers[pre] = tier;
+            CustomIDSets.PrefixTiers[pre] = tier;
         }
 
         // Only use on vanilla items!
@@ -73,9 +80,9 @@ namespace FaeReforges.Systems {
                 return list;
             }
             list = new List<int>();
-            foreach (var pair in prefixTiers) {
-                if (pair.Value == tier) {
-                    list.Add(pair.Key);
+            for (int pre = 1; pre < PrefixID.Count; pre++) {
+                if (CustomIDSets.PrefixTiers[pre] == tier) {
+                    list.Add(pre);
                 }
             }
             PrefixTierCache.Add(tier, list);

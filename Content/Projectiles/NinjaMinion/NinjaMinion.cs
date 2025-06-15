@@ -117,7 +117,6 @@ namespace FaeReforges.Content.Projectiles.NinjaMinion {
             Projectile.timeLeft = 2;
             Movement(owner);
             Attack(owner);
-            // TODO: Animate the Ninja
         }
 
         private float JumpVelocity => 5f;
@@ -253,9 +252,6 @@ namespace FaeReforges.Content.Projectiles.NinjaMinion {
 
                         Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, velocity, projectileType, Projectile.damage, Projectile.knockBack, Projectile.owner);
                     }
-
-
-                    // TODO: Animate Ninja attacking for everyone
 
                     // Reset salvo variables
                     if (lastShurikenInSalvo) {

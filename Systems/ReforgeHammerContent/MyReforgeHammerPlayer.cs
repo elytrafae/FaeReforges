@@ -199,7 +199,7 @@ namespace FaeReforges.Systems.ReforgeHammerContent {
                 return;
             }
             if (stardustTimeLeft % 60 == 0) {
-                SoundEngine.PlaySound(MySoundStyles.TouhouWarningDeep);
+                //SoundEngine.PlaySound(MySoundStyles.TouhouWarningDeep);
             }
         }
 

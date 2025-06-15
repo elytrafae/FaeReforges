@@ -1,6 +1,7 @@
 ﻿using FaeLibrary.API.ClassExtensions;
 using FaeLibrary.API.ItemConditions;
 using FaeReforges.Systems.ReforgeHammerContent;
+using Newtonsoft.Json.Linq;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -25,7 +26,12 @@ namespace FaeReforges.Content.Items.TinkererHammers.Tier4 {
         }
 
         public override string GetWeaponEffectText(Item item) {
-            return WeaponEffectText.Format(WEAPON_REGEN / 2f, WEAPON_SPEED_BONUS * 100, WEAPON_SIZE_BONUS * 100, WEAPON_POTION_SICKNESS / 60f);
+            return WeaponEffectText.Format(
+                WEAPON_REGEN / 2f, 
+                (WEAPON_SPEED_BONUS * 100).ToString("#0.##"), 
+                (WEAPON_SIZE_BONUS * 100).ToString("#0.##"), 
+                WEAPON_POTION_SICKNESS / 60f
+            );
         }
 
         public override void HammerOnUpdateAccessory(Item item, Player player, int count, bool hideVisual) {
@@ -33,11 +39,25 @@ namespace FaeReforges.Content.Items.TinkererHammers.Tier4 {
             player.GetItemSizeStat(DamageClass.Melee) += MELEE_SCALE_BONUS;
         }
 
+        public override float HammerUseSpeedMultiplier(Item item, Player player) {
+            return 1f + WEAPON_SPEED_BONUS;
+        }
+
+        public override void HammerModifyItemScale(Item item, Player player, ref float scale) {
+            scale += WEAPON_SIZE_BONUS;
+        }
+
         public override void HammerOnUpdateWeaponHeld(Item item, Player player) {
             player.AddBuff(BuffID.PotionSickness, WEAPON_POTION_SICKNESS);
             player.GetModPlayer<MyReforgeHammerPlayer>().commonPositiveRegen += WEAPON_REGEN;
-            player.GetAttackSpeed(DamageClass.Melee) += WEAPON_SPEED_BONUS;
-            player.GetItemSizeStat(DamageClass.Melee) += WEAPON_SIZE_BONUS;
+        }
+
+        public override void AddRecipes() {
+            CreateRecipe()
+                .AddIngredient(ItemID.FragmentSolar)
+                .AddIngredient(ItemID.Rope, 5)
+                .AddTile<Content.Tiles.TinkererAnvil>()
+                .Register();
         }
 
     }

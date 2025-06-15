@@ -153,14 +153,25 @@ RedRidingTinkererHammer: {
 
 ShinobiInfiltratorTinkererHammer: {
 	WeaponEffectText: ""
-	AccessoryEffectText: "{$Mods.FaeReforges.PowerOf.Five}: Summon a Ninja Apprentice to fight for you"
+	AccessoryEffectText: "{$Mods.FaeReforges.PowerOf.Five}: Summon an Invisible Ninja to fight for you"
 	DisplayName: Shinobi Infiltrator Tinkerer Hammer
 	Tooltip: ""
 }
 
 SolarTinkererHammer: {
-	WeaponEffectText: While holding this weapon, gain +{0} HP/s Health Regen, {1}% Melee Speed and {2}% Melee Size, but your Potion Sickness cannot go below {3} seconds.
+	WeaponEffectText:
+		'''
+		While holding this weapon, gain +{0} HP/s Health Regen, {1}% Melee Speed and 
+		{2}% Melee Size, but your Potion Sickness cannot go below {3} seconds.
+		'''
 	AccessoryEffectText: +{0}% Damage Reduction and +{1}% Melee Size
 	DisplayName: Solar Tinkerer Hammer
+	Tooltip: ""
+}
+
+PhantomTinkererHammer: {
+	WeaponEffectText: ""
+	AccessoryEffectText: ""
+	DisplayName: Phantom Tinkerer Hammer
 	Tooltip: ""
 }

@@ -124,8 +124,12 @@ Buffs: {
 	}
 
 	NinjaMinionBuff: {
-		DisplayName: Ninja Apprentice
-		Description: The Ninja Apprentice will fight for you
+		DisplayName: Invisible Ninja
+		Description:
+			'''
+			"I didn't see you during practice yesterday!"
+			"Thank you, sir!"
+			'''
 	}
 }
 

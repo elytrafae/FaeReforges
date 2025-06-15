@@ -22,6 +22,11 @@ namespace FaeReforges.Systems.ShopsAndLoot {
                     Add<HuntressTinkererHammer>(shop, Condition.DownedOldOnesArmyT2);
                     Add<ApprenticeTinkererHammer>(shop, Condition.DownedOldOnesArmyT2);
                     Add<MonkTinkererHammer>(shop, Condition.DownedOldOnesArmyT2);
+
+                    Add<ValhallaTinkererHammer>(shop, Condition.DownedOldOnesArmyT3);
+                    Add<RedRidingTinkererHammer>(shop, Condition.DownedOldOnesArmyT3);
+                    Add<DarkArtistTinkererHammer>(shop, Condition.DownedOldOnesArmyT3);
+                    Add<ShinobiInfiltratorTinkererHammer>(shop, Condition.DownedOldOnesArmyT3);
                     break;
 
                 case NPCID.WitchDoctor:

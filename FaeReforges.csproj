@@ -23,6 +23,7 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Assets\BalancingData\" />
+	  <Folder Include="Assets\Sounds\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Reference Include="FaeLibrary">

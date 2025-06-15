@@ -18,8 +18,13 @@ namespace FaeReforges.Content.Reforges {
         readonly float velocity;
         readonly float mana;
         readonly int crit;
+        readonly int power;
 
-        public SimpleCustomReforgeTemplate(string name, PrefixCategory category, float damage, float knockback, float speed, float size, float velocity, float mana, int crit) {
+        public override void SetStaticDefaults() {
+            CustomIDSets.PrefixTiers[Type] = power;
+        }
+
+        public SimpleCustomReforgeTemplate(string name, int power, PrefixCategory category, float damage, float knockback, float speed, float size, float velocity, float mana, int crit) {
             this.name = name;
             this.category = category;
             this.damage = 1f + damage;
@@ -29,6 +34,7 @@ namespace FaeReforges.Content.Reforges {
             this.velocity = 1f + velocity;
             this.mana = 1f - mana; // This is intentionally a -
             this.crit = crit;
+            this.power = power;
         }
 
         public override string Name => name;
@@ -45,7 +51,7 @@ namespace FaeReforges.Content.Reforges {
         }
 
         public override void ModifyValue(ref float valueMult) {
-            valueMult = ReforgeTierSystem.GetPriceMultForType(Type);
+            valueMult = ReforgeTierSystem.GetValueMult(power);
         }
 
     }

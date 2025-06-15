@@ -8,6 +8,8 @@ using Terraria.Localization;
 using Terraria;
 using Terraria.ModLoader;
 using FaeReforges.Systems;
+using FaeLibrary.API;
+using Terraria.GameContent.Creative;
 
 namespace FaeReforges.Content.Reforges.Accessory {
     public class ExtraCritChanceAccessoryReforge : ModPrefix {
@@ -21,7 +23,6 @@ namespace FaeReforges.Content.Reforges.Accessory {
             private void Add(Mod mod, string name, int tier) {
                 ExtraCritChanceAccessoryReforge reforge = new(name, tier);
                 mod.AddContent(reforge);
-                ReforgeTierSystem.SetPrefixTier(reforge.Type, tier);
             }
 
             public void Unload() {
@@ -58,6 +59,7 @@ namespace FaeReforges.Content.Reforges.Accessory {
 
         public override void SetStaticDefaults() {
             CritChanceTooltip = Mod.GetLocalization($"{LocalizationCategory}.{nameof(CritChanceTooltip)}");
+            CustomIDSets.PrefixTiers[Type] = power;
         }
 
     }

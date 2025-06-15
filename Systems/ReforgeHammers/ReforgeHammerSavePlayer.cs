@@ -1,4 +1,7 @@
-﻿using Terraria;
+﻿using System;
+using System.Data;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
@@ -47,6 +50,25 @@ namespace FaeReforges.Systems.ReforgeHammers {
 
         public static Item[] GetReforgeHammerStorageOfMyPlayer() { 
             return Main.player[Main.myPlayer].GetModPlayer<ReforgeHammerSavePlayer>().reforgeHammerStorage;
+        }
+
+
+        private static int PhantomColorTimer = 0;
+        private static readonly Color PhantomColor1 = new(0, 232, 112);
+        private static readonly Color PhantomColor2 = new(0, 232, 204);
+
+        public override void PostUpdate() {
+            PhantomColorTimer += 2;
+            if (PhantomColorTimer >= 360) {
+                PhantomColorTimer -= 360;
+            }
+        }
+
+        public static Color GetPhantomColor() {
+            float measure = (float)Math.Sin(MathHelper.ToRadians(PhantomColorTimer)) * 0.5f + 0.5f;
+            Color tempColor1 = PhantomColor1 * measure;
+            Color tempColor2 = PhantomColor2 * (1 - measure);
+            return new Color(tempColor1.R + tempColor2.R, tempColor1.G + tempColor2.G, tempColor1.B + tempColor2.B, tempColor1.A + tempColor2.A);
         }
 
     }

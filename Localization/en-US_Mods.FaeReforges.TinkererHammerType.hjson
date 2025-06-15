@@ -13,3 +13,4 @@ PhantomHammer:
 	the previous hammer's effects on 
 	the item when reforging.
 	'''
+ReforgeEffectTooltip: "  With the effect of {0}"

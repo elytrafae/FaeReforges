@@ -20,10 +20,14 @@ namespace FaeReforges.Systems.UI {
         // Once this is all set up make sure to go and do the required stuff for most UI's in the ModSystem class.
         private UIElement area;
         private GoblinTinkererHammerUIItemSlot slot;
-        private UIText textElement;
+        private UIText mainTextElement;
+        private UIText tierTextElement;
+        private UIText filterTextElement;
 
         const int WIDTH = 200;
         const int HEIGHT = 200;
+        const int TEXT_LINE_DISTANCE = 25;
+        const int FIRST_LINE_PIXELS = 10;
 
         public override void OnInitialize() {
             // Create a UIElement for all the elements to sit on top of, this simplifies the numbers as nested elements can be positioned relative to the top left corner of this element. 
@@ -36,11 +40,23 @@ namespace FaeReforges.Systems.UI {
 
             /* Slot code moved! */
 
-            textElement = new UIText("");
-            textElement.TextColor = Color.White;
-            textElement.Top.Set(10, 0f);
-            textElement.Left.Set(55, 0f);
-            area.Append(textElement);
+            mainTextElement = new UIText("");
+            mainTextElement.TextColor = Color.White;
+            mainTextElement.Top.Set(FIRST_LINE_PIXELS, 0f);
+            mainTextElement.Left.Set(55, 0f);
+            area.Append(mainTextElement);
+
+            tierTextElement = new UIText("");
+            tierTextElement.TextColor = Color.White;
+            tierTextElement.Top.Set(FIRST_LINE_PIXELS + TEXT_LINE_DISTANCE, 0f);
+            tierTextElement.Left.Set(55, 0f);
+            area.Append(tierTextElement);
+
+            filterTextElement = new UIText("");
+            filterTextElement.TextColor = Color.White;
+            filterTextElement.Top.Set(FIRST_LINE_PIXELS + TEXT_LINE_DISTANCE*2, 0f);
+            filterTextElement.Left.Set(55, 0f);
+            area.Append(filterTextElement);
 
             Append(area);
         }
@@ -61,8 +77,8 @@ namespace FaeReforges.Systems.UI {
         public override void Update(GameTime gameTime) {
             if (slot == null) { // The slot init code is here because UI initializes before the player for some reason . . .
                 slot = new GoblinTinkererHammerUIItemSlot();
-                slot.Top.Set(0, 0f);
-                slot.Left.Set(0, 0f);
+                slot.Top.Set(10, 0f);
+                slot.Left.Set(5, 0f);
                 area.Append(slot);
             }
             if (!Main.InReforgeMenu)
@@ -70,6 +86,8 @@ namespace FaeReforges.Systems.UI {
 
             string text;
             Color color = Color.White;
+            tierTextElement.SetText("");
+            filterTextElement.SetText("");
             Item item = ReforgeHammerSavePlayer.GetSelectedHammerOfMyPlayer();
             if (item == null || item.type == ItemID.None) {
                 text = ReforgeHammerLocalization.UIInsertHammer.Value;
@@ -77,14 +95,17 @@ namespace FaeReforges.Systems.UI {
                 if (item.ModItem != null && item.ModItem is AbstractTinkererHammer hammer) {
                     text = item.AffixName();
                     color = ItemRarity.GetColor(item.rare);
+                    tierTextElement.SetText(ReforgeHammerLocalization.HammerTier.Format(hammer.HammerTier));
+                    filterTextElement.SetText(ReforgeHammerLocalization.HammerFilter.Format(hammer.ReforgeableCondition.Text));
+                    filterTextElement.TextColor = Main.reforgeItem.IsAir ? Color.Gray : hammer.ReforgeableCondition.Predicate(Main.reforgeItem) ? Color.White : Color.Red;
                 } else {
                     color = Color.Red;
                     text = ReforgeHammerLocalization.UIThatIsNotAHammer.Value;
                 }
             }
 
-            textElement.SetText(text);
-            textElement.TextColor = color;
+            mainTextElement.SetText(text);
+            mainTextElement.TextColor = color;
 
             base.Update(gameTime);
         }

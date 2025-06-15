@@ -59,12 +59,13 @@ namespace FaeReforges.Content.Reforges {
                     while (ReadDataLine(reader, out name, out tier, out values)) {
                         SummonerPrefixTemplate reforge = new SummonerPrefixTemplate(name, tier, values[0], values[1], values[2], values[3], values[4]);
                         mod.AddContent(reforge);
-                        ReforgeTierSystem.SetPrefixTier(reforge.Type, tier);
                     }
                 }
             }
 
         }
+
+        
 
         private void RegisterSimple(Mod mod, string name, PrefixCategory category, int tier, float damage, float knockback, float speed, float size, float velocity, float mana, int crit) {
             /* Handled by the converter
@@ -76,12 +77,10 @@ namespace FaeReforges.Content.Reforges {
             FieldInfo field = typeof(PrefixID).GetField(name);
             if (field != null) {
                 int pre = (int)field.GetValue(null);
-                vanillaOverrides[pre] = new VanillaReforgeOverrideData(damage, knockback, speed, size, velocity, mana, crit);
-                ReforgeTierSystem.SetPrefixTier(pre, tier);
+                vanillaOverrides[pre] = new VanillaReforgeOverrideData(tier, damage, knockback, speed, size, velocity, mana, crit);
             } else {
-                SimpleCustomReforgeTemplate modPrefix = new SimpleCustomReforgeTemplate(name, category, damage, knockback, speed, size, velocity, mana, crit);
+                SimpleCustomReforgeTemplate modPrefix = new SimpleCustomReforgeTemplate(name, tier, category, damage, knockback, speed, size, velocity, mana, crit);
                 mod.AddContent(modPrefix);
-                ReforgeTierSystem.SetPrefixTier(modPrefix.Type, tier);
             }
         }
 
