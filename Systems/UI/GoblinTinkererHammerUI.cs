@@ -23,6 +23,7 @@ namespace FaeReforges.Systems.UI {
         private UIText mainTextElement;
         private UIText tierTextElement;
         private UIText filterTextElement;
+        private UIText warningTextElement;
 
         const int WIDTH = 200;
         const int HEIGHT = 200;
@@ -58,6 +59,12 @@ namespace FaeReforges.Systems.UI {
             filterTextElement.Left.Set(55, 0f);
             area.Append(filterTextElement);
 
+            warningTextElement = new UIText("");
+            warningTextElement.TextColor = Color.Yellow;
+            warningTextElement.Top.Set(FIRST_LINE_PIXELS + TEXT_LINE_DISTANCE * 3, 0f);
+            warningTextElement.Left.Set(55, 0f);
+            area.Append(warningTextElement);
+
             Append(area);
         }
 
@@ -88,6 +95,7 @@ namespace FaeReforges.Systems.UI {
             Color color = Color.White;
             tierTextElement.SetText("");
             filterTextElement.SetText("");
+            warningTextElement.SetText("");
             Item item = ReforgeHammerSavePlayer.GetSelectedHammerOfMyPlayer();
             if (item == null || item.type == ItemID.None) {
                 text = ReforgeHammerLocalization.UIInsertHammer.Value;
@@ -98,6 +106,7 @@ namespace FaeReforges.Systems.UI {
                     tierTextElement.SetText(ReforgeHammerLocalization.HammerTier.Format(hammer.HammerTier));
                     filterTextElement.SetText(ReforgeHammerLocalization.HammerFilter.Format(hammer.ReforgeableCondition.Text));
                     filterTextElement.TextColor = Main.reforgeItem.IsAir ? Color.Gray : hammer.ReforgeableCondition.Predicate(Main.reforgeItem) ? Color.White : Color.Red;
+                    warningTextElement.SetText(GetReforgeWarning(hammer, Main.reforgeItem));
                 } else {
                     color = Color.Red;
                     text = ReforgeHammerLocalization.UIThatIsNotAHammer.Value;
@@ -108,6 +117,20 @@ namespace FaeReforges.Systems.UI {
             mainTextElement.TextColor = color;
 
             base.Update(gameTime);
+        }
+
+        private static string GetReforgeWarning(AbstractTinkererHammer hammer, Item item) {
+            if (item.IsAir) {
+                return "";
+            }
+            string text = "";
+            if (hammer.GetAccessoryEffectText(item) != "" && !CustomIDSets.ShouldReceiveAccessoryReforgeHammerBenefits[item.type]) {
+                text += ReforgeHammerLocalization.NoEffectAccessoryReforgeWarning.Value + "\n";
+            }
+            if (hammer.GetWeaponEffectText(item) != "" && !CustomIDSets.ShouldReceiveWeaponReforgeHammerBenefits[item.type]) {
+                text += ReforgeHammerLocalization.NoEffectWeaponReforgeWarning.Value + "\n";
+            }
+            return text;
         }
     }
 

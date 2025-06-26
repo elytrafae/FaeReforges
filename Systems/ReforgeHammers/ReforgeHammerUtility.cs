@@ -12,17 +12,20 @@ using System.Collections.ObjectModel;
 using Microsoft.Xna.Framework;
 using FaeReforges.Content.Items;
 using FaeReforges.Content.Items.TinkererHammers.Tier2;
+using FaeReforges.Enums;
 
 namespace FaeReforges.Systems.ReforgeHammers {
     public static class ReforgeHammerUtility {
 
-        public static int GetHammerItemType(Item item) {
+        public static int GetHammerItemType(Item item, HammerEffectContext context) {
             if (item == null || item.type == ItemID.None) {
                 return ItemID.None;
             }
-            return item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammerItemTypeOrNone();
+            AbstractTinkererHammer hammer = item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammer(item, context);
+            return hammer == null ? ItemID.None : hammer.Type;
         }
 
+        // NOTE: THIS SHOULD ONLY BE USED FOR WEAPON EFFECTS!
         public static int GetHammerItemType(Projectile proj) {
             if (proj == null || proj.type == ProjectileID.None || !proj.active) {
                 return ProjectileID.None;
@@ -39,8 +42,8 @@ namespace FaeReforges.Systems.ReforgeHammers {
             return false;
         }
 
-        public static bool IsReforgedWith<T>(Item item) where T : AbstractTinkererHammer {
-            return GetHammerItemType(item) == ModContent.ItemType<T>();
+        public static bool IsReforgedWith<T>(Item item, HammerEffectContext context) where T : AbstractTinkererHammer {
+            return GetHammerItemType(item, context) == ModContent.ItemType<T>();
         }
 
         public static bool IsReforgedWith<T>(Projectile proj) where T : AbstractTinkererHammer {
@@ -53,7 +56,7 @@ namespace FaeReforges.Systems.ReforgeHammers {
 
         public static bool ShouldCooldownBarDisplay<T>() where T : AbstractTinkererHammer {
             int type = ModContent.ItemType<T>();
-            return HasAnySummonHammer(Main.LocalPlayer, type) || GetHammerItemType(Main.LocalPlayer.HeldItem) == type;
+            return HasAnySummonHammer(Main.LocalPlayer, type) || GetHammerItemType(Main.LocalPlayer.HeldItem, HammerEffectContext.WEAPON) == type;
         }
 
         public static void ProcessAbilityLines(string text, List<TooltipLine> tooltips, string baseKey, Mod mod, LocalizedText prefix) {

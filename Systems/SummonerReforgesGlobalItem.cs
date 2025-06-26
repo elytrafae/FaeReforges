@@ -48,12 +48,14 @@ namespace FaeReforges.Systems {
             if (!ModContent.GetInstance<ServerConfig>().EnableCustomSummonerReforges) {
                 return true;
             }
+            bool isCustomSummonerPrefix = false;
             foreach (SummonerPrefixTemplate prefix in ModContent.GetContent<SummonerPrefixTemplate>()) {
                 if (prefix.Type == pre) {
-                    return true;
+                    isCustomSummonerPrefix = true;
+                    break;
                 }
             }
-            return false;
+            return isCustomSummonerPrefix != CustomIDSets.NoSummonerReforge[item.type];
         }
 
         public override bool? CanAutoReuseItem(Item item, Player player) {

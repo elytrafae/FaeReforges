@@ -15,6 +15,7 @@ namespace FaeReforges
 	public partial class FaeReforges : Mod
 	{
 
+        /*
         public override object Call(params object[] args) {
             if (args[0] is not string) { // We are not using assert here because of the unique error message!
                 throw new ArgumentException("The first parameter of this mod's Mod.Call MUST be a string representing a valid command name!");
@@ -39,6 +40,7 @@ namespace FaeReforges
             }
             // Never reaches here because of the Argument Exception in default above!
         }
+        */
 
         private static T AssertType<T>(object[] args, int argnr) {
             if (args[argnr] is not T) {

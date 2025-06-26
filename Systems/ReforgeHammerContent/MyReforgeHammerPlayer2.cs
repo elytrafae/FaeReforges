@@ -50,7 +50,7 @@ namespace FaeReforges.Systems.ReforgeHammerContent {
         }
 
         public void OnDodge(Player.HurtInfo info, DodgeType dodgeType) {
-            if (ReforgeHammerUtility.IsReforgedWith<HallowedTinkererHammer>(Player.HeldItem)) {
+            if (ReforgeHammerUtility.IsReforgedWith<HallowedTinkererHammer>(Player.HeldItem, Enums.HammerEffectContext.WEAPON)) {
                 Player.AddBuff(ModContent.BuffType<HallowedAggression>(), 10 * 60);
             }
             OnHurtOrDodge(info);

@@ -22,6 +22,8 @@ namespace FaeReforges.Systems.ReforgeHammers {
         public static LocalizedText UIThatIsNotAHammer { get; private set; }
         public static LocalizedText HammerFilter { get; private set; }
         public static LocalizedText ReforgeEffectTooltip { get; private set; }
+        public static LocalizedText NoEffectAccessoryReforgeWarning { get; private set; }
+        public static LocalizedText NoEffectWeaponReforgeWarning { get; private set; }
 
         public override void SetStaticDefaults() {
             HammerTier = Mod.GetLocalization($"{LocalizationCategory}.{nameof(HammerTier)}");
@@ -33,6 +35,8 @@ namespace FaeReforges.Systems.ReforgeHammers {
             UIThatIsNotAHammer = Mod.GetLocalization($"{LocalizationCategory}.{nameof(UIThatIsNotAHammer)}");
             HammerFilter = Mod.GetLocalization($"{LocalizationCategory}.{nameof(HammerFilter)}");
             ReforgeEffectTooltip = Mod.GetLocalization($"{LocalizationCategory}.{nameof(ReforgeEffectTooltip)}");
+            NoEffectAccessoryReforgeWarning = Mod.GetLocalization($"{LocalizationCategory}.{nameof(NoEffectAccessoryReforgeWarning)}");
+            NoEffectWeaponReforgeWarning = Mod.GetLocalization($"{LocalizationCategory}.{nameof(NoEffectWeaponReforgeWarning)}");
         }
         
 

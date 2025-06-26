@@ -29,7 +29,7 @@ namespace FaeReforges.Systems.ReforgeHammerContent {
             if (MyWeaponImbuePlayer.Get(player).frostburn) {
                 target.AddBuff(BuffID.Frostburn, MyWeaponImbuePlayer.FROSTBURN_DURATION);
             }
-            if (player.HasBuff(ModContent.BuffType<TempShadowflameFlask>()) && ReforgeHammerUtility.IsReforgedWith<SquireTinkererHammer>(item)) {
+            if (player.HasBuff(ModContent.BuffType<TempShadowflameFlask>()) && ReforgeHammerUtility.IsReforgedWith<SquireTinkererHammer>(item, Enums.HammerEffectContext.WEAPON)) {
                 target.AddBuff(BuffID.ShadowFlame, MyWeaponImbuePlayer.SQUIRE_SHADOWFLAME_DURATION);
             }
         }
@@ -38,7 +38,7 @@ namespace FaeReforges.Systems.ReforgeHammerContent {
             if (MyWeaponImbuePlayer.Get(player).frostburn) {
                 target.AddBuff(BuffID.Frostburn, MyWeaponImbuePlayer.FROSTBURN_DURATION);
             }
-            if (player.HasBuff(ModContent.BuffType<TempShadowflameFlask>()) && ReforgeHammerUtility.IsReforgedWith<SquireTinkererHammer>(item)) {
+            if (player.HasBuff(ModContent.BuffType<TempShadowflameFlask>()) && ReforgeHammerUtility.IsReforgedWith<SquireTinkererHammer>(item, Enums.HammerEffectContext.WEAPON)) {
                 target.AddBuff(BuffID.ShadowFlame, MyWeaponImbuePlayer.SQUIRE_SHADOWFLAME_DURATION);
             }
         }
@@ -50,7 +50,7 @@ namespace FaeReforges.Systems.ReforgeHammerContent {
             if (MyWeaponImbuePlayer.Get(player).frostburn && Main.rand.NextBool(5)) {
                 Dust.NewDust(position, width, height, DustID.Ice);
             }
-            if (player.HasBuff(ModContent.BuffType<TempShadowflameFlask>()) && ReforgeHammerUtility.IsReforgedWith<SquireTinkererHammer>(item) && Main.rand.NextBool(4)) {
+            if (player.HasBuff(ModContent.BuffType<TempShadowflameFlask>()) && ReforgeHammerUtility.IsReforgedWith<SquireTinkererHammer>(item, Enums.HammerEffectContext.WEAPON) && Main.rand.NextBool(4)) {
                 Dust.NewDust(position, width, height, DustID.Shadowflame);
             }
         }

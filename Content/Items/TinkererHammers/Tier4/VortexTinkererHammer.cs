@@ -22,7 +22,7 @@ namespace FaeReforges.Content.Items.TinkererHammers.Tier4 {
         }
 
         public override string GetWeaponEffectText(Item item) {
-            return WeaponEffectText.Format(PROJECTILE_COOLDOWN, PROJECTILE_SALVO_COUNT);
+            return WeaponEffectText.Format(PROJECTILE_SALVO_COUNT, PROJECTILE_COOLDOWN);
         }
 
         int projectilesCreated = 0; // ONLY FOR LOCAL PLAYER!

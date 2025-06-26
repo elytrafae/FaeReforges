@@ -45,7 +45,7 @@ namespace FaeReforges.Content.PrivatePickups {
             if (timer > lifetime) {
                 Kill();
             }
-            if (ReforgeHammerUtility.GetHammerItemType(Main.LocalPlayer.HeldItem) != hammerType) {
+            if (ReforgeHammerUtility.GetHammerItemType(Main.LocalPlayer.HeldItem, Enums.HammerEffectContext.WEAPON) != hammerType) {
                 Kill();
             }
         }

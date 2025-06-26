@@ -1,5 +1,6 @@
 ﻿using FaeLibrary.API.ItemConditions;
 using FaeReforges.Content.Items;
+using FaeReforges.Enums;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -27,7 +28,7 @@ namespace FaeReforges.Systems.ReforgeHammers {
         // This one is updated even if a phantom hammer is used. Essentially, this is the actual last hammer used on this item, while hammerItemId is the effect's source
         int lastHammerUsed = ItemID.None;
         private static bool prefixFromReforge = false;
-        readonly PrefixDefinition[] previousPrefixes = [default, default];
+        readonly PrefixDefinition[] previousPrefixes = [default, default, default];
         private static int previousPrefixWorkaround = 0;
 
         const string HAMMER_SAVE_NAME = "ReforgeHammerDefinition";
@@ -60,9 +61,8 @@ namespace FaeReforges.Systems.ReforgeHammers {
             if (tag.TryGet(LAST_HAMMER_SAVE_NAME, out ItemDefinition lastHammer)) {
                 lastHammerUsed = lastHammer.Type;
             } else {
-                int hammerType = GetHammerItemTypeOrNone();
-                if (hammerType > ItemID.None) {
-                    lastHammerUsed = hammerType;
+                if (hammerItemId > ItemID.None) {
+                    lastHammerUsed = hammerItemId;
                 }
             }
         }
@@ -88,35 +88,39 @@ namespace FaeReforges.Systems.ReforgeHammers {
         }
 
         private void ApplyOnApplyEffects(Item item) {
-            AbstractTinkererHammer hammerType = GetHammer();
-            if (hammerType != null) {
-                if (item.accessory) {
-                    hammerType.HammerOnApplyAccessory(item);
-                }
-                if (ItemCondition.IsWeapon.IsMet(item)) {
-                    hammerType.HammerOnApplyWeapon(item);
-                }
-            }
+            GetHammer(item, HammerEffectContext.ACCESSORY)?.HammerOnApplyAccessory(item);
+            GetHammer(item, HammerEffectContext.WEAPON)?.HammerOnApplyWeapon(item);
         }
 
         public override void OnCreated(Item item, ItemCreationContext context) {
             
         }
 
-        public AbstractTinkererHammer GetHammer() {
+        public AbstractTinkererHammer GetHammer(Item item, HammerEffectContext effectContext) {
             if (hammerItemId == ItemID.None) {
                 return null;
             }
             Item sampleItem = ContentSamples.ItemsByType[hammerItemId];
             if (sampleItem.ModItem != null && sampleItem.ModItem is AbstractTinkererHammer hammer) {
-                return hammer;
+                if (effectContext == HammerEffectContext.NONE) {
+                    return hammer;
+                }
+                if (effectContext == HammerEffectContext.WEAPON && ItemCondition.IsWeapon.IsMet(item) && CustomIDSets.ShouldReceiveWeaponReforgeHammerBenefits[item.type]) {
+                    return hammer;
+                }
+                if (effectContext == HammerEffectContext.ACCESSORY && item.accessory && CustomIDSets.ShouldReceiveAccessoryReforgeHammerBenefits[item.type]) {
+                    return hammer;
+                }
+                return null;
             }
             return null;
         }
 
+        /*
         public int GetHammerItemTypeOrNone() {
             return hammerItemId;
         }
+        */
 
         public void SetHammer(int hammerId) {
             hammerItemId = hammerId;
@@ -124,7 +128,7 @@ namespace FaeReforges.Systems.ReforgeHammers {
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips) {
             // TODO: Make phantom hammers have some special visuals, somehow...
-            AbstractTinkererHammer hammerType = GetHammer();
+            AbstractTinkererHammer hammerType = GetHammer(item, HammerEffectContext.NONE);
 
             if (lastHammerUsed > ItemID.None) {
                 Item dummyItem = ContentSamples.ItemsByType[lastHammerUsed];
@@ -137,31 +141,21 @@ namespace FaeReforges.Systems.ReforgeHammers {
                 
                 // if a phantom hammer was used...
                 if (lastHammerUsed != hammerType.Type) {
-                    Item dummyItem = ContentSamples.ItemsByType[GetHammerItemTypeOrNone()];
+                    Item dummyItem = ContentSamples.ItemsByType[hammerType.Type];
                     TooltipLine line = new TooltipLine(Mod, "ReforgeHammerEffectType", ReforgeHammerLocalization.ReforgeEffectTooltip.Format(dummyItem.Name));
                     line.OverrideColor = ItemRarity.GetColor(dummyItem.rare);
                     tooltips.Add(line);
                 }
                 
 
-                if (ItemCondition.IsWeapon.Predicate(item)) {
+                if (ItemCondition.IsWeapon.Predicate(item) && CustomIDSets.ShouldReceiveWeaponReforgeHammerBenefits[item.type]) {
                     ReforgeHammerUtility.ProcessAbilityLines(hammerType.GetWeaponEffectText(item), tooltips, AbstractTinkererHammer.WEAPON_ABILITY_TOOLTIP, Mod, ReforgeHammerLocalization.WeaponEffectPrefix);
                 }
-                if (item.accessory) {
+                if (item.accessory && CustomIDSets.ShouldReceiveAccessoryReforgeHammerBenefits[item.type]) {
                     ReforgeHammerUtility.ProcessAbilityLines(hammerType.GetAccessoryEffectText(item), tooltips, AbstractTinkererHammer.ACCESSORY_ABILITY_TOOLTIP, Mod, ReforgeHammerLocalization.AccessoryEffectPrefix);
                 }
                 
             }
-
-            /*
-            for (int i = 0; i < previousPrefixes.Length; i++) {
-                string valStr = "NULL";
-                if (previousPrefixes[i] != null) { 
-                    valStr = previousPrefixes[i].ToString();
-                }
-                tooltips.Add(new TooltipLine(Mod, "PreviousPrefixDebug" + i, "PrevPref #" + i + ": " + valStr));
-            }
-            */
             
         }
 
@@ -171,10 +165,10 @@ namespace FaeReforges.Systems.ReforgeHammers {
                 if (hammer.ReforgeableCondition.IsMet(item)) {
                     return true;
                 }
-                SoundEngine.PlaySound(SoundID.AbigailCry);
+                SoundEngine.PlaySound(SoundID.MenuClose);
                 return false;
             }
-            SoundEngine.PlaySound(SoundID.NPCHit40);
+            SoundEngine.PlaySound(SoundID.MenuClose);
             return false;
         }
 
@@ -251,34 +245,32 @@ namespace FaeReforges.Systems.ReforgeHammers {
             ReforgeHammerUtility.DrawAbilityTooltipLineThing(lines, new Color(255, 0, 165), AbstractTinkererHammer.ACCESSORY_ABILITY_TOOLTIP);
         }
 
-        private static AbstractTinkererHammer? Hammer(Item item) => item.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammer();
-
         public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage) {
-            Hammer(item)?.HammerModifyWeaponDamage(item, player, ref damage);
+            GetHammer(item, HammerEffectContext.WEAPON)?.HammerModifyWeaponDamage(item, player, ref damage);
         }
 
         public override void ModifyWeaponCrit(Item item, Player player, ref float crit) {
-            Hammer(item)?.HammerModifyWeaponCrit(item, player, ref crit);
+            GetHammer(item, HammerEffectContext.WEAPON)?.HammerModifyWeaponCrit(item, player, ref crit);
         }
 
         public override void ModifyWeaponKnockback(Item item, Player player, ref StatModifier knockback) {
-            Hammer(item)?.HammerModifyWeaponKnockback(item, player, ref knockback);
+            GetHammer(item, HammerEffectContext.WEAPON)?.HammerModifyWeaponKnockback(item, player, ref knockback);
         }
 
         public override void ModifyShootStats(Item item, Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback) {
-            Hammer(item)?.HammerModifyShootStats(item, player, ref position, ref velocity, ref type, ref damage, ref knockback);
+            GetHammer(item, HammerEffectContext.WEAPON)?.HammerModifyShootStats(item, player, ref position, ref velocity, ref type, ref damage, ref knockback);
         }
 
         public override void ModifyManaCost(Item item, Player player, ref float reduce, ref float mult) {
-            Hammer(item)?.HammerModifyManaCost(item, player, ref reduce, ref mult);
+            GetHammer(item, HammerEffectContext.WEAPON)?.HammerModifyManaCost(item, player, ref reduce, ref mult);
         }
 
         public override void ModifyItemScale(Item item, Player player, ref float scale) {
-            Hammer(item)?.HammerModifyItemScale(item, player, ref scale);
+            GetHammer(item, HammerEffectContext.WEAPON)?.HammerModifyItemScale(item, player, ref scale);
         }
 
         public override float UseSpeedMultiplier(Item item, Player player) {
-            AbstractTinkererHammer hammerType = Hammer(item);
+            AbstractTinkererHammer hammerType = GetHammer(item, HammerEffectContext.WEAPON);
             if (hammerType != null) {
                 return hammerType.HammerUseSpeedMultiplier(item, player);
             }
@@ -286,11 +278,11 @@ namespace FaeReforges.Systems.ReforgeHammers {
         }
 
         public override void MeleeEffects(Item item, Player player, Rectangle hitbox) {
-            Hammer(item)?.HammerEnchantmentVisuals(player, item.type, new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height);
+            GetHammer(item, HammerEffectContext.WEAPON)?.HammerEnchantmentVisuals(player, item.type, new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height);
         }
 
         public override void UpdateAccessory(Item item, Player player, bool hideVisual) {
-            AbstractTinkererHammer hammerType = Hammer(item);
+            AbstractTinkererHammer hammerType = GetHammer(item, HammerEffectContext.ACCESSORY);
             if (hammerType != null) {
                 Dictionary<int, int> counts = player.GetModPlayer<ReforgeHammerEnhancedModPlayer>().AccessoryReforgeCounts; // Shorthand
                 if (!counts.TryGetValue(hammerType.Type, out int value)) {
@@ -304,11 +296,11 @@ namespace FaeReforges.Systems.ReforgeHammers {
         }
 
         public override bool? UseItem(Item item, Player player) {
-            return Hammer(item)?.HammerUseItem(item, player);
+            return GetHammer(item, HammerEffectContext.WEAPON)?.HammerUseItem(item, player);
         }
 
         public override void HoldItem(Item item, Player player) {
-            AbstractTinkererHammer hammer = GetHammer();
+            AbstractTinkererHammer hammer = GetHammer(item, HammerEffectContext.WEAPON);
             if (hammer != null) {
                 hammer.HammerOnUpdateWeaponHeld(item, player);
                 if (player.itemTime > 0) {
@@ -320,23 +312,23 @@ namespace FaeReforges.Systems.ReforgeHammers {
         // These are all for melee. The projectiles are handled elsewhere
 
         public override void ModifyHitNPC(Item item, Player player, NPC target, ref NPC.HitModifiers modifiers) {
-            Hammer(item)?.HammerChangeWeaponDealDamageNpc(item.type, player, target, ref modifiers, item.DamageType);
+            GetHammer(item, HammerEffectContext.WEAPON)?.HammerChangeWeaponDealDamageNpc(item.type, player, target, ref modifiers, item.DamageType);
         }
 
         public override void ModifyHitPvp(Item item, Player player, Player target, ref Player.HurtModifiers modifiers) {
-            Hammer(item)?.HammerChangeWeaponDealDamagePvp(item.type, player, target, ref modifiers, item.DamageType);
+            GetHammer(item, HammerEffectContext.WEAPON)?.HammerChangeWeaponDealDamagePvp(item.type, player, target, ref modifiers, item.DamageType);
         }
 
         public override void OnHitNPC(Item item, Player player, NPC target, NPC.HitInfo hit, int damageDone) {
-            Hammer(item)?.HammerOnWeaponDealDamageNpc(item.type, player, target, hit, damageDone, item.DamageType);
+            GetHammer(item, HammerEffectContext.WEAPON)?.HammerOnWeaponDealDamageNpc(item.type, player, target, hit, damageDone, item.DamageType);
         }
 
         public override void OnHitPvp(Item item, Player player, Player target, Player.HurtInfo hurtInfo) {
-            Hammer(item)?.HammerOnWeaponDealDamagePvp(item.type, player, target, hurtInfo, item.DamageType);
+            GetHammer(item, HammerEffectContext.WEAPON)?.HammerOnWeaponDealDamagePvp(item.type, player, target, hurtInfo, item.DamageType);
         }
 
         public override bool CanUseItem(Item item, Player player) {
-            AbstractTinkererHammer hammer = Hammer(item);
+            AbstractTinkererHammer hammer = GetHammer(item, HammerEffectContext.WEAPON);
             if (hammer == null) {
                 return true;
             }

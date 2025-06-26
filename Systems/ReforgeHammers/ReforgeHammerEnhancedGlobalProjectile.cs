@@ -35,7 +35,9 @@ namespace FaeReforges.Systems.ReforgeHammers {
             }
             if (createdBy != null) {
                 createdByItemId = createdBy.type;
-                hammerItemId = createdBy.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammerItemTypeOrNone();
+                // We assume all hammer effects directly related to projectiles are weapon effects, and will be like this forever.
+                AbstractTinkererHammer hammer = createdBy.GetGlobalItem<ReforgeHammerEnhancedGlobalItem>().GetHammer(createdBy, Enums.HammerEffectContext.WEAPON);
+                hammerItemId = hammer == null ? ItemID.None : hammer.Type;
             }
 
             Hammer?.HammerOnCreateProjectile(createdByItemId, projectile, source);

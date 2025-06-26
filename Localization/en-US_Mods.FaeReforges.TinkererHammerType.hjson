@@ -14,3 +14,5 @@ PhantomHammer:
 	the item when reforging.
 	'''
 ReforgeEffectTooltip: "  With the effect of {0}"
+NoEffectAccessoryReforgeWarning: Warning! The selected item cannot receive Accessory Effects as per the wish of the item's author!
+NoEffectWeaponReforgeWarning: Warning! The selected item cannot receive Weapon Effects as per the wish of the item's author!
