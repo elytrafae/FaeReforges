@@ -1,4 +1,5 @@
-﻿using FaeReforges.Content;
+﻿using FaeLibrary.API;
+using FaeReforges.Content;
 using FaeReforges.Content.Items;
 using Microsoft.Xna.Framework;
 using System;
@@ -15,7 +16,7 @@ using Terraria.ModLoader.IO;
 using Terraria.WorldBuilding;
 
 namespace FaeReforges.Systems.ReforgeHammers {
-    internal class ReforgeHammerEnhancedGlobalProjectile : GlobalProjectile {
+    internal class ReforgeHammerEnhancedGlobalProjectile : GlobalProjectile, IFaeGlobalProjectile {
 
         private int hammerItemId = ItemID.None;
         private int createdByItemId = ItemID.None;
@@ -74,6 +75,14 @@ namespace FaeReforges.Systems.ReforgeHammers {
             if (!projectile.noEnchantmentVisuals) {
                 Hammer?.HammerEnchantmentVisuals(Main.player[projectile.owner], createdByItemId, boxPosition, boxWidth, boxHeight);
             }
+        }
+
+        void IFaeGlobalProjectile.ModifyContinuouslyUpdatingDamage(Projectile projectile, Player owner, ref StatModifier damage) {
+            Hammer?.HammerModifyWeaponDamage(projectile, owner, ref damage);
+        }
+
+        void IFaeGlobalProjectile.ModifyContinuouslyUpdatingCritChance(Projectile projectile, Player owner, ref float crit) {
+            Hammer?.HammerModifyWeaponCrit(projectile, owner, ref crit);
         }
 
         public int GetHammerItemTypeOrNone() {

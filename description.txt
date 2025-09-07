@@ -1,20 +1,24 @@
-This is a mod originally meant to just do things with reforges, but I got so caught up with Summoner, that I decided to add a bit more for them
+This is the third iteration of a mod originally meant to just do things with reforges, but I got so caught up with Summoner, that I decided to add a bit more for them
 
-The mod comes with three new reforge stats!
+The mod comes with three new reforge stats for weapons...
 - Summon Cost, increases/decreases how many slots minions/sentries occupy
 - Summon Speed, increases/decreases the speed of minions/sentries
-- Whip Frenzy Charge, a brand new mechanic that is explained below.
+- Armor Penetration, for summoner, which scales off of the enemy's Defense
 
-Using these stats, as well as damage and knockback, 21 new reforges were added, exclusive to summoner staves!
+As well as new accessory reforges, such as:
+- 1% and 3% versions of the Crit Chance reforges
+- Arcane is reworked to give mana regeneration, along with being given versions for different tiers
+- Added accessory reforges that increase Ranged Velocity and Ammo Conservation chance
 
-Right now, the mod does not follow vanilla's reforge style, and instead all positive reforges are intended to be viable and for them to not overshadow each-other.
+The mod also introduces Tinkerer Hammers, a new type of item that is necessary for reforging items. However, they provide additional stats and effects to them as well!
+Tinkerer hammers each have a Tier, which corresponds to the power level of the reforges you can get. Every reforge has been reworked and sorted into tiers, within within which all reforges are meant to have the same power level!
+Negative reforges have also been removed and reworked into low tier positive ones!
 
-Aside from this, the mod also adds two new mechanics:
-- Whip Frenzy: A new bar for summoners. Filled by dealing minion and sentry damage. When activated, the user can swing three whips at once for several seconds!
-- Tinkerer Hammers: A new type of item, starting from Hardmode, adding cool new abilities for your weapons and accessories that you reforge!
-
-Aside from this, the mod offers its own information accessory-like Minion and Sentry slot tracker (due to other mods displaying Sentries incorrectly if this mod is installed)
+Aside from that, the mod also makes it so the last 3 reforges cannot be rolled again, which, compounded with the above changes, should make getting a desirable reforge much easier.
 
 For balance discussions, bug reports, etc. please contact me on Discord, under the username "elytrafae". You can also find me on the tModLoader discord!
 
-This mod is inspired by, and partially follows the phylosophy of, Sorbet Cafe's video on reforges (https://youtu.be/UBfoOkhV2vY?si=Jehi5nvXmoSS_KZB). Go check it out!
+This mod is inspired by, and partially follows the phylosophy of, Sorbet Cafe's video on reforges (https://youtu.be/UBfoOkhV2vY?si=Jehi5nvXmoSS_KZB)
+
+Note: This mod currently has programmer art. If it garners interest, I might commission an artist to improve the visuals
+Note 2: This mod is NOT compatible with any other mod that adds new classes or reworks the reforge system, unless said mod's author specifically states that they are compatible!

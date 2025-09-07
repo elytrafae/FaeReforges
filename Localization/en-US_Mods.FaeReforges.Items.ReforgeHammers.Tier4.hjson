@@ -173,5 +173,5 @@ PhantomTinkererHammer: {
 	WeaponEffectText: ""
 	AccessoryEffectText: ""
 	DisplayName: Phantom Tinkerer Hammer
-	Tooltip: ""
+	Tooltip: Keeps the previous hammer's effects
 }

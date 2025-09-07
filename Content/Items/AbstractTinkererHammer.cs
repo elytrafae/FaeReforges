@@ -61,8 +61,8 @@ namespace FaeReforges.Content.Items {
         public virtual bool HammerCanUseItem(Item item, Player attacker) { return true; }
         public virtual void HammerOnCreateProjectile(int item, Projectile projectile, IEntitySource source) { }
 
-        public virtual void HammerModifyWeaponDamage(Item item, Player player, ref StatModifier damage) { }
-        public virtual void HammerModifyWeaponCrit(Item item, Player player, ref float crit) { }
+        public virtual void HammerModifyWeaponDamage(Entity itemOrProjectile, Player player, ref StatModifier damage) { }
+        public virtual void HammerModifyWeaponCrit(Entity itemOrProjectile, Player player, ref float crit) { }
         public virtual void HammerModifyWeaponKnockback(Item item, Player player, ref StatModifier knockback) { }
         public virtual void HammerModifyShootStats(Item item, Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback) { }
         public virtual void HammerModifyManaCost(Item item, Player player, ref float reduce, ref float mult) { }

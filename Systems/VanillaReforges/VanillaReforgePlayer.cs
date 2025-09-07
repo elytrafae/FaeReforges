@@ -36,7 +36,7 @@ namespace FaeReforges.Systems.VanillaReforges {
         }
 
         public override bool CanConsumeAmmo(Item weapon, Item ammo) {
-            return Main.rand.Next(100) < ammoSavePoints;
+            return Main.rand.Next(100) >= ammoSavePoints;
         }
 
         public override void PostUpdateMiscEffects() {

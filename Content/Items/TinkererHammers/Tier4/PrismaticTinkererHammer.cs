@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FaeLibrary.API.ItemConditions;
-using FaeReforges.Content.Buffs;
+﻿using FaeLibrary.API.ItemConditions;
 using Terraria.ID;
-using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using Terraria.GameContent;
+using FaeReforges.Systems.ReforgeHammers;
 
 namespace FaeReforges.Content.Items.TinkererHammers.Tier4 {
     public class PrismaticTinkererHammer : SimpleTinkererHammerItem {
@@ -25,7 +20,7 @@ namespace FaeReforges.Content.Items.TinkererHammers.Tier4 {
         }
 
         public override void SetHammerDefaults() {
-            Item.color = Color.Red;
+            
         }
 
         public override void HammerOnUpdateAccessory(Item item, Player player, int count, bool hideVisual) {
@@ -34,7 +29,24 @@ namespace FaeReforges.Content.Items.TinkererHammers.Tier4 {
             }
         }
 
-        // TODO: Add effect
+        public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale) {
+            spriteBatch.Draw(TextureAssets.Item[Type].Value, position, null, ReforgeHammerSavePlayer.GetLighterRainbowColor(), 0, origin, scale, SpriteEffects.None, 0);
+            return false;
+        }
+
+        public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI) {
+            Rectangle frame = Item.getRect();
+            Vector2 vector = frame.Size() / 2f;
+            Vector2 vector2 = new((float)(Item.width / 2) - vector.X, (float)(Item.height - frame.Height));
+            Vector2 drawPos = Item.position - Main.screenPosition + vector + vector2;
+            //Vector2 drawPos = Item.position - Main.screenPosition + new Vector2(0, 32);
+            Color newColor = lightColor.MultiplyRGBA(ReforgeHammerSavePlayer.GetLighterRainbowColor());
+            //spriteBatch.Draw(WritingTexture.Value, drawPos, null, newColor, rotation, new Vector2(0, 32), scale, SpriteEffects.None, 0);
+            spriteBatch.Draw(TextureAssets.Item[Type].Value, drawPos, null, newColor, rotation, vector, scale, SpriteEffects.None, 0f);
+            return false;
+        }
+
+
 
     }
 }

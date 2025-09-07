@@ -1,4 +1,4 @@
 displayName = Fae's Reforges
 author = elytrafae
-version = 0.1
+version = 1.0
 modReferences = FaeLibrary, ShopExpander

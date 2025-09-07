@@ -8,7 +8,7 @@ namespace FaeReforges.Content.Items.TinkererHammers.Tier1 {
         public override int HammerTier => 1;
 
         public override ItemCondition ReforgeableCondition => ItemCondition.ThisButNotThis(ItemCondition.IsWeapon, ItemCondition.GrammaticalAnd(ItemCondition.IsMinionWeapon, ItemCondition.IsSentryWeapon));
-        public override void HammerModifyWeaponCrit(Item item, Player player, ref float crit) {
+        public override void HammerModifyWeaponCrit(Entity itemOrProjectile, Player player, ref float crit) {
             crit += 5;
         }
 

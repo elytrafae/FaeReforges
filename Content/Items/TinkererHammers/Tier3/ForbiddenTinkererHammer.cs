@@ -14,12 +14,8 @@ namespace FaeReforges.Content.Items.TinkererHammers.Tier3 {
         public override int HammerTier => 3;
         public override ItemCondition ReforgeableCondition => ItemCondition.IsWeapon;
 
-        public override void HammerChangeWeaponDealDamageNpc(int item, Player attacker, NPC victim, ref NPC.HitModifiers hitModifiers, DamageClass dmgClass) {
-            hitModifiers.SourceDamage *= ForbiddenHammerDamageMultiplier(attacker);
-        }
-
-        public override void HammerChangeWeaponDealDamagePvp(int item, Player attacker, Player victim, ref Player.HurtModifiers hurtModifiers, DamageClass dmgClass) {
-            hurtModifiers.SourceDamage *= ForbiddenHammerDamageMultiplier(attacker);
+        public override void HammerModifyWeaponDamage(Entity itemOrProjectile, Player player, ref StatModifier damage) {
+            damage *= ForbiddenHammerDamageMultiplier(player);
         }
 
         private static float ForbiddenHammerDamageMultiplier(Player player) {

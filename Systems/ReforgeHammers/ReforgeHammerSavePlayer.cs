@@ -54,6 +54,8 @@ namespace FaeReforges.Systems.ReforgeHammers {
 
 
         private static int PhantomColorTimer = 0;
+        private static Color rainbowColor = new Color(255, 0, 0);
+        private static readonly byte RAINBOW_SPEED = 2;
         private static readonly Color PhantomColor1 = new(0, 232, 112);
         private static readonly Color PhantomColor2 = new(0, 232, 204);
 
@@ -62,6 +64,7 @@ namespace FaeReforges.Systems.ReforgeHammers {
             if (PhantomColorTimer >= 360) {
                 PhantomColorTimer -= 360;
             }
+            UpdateRaindowColor();
         }
 
         public static Color GetPhantomColor() {
@@ -70,6 +73,44 @@ namespace FaeReforges.Systems.ReforgeHammers {
             Color tempColor2 = PhantomColor2 * (1 - measure);
             return new Color(tempColor1.R + tempColor2.R, tempColor1.G + tempColor2.G, tempColor1.B + tempColor2.B, tempColor1.A + tempColor2.A);
         }
+
+        public static void UpdateRaindowColor() {
+            if (rainbowColor.R > 0 && rainbowColor.B == 0) {
+                if (rainbowColor.R < RAINBOW_SPEED) {
+                    byte diff = (byte)(RAINBOW_SPEED - rainbowColor.R);
+                    rainbowColor.R = 0;
+                    rainbowColor.G = 255;
+                    rainbowColor.B = diff;
+                } else {
+                    rainbowColor.R -= RAINBOW_SPEED;
+                    rainbowColor.G += RAINBOW_SPEED;
+                }
+            } else if (rainbowColor.G > 0 && rainbowColor.R == 0) {
+                if (rainbowColor.G < RAINBOW_SPEED) {
+                    byte diff = (byte)(RAINBOW_SPEED - rainbowColor.G);
+                    rainbowColor.G = 0;
+                    rainbowColor.B = 255;
+                    rainbowColor.R = diff;
+                } else {
+                    rainbowColor.G -= RAINBOW_SPEED;
+                    rainbowColor.B += RAINBOW_SPEED;
+                }
+            } else {
+                if (rainbowColor.B < RAINBOW_SPEED) {
+                    byte diff = (byte)(RAINBOW_SPEED - rainbowColor.B);
+                    rainbowColor.B = 0;
+                    rainbowColor.R = 255;
+                    rainbowColor.G = diff;
+                } else {
+                    rainbowColor.B -= RAINBOW_SPEED;
+                    rainbowColor.R += RAINBOW_SPEED;
+                }
+            }
+        }
+
+        public static Color GetRainbowColor() => rainbowColor;
+
+        public static Color GetLighterRainbowColor() => new(rainbowColor.R / 255f * 0.7f + 0.3f, rainbowColor.G / 255f * 0.7f + 0.3f, rainbowColor.B / 255f * 0.7f + 0.3f); //rainbowColor.MultiplyRGB(new(0.7f, 0.7f, 0.7f)).ToVector3() + new Vector3(0.3f, 0.3f, 0.3f);
 
     }
 }

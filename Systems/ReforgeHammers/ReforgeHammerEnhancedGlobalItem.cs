@@ -127,7 +127,6 @@ namespace FaeReforges.Systems.ReforgeHammers {
         }
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips) {
-            // TODO: Make phantom hammers have some special visuals, somehow...
             AbstractTinkererHammer hammerType = GetHammer(item, HammerEffectContext.NONE);
 
             if (lastHammerUsed > ItemID.None) {

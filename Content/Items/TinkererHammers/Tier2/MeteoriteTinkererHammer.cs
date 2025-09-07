@@ -15,7 +15,7 @@ namespace FaeReforges.Content.Items.TinkererHammers.Tier2 {
 
         public override ItemCondition ReforgeableCondition => ItemCondition.IsWeapon;
 
-        public override void HammerModifyWeaponDamage(Item item, Player player, ref StatModifier damage) {
+        public override void HammerModifyWeaponDamage(Entity itemOrProjectile, Player player, ref StatModifier damage) {
             damage += 0.07f;
         }
 
